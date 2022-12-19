@@ -28,7 +28,7 @@ public class Start {
             System.out.println("Internt felmeddelande" + ettUndantag.getMessage());
         }
 
-        new Inlog(idb).setVisible(true);
+        new Inlog(idb).setVisible(true); 
 
     }
     
