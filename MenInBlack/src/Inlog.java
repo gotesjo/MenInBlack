@@ -107,11 +107,13 @@ public class Inlog extends javax.swing.JFrame {
 
     private void TxtbUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtbUserNameActionPerformed
         // TODO add your handling code here:
+        
         try {
         String fråga = "Select namn from agent where agent_ID = 3";
         String svar = idb.fetchSingle(fråga);
         String resultat = svar;
         TxtbUserName.setText(resultat);
+        
         }catch (InfException E){
             JOptionPane.showMessageDialog(null, "Fel förfan");
         }
