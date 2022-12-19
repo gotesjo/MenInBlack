@@ -36,6 +36,12 @@ public class Inlog extends javax.swing.JFrame {
 
         Headname.setText("Inloggning");
 
+        UserBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UserBoxActionPerformed(evt);
+            }
+        });
+
         UserLabel.setText("Användarnamn:");
 
         PasswordLabel.setText("Lösenord:");
@@ -84,6 +90,10 @@ public class Inlog extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void UserBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UserBoxActionPerformed
 
     /**
      * @param args the command line arguments
