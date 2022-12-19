@@ -1,1 +1,49 @@
-/MenInBlack/build/
+# Compiled class file
+
+*.class
+
+
+
+# Log file
+
+*.log
+
+
+
+# Package Files
+
+*.war
+
+*.nar
+
+*.ear
+
+*.tar.gz
+
+
+
+# Directories
+
+nbproject/private/
+
+dist/
+
+build/
+
+
+
+# MacOS files
+
+.DS_Store
+
+
+
+# virtual machine crash logs
+
+hs_err_pid*
+
+
+
+# Mobile Tools for Java (J2ME)
+
+.mtj.tmp/
