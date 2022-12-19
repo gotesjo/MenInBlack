@@ -7,13 +7,20 @@
  *
  * @author emanuelgotesjo
  */
+
+import oru.inf.InfDB;
+import oru.inf.InfException;
+
 public class Inlog extends javax.swing.JFrame {
 
+    private InfDB idb;
+    
     /**
      * Creates new form Inlog
      */
-    public Inlog() {
+    public Inlog(InfDB idb) {
         initComponents();
+        this.idb = idb;
     }
 
     /**
