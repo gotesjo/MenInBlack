@@ -8,6 +8,7 @@
  * @author emanuelgotesjo
  */
 
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -33,8 +34,8 @@ public class Inlog extends javax.swing.JFrame {
     private void initComponents() {
 
         Headname = new javax.swing.JLabel();
-        UserBox = new javax.swing.JTextField();
-        PasswordBox = new javax.swing.JTextField();
+        TxtbUserName = new javax.swing.JTextField();
+        TxtbPassword = new javax.swing.JTextField();
         UserLabel = new javax.swing.JLabel();
         PasswordLabel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -43,9 +44,15 @@ public class Inlog extends javax.swing.JFrame {
 
         Headname.setText("Inloggning");
 
-        UserBox.addActionListener(new java.awt.event.ActionListener() {
+        TxtbUserName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UserBoxActionPerformed(evt);
+                TxtbUserNameActionPerformed(evt);
+            }
+        });
+
+        TxtbPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtbPasswordActionPerformed(evt);
             }
         });
 
@@ -67,8 +74,8 @@ public class Inlog extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(50, 50, 50)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(UserBox, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(PasswordBox, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TxtbUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TxtbPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(UserLabel)
                             .addComponent(PasswordLabel))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -85,11 +92,11 @@ public class Inlog extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addComponent(UserLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(UserBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TxtbUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(PasswordLabel)
                 .addGap(2, 2, 2)
-                .addComponent(PasswordBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TxtbPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(42, 42, 42))
@@ -98,9 +105,21 @@ public class Inlog extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void UserBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserBoxActionPerformed
+    private void TxtbUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtbUserNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_UserBoxActionPerformed
+        try {
+        String fråga = "Select namn from agent where agent_ID = 3";
+        String svar = idb.fetchSingle(fråga);
+        String resultat = svar;
+        TxtbUserName.setText(resultat);
+        }catch (InfException E){
+            JOptionPane.showMessageDialog(null, "Fel förfan");
+        }
+    }//GEN-LAST:event_TxtbUserNameActionPerformed
+
+    private void TxtbPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtbPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtbPasswordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -108,9 +127,9 @@ public class Inlog extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Headname;
-    private javax.swing.JTextField PasswordBox;
     private javax.swing.JLabel PasswordLabel;
-    private javax.swing.JTextField UserBox;
+    private javax.swing.JTextField TxtbPassword;
+    private javax.swing.JTextField TxtbUserName;
     private javax.swing.JLabel UserLabel;
     private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables

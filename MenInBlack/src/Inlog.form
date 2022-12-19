@@ -32,8 +32,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="UserBox" min="-2" pref="139" max="-2" attributes="0"/>
-                          <Component id="PasswordBox" min="-2" pref="139" max="-2" attributes="0"/>
+                          <Component id="TxtbUserName" min="-2" pref="139" max="-2" attributes="0"/>
+                          <Component id="TxtbPassword" min="-2" pref="139" max="-2" attributes="0"/>
                           <Component id="UserLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="PasswordLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -56,11 +56,11 @@
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Component id="UserLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="UserBox" min="-2" max="-2" attributes="0"/>
+              <Component id="TxtbUserName" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="PasswordLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-              <Component id="PasswordBox" min="-2" max="-2" attributes="0"/>
+              <Component id="TxtbPassword" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="45" max="32767" attributes="0"/>
               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
@@ -74,12 +74,15 @@
         <Property name="text" type="java.lang.String" value="Inloggning"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="UserBox">
+    <Component class="javax.swing.JTextField" name="TxtbUserName">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UserBoxActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TxtbUserNameActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="PasswordBox">
+    <Component class="javax.swing.JTextField" name="TxtbPassword">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TxtbPasswordActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="UserLabel">
       <Properties>
