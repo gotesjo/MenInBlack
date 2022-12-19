@@ -49,3 +49,6 @@ hs_err_pid*
 .mtj.tmp/
 MenInBlack/nbproject/private/private.properties
 *.properties
+MenInBlack/.DS_Store
+MenInBlack/nbproject/private/private.xml
+MenInBlack/nbproject/project.properties
