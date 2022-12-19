@@ -15,10 +15,11 @@ import oru.inf.InfException;
 
 public class Start {
     
-    private InfDB idb; 
+    private static InfDB idb; 
     
     // varför funkar det när static är borta?
-    public  void main(String[] args) {
+    public static void main(String[] args) {
+
         try {
             idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
             System.out.println("funka");
@@ -27,8 +28,8 @@ public class Start {
             System.out.println("Internt felmeddelande" + ettUndantag.getMessage());
         }
 
-        
-        //new Inlog(idb).setVisible(true);
+        new Inlog(idb).setVisible(true);
+
     }
     
 }
