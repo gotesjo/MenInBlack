@@ -4,7 +4,12 @@
  */
 package MenInBlack;
 
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
+import oru.inf.InfException;
+
+
+        
 
 /**
  *
@@ -14,6 +19,7 @@ public class AlienSida extends javax.swing.JFrame {
 
     private AliensNaraDig aliensNara;
     private static InfDB idb;
+    
     
     
     /**
@@ -34,37 +40,42 @@ public class AlienSida extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        HuvudText = new javax.swing.JLabel();
+        Valkommen = new javax.swing.JLabel();
+        AndraLosen = new javax.swing.JButton();
+        AlienNara = new javax.swing.JButton();
+        KontaktaOmradesChef = new javax.swing.JButton();
+        OmradesChefInfo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
-        jLabel1.setText("AlienSida");
+        HuvudText.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        HuvudText.setText("AlienSida");
 
-        jButton1.setText("Ändra lösen");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Valkommen.setText(" Välkommen");
+
+        AndraLosen.setText("Ändra lösen");
+        AndraLosen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                AndraLosenActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Aliens nära dig");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        AlienNara.setText("Aliens nära dig");
+        AlienNara.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                AlienNaraActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Din områdeschef");
+        KontaktaOmradesChef.setText("Kontakta områdeschef");
 
-        jButton4.setText("Kontakta områdeschef");
-
-        jLabel2.setText("Välkommen ___");
+        OmradesChefInfo.setText("jTextField1");
+        OmradesChefInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OmradesChefInfoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -74,55 +85,84 @@ public class AlienSida extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4))
+                        .addComponent(KontaktaOmradesChef))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(AndraLosen, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(AlienNara, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(38, 38, 38))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(305, 305, 305)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(65, 65, 65)
-                        .addComponent(jLabel2)))
-                .addContainerGap(310, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Valkommen)
+                            .addComponent(OmradesChefInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(243, 243, 243)
+                        .addComponent(HuvudText)))
+                .addContainerGap(260, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addComponent(jLabel1)
-                .addGap(42, 42, 42)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addGap(76, 76, 76)
+                .addComponent(HuvudText)
+                .addGap(43, 43, 43)
+                .addComponent(Valkommen)
+                .addGap(18, 18, 18)
+                .addComponent(OmradesChefInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addComponent(AlienNara)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
+                .addComponent(KontaktaOmradesChef)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(AndraLosen)
                 .addGap(39, 39, 39))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void AndraLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AndraLosenActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_AndraLosenActionPerformed
 
     
     
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    aliensNara = new AliensNaraDig();
-    aliensNara.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void AlienNaraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlienNaraActionPerformed
+        aliensNara = new AliensNaraDig();
+        aliensNara.setVisible(true);
+    }//GEN-LAST:event_AlienNaraActionPerformed
+
+    //Skriver ut infomration om OmrådesChefen
+    private void OmradesChefInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OmradesChefInfoActionPerformed
+        // hämta områdeschef
+        try
+        {
+            
+           String fraga = "select agent.namn, agent.Telefon, agent.Agent_ID, omradeschef.Omrade\n" +
+            "from agent\n" +
+            "join omradeschef on agent.Agent_ID = omradeschef.Agent_ID\n" +
+            "join omrade on omradeschef.Omrade = omrade.Omrades_ID\n" +
+            "where agent.agent_id =";
+           String svar = idb.fetchSingle(fraga);
+           String resultat = fraga;
+           OmradesChefInfo.setText(resultat);
+            
+        }
+        catch(InfException e)
+        {
+            JOptionPane.showMessageDialog(null, );
+            
+            
+            
+        }
+        //skriva ut namn, telefon, område
+        
+    }//GEN-LAST:event_OmradesChefInfoActionPerformed
 
     
     
@@ -162,11 +202,11 @@ public class AlienSida extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton AlienNara;
+    private javax.swing.JButton AndraLosen;
+    private javax.swing.JLabel HuvudText;
+    private javax.swing.JButton KontaktaOmradesChef;
+    private javax.swing.JTextField OmradesChefInfo;
+    private javax.swing.JLabel Valkommen;
     // End of variables declaration//GEN-END:variables
 }
