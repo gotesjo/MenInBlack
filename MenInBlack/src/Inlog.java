@@ -109,10 +109,11 @@ public class Inlog extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         try {
-        String fråga = "Select namn from agent where agent_ID = 3";
+            String användarnamn = TxtbUserName.getText();
+        String fråga = "Select losenord from agent where namn='" + användarnamn + "'"; 
         String svar = idb.fetchSingle(fråga);
         String resultat = svar;
-        TxtbUserName.setText(resultat);
+        TxtbPassword.setText(resultat);
         
         }catch (InfException E){
             JOptionPane.showMessageDialog(null, "Fel förfan");
