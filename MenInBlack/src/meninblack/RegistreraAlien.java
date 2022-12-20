@@ -16,6 +16,14 @@ import oru.inf.InfException;
 public class RegistreraAlien extends javax.swing.JFrame {
     
     private static InfDB idb; 
+    private String aid;
+    private String namn;
+    private String losenord;
+    private String telefon;
+    //private String ras;
+    private String plats;
+    private String ansvarigAgent;
+    
 
     /**
      * Creates new form RegistreraAlien
@@ -23,8 +31,19 @@ public class RegistreraAlien extends javax.swing.JFrame {
     public RegistreraAlien(InfDB idb) {
         initComponents();
         
+        // Instansierar klassens fält
+        // Sätter alla String variabler tomma från start
         this.idb = idb;
         
+        aid = "";
+        namn = "";
+        losenord = "";
+        telefon = "";
+       // ras = "";
+        plats = "";
+        ansvarigAgent = "";
+        
+        //Fyller det comboboxar som används i formuläret
         fyllaPlatsCB();
         fyllaAgentCB();
         
@@ -46,7 +65,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
         jTFTelefon = new javax.swing.JTextField();
         jCBPlats = new javax.swing.JComboBox<>();
         jCBAgent = new javax.swing.JComboBox<>();
-        jRbWorm = new javax.swing.JRadioButton();
+        jRBWorm = new javax.swing.JRadioButton();
         jRBBoglodite = new javax.swing.JRadioButton();
         jRBSquid = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
@@ -79,8 +98,8 @@ public class RegistreraAlien extends javax.swing.JFrame {
             }
         });
 
-        buttonGroup1.add(jRbWorm);
-        jRbWorm.setText("Worm");
+        buttonGroup1.add(jRBWorm);
+        jRBWorm.setText("Worm");
 
         buttonGroup1.add(jRBBoglodite);
         jRBBoglodite.setText("Boglodite");
@@ -109,9 +128,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRbWorm)
-                            .addComponent(jRBBoglodite))
+                        .addComponent(jRBWorm)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,8 +136,9 @@ public class RegistreraAlien extends javax.swing.JFrame {
                             .addComponent(jRBSquid)
                             .addComponent(jLabel4)
                             .addComponent(jTFNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTFLosenord, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                            .addComponent(jTFLosenord, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jRBBoglodite))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jCBPlats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jCBAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -129,9 +147,9 @@ public class RegistreraAlien extends javax.swing.JFrame {
                         .addGap(49, 49, 49))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(149, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jBRegistrera)
-                    .addComponent(jLabel1))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel1)
+                    .addComponent(jBRegistrera))
                 .addGap(150, 150, 150))
         );
         layout.setVerticalGroup(
@@ -162,7 +180,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jRBBoglodite)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRbWorm)
+                .addComponent(jRBWorm)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBRegistrera)
                 .addGap(14, 14, 14))
@@ -172,7 +190,28 @@ public class RegistreraAlien extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBRegistreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRegistreraActionPerformed
-        // TODO add your handling code here:
+        // Registrerar en alien till Databasen 
+        
+        /**
+         * Insert Into Alien (Alien_ID, Registreringsdatum, losenord,Namn, Telefon, plats, Ansvarig_Agent)
+         * VALUES (ID, DATE, 'LOSENORD', 'NAMN', 'TelefonNummer', PLATS ID,  AGENT ID);
+         */
+        
+        setAlienInfo();
+        
+        // SQL Fråga formulering
+        // (Alien_ID, Registreringsdatum, losenord,Namn, Telefon, plats, Ansvarig_Agent)
+        String fraga = "INSERT INTO Alien VALUES ("+aid+" , NULL, '"+losenord+"', '"+namn+"', '"+telefon+"', "+plats+","+ansvarigAgent+")";
+        
+        //Gör registreringen via en sql fråga
+        try{
+            idb.insert(fraga);
+            
+        } catch(InfException e){
+            JOptionPane.showMessageDialog(null, "Fel i Databasfråga");
+            System.out.println("Kunde inte lägga till Alien till databasen" + e.getMessage());
+            
+        }
         
         
     }//GEN-LAST:event_jBRegistreraActionPerformed
@@ -187,7 +226,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFNamnMousePressed
 
     private void jTFLosenordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTFLosenordMousePressed
-        // // Tömmer Lösenordsrutan första gången man ska börja skriva
+        //Tömmer Lösenordsrutan första gången man ska börja skriva
         
         if(jTFLosenord.getText().equals("Lösenord"))
             {
@@ -196,7 +235,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFLosenordMousePressed
 
     private void jTFTelefonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTFTelefonMousePressed
-        // // Tömmer Telefonrutan första gången man ska börja skriva
+        // Tömmer Telefonrutan första gången man ska börja skriva
         
         if(jTFTelefon.getText().equals("Telefon"))
             {
@@ -205,18 +244,21 @@ public class RegistreraAlien extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFTelefonMousePressed
 
     
-    //Metod för att fylla COMBOBOX innehållande platser i databasen 
+    //Metod för att fylla COMBOBOX innehållande platser i databasen
+    //Anbänder sig tabellen Plats
     private void fyllaPlatsCB(){
         String platsFråga = "SELECT Benamning FROM Plats ORDER By Benamning";
         
         ArrayList<String> allaPlatsNamn;
         
+        
+        // hämtar alla benämningar ifrån Plats tabellen
         try{
             allaPlatsNamn = idb.fetchColumn(platsFråga);
             
-            for(String plats : allaPlatsNamn)
+            for(String platser : allaPlatsNamn)
             {
-                jCBPlats.addItem(plats);
+                jCBPlats.addItem(platser);
             }
                     
         } catch(InfException ettUndantag){
@@ -226,11 +268,13 @@ public class RegistreraAlien extends javax.swing.JFrame {
     }
     
     //Metod fö att fylla COMBOX för ansvarande agent
+    //Använder sig av Databasens tabell Agent
     private void fyllaAgentCB() {
         String agentFråga = "SELECT Namn FROM Agent ORDER BY Namn";
 
         ArrayList<String> allaAgenter;
 
+        //Hämtar alla namn från Agent tabellen
         try {
             allaAgenter = idb.fetchColumn(agentFråga);
 
@@ -242,6 +286,83 @@ public class RegistreraAlien extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Inläsningsfel ifrån Databasen");
         }
 
+    }
+    
+    private void setAlienInfo(){
+        
+        namn = jTFNamn.getText();
+        losenord = jTFLosenord.getText();
+        telefon = jTFTelefon.getText();
+        plats = jCBPlats.getSelectedItem().toString();
+        ansvarigAgent = jCBAgent.getSelectedItem().toString();
+       
+        //radioButtonCheck();
+        setAid();
+        setPlats();
+        setAnsvarigAgent();
+        
+        
+    }
+    
+//    private void radioButtonCheck(){
+//        if(jRBBoglodite.isSelected()){
+//           ras = "Boglodite"; 
+//        }
+//        else if(jRBSquid.isSelected()){
+//             ras = "Squid";
+//        }
+//        
+//        else if(jRBWorm.isSelected()){
+//             ras = "Worm";
+//        }
+//            
+//    }
+    
+    private void setAid(){
+        
+        // Hämtar ett unikt ID för registreringen av en ny Alien
+        try{
+            aid = idb.getAutoIncrement("Alien", "Alien_id");
+        } 
+        catch(InfException e){
+            JOptionPane.showMessageDialog(null, "Databasfel");
+            System.out.println("Kunde inte hämta Alien_ID" + e.getMessage());
+        }
+        
+    }
+    
+    //hämtar platsens ID för den platsen man valt i comboboxen
+    private void setPlats(){
+        try{
+            
+            String platsnamn = jCBPlats.getSelectedItem().toString();
+            String platsfraga = "SELECT Plats_ID FROM Plats WHERE Benamning like '"+platsnamn+"'";
+                    
+            plats = idb.fetchSingle(platsfraga);
+            
+        } catch(InfException e){
+            JOptionPane.showMessageDialog(null, "Platsen fanns inte i databasen");
+            System.out.println("Kunde inte hämta vald plats" + e.getMessage());
+            
+        }
+        
+    }
+    
+    //hämtar agentens ID för den ansvariga agent man valt i comboboxen
+    private void setAnsvarigAgent(){
+        try{
+            
+            String agentnamn = jCBAgent.getSelectedItem().toString();
+            String agentfraga = "SELECT Agent_ID FROM Agent WHERE Namn like '"+agentnamn+"'";
+                    
+            plats = idb.fetchSingle(agentfraga);
+            
+        } catch(InfException e){
+            JOptionPane.showMessageDialog(null, "Agenten fanns inte i databasen");
+            System.out.println("Kunde inte hämta vald agent" + e.getMessage());
+            
+        }
+        
     }
 
 
@@ -256,7 +377,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JRadioButton jRBBoglodite;
     private javax.swing.JRadioButton jRBSquid;
-    private javax.swing.JRadioButton jRbWorm;
+    private javax.swing.JRadioButton jRBWorm;
     private javax.swing.JTextField jTFLosenord;
     private javax.swing.JTextField jTFNamn;
     private javax.swing.JTextField jTFTelefon;
