@@ -15,6 +15,11 @@ import oru.inf.InfException;
 public class Inlog extends javax.swing.JFrame {
 
     private InfDB idb;
+    private String svar;
+    private String resultat;
+
+    
+
     
     /**
      * Creates new form Inlog
@@ -111,13 +116,15 @@ public class Inlog extends javax.swing.JFrame {
         try {
             String användarnamn = TxtbUserName.getText();
         String fråga = "Select losenord from agent where namn='" + användarnamn + "'"; 
-        String svar = idb.fetchSingle(fråga);
-        String resultat = svar;
-        TxtbPassword.setText(resultat);
+        svar = idb.fetchSingle(fråga);
+        resultat = svar;
+        //TxtbPassword.setText(resultat);
         
         }catch (InfException E){
             JOptionPane.showMessageDialog(null, "Fel förfan");
         }
+        if(resultat.equals(TxtbPassword.getText()))
+            
     }//GEN-LAST:event_TxtbUserNameActionPerformed
 
     private void TxtbPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtbPasswordActionPerformed
