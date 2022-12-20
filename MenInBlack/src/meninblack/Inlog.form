@@ -37,7 +37,7 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="Headname" min="-2" max="-2" attributes="0"/>
+                      <Component id="JLTitel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
@@ -46,7 +46,7 @@
                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <Component id="JBLoggaIN" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -55,7 +55,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-              <Component id="Headname" min="-2" max="-2" attributes="0"/>
+              <Component id="JLTitel" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               <Component id="jComboBox2" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="70" max="32767" attributes="0"/>
@@ -66,7 +66,7 @@
               <Component id="PasswordLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="JBLoggaIN" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="TxtbLosenord" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
@@ -75,7 +75,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="Headname">
+    <Component class="javax.swing.JLabel" name="JLTitel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="24" style="0"/>
@@ -98,10 +98,13 @@
         <Property name="text" type="java.lang.String" value="L&#xf6;senord:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="JBLoggaIN">
       <Properties>
         <Property name="text" type="java.lang.String" value="Logga in"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBLoggaINActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="jComboBox2">
       <Properties>
