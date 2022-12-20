@@ -19,6 +19,7 @@ public class Inlog extends javax.swing.JFrame {
     private InfDB idb;
     private String svar;
     private String resultat;
+    private boolean inloggad = false;
 
     
 
@@ -42,24 +43,20 @@ public class Inlog extends javax.swing.JFrame {
 
         Headname = new javax.swing.JLabel();
         TxtbUserName = new javax.swing.JTextField();
-        TxtbPassword = new javax.swing.JTextField();
         UserLabel = new javax.swing.JLabel();
         PasswordLabel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        TxtbLosenord = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        Headname.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         Headname.setText("Inloggning");
 
         TxtbUserName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TxtbUserNameActionPerformed(evt);
-            }
-        });
-
-        TxtbPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtbPasswordActionPerformed(evt);
             }
         });
 
@@ -69,44 +66,64 @@ public class Inlog extends javax.swing.JFrame {
 
         jButton1.setText("Logga in");
 
+        jComboBox2.setMaximumRowCount(3);
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Agent", "Alien", "Admin", " " }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
+
+        TxtbLosenord.setText("jPasswordField1");
+        TxtbLosenord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtbLosenordActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(171, 171, 171)
-                        .addComponent(Headname))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TxtbUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TxtbPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(UserLabel)
-                            .addComponent(PasswordLabel))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 164, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(TxtbUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                            .addComponent(PasswordLabel)
+                            .addComponent(UserLabel)
+                            .addComponent(TxtbLosenord))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Headname)
+                        .addGap(23, 23, 23))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)))
                 .addComponent(jButton1)
-                .addGap(157, 157, 157))
+                .addGap(40, 40, 40))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(25, 25, 25)
                 .addComponent(Headname)
-                .addGap(37, 37, 37)
+                .addGap(36, 36, 36)
+                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addComponent(UserLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TxtbUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PasswordLabel)
-                .addGap(2, 2, 2)
-                .addComponent(TxtbPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(42, 42, 42))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(TxtbLosenord, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31))
         );
 
         pack();
@@ -124,14 +141,25 @@ public class Inlog extends javax.swing.JFrame {
         
         }catch (InfException E){
             JOptionPane.showMessageDialog(null, "Fel förfan");
+            System.out.println("Internt Felmeddelande" +E.getMessage());
+        } catch (Exception Undantag) {
+            JOptionPane.showMessageDialog(null, "Något är lurt");
+            System.out.println("Internt Felmeddelande" +Undantag.getMessage());
+            
         }
-        if(resultat.equals(TxtbPassword.getText()))
+        if(resultat.equals(TxtbLosenord.getText())) {
+            inloggad = true;
+        }
             
     }//GEN-LAST:event_TxtbUserNameActionPerformed
 
-    private void TxtbPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtbPasswordActionPerformed
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TxtbPasswordActionPerformed
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void TxtbLosenordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtbLosenordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtbLosenordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -140,9 +168,10 @@ public class Inlog extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Headname;
     private javax.swing.JLabel PasswordLabel;
-    private javax.swing.JTextField TxtbPassword;
+    private javax.swing.JPasswordField TxtbLosenord;
     private javax.swing.JTextField TxtbUserName;
     private javax.swing.JLabel UserLabel;
     private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBox2;
     // End of variables declaration//GEN-END:variables
 }
