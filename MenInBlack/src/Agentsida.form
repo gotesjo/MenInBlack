@@ -37,7 +37,7 @@
                   <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton6" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton5" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelUser" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="161" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -70,7 +70,7 @@
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
-              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+              <Component id="labelUser" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -107,6 +107,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Registrera Ny Alien"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
@@ -138,9 +141,9 @@
         <Property name="text" type="java.lang.String" value="Close"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="labelUser">
       <Properties>
-        <Property name="text" type="java.lang.String" value="[INLOGGAD AGENT]"/>
+        <Property name="text" type="java.lang.String" value="&lt;INLOGGAD AGENT&gt;"/>
       </Properties>
     </Component>
   </SubComponents>
