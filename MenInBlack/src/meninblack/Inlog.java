@@ -146,7 +146,13 @@ public class Inlog extends javax.swing.JFrame {
     private void TxtbLosenordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtbLosenordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtbLosenordActionPerformed
-
+/**
+ * Denna metod för knappen 'Logga in' hämtar metoden KollaLosenord() först och checkar även om
+ * booleanen 'inloggad' är true. Om true uppnås skapas en ny agentsida, vilket för användaren blir 
+ * att om man skriver in rätt lösernord för rätt Agent tar systemet användaren till platsen Agentsida. 
+ * Om det är false får användaren även ett meddelande att lösenordet är fel. 
+ * @param evt 
+ */
     private void JBLoggaINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBLoggaINActionPerformed
         // TODO add your handling code here:
         KollaLosenord();
@@ -156,6 +162,13 @@ public class Inlog extends javax.swing.JFrame {
     JOptionPane.showMessageDialog(null, "Fel lösenord. Pröva ett annat");
     }//GEN-LAST:event_JBLoggaINActionPerformed
     }
+    /**
+     * Metoden ställer en SQL fråga till databasen där den tar namn lösenordet från agenten där namnet
+     * är lika med användarnamnet som användaren skriver in i textrutan. Med två olika Exceptions
+     * fångar vi även upp och skickar ett meddelande om antingen användarnamnet är fel eller lösenordet.
+     * Metoden kollar till slut om resultaten från SQL frågan är lika med inputen i lösenords-rutan, 
+     * vilket ändrar värdet på booleanen 'inloggad' till true om så är fallet. 
+     */ 
     private void KollaLosenord() {
         try {
             String användarnamn = TxtbUserName.getText();
