@@ -59,14 +59,25 @@ public class RegistreraAlien extends javax.swing.JFrame {
         jLabel1.setText("Registrera ny Alien");
 
         jTFNamn.setText("Namn");
+        jTFNamn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTFNamnMousePressed(evt);
+            }
+        });
 
         jTFLosenord.setText("Lösenord");
+        jTFLosenord.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTFLosenordMousePressed(evt);
+            }
+        });
 
         jTFTelefon.setText("Telefon");
-
-        jCBPlats.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jCBAgent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jTFTelefon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTFTelefonMousePressed(evt);
+            }
+        });
 
         buttonGroup1.add(jRbWorm);
         jRbWorm.setText("Worm");
@@ -104,12 +115,12 @@ public class RegistreraAlien extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTFNamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTFLosenord, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTFTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTFTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jRBSquid)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel4)
+                            .addComponent(jTFNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTFLosenord, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jCBPlats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jCBAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -117,7 +128,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addGap(49, 49, 49))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(141, Short.MAX_VALUE)
+                .addContainerGap(149, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jBRegistrera)
                     .addComponent(jLabel1))
@@ -143,7 +154,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTFNamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTFLosenord, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTFLosenord, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTFTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
@@ -165,6 +176,33 @@ public class RegistreraAlien extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jBRegistreraActionPerformed
+
+    private void jTFNamnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTFNamnMousePressed
+        // Tömmer namnrutan första gången man ska börja skriva
+        
+        if(jTFNamn.getText().equals("Namn"))
+            {
+                jTFNamn.setText("");
+            }  
+    }//GEN-LAST:event_jTFNamnMousePressed
+
+    private void jTFLosenordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTFLosenordMousePressed
+        // // Tömmer Lösenordsrutan första gången man ska börja skriva
+        
+        if(jTFLosenord.getText().equals("Lösenord"))
+            {
+                jTFLosenord.setText("");
+            }
+    }//GEN-LAST:event_jTFLosenordMousePressed
+
+    private void jTFTelefonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTFTelefonMousePressed
+        // // Tömmer Telefonrutan första gången man ska börja skriva
+        
+        if(jTFTelefon.getText().equals("Telefon"))
+            {
+                jTFTelefon.setText("");
+            }
+    }//GEN-LAST:event_jTFTelefonMousePressed
 
     
     //Metod för att fylla COMBOBOX innehållande platser i databasen 

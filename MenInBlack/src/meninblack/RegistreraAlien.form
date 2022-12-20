@@ -39,13 +39,13 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTFNamn" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTFLosenord" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTFTelefon" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTFTelefon" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
                           <Component id="jRBSquid" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTFNamn" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="jTFLosenord" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="122" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jCBPlats" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jCBAgent" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -57,7 +57,7 @@
               </Group>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="141" max="32767" attributes="0"/>
+              <EmptySpace pref="149" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="jBRegistrera" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -87,7 +87,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jTFNamn" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTFLosenord" min="-2" pref="23" max="-2" attributes="0"/>
+                      <Component id="jTFLosenord" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jTFTelefon" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -115,26 +115,30 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Namn"/>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTFNamnMousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTFLosenord">
       <Properties>
         <Property name="text" type="java.lang.String" value="L&#xf6;senord"/>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTFLosenordMousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTFTelefon">
       <Properties>
         <Property name="text" type="java.lang.String" value="Telefon"/>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTFTelefonMousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="jCBPlats">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
       <AuxValues>
@@ -144,12 +148,7 @@
     <Component class="javax.swing.JComboBox" name="jCBAgent">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
       <AuxValues>
