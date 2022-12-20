@@ -46,7 +46,7 @@ public class Inlog extends javax.swing.JFrame {
         UserLabel = new javax.swing.JLabel();
         PasswordLabel = new javax.swing.JLabel();
         JBLoggaIN = new javax.swing.JButton();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        JcCombo = new javax.swing.JComboBox<>();
         TxtbLosenord = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -71,15 +71,14 @@ public class Inlog extends javax.swing.JFrame {
             }
         });
 
-        jComboBox2.setMaximumRowCount(3);
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Agent", "Alien", "Admin", " " }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        JcCombo.setMaximumRowCount(3);
+        JcCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Agent", "Alien", "Admin" }));
+        JcCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                JcComboActionPerformed(evt);
             }
         });
 
-        TxtbLosenord.setText("jPasswordField1");
         TxtbLosenord.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TxtbLosenordActionPerformed(evt);
@@ -106,7 +105,7 @@ public class Inlog extends javax.swing.JFrame {
                         .addGap(23, 23, 23))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(JcCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(50, 50, 50)))
                 .addComponent(JBLoggaIN)
                 .addGap(40, 40, 40))
@@ -117,7 +116,7 @@ public class Inlog extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addComponent(JLTitel)
                 .addGap(36, 36, 36)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JcCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addComponent(UserLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -139,9 +138,10 @@ public class Inlog extends javax.swing.JFrame {
         
     }//GEN-LAST:event_TxtbUserNameActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+    private void JcComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JcComboActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    }//GEN-LAST:event_JcComboActionPerformed
 
     private void TxtbLosenordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtbLosenordActionPerformed
         // TODO add your handling code here:
@@ -153,7 +153,7 @@ public class Inlog extends javax.swing.JFrame {
         if(inloggad) {
             new Agentsida(idb).setVisible(true);
     } else {
-    JOptionPane.showMessageDialog(null, "Fel användarnamn eller lösenord");
+    JOptionPane.showMessageDialog(null, "Fel lösenord. Pröva ett annat");
     }//GEN-LAST:event_JBLoggaINActionPerformed
     }
     private void KollaLosenord() {
@@ -182,10 +182,10 @@ public class Inlog extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBLoggaIN;
     private javax.swing.JLabel JLTitel;
+    private javax.swing.JComboBox<String> JcCombo;
     private javax.swing.JLabel PasswordLabel;
     private javax.swing.JPasswordField TxtbLosenord;
     private javax.swing.JTextField TxtbUserName;
     private javax.swing.JLabel UserLabel;
-    private javax.swing.JComboBox<String> jComboBox2;
     // End of variables declaration//GEN-END:variables
 }
