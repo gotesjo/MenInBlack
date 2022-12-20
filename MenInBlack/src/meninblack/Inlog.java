@@ -20,6 +20,10 @@ public class Inlog extends javax.swing.JFrame {
     private String svar;
     private String resultat;
     private boolean inloggad = false;
+    private String vald; 
+    private String alienSvar;
+    private String alienResultat;
+    
 
     
 
@@ -41,6 +45,7 @@ public class Inlog extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jRadioButton1 = new javax.swing.JRadioButton();
         JLTitel = new javax.swing.JLabel();
         TxtbUserName = new javax.swing.JTextField();
         UserLabel = new javax.swing.JLabel();
@@ -48,6 +53,9 @@ public class Inlog extends javax.swing.JFrame {
         JBLoggaIN = new javax.swing.JButton();
         JcCombo = new javax.swing.JComboBox<>();
         TxtbLosenord = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
+
+        jRadioButton1.setText("jRadioButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,6 +93,10 @@ public class Inlog extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Användare:");
+        jLabel1.setMaximumSize(new java.awt.Dimension(80, 16));
+        jLabel1.setMinimumSize(null);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -105,6 +117,8 @@ public class Inlog extends javax.swing.JFrame {
                         .addGap(23, 23, 23))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(JcCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(50, 50, 50)))
                 .addComponent(JBLoggaIN)
@@ -116,7 +130,9 @@ public class Inlog extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addComponent(JLTitel)
                 .addGap(36, 36, 36)
-                .addComponent(JcCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JcCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addComponent(UserLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -140,9 +156,11 @@ public class Inlog extends javax.swing.JFrame {
 
     private void JcComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JcComboActionPerformed
         // TODO add your handling code here:
-
     }//GEN-LAST:event_JcComboActionPerformed
 
+    
+
+    
     private void TxtbLosenordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtbLosenordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtbLosenordActionPerformed
@@ -155,13 +173,16 @@ public class Inlog extends javax.swing.JFrame {
  */
     private void JBLoggaINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBLoggaINActionPerformed
         // TODO add your handling code here:
-        KollaLosenord();
-        if(inloggad) {
+        CheckaComboBox();
+        if(vald.equals("Agent") && KollaAgentLosenord()) {
             new Agentsida(idb).setVisible(true);
-    } else {
+        } 
+        else if (vald.equals("Alien") && KollaAlienLosenord()) {
+            new AlienSida(idb).setVisible(true);
+        }   
     JOptionPane.showMessageDialog(null, "Fel lösenord. Pröva ett annat");
     }//GEN-LAST:event_JBLoggaINActionPerformed
-    }
+    
     /**
      * Metoden ställer en SQL fråga till databasen där den tar namn lösenordet från agenten där namnet
      * är lika med användarnamnet som användaren skriver in i textrutan. Med två olika Exceptions
@@ -169,7 +190,7 @@ public class Inlog extends javax.swing.JFrame {
      * Metoden kollar till slut om resultaten från SQL frågan är lika med inputen i lösenords-rutan, 
      * vilket ändrar värdet på booleanen 'inloggad' till true om så är fallet. 
      */ 
-    private void KollaLosenord() {
+    private boolean KollaAgentLosenord() {
         try {
             String användarnamn = TxtbUserName.getText();
         String fråga = "Select losenord from agent where namn='" + användarnamn + "'"; 
@@ -188,9 +209,28 @@ public class Inlog extends javax.swing.JFrame {
         if(resultat.equals(TxtbLosenord.getText())) {
             inloggad = true;
         }
-    /**
-     * @param args the command line arguments
-     */
+        return inloggad;
+        
+    }
+    private boolean KollaAlienLosenord() {
+        try {
+            String alienNamn = TxtbUserName.getText();
+            String alienFråga = "select losenord from alien where namn ='" + alienNamn + "'";
+            alienSvar = idb.fetchSingle(alienFråga);
+            alienResultat = alienSvar;
+        } catch (InfException Ex) {
+            JOptionPane.showMessageDialog(null, "Fel");
+            System.out.println("Internt Felmeddelande" +Ex.getMessage());
+        }
+        if(alienResultat.equals(TxtbLosenord.getText())) {
+            inloggad = true;
+        }
+        return inloggad;
+ }
+
+    private void CheckaComboBox() {
+        vald = JcCombo.getSelectedItem().toString();
+        
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBLoggaIN;
@@ -200,5 +240,7 @@ public class Inlog extends javax.swing.JFrame {
     private javax.swing.JPasswordField TxtbLosenord;
     private javax.swing.JTextField TxtbUserName;
     private javax.swing.JLabel UserLabel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JRadioButton jRadioButton1;
     // End of variables declaration//GEN-END:variables
 }
