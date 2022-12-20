@@ -137,27 +137,6 @@ public class Inlog extends javax.swing.JFrame {
     private void TxtbUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtbUserNameActionPerformed
         // TODO add your handling code here:
         
-        try {
-            String användarnamn = TxtbUserName.getText();
-        String fråga = "Select losenord from agent where namn='" + användarnamn + "'"; 
-        svar = idb.fetchSingle(fråga);
-        resultat = svar;
-        //TxtbPassword.setText(resultat);
-        
-        }catch (InfException E){
-            JOptionPane.showMessageDialog(null, "Fel förfan");
-            System.out.println("Internt Felmeddelande" +E.getMessage());
-        } catch (Exception Undantag) {
-            JOptionPane.showMessageDialog(null, "Något är lurt");
-            System.out.println("Internt Felmeddelande" +Undantag.getMessage());
-            
-        }
-        if(resultat.equals(TxtbLosenord.getText())) {
-            inloggad = true;
-        }
-        if(inloggad= true)  {
-        new Agentsida(idb).setVisible(true);
-    } 
     }//GEN-LAST:event_TxtbUserNameActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
