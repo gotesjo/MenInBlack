@@ -180,10 +180,10 @@ public class Inlog extends javax.swing.JFrame {
         } 
         else if (vald.equals("Alien") && KollaAlienLosenord()) {
             new AlienSida(idb).setVisible(true);
-        }   
+        } else { 
     JOptionPane.showMessageDialog(null, "Fel lösenord. Pröva ett annat");
     }//GEN-LAST:event_JBLoggaINActionPerformed
-    
+}
     /**
      * Metoden ställer en SQL fråga till databasen där den tar namn lösenordet från agenten där namnet
      * är lika med användarnamnet som användaren skriver in i textrutan. Med två olika Exceptions
@@ -222,6 +222,8 @@ public class Inlog extends javax.swing.JFrame {
         } catch (InfException Ex) {
             JOptionPane.showMessageDialog(null, "Fel");
             System.out.println("Internt Felmeddelande" +Ex.getMessage());
+        } catch (Exception EUndantag) {
+            JOptionPane.showMessageDialog(null, "Fel, pröva igen");
         }
         if(alienResultat.equals(TxtbLosenord.getText())) {
             inloggad = true;

@@ -155,7 +155,7 @@ public class AlienSida extends javax.swing.JFrame {
         }
         catch(InfException e)
         {
-            JOptionPane.showMessageDialog(null, );
+            JOptionPane.showMessageDialog(null, "Något gick fel, pröva med andra värden");
             
             
             
