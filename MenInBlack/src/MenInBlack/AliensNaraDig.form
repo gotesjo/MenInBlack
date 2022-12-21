@@ -24,17 +24,14 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Component id="OmradesBox" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="133" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="89" max="32767" attributes="0"/>
+              <EmptySpace pref="33" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -43,9 +40,12 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="102" max="32767" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="OmradesBox" min="-2" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="116" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="80" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -59,6 +59,24 @@
         <Property name="text" type="java.lang.String" value="Aliens n&#xe4;ra dig"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JComboBox" name="OmradesBox">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OmradesBoxActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -66,7 +84,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="jTextArea1">
+        <Component class="javax.swing.JTextArea" name="textArea">
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
