@@ -175,13 +175,12 @@ public class Inlog extends javax.swing.JFrame {
     private void JBLoggaINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBLoggaINActionPerformed
         // TODO add your handling code here:
         CheckaComboBox();
-        if(vald.equals("Agent") && KollaAgentLosenord()) {
+        if (vald.equals("Agent") && KollaAgentLosenord()) {
             new Agentsida(idb).setVisible(true);
-        } 
-        else if (vald.equals("Alien") && KollaAlienLosenord()) {
+        } else if (vald.equals("Alien") && KollaAlienLosenord()) {
             new AlienSida(idb).setVisible(true);
-        } else { 
-    JOptionPane.showMessageDialog(null, "Fel lösenord. Pröva ett annat");
+        } else {
+            JOptionPane.showMessageDialog(null, "Fel lösenord. Pröva ett annat");
     }//GEN-LAST:event_JBLoggaINActionPerformed
 }
     /**
@@ -194,24 +193,24 @@ public class Inlog extends javax.swing.JFrame {
     private boolean KollaAgentLosenord() {
         try {
             String användarnamn = TxtbUserName.getText();
-        String fråga = "Select losenord from agent where namn='" + användarnamn + "'"; 
-        svar = idb.fetchSingle(fråga);
-        resultat = svar;
-        //TxtbPassword.setText(resultat);
-        
-        }catch (InfException E){
+            String fråga = "Select losenord from agent where namn='" + användarnamn + "'";
+            svar = idb.fetchSingle(fråga);
+            resultat = svar;
+            //TxtbPassword.setText(resultat);
+
+        } catch (InfException E) {
             JOptionPane.showMessageDialog(null, "Fel förfan");
-            System.out.println("Internt Felmeddelande" +E.getMessage());
+            System.out.println("Internt Felmeddelande" + E.getMessage());
         } catch (Exception Undantag) {
             JOptionPane.showMessageDialog(null, "Något är lurt");
-            System.out.println("Internt Felmeddelande" +Undantag.getMessage());
-            
+            System.out.println("Internt Felmeddelande" + Undantag.getMessage());
+
         }
-        if(resultat.equals(TxtbLosenord.getText())) {
+        if (resultat.equals(TxtbLosenord.getText())) {
             inloggad = true;
         }
         return inloggad;
-        
+
     }
     private boolean KollaAlienLosenord() {
         try {
@@ -221,19 +220,19 @@ public class Inlog extends javax.swing.JFrame {
             alienResultat = alienSvar;
         } catch (InfException Ex) {
             JOptionPane.showMessageDialog(null, "Fel");
-            System.out.println("Internt Felmeddelande" +Ex.getMessage());
+            System.out.println("Internt Felmeddelande" + Ex.getMessage());
         } catch (Exception EUndantag) {
             JOptionPane.showMessageDialog(null, "Fel, pröva igen");
         }
-        if(alienResultat.equals(TxtbLosenord.getText())) {
+        if (alienResultat.equals(TxtbLosenord.getText())) {
             inloggad = true;
         }
         return inloggad;
- }
+    }
 
     private void CheckaComboBox() {
         vald = JcCombo.getSelectedItem().toString();
-        
+
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBLoggaIN;
