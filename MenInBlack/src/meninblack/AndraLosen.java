@@ -16,12 +16,15 @@ public class AndraLosen extends javax.swing.JFrame {
     
     //Klassens fält
     private InfDB idb;
+    private User user;
+    
     /**
      * Creates new form AndraLosen
      */
-    public AndraLosen(InfDB idb) {
+    public AndraLosen(InfDB idb, User user) {
         initComponents();
         this.idb = idb;
+        this.user = user;
     }
 
     /**

@@ -18,7 +18,7 @@ public class User {
     InfDB idb;
     String username;
     
-    public User(String signInUser){
+    public User(InfDB idb, String signInUser){
         
         this.idb = idb;
         username = signInUser;
@@ -35,15 +35,10 @@ public class User {
         return username;
     }
     
-    public String getPlats(){
-        
-        //return plats;
-    }
-    
     /**
-     * Retunerar en String av Inloggad användares Områdeschef
-     * @return 
      * Get metod som inte tar några parametrar.
+     * @return 
+     * Retunerar en String av Inloggad användares Områdeschef
      * 
      */
     public String getOmradeschef(){
@@ -63,16 +58,10 @@ public class User {
         } catch(InfException e){
             
             JOptionPane.showMessageDialog(null, "Något är lurt");
-            System.out.println("Internt Felmeddelande" + Undantag.getMessage());
+            System.out.println("Internt Felmeddelande" + e.getMessage());
         }
         
         
         return chef;
     }
-    
-    
-    public String getOmrade(){
-        
-    }
-    
 }

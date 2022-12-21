@@ -181,14 +181,14 @@ public class Inlog extends javax.swing.JFrame {
         CheckaComboBox();
         if (vald.equals("Agent") && KollaAgentLosenord()) {
             
-            user = new User(TxtbUserName.getText());
+            user = new User(idb, TxtbUserName.getText());
             
             new Agentsida(idb, user).setVisible(true);
             
             
         } else if (vald.equals("Alien") && KollaAlienLosenord()) {
          
-            user = new User(TxtbUserName.getText());   
+            user = new User(idb, TxtbUserName.getText());   
             
             new AlienSida(idb,user).setVisible(true);
             

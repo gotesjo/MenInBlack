@@ -28,6 +28,7 @@ public class AlienSida extends javax.swing.JFrame {
         this.user = user;
         this.idb = idb;
         jLabel2.setText(user.getUsername());
+        jLabel1.setText(user.getOmradeschef());
     }
 
     /**
@@ -110,7 +111,7 @@ public class AlienSida extends javax.swing.JFrame {
     
     //Tar dig till AndraLosen fönstret
     private void AndraLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AndraLosenActionPerformed
-       new AndraLosen(idb).setVisible(true);
+       new AndraLosen(idb, user).setVisible(true);
     }//GEN-LAST:event_AndraLosenActionPerformed
     //Tar dig till AliensNara fönstret
     private void AlienNaraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlienNaraActionPerformed
