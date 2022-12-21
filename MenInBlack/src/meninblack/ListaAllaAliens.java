@@ -136,7 +136,10 @@ public class ListaAllaAliens extends javax.swing.JFrame {
 
             for (HashMap<String, String> alien : soktaAliens) {
                 jTArea.append(alien.get("Alien_ID") + "\t");
-                jTArea.append(" " + alien.get("Namn") + "\n");
+                jTArea.append(" " + alien.get("Namn") + "\t");
+                jTArea.append(" " + alien.get("Ansvarig_Agent") + "\t");
+                jTArea.append(" " + alien.get("Telefon") + "\t");
+                jTArea.append(" " + alien.get("Registreringsdatum") + "\n");
             }
         } catch (InfException ettUndantag) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
