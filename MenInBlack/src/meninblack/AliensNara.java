@@ -21,7 +21,7 @@ public class AliensNara extends javax.swing.JFrame {
     private ArrayList<HashMap<String, String>> resultat;
     private ArrayList<HashMap<String, String>> svar;
     private User user;
-    
+
     /**
      * Creates new form AliensNara
      */
@@ -29,37 +29,42 @@ public class AliensNara extends javax.swing.JFrame {
         initComponents();
         this.idb = idb;
         this.user = user;
+        
+        fyllrutan();
+    }
+
+    private void jcbNYActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+        
     }
     
-    
-    
-        private void jcbNYActionPerformed(java.awt.event.ActionEvent evt) {                                      
-        // TODO add your handling code here:
+    private void fyllrutan(){
         jTArea.setText("");
 
         ArrayList<HashMap<String, String>> soktaAliens;
 
         try {
+
+            String ufraga = "SELECT plats.Benamning from plats join alien on plats.Plats_ID = alien.Plats where alien.Namn = '" + user.getUsername() + "'";
+             
+            String uplats = idb.fetchSingle(ufraga);
             
-            String fråga = "SELECT * from alien join plats on plats_ID = plats where benamning='" + user.getUsername() + "'";
-            soktaAliens = idb.fetchRows(fråga);
+            String fraga = "SELECT * from alien join plats on plats_ID = plats where benamning='" + uplats + "'";
+            soktaAliens = idb.fetchRows(fraga);
+            
 
             for (HashMap<String, String> alien : soktaAliens) {
-                jTArea.append(alien.get("Alien_ID") + "\t");
                 jTArea.append(" " + alien.get("Namn") + "\t");
-                jTArea.append(" " + alien.get("Namn") + "\t");
-                jTArea.append(" " + alien.get("Ansvarig_Agent") + "\t");
-                jTArea.append(" " + alien.get("Telefon") + "\t");
-                jTArea.append(" " + alien.get("Registreringsdatum") + "\n");
+                jTArea.append(" " + alien.get("Telefon") + "\n");
+                
             }
         } catch (InfException ettUndantag) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
             System.out.println("Internt meddelande" + ettUndantag.getMessage());
 
-    } 
         }
-    
-    
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -72,6 +77,8 @@ public class AliensNara extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTArea = new javax.swing.JTextArea();
+        Close1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,6 +88,15 @@ public class AliensNara extends javax.swing.JFrame {
         jTArea.setColumns(20);
         jTArea.setRows(5);
         jScrollPane1.setViewportView(jTArea);
+
+        Close1.setText("Close");
+        Close1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Close1ActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Namn och Telefonnummer");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,27 +108,41 @@ public class AliensNara extends javax.swing.JFrame {
                         .addGap(123, 123, 123)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(87, Short.MAX_VALUE))
+                        .addGap(155, 155, 155)
+                        .addComponent(Close1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(78, 78, 78)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(52, 52, 52)
                 .addComponent(jLabel1)
-                .addGap(37, 37, 37)
+                .addGap(35, 35, 35)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(Close1)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    private void Close1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Close1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Close1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Close1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTArea;
     // End of variables declaration//GEN-END:variables
