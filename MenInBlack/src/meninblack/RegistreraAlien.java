@@ -37,7 +37,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
         namn = "";
         losenord = "";
         telefon = "";
-       // ras = "";
+        ras = "";
         
         //Fyller det comboboxar som används i formuläret
         fyllaPlatsCB();
@@ -61,7 +61,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
         jTFTelefon = new javax.swing.JTextField();
         jCBPlats = new javax.swing.JComboBox<>();
         jCBAgent = new javax.swing.JComboBox<>();
-        jRbWorm = new javax.swing.JRadioButton();
+        jRBWorm = new javax.swing.JRadioButton();
         jRBBoglodite = new javax.swing.JRadioButton();
         jRBSquid = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
@@ -94,8 +94,8 @@ public class RegistreraAlien extends javax.swing.JFrame {
             }
         });
 
-        buttonGroup1.add(jRbWorm);
-        jRbWorm.setText("Worm");
+        buttonGroup1.add(jRBWorm);
+        jRBWorm.setText("Worm");
 
         buttonGroup1.add(jRBBoglodite);
         jRBBoglodite.setText("Boglodite");
@@ -125,7 +125,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRbWorm)
+                            .addComponent(jRBWorm)
                             .addComponent(jRBBoglodite))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -177,7 +177,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jRBBoglodite)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRbWorm)
+                .addComponent(jRBWorm)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBRegistrera)
                 .addGap(14, 14, 14))
@@ -188,22 +188,9 @@ public class RegistreraAlien extends javax.swing.JFrame {
 
     private void jBRegistreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRegistreraActionPerformed
 
-        // TODO add your handling code here:
-
         // Registrerar en alien till Databasen 
-        
-        /**
-         * Insert Into Alien (Alien_ID, Registreringsdatum, losenord,Namn, Telefon, plats, Ansvarig_Agent)
-         * VALUES (ID, DATE, 'LOSENORD', 'NAMN', 'TelefonNummer', PLATS ID,  AGENT ID);
-         */
-        
         setAlienInfo();
-        
-        // SQL Fråga formulering
-        // (Alien_ID, Registreringsdatum, losenord,Namn, Telefon, plats, Ansvarig_Agent)
-       // String fraga = "INSERT INTO Alien VALUES ("+aid+" , NULL, '"+losenord+"', '"+namn+"', '"+telefon+"', "+plats+","+ansvarigAgent+")";
-       
-       
+      
        String fraga2 = "INSERT INTO Alien (Alien_ID, Losenord, Namn, Telefon, Ansvarig_Agent, Plats) VALUES ("+aid+", '"+losenord+"', '"+namn+"', '"+telefon+"', "+ansvarigAgent+"," +plats+")";
                 
         //Gör registreringen via en sql fråga
@@ -215,9 +202,9 @@ public class RegistreraAlien extends javax.swing.JFrame {
             System.out.println("Kunde inte lägga till Alien till databasen" + e.getMessage());
             
         }
+         sattRas();
+        
 
-        
-        
     }//GEN-LAST:event_jBRegistreraActionPerformed
 
     private void jTFNamnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTFNamnMousePressed
@@ -257,9 +244,9 @@ public class RegistreraAlien extends javax.swing.JFrame {
         try{
             allaPlatsNamn = idb.fetchColumn(platsFråga);
             
-            for(String plats : allaPlatsNamn)
+            for(String platsen : allaPlatsNamn)
             {
-                jCBPlats.addItem(plats);
+                jCBPlats.addItem(platsen);
             }
                     
         } catch(InfException ettUndantag){
@@ -277,8 +264,8 @@ public class RegistreraAlien extends javax.swing.JFrame {
         try {
             allaAgenter = idb.fetchColumn(agentFråga);
 
-            for (String agent : allaAgenter) {
-                jCBAgent.addItem(agent);
+            for (String enAgent : allaAgenter) {
+                jCBAgent.addItem(enAgent);
             }
 
         } catch (InfException ettUndantag) {
@@ -287,13 +274,14 @@ public class RegistreraAlien extends javax.swing.JFrame {
 
     }
     
+    //Fyller klassens fält med information ifrån användarens inmatning
     private void setAlienInfo(){
         
         namn = jTFNamn.getText();
         losenord = jTFLosenord.getText();
         telefon = jTFTelefon.getText();
        
-        //radioButtonCheck();
+        radioButtonCheck();
         setAid();
         setPlats();
         setAnsvarigAgent();
@@ -301,20 +289,23 @@ public class RegistreraAlien extends javax.swing.JFrame {
         
     }
     
-//    private void radioButtonCheck(){
-//        if(jRBBoglodite.isSelected()){
-//           ras = "Boglodite"; 
-//        }
-//        else if(jRBSquid.isSelected()){
-//             ras = "Squid";
-//        }
-//        
-//        else if(jRBWorm.isSelected()){
-//             ras = "Worm";
-//        }
-//            
-//    }
+    // RAS Kontroll
+    //Gör en kontroll på vilken radiobutton som är vald
+    private void radioButtonCheck(){
+        if(jRBBoglodite.isSelected()){
+           ras = "Boglodite"; 
+        }
+        else if(jRBSquid.isSelected()){
+             ras = "Squid";
+        }
+        
+        else if(jRBWorm.isSelected()){
+             ras = "Worm";
+        }
+            
+    }
     
+    // Genererar ett Alien_ID som är unikt 
     private void setAid(){
         
         // Hämtar ett unikt ID för registreringen av en ny Alien
@@ -368,6 +359,63 @@ public class RegistreraAlien extends javax.swing.JFrame {
         }
         
     }
+    
+    // Sätter rasen för den Alien som registreras
+    //Skickar upp rasen till Databasen
+    private void sattRas(){
+        String fraga = "";
+       
+        switch (ras) {
+            case "Worm":
+                
+                fraga = "INSERT INTO "+ras+" VALUES("+aid+")";
+                break;
+                
+            case "Boglodite":
+                
+                int antalBogloditeBoogies= getAntalBoogies();
+                fraga = "INSERT INTO "+ras+" VALUES("+aid+", " +antalBogloditeBoogies+")";
+                
+                break;
+                
+            case "Squid":
+                
+                int squidArmar = getArmarSquid();
+                fraga = "INSERT INTO "+ras+" VALUES("+aid+", " +squidArmar+")";
+                
+                break;
+                
+            default:
+            // code block
+        }
+        
+        //Lägger till rasen i databasen
+        try{
+            idb.insert(fraga);
+        } catch(InfException e){
+            JOptionPane.showMessageDialog(null, "Fel i databasen");
+            System.out.println("Kunde inte lägga till ras" + e.getMessage());
+            
+        }
+        
+    }
+    
+    //lägger till antal armar till ras
+    //Skickar en uppmaning till användaren att mata in antal armar
+    private int getArmarSquid(){
+        String armar = JOptionPane.showInputDialog("Hur många armar har din Alien? Räkna dom tack!");
+        int antalArmar = Integer.parseInt(armar);
+        
+        return antalArmar;
+    }
+    
+     //lägger till antal Boogies till ras
+    //Skickar en uppmaning till användaren att mata in antal Boogies
+    private int getAntalBoogies(){
+        String boogies = JOptionPane.showInputDialog("Hur många boogies har din Alien? Räkna dom tack!");
+        int antalBoogies = Integer.parseInt(boogies);
+        return antalBoogies;
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -381,7 +429,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JRadioButton jRBBoglodite;
     private javax.swing.JRadioButton jRBSquid;
-    private javax.swing.JRadioButton jRbWorm;
+    private javax.swing.JRadioButton jRBWorm;
     private javax.swing.JTextField jTFLosenord;
     private javax.swing.JTextField jTFNamn;
     private javax.swing.JTextField jTFTelefon;
