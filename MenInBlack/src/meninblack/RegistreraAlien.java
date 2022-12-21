@@ -21,7 +21,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
     private String namn;
     private String losenord;
     private String telefon;
-    //private String ras;
+    private String ras;
     private int plats;
     private int ansvarigAgent;
     
@@ -202,7 +202,9 @@ public class RegistreraAlien extends javax.swing.JFrame {
         // SQL Fråga formulering
         // (Alien_ID, Registreringsdatum, losenord,Namn, Telefon, plats, Ansvarig_Agent)
        // String fraga = "INSERT INTO Alien VALUES ("+aid+" , NULL, '"+losenord+"', '"+namn+"', '"+telefon+"', "+plats+","+ansvarigAgent+")";
-        String fraga2 = "INSERT INTO Alien (Alien_ID, Losenord, Namn, Telefon, Ansvarig_Agent, Plats) VALUES ("+aid+", '"+losenord+"', '"+namn+"', '"+telefon+"', "+ansvarigAgent+"," +plats+")";
+       
+       
+       String fraga2 = "INSERT INTO Alien (Alien_ID, Losenord, Namn, Telefon, Ansvarig_Agent, Plats) VALUES ("+aid+", '"+losenord+"', '"+namn+"', '"+telefon+"', "+ansvarigAgent+"," +plats+")";
                 
         //Gör registreringen via en sql fråga
         try{
