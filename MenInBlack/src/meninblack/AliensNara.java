@@ -80,7 +80,7 @@ public class AliensNara extends javax.swing.JFrame {
         jButClose1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
         jLabel1.setText("Aliens i ditt område");
@@ -136,6 +136,7 @@ public class AliensNara extends javax.swing.JFrame {
 
     private void jButClose1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButClose1ActionPerformed
         // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_jButClose1ActionPerformed
 
 
