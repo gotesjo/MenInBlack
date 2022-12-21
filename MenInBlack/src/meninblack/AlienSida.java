@@ -28,11 +28,10 @@ public class AlienSida extends javax.swing.JFrame {
         this.user = user;
         this.idb = idb;
         jLabel2.setText(user.getUsername());
-<<<<<<< Updated upstream
         jLabel1.setText(user.getOmradeschef());
-=======
+
         
->>>>>>> Stashed changes
+
     }
 
     /**
