@@ -14,14 +14,16 @@ import oru.inf.InfDB;
 public class Agentsida extends javax.swing.JFrame {
     
     InfDB idb;
+    User user;
 
     /**
      * Creates new form Agentsida
      */
-    public Agentsida(InfDB idb) {
+    public Agentsida(InfDB idb, User user) {
         initComponents();
         
         this.idb = idb;
+        this.user = user;
         
     }
 

@@ -24,6 +24,8 @@ public class Inlog extends javax.swing.JFrame {
     private String alienSvar;
     private String alienResultat;
     
+    private User user;
+    
 
     
 
@@ -157,14 +159,17 @@ public class Inlog extends javax.swing.JFrame {
     private void JcComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JcComboActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JcComboActionPerformed
-
-    
-
-    
+  
     private void TxtbLosenordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtbLosenordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtbLosenordActionPerformed
-/**
+
+    
+    
+    
+    /**
+ * 
+
  * Denna metod för knappen 'Logga in' hämtar metoden KollaLosenord() först och checkar även om
  * booleanen 'inloggad' är true. Om true uppnås skapas en ny agentsida, vilket för användaren blir 
  * att om man skriver in rätt lösernord för rätt Agent tar systemet användaren till platsen Agentsida. 
@@ -175,13 +180,25 @@ public class Inlog extends javax.swing.JFrame {
         // TODO add your handling code here:
         CheckaComboBox();
         if (vald.equals("Agent") && KollaAgentLosenord()) {
-            new Agentsida(idb).setVisible(true);
+            
+            user = new User(TxtbUserName.getText());
+            
+            new Agentsida(idb, user).setVisible(true);
+            
+            
         } else if (vald.equals("Alien") && KollaAlienLosenord()) {
-            new AlienSida(idb).setVisible(true);
+         
+            user = new User(TxtbUserName.getText());   
+            
+            new AlienSida(idb,user).setVisible(true);
+            
+            
         } else {
             JOptionPane.showMessageDialog(null, "Fel lösenord. Pröva ett annat");
     }//GEN-LAST:event_JBLoggaINActionPerformed
 }
+    
+    
     /**
      * Metoden ställer en SQL fråga till databasen där den tar namn lösenordet från agenten där namnet
      * är lika med användarnamnet som användaren skriver in i textrutan. Med två olika Exceptions
@@ -211,6 +228,10 @@ public class Inlog extends javax.swing.JFrame {
         return inloggad;
 
     }
+    
+    
+    
+    
     private boolean KollaAlienLosenord() {
         try {
             String alienNamn = TxtbUserName.getText();
@@ -229,6 +250,9 @@ public class Inlog extends javax.swing.JFrame {
         return inloggad;
     }
 
+    
+    
+    
     private void CheckaComboBox() {
         vald = JcCombo.getSelectedItem().toString();
 
