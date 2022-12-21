@@ -148,6 +148,7 @@ public class Agentsida extends javax.swing.JFrame {
 
     private void jBListaAliensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBListaAliensActionPerformed
         // TODO add your handling code here:
+        new ListaAllaAliens(idb).setVisible(true); 
     }//GEN-LAST:event_jBListaAliensActionPerformed
 
    

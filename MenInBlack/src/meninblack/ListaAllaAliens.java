@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import oru.inf.InfDB;
 import oru.inf.InfException;
-
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 /**
@@ -45,10 +43,9 @@ public class ListaAllaAliens extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
-        jComboPlats = new javax.swing.JComboBox<>();
-        jTextFält = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTArea = new javax.swing.JTextArea();
+        jcbNY = new javax.swing.JComboBox<>();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -59,23 +56,15 @@ public class ListaAllaAliens extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel1.setText("I vilket område vill du söka i? ");
 
-        jComboPlats.setFont(new java.awt.Font("Agency FB", 0, 12)); // NOI18N
-        jComboPlats.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Örebro", "Vilhelmina", "Västerås", "Borås" }));
-        jComboPlats.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboPlatsActionPerformed(evt);
-            }
-        });
-
-        jTextFält.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFältActionPerformed(evt);
-            }
-        });
-
         jTArea.setColumns(20);
         jTArea.setRows(5);
         jScrollPane2.setViewportView(jTArea);
+
+        jcbNY.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbNYActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -85,29 +74,22 @@ public class ListaAllaAliens extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jComboPlats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jcbNY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(63, 63, 63)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(24, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextFält, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45))))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jTextFält, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(26, 26, 26)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboPlats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jcbNY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
@@ -131,7 +113,7 @@ public class ListaAllaAliens extends javax.swing.JFrame {
             allaPlatser = idb.fetchColumn(fråga);
             
             for(String enPlats : allaPlatser) {
-                jComboPlats.addItem(enPlats);
+                jcbNY.addItem(enPlats);
             }
         } catch (InfException ettUndantag) {
             JOptionPane.showMessageDialog(null, "Det blev ett fel");
@@ -141,28 +123,27 @@ public class ListaAllaAliens extends javax.swing.JFrame {
             System.out.println("Intern meddelande" + ettUndantag.getMessage());
         }
     }
-    private void jTextFältActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFältActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFältActionPerformed
-
-    private void jComboPlatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboPlatsActionPerformed
+    private void jcbNYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbNYActionPerformed
         // TODO add your handling code here:
         jTArea.setText("");
-        
+
         ArrayList<HashMap<String, String>> soktaAliens;
-        
+
         try {
-            String valdPlats = jComboPlats.getSelectedItem().toString();
+            String valdPlats = jcbNY.getSelectedItem().toString();
             String fråga = "SELECT * from alien join plats on plats_ID = plats where benamning='" + valdPlats + "'";
             soktaAliens = idb.fetchRows(fråga);
 
             for (HashMap<String, String> alien : soktaAliens) {
                 jTArea.append(alien.get("Alien_ID") + "\t");
-                jTArea.append(" " + alien.get("Namn") + "\t");
+                jTArea.append(" " + alien.get("Namn") + "\n");
             }
         } catch (InfException ettUndantag) {
-    }//GEN-LAST:event_jComboPlatsActionPerformed
+            JOptionPane.showMessageDialog(null, "Något gick fel");
+            System.out.println("Internt meddelande" + ettUndantag.getMessage());
 
+    }//GEN-LAST:event_jcbNYActionPerformed
+    }
     /**
      * @param args the command line arguments
      */
@@ -199,12 +180,11 @@ public class ListaAllaAliens extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboPlats;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTArea;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextFält;
+    private javax.swing.JComboBox<String> jcbNY;
     // End of variables declaration//GEN-END:variables
 }
