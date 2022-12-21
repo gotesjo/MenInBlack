@@ -18,14 +18,16 @@ public class AlienSida extends javax.swing.JFrame {
 
     //Fält för klassen AlienSida.
     private InfDB idb;
+    private User user;
 
     /**
      * Creates new form AlienSida
      */
-    public AlienSida(InfDB idb) {
+    public AlienSida(InfDB idb, User user) {
         initComponents();
-        
+        this.user = user;
         this.idb = idb;
+        jLabel2.setText(user.getUsername());
     }
 
     /**
