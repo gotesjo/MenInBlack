@@ -16,8 +16,7 @@ import oru.inf.InfException;
 public class RegistreraAlien extends javax.swing.JFrame {
     
     private static InfDB idb; 
-<<<<<<< Updated upstream
-=======
+
     private int aid;
     private String namn;
     private String losenord;
@@ -26,7 +25,6 @@ public class RegistreraAlien extends javax.swing.JFrame {
     private int plats;
     private int ansvarigAgent;
     
->>>>>>> Stashed changes
 
     /**
      * Creates new form RegistreraAlien
@@ -35,16 +33,13 @@ public class RegistreraAlien extends javax.swing.JFrame {
         initComponents();
         
         this.idb = idb;
-        
-<<<<<<< Updated upstream
-=======
+
         namn = "";
         losenord = "";
         telefon = "";
        // ras = "";
         
         //Fyller det comboboxar som används i formuläret
->>>>>>> Stashed changes
         fyllaPlatsCB();
         fyllaAgentCB();
         
@@ -192,9 +187,9 @@ public class RegistreraAlien extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBRegistreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRegistreraActionPerformed
-<<<<<<< Updated upstream
+
         // TODO add your handling code here:
-=======
+
         // Registrerar en alien till Databasen 
         
         /**
@@ -218,7 +213,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
             System.out.println("Kunde inte lägga till Alien till databasen" + e.getMessage());
             
         }
->>>>>>> Stashed changes
+
         
         
     }//GEN-LAST:event_jBRegistreraActionPerformed
@@ -289,8 +284,6 @@ public class RegistreraAlien extends javax.swing.JFrame {
         }
 
     }
-<<<<<<< Updated upstream
-=======
     
     private void setAlienInfo(){
         
@@ -373,7 +366,6 @@ public class RegistreraAlien extends javax.swing.JFrame {
         }
         
     }
->>>>>>> Stashed changes
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
