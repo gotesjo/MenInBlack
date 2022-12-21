@@ -38,7 +38,7 @@ public class Agentsida extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jBListaAliens = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -62,7 +62,12 @@ public class Agentsida extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Lista alla Aliens");
+        jBListaAliens.setText("Lista alla Aliens");
+        jBListaAliens.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBListaAliensActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Ändra Alien");
 
@@ -98,7 +103,7 @@ public class Agentsida extends javax.swing.JFrame {
                     .addComponent(jButton3)
                     .addComponent(jLabel2)
                     .addComponent(jButton1)
-                    .addComponent(jButton2)
+                    .addComponent(jBListaAliens)
                     .addComponent(jButton4))
                 .addGap(107, 107, 107))
         );
@@ -114,7 +119,7 @@ public class Agentsida extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jButton3)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(jBListaAliens)
                 .addGap(18, 18, 18)
                 .addComponent(jButton4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -141,11 +146,15 @@ public class Agentsida extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jBListaAliensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBListaAliensActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBListaAliensActionPerformed
+
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBListaAliens;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
