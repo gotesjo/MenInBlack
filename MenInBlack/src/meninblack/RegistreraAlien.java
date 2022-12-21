@@ -5,6 +5,7 @@
 package meninblack;
 
 import java.util.ArrayList;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
@@ -203,7 +204,9 @@ public class RegistreraAlien extends javax.swing.JFrame {
             
         }
          sattRas();
-        
+         
+         dispose();
+         
 
     }//GEN-LAST:event_jBRegistreraActionPerformed
 

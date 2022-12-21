@@ -88,6 +88,11 @@ public class Agentsida extends javax.swing.JFrame {
         jButton6.setText("Registrera Utrustning");
 
         jButton7.setText("Close");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jLabelValkommen.setFont(new java.awt.Font("Kokonor", 3, 14)); // NOI18N
         jLabelValkommen.setText("Välkommen");
@@ -184,6 +189,14 @@ public class Agentsida extends javax.swing.JFrame {
         new AndraLosen(idb, user).setVisible(true);
         
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        
+        dispose();
+           
+        
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     
     // Fyller agentsidan med text som ska anpassas efter användaren
