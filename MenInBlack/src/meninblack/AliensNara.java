@@ -5,6 +5,7 @@
 package meninblack;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
@@ -15,38 +16,48 @@ import oru.inf.InfException;
  */
 public class AliensNara extends javax.swing.JFrame {
 
-    
     private InfDB idb;
+    private String valdPlats;
+    private ArrayList<HashMap<String, String>> resultat;
+    private ArrayList<HashMap<String, String>> svar;
+    private User user;
     
     /**
      * Creates new form AliensNara
      */
-    public AliensNara(InfDB idb) {
+    public AliensNara(InfDB idb, User user) {
         initComponents();
         this.idb = idb;
+        this.user = user;
     }
-
     
-       private void fyllJComboPlats() {
-        String fråga = "select benamning from plats";
-        
-        ArrayList<String> allaPlatser;
-        
+    
+    
+        private void jcbNYActionPerformed(java.awt.event.ActionEvent evt) {                                      
+        // TODO add your handling code here:
+        jTArea.setText("");
+
+        ArrayList<HashMap<String, String>> soktaAliens;
+
         try {
             
-            allaPlatser = idb.fetchColumn(fråga);
-            
-            for(String enPlats : allaPlatser) {
-                jcbNY.addItem(enPlats);
+            String fråga = "SELECT * from alien join plats on plats_ID = plats where benamning='" + user.getUsername() + "'";
+            soktaAliens = idb.fetchRows(fråga);
+
+            for (HashMap<String, String> alien : soktaAliens) {
+                jTArea.append(alien.get("Alien_ID") + "\t");
+                jTArea.append(" " + alien.get("Namn") + "\t");
+                jTArea.append(" " + alien.get("Namn") + "\t");
+                jTArea.append(" " + alien.get("Ansvarig_Agent") + "\t");
+                jTArea.append(" " + alien.get("Telefon") + "\t");
+                jTArea.append(" " + alien.get("Registreringsdatum") + "\n");
             }
         } catch (InfException ettUndantag) {
-            JOptionPane.showMessageDialog(null, "Det blev ett fel");
-            System.out.println("Internt meddelande" + ettUndantag.getMessage());
-        } catch (Exception ettUndantag) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
-            System.out.println("Intern meddelande" + ettUndantag.getMessage());
+            System.out.println("Internt meddelande" + ettUndantag.getMessage());
+
+    } 
         }
-    
     
     
     /**
@@ -59,27 +70,40 @@ public class AliensNara extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
         jLabel1.setText("Aliens i ditt område");
 
+        jTArea.setColumns(20);
+        jTArea.setRows(5);
+        jScrollPane1.setViewportView(jTArea);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(123, 123, 123)
-                .addComponent(jLabel1)
-                .addContainerGap(131, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(123, 123, 123)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(52, 52, 52)
                 .addComponent(jLabel1)
-                .addContainerGap(228, Short.MAX_VALUE))
+                .addGap(37, 37, 37)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(100, Short.MAX_VALUE))
         );
 
         pack();
@@ -89,5 +113,7 @@ public class AliensNara extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTArea;
     // End of variables declaration//GEN-END:variables
 }
