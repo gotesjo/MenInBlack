@@ -16,6 +16,17 @@ import oru.inf.InfException;
 public class RegistreraAlien extends javax.swing.JFrame {
     
     private static InfDB idb; 
+<<<<<<< Updated upstream
+=======
+    private int aid;
+    private String namn;
+    private String losenord;
+    private String telefon;
+    //private String ras;
+    private int plats;
+    private int ansvarigAgent;
+    
+>>>>>>> Stashed changes
 
     /**
      * Creates new form RegistreraAlien
@@ -25,6 +36,15 @@ public class RegistreraAlien extends javax.swing.JFrame {
         
         this.idb = idb;
         
+<<<<<<< Updated upstream
+=======
+        namn = "";
+        losenord = "";
+        telefon = "";
+       // ras = "";
+        
+        //Fyller det comboboxar som används i formuläret
+>>>>>>> Stashed changes
         fyllaPlatsCB();
         fyllaAgentCB();
         
@@ -172,7 +192,33 @@ public class RegistreraAlien extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBRegistreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRegistreraActionPerformed
+<<<<<<< Updated upstream
         // TODO add your handling code here:
+=======
+        // Registrerar en alien till Databasen 
+        
+        /**
+         * Insert Into Alien (Alien_ID, Registreringsdatum, losenord,Namn, Telefon, plats, Ansvarig_Agent)
+         * VALUES (ID, DATE, 'LOSENORD', 'NAMN', 'TelefonNummer', PLATS ID,  AGENT ID);
+         */
+        
+        setAlienInfo();
+        
+        // SQL Fråga formulering
+        // (Alien_ID, Registreringsdatum, losenord,Namn, Telefon, plats, Ansvarig_Agent)
+       // String fraga = "INSERT INTO Alien VALUES ("+aid+" , NULL, '"+losenord+"', '"+namn+"', '"+telefon+"', "+plats+","+ansvarigAgent+")";
+        String fraga2 = "INSERT INTO Alien (Alien_ID, Losenord, Namn, Telefon, Ansvarig_Agent, Plats) VALUES ("+aid+", '"+losenord+"', '"+namn+"', '"+telefon+"', "+ansvarigAgent+"," +plats+")";
+                
+        //Gör registreringen via en sql fråga
+        try{
+            idb.insert(fraga2);
+            
+        } catch(InfException e){
+            JOptionPane.showMessageDialog(null, "Fel i Databasfråga");
+            System.out.println("Kunde inte lägga till Alien till databasen" + e.getMessage());
+            
+        }
+>>>>>>> Stashed changes
         
         
     }//GEN-LAST:event_jBRegistreraActionPerformed
@@ -243,6 +289,91 @@ public class RegistreraAlien extends javax.swing.JFrame {
         }
 
     }
+<<<<<<< Updated upstream
+=======
+    
+    private void setAlienInfo(){
+        
+        namn = jTFNamn.getText();
+        losenord = jTFLosenord.getText();
+        telefon = jTFTelefon.getText();
+       
+        //radioButtonCheck();
+        setAid();
+        setPlats();
+        setAnsvarigAgent();
+        
+        
+    }
+    
+//    private void radioButtonCheck(){
+//        if(jRBBoglodite.isSelected()){
+//           ras = "Boglodite"; 
+//        }
+//        else if(jRBSquid.isSelected()){
+//             ras = "Squid";
+//        }
+//        
+//        else if(jRBWorm.isSelected()){
+//             ras = "Worm";
+//        }
+//            
+//    }
+    
+    private void setAid(){
+        
+        // Hämtar ett unikt ID för registreringen av en ny Alien
+        try{
+            
+            String charAid = idb.getAutoIncrement("Alien", "Alien_id");
+            
+            aid = Integer.parseInt(charAid);
+        } 
+        catch(InfException e){
+            JOptionPane.showMessageDialog(null, "Databasfel");
+            System.out.println("Kunde inte hämta Alien_ID" + e.getMessage());
+        }
+        
+    }
+    
+    //hämtar platsens ID för den platsen man valt i comboboxen
+    private void setPlats(){
+        try{
+            
+            String platsnamn = jCBPlats.getSelectedItem().toString();
+            String platsfraga = "SELECT Plats_ID FROM Plats WHERE Benamning like '"+platsnamn+"'";
+            
+            String charPlats = idb.fetchSingle(platsfraga);
+            
+            plats = Integer.parseInt(charPlats);
+            
+        } catch(InfException e){
+            JOptionPane.showMessageDialog(null, "Platsen fanns inte i databasen");
+            System.out.println("Kunde inte hämta vald plats" + e.getMessage());
+            
+        }
+        
+    }
+    
+    //hämtar agentens ID för den ansvariga agent man valt i comboboxen
+    private void setAnsvarigAgent(){
+        try{
+            
+            String agentnamn = jCBAgent.getSelectedItem().toString();
+            String agentfraga = "SELECT Agent_ID FROM Agent WHERE Namn like '"+agentnamn+"'";
+            
+            String charAgent =  idb.fetchSingle(agentfraga);
+            
+            ansvarigAgent = Integer.parseInt(charAgent);
+            
+        } catch(InfException e){
+            JOptionPane.showMessageDialog(null, "Agenten fanns inte i databasen");
+            System.out.println("Kunde inte hämta vald agent" + e.getMessage());
+            
+        }
+        
+    }
+>>>>>>> Stashed changes
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
