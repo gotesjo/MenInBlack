@@ -35,27 +35,27 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="TxtbUserName" pref="139" max="32767" attributes="0"/>
-                          <Component id="PasswordLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="UserLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="TxtbLosenord" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtbUserName" pref="139" max="32767" attributes="0"/>
+                          <Component id="passwordLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="userLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtbLosenord" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="103" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="JLTitel" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLTitel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="JcCombo" min="-2" max="-2" attributes="0"/>
+                      <Component id="jcCombo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <Component id="JBLoggaIN" min="-2" max="-2" attributes="0"/>
+              <Component id="jBLoggaIN" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -64,22 +64,22 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-              <Component id="JLTitel" min="-2" max="-2" attributes="0"/>
+              <Component id="jLTitel" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="JcCombo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jcCombo" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="70" max="32767" attributes="0"/>
-              <Component id="UserLabel" min="-2" max="-2" attributes="0"/>
+              <Component id="userLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="TxtbUserName" min="-2" max="-2" attributes="0"/>
+              <Component id="txtbUserName" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="PasswordLabel" min="-2" max="-2" attributes="0"/>
+              <Component id="passwordLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="JBLoggaIN" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="TxtbLosenord" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jBLoggaIN" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtbLosenord" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
           </Group>
@@ -87,7 +87,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="JLTitel">
+    <Component class="javax.swing.JLabel" name="jLTitel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="24" style="0"/>
@@ -95,30 +95,30 @@
         <Property name="text" type="java.lang.String" value="Inloggning"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="TxtbUserName">
+    <Component class="javax.swing.JTextField" name="txtbUserName">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TxtbUserNameActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtbUserNameActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="UserLabel">
+    <Component class="javax.swing.JLabel" name="userLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Anv&#xe4;ndarnamn:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="PasswordLabel">
+    <Component class="javax.swing.JLabel" name="passwordLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="L&#xf6;senord:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="JBLoggaIN">
+    <Component class="javax.swing.JButton" name="jBLoggaIN">
       <Properties>
         <Property name="text" type="java.lang.String" value="Logga in"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBLoggaINActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBLoggaINActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JComboBox" name="JcCombo">
+    <Component class="javax.swing.JComboBox" name="jcCombo">
       <Properties>
         <Property name="maximumRowCount" type="int" value="3"/>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -130,15 +130,15 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JcComboActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcComboActionPerformed"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="TxtbLosenord">
+    <Component class="javax.swing.JPasswordField" name="txtbLosenord">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TxtbLosenordActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtbLosenordActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">

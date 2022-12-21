@@ -44,8 +44,8 @@ public class AlienSida extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabelHead = new javax.swing.JLabel();
-        AndraLosen = new javax.swing.JButton();
-        AlienNara = new javax.swing.JButton();
+        jButAndraLosen = new javax.swing.JButton();
+        jbutAlienNara = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -54,17 +54,17 @@ public class AlienSida extends javax.swing.JFrame {
         jLabelHead.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         jLabelHead.setText("AlienSida");
 
-        AndraLosen.setText("Ändra lösen");
-        AndraLosen.addActionListener(new java.awt.event.ActionListener() {
+        jButAndraLosen.setText("Ändra lösen");
+        jButAndraLosen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AndraLosenActionPerformed(evt);
+                jButAndraLosenActionPerformed(evt);
             }
         });
 
-        AlienNara.setText("Aliens i ditt område");
-        AlienNara.addActionListener(new java.awt.event.ActionListener() {
+        jbutAlienNara.setText("Aliens i ditt område");
+        jbutAlienNara.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AlienNaraActionPerformed(evt);
+                jbutAlienNaraActionPerformed(evt);
             }
         });
 
@@ -83,8 +83,8 @@ public class AlienSida extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(AlienNara, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(AndraLosen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jbutAlienNara, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButAndraLosen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(42, 42, 42))
             .addGroup(layout.createSequentialGroup()
                 .addGap(190, 190, 190)
@@ -98,12 +98,12 @@ public class AlienSida extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(AndraLosen))
+                        .addComponent(jButAndraLosen))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelHead)
                         .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(AlienNara)
+                            .addComponent(jbutAlienNara)
                             .addComponent(jLabel1))
                         .addGap(72, 72, 72)))
                 .addContainerGap(49, Short.MAX_VALUE))
@@ -113,21 +113,21 @@ public class AlienSida extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     //Tar dig till AndraLosen fönstret
-    private void AndraLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AndraLosenActionPerformed
+    private void jButAndraLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButAndraLosenActionPerformed
        new AndraLosen(idb, user).setVisible(true);
-    }//GEN-LAST:event_AndraLosenActionPerformed
+    }//GEN-LAST:event_jButAndraLosenActionPerformed
     //Tar dig till AliensNara fönstret
-    private void AlienNaraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlienNaraActionPerformed
+    private void jbutAlienNaraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutAlienNaraActionPerformed
         new AliensNara(idb, user).setVisible(true);
-    }//GEN-LAST:event_AlienNaraActionPerformed
+    }//GEN-LAST:event_jbutAlienNaraActionPerformed
 
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AlienNara;
-    private javax.swing.JButton AndraLosen;
+    private javax.swing.JButton jButAndraLosen;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelHead;
+    private javax.swing.JButton jbutAlienNara;
     // End of variables declaration//GEN-END:variables
 }

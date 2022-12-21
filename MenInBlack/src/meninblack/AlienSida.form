@@ -31,8 +31,8 @@
               </Group>
               <EmptySpace pref="177" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="AlienNara" max="32767" attributes="0"/>
-                  <Component id="AndraLosen" max="32767" attributes="0"/>
+                  <Component id="jbutAlienNara" max="32767" attributes="0"/>
+                  <Component id="jButAndraLosen" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
           </Group>
@@ -50,13 +50,13 @@
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
-                      <Component id="AndraLosen" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButAndraLosen" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="jLabelHead" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="AlienNara" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jbutAlienNara" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
@@ -76,20 +76,20 @@
         <Property name="text" type="java.lang.String" value="AlienSida"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="AndraLosen">
+    <Component class="javax.swing.JButton" name="jButAndraLosen">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#xc4;ndra l&#xf6;sen"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AndraLosenActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButAndraLosenActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="AlienNara">
+    <Component class="javax.swing.JButton" name="jbutAlienNara">
       <Properties>
         <Property name="text" type="java.lang.String" value="Aliens i ditt omr&#xe5;de"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AlienNaraActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbutAlienNaraActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">

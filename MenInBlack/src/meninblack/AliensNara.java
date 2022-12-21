@@ -77,7 +77,7 @@ public class AliensNara extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTArea = new javax.swing.JTextArea();
-        Close1 = new javax.swing.JButton();
+        jButClose1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -89,10 +89,10 @@ public class AliensNara extends javax.swing.JFrame {
         jTArea.setRows(5);
         jScrollPane1.setViewportView(jTArea);
 
-        Close1.setText("Close");
-        Close1.addActionListener(new java.awt.event.ActionListener() {
+        jButClose1.setText("Close");
+        jButClose1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Close1ActionPerformed(evt);
+                jButClose1ActionPerformed(evt);
             }
         });
 
@@ -109,7 +109,7 @@ public class AliensNara extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(155, 155, 155)
-                        .addComponent(Close1))
+                        .addComponent(jButClose1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(78, 78, 78)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,20 +127,20 @@ public class AliensNara extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(Close1)
+                .addComponent(jButClose1)
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Close1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Close1ActionPerformed
+    private void jButClose1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButClose1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Close1ActionPerformed
+    }//GEN-LAST:event_jButClose1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Close1;
+    private javax.swing.JButton jButClose1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
