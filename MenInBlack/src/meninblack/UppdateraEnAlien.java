@@ -4,8 +4,6 @@
  */
 package meninblack;
 
-import java.util.ArrayList;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
@@ -17,7 +15,7 @@ import oru.inf.InfException;
 public class UppdateraEnAlien extends javax.swing.JFrame {
     
     private InfDB idb; 
-    private User user;
+    private String alienNamn;
     
     
     
@@ -25,12 +23,14 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
     /**
      * Creates new form RegistreraAlien
      */
-    public UppdateraEnAlien(InfDB idb, User user) {
+    public UppdateraEnAlien(InfDB idb, String alienNamn) {
         initComponents();
         
         this.idb = idb;
-        this user = user;
+        this.alienNamn = alienNamn;
         
+        
+        fyllInfoOmAlien();
     }
 
     /**
@@ -48,16 +48,19 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jBUppdatera = new javax.swing.JButton();
         jBnamn = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
+        jLnamn = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLPlats = new javax.swing.JLabel();
         jBplats = new javax.swing.JButton();
         jBAAgent = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        JLAgent = new javax.swing.JLabel();
+        jLAgent = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLNummer = new javax.swing.JLabel();
+        jLnummer = new javax.swing.JLabel();
         jBnummer = new javax.swing.JButton();
+        jLras = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jBras = new javax.swing.JButton();
 
         jPasswordField1.setText("jPasswordField1");
 
@@ -83,7 +86,7 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setText("jLnamn");
+        jLnamn.setText("jLnamn");
 
         jLabel7.setText("Plats");
 
@@ -95,13 +98,19 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
 
         jLabel9.setText("Ansvarig Agent");
 
-        JLAgent.setText("Agent");
+        jLAgent.setText("Agent");
 
         jLabel3.setText("Telefon");
 
-        jLNummer.setText("Nummer");
+        jLnummer.setText("Nummer");
 
         jBnummer.setText("Ändra Nummer");
+
+        jLras.setText("enRas");
+
+        jLabel8.setText("Ras");
+
+        jBras.setText("Ändra Ras");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -116,25 +125,29 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
                         .addGap(45, 45, 45)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(JLAgent)
+                                .addComponent(jLAgent)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jBAAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
-                                    .addComponent(jLabel6))
+                                    .addComponent(jLnamn))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jBnamn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7)
-                                    .addComponent(jLPlats))
+                                    .addComponent(jLPlats)
+                                    .addComponent(jLras)
+                                    .addComponent(jLabel8))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jBplats, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jBplats, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jBras, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
-                                    .addComponent(jLNummer))
+                                    .addComponent(jLnummer))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
                                 .addComponent(jBnummer, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING))))
@@ -153,13 +166,13 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel6)
+                    .addComponent(jLnamn)
                     .addComponent(jBnamn))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLNummer)
+                    .addComponent(jLnummer)
                     .addComponent(jBnummer))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel7)
@@ -168,12 +181,18 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
                     .addComponent(jLPlats)
                     .addComponent(jBplats))
                 .addGap(18, 18, 18)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLras)
+                    .addComponent(jBras))
+                .addGap(18, 18, 18)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBAAgent)
-                    .addComponent(JLAgent))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                    .addComponent(jLAgent))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(jBUppdatera)
                 .addGap(17, 17, 17))
         );
@@ -194,104 +213,122 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jBnamnActionPerformed
 
-
-
-    
-
-    
-    //hämtar agentens ID för den ansvariga agent man valt i comboboxen
-    private void setAnsvarigAgent(){
-        try{
-            
-            String agentnamn = jCBAgent.getSelectedItem().toString();
-            String agentfraga = "SELECT Agent_ID FROM Agent WHERE Namn like '"+agentnamn+"'";
-            
-            String charAgent =  idb.fetchSingle(agentfraga);
-            
-            ansvarigAgent = Integer.parseInt(charAgent);
-            
-        } catch(InfException e){
-            JOptionPane.showMessageDialog(null, "Agenten fanns inte i databasen");
-            System.out.println("Kunde inte hämta vald agent" + e.getMessage());
-            
-        }
-        
-    }
-    
-    // Sätter rasen för den Alien som registreras
-    //Skickar upp rasen till Databasen
-    private void sattRas(){
-        String fraga = "";
+    //Fyller på med information om vald Alien
+    private void fyllInfoOmAlien(){
        
-        switch (ras) {
-            case "Worm":
-                
-                fraga = "INSERT INTO "+ras+" VALUES("+aid+")";
-                break;
-                
-            case "Boglodite":
-                
-                int antalBogloditeBoogies= getAntalBoogies();
-                fraga = "INSERT INTO "+ras+" VALUES("+aid+", " +antalBogloditeBoogies+")";
-                
-                break;
-                
-            case "Squid":
-                
-                int squidArmar = getArmarSquid();
-                fraga = "INSERT INTO "+ras+" VALUES("+aid+", " +squidArmar+")";
-                
-                break;
-                
-            default:
-            // code block
-        }
+        jLnamn.setText(alienNamn);
         
-        //Lägger till rasen i databasen
         try{
-            idb.insert(fraga);
+        jLnummer.setText(idb.fetchSingle("SELECT telefonnummer from Alien Where namn like '"+alienNamn+"'"));
+        jLPlats.setText(idb.fetchSingle("SELECT Benamning from Plats JOIN Alien on Plats_ID = Alien.Plats Where namn like '"+alienNamn+"'"));
+        jLras.setText("FYFAN VA SVÅRT DETTA SKA VA DÅ");
+        jLAgent.setText(idb.fetchSingle("SELECT Namn FROM Agen JOIN Alien on AGENT_ID=Ansvarig_Agent WHERE Alien.namn like'"+alienNamn+"'"));
+        
         } catch(InfException e){
-            JOptionPane.showMessageDialog(null, "Fel i databasen");
-            System.out.println("Kunde inte lägga till ras" + e.getMessage());
-            
+            JOptionPane.showMessageDialog(null, "FEL MED DATABASEN");
+            System.out.println("FEL när man skulle hämta hem data ifrån databasen " + e);
         }
-        
     }
+
     
-    //lägger till antal armar till ras
-    //Skickar en uppmaning till användaren att mata in antal armar
-    private int getArmarSquid(){
-        String armar = JOptionPane.showInputDialog("Hur många armar har din Alien? Räkna dom tack!");
-        int antalArmar = Integer.parseInt(armar);
-        
-        return antalArmar;
-    }
+
     
-     //lägger till antal Boogies till ras
-    //Skickar en uppmaning till användaren att mata in antal Boogies
-    private int getAntalBoogies(){
-        String boogies = JOptionPane.showInputDialog("Hur många boogies har din Alien? Räkna dom tack!");
-        int antalBoogies = Integer.parseInt(boogies);
-        return antalBoogies;
-    }
+//    //hämtar agentens ID för den ansvariga agent man valt i comboboxen
+//    private void setAnsvarigAgent(){
+//        try{
+//            
+//            String agentnamn = jCBAgent.getSelectedItem().toString();
+//            String agentfraga = "SELECT Agent_ID FROM Agent WHERE Namn like '"+agentnamn+"'";
+//            
+//            String charAgent =  idb.fetchSingle(agentfraga);
+//            
+//            ansvarigAgent = Integer.parseInt(charAgent);
+//            
+//        } catch(InfException e){
+//            JOptionPane.showMessageDialog(null, "Agenten fanns inte i databasen");
+//            System.out.println("Kunde inte hämta vald agent" + e.getMessage());
+//            
+//        }
+//        
+//    }
+    
+//    // Sätter rasen för den Alien som registreras
+//    //Skickar upp rasen till Databasen
+//    private void sattRas(){
+//        String fraga = "";
+//       
+//        switch (ras) {
+//            case "Worm":
+//                
+//                fraga = "INSERT INTO "+ras+" VALUES("+aid+")";
+//                break;
+//                
+//            case "Boglodite":
+//                
+//                int antalBogloditeBoogies= getAntalBoogies();
+//                fraga = "INSERT INTO "+ras+" VALUES("+aid+", " +antalBogloditeBoogies+")";
+//                
+//                break;
+//                
+//            case "Squid":
+//                
+//                int squidArmar = getArmarSquid();
+//                fraga = "INSERT INTO "+ras+" VALUES("+aid+", " +squidArmar+")";
+//                
+//                break;
+//                
+//            default:
+//            // code block
+//        }
+//        
+//        //Lägger till rasen i databasen
+//        try{
+//            idb.insert(fraga);
+//        } catch(InfException e){
+//            JOptionPane.showMessageDialog(null, "Fel i databasen");
+//            System.out.println("Kunde inte lägga till ras" + e.getMessage());
+//            
+//        }
+//        
+//    }
+//    
+//    //lägger till antal armar till ras
+//    //Skickar en uppmaning till användaren att mata in antal armar
+//    private int getArmarSquid(){
+//        String armar = JOptionPane.showInputDialog("Hur många armar har din Alien? Räkna dom tack!");
+//        int antalArmar = Integer.parseInt(armar);
+//        
+//        return antalArmar;
+//    }
+//    
+//     //lägger till antal Boogies till ras
+//    //Skickar en uppmaning till användaren att mata in antal Boogies
+//    private int getAntalBoogies(){
+//        String boogies = JOptionPane.showInputDialog("Hur många boogies har din Alien? Räkna dom tack!");
+//        int antalBoogies = Integer.parseInt(boogies);
+//        return antalBoogies;
+//    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel JLAgent;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jBAAgent;
     private javax.swing.JButton jBUppdatera;
     private javax.swing.JButton jBnamn;
     private javax.swing.JButton jBnummer;
     private javax.swing.JButton jBplats;
-    private javax.swing.JLabel jLNummer;
+    private javax.swing.JButton jBras;
+    private javax.swing.JLabel jLAgent;
     private javax.swing.JLabel jLPlats;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLnamn;
+    private javax.swing.JLabel jLnummer;
+    private javax.swing.JLabel jLras;
     private javax.swing.JPasswordField jPasswordField1;
     // End of variables declaration//GEN-END:variables
 }

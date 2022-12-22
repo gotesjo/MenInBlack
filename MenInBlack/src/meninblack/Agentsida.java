@@ -1,5 +1,6 @@
 package meninblack;
 
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 
 /*
@@ -76,6 +77,11 @@ public class Agentsida extends javax.swing.JFrame {
         });
 
         jButton3.setText("Ändra Alien");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Sök Info");
 
@@ -130,10 +136,10 @@ public class Agentsida extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jBListaAliens, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(72, 72, 72)))
+                            .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(72, 72, 72)))))
                 .addGap(38, 38, 38))
         );
         layout.setVerticalGroup(
@@ -197,6 +203,20 @@ public class Agentsida extends javax.swing.JFrame {
            
         
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // När man trycker på "ändra Alien"
+        
+       String alienNamn = JOptionPane.showInputDialog(null, "Ange namn på den Alien du vill ändra", "Ändra en alien", HEIGHT);
+       
+       if(Validering.finnsUsernameiDB(alienNamn)){ 
+        new UppdateraEnAlien(idb, alienNamn).setVisible(true);
+       
+       }else {
+           JOptionPane.showMessageDialog(null, "Användaren finns inte i databasen");
+       
+       }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     
     // Fyller agentsidan med text som ska anpassas efter användaren
