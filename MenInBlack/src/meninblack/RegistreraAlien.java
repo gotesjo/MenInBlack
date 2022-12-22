@@ -192,7 +192,14 @@ public class RegistreraAlien extends javax.swing.JFrame {
 
         // Registrerar en alien till Databasen 
         setAlienInfo();
-      
+        
+        //Kontrollerar så att användarnamnet är unikt
+        while(Validering.finnsUsernameiDB(namn)){
+        
+        namn = JOptionPane.showInputDialog("Mata in ett annat namn");
+    }
+        
+              
        String fraga2 = "INSERT INTO Alien (Alien_ID, Losenord, Namn, Telefon, Ansvarig_Agent, Plats) VALUES ("+aid+", '"+losenord+"', '"+namn+"', '"+telefon+"', "+ansvarigAgent+"," +plats+")";
                 
         //Gör registreringen via en sql fråga
@@ -206,6 +213,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
         }
          sattRas();
          
+         //Stänger ner rutan
          dispose();
          
 

@@ -31,6 +31,7 @@ public class Start {
         }
 
         new Inlog(idb).setVisible(true); 
+        new Validering(idb);
 
     }
     
