@@ -19,13 +19,7 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
     private InfDB idb; 
     private User user;
     
-
-    private int aid;
-    private String namn;
-    private String telefon;
-    private String ras;
-    private int plats;
-    private int ansvarigAgent;
+    
     
 
     /**
@@ -36,14 +30,6 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
         
         this.idb = idb;
         this user = user;
-
-        namn = "";
-        telefon = "";
-        ras = "";
-        
-        //Fyller det comboboxar som används i formuläret
-        fyllaPlatsCB();
-        fyllaAgentCB();
         
     }
 
@@ -209,58 +195,9 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
     }//GEN-LAST:event_jBnamnActionPerformed
 
 
+
     
-    // RAS Kontroll
-    //Gör en kontroll på vilken radiobutton som är vald
-    private void radioButtonCheck(){
-        if(jRBBoglodite.isSelected()){
-           ras = "Boglodite"; 
-        }
-        else if(jRBSquid.isSelected()){
-             ras = "Squid";
-        }
-        
-        else if(jRBWorm.isSelected()){
-             ras = "Worm";
-        }
-            
-    }
-    
-    // Genererar ett Alien_ID som är unikt 
-    private void setAid(){
-        
-        // Hämtar ett unikt ID för registreringen av en ny Alien
-        try{
-            
-            String charAid = idb.getAutoIncrement("Alien", "Alien_id");
-            
-            aid = Integer.parseInt(charAid);
-        } 
-        catch(InfException e){
-            JOptionPane.showMessageDialog(null, "Databasfel");
-            System.out.println("Kunde inte hämta Alien_ID" + e.getMessage());
-        }
-        
-    }
-    
-    //hämtar platsens ID för den platsen man valt i comboboxen
-    private void setPlats(){
-        try{
-            
-            String platsnamn = jCBPlats.getSelectedItem().toString();
-            String platsfraga = "SELECT Plats_ID FROM Plats WHERE Benamning like '"+platsnamn+"'";
-            
-            String charPlats = idb.fetchSingle(platsfraga);
-            
-            plats = Integer.parseInt(charPlats);
-            
-        } catch(InfException e){
-            JOptionPane.showMessageDialog(null, "Platsen fanns inte i databasen");
-            System.out.println("Kunde inte hämta vald plats" + e.getMessage());
-            
-        }
-        
-    }
+
     
     //hämtar agentens ID för den ansvariga agent man valt i comboboxen
     private void setAnsvarigAgent(){
