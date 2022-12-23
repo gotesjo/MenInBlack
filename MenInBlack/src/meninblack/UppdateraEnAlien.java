@@ -46,7 +46,7 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
         jPasswordField1 = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jBUppdatera = new javax.swing.JButton();
+        jBstang = new javax.swing.JButton();
         jBnamn = new javax.swing.JButton();
         jLnamn = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -65,6 +65,7 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
         jPasswordField1.setText("jPasswordField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("MIB Skandinavien");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
@@ -72,10 +73,10 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
 
         jLabel2.setText("Namn");
 
-        jBUppdatera.setText("Uppdatera");
-        jBUppdatera.addActionListener(new java.awt.event.ActionListener() {
+        jBstang.setText("Klar");
+        jBstang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBUppdateraActionPerformed(evt);
+                jBstangActionPerformed(evt);
             }
         });
 
@@ -86,10 +87,12 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
             }
         });
 
+        jLnamn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLnamn.setText("jLnamn");
 
         jLabel7.setText("Plats");
 
+        jLPlats.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLPlats.setText("EnPlats");
 
         jBplats.setText("Ändra Plats");
@@ -98,14 +101,22 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
 
         jLabel9.setText("Ansvarig Agent");
 
+        jLAgent.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLAgent.setText("Agent");
 
         jLabel3.setText("Telefon");
 
+        jLnummer.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLnummer.setText("Nummer");
 
         jBnummer.setText("Ändra Nummer");
+        jBnummer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBnummerActionPerformed(evt);
+            }
+        });
 
+        jLras.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLras.setText("enRas");
 
         jLabel8.setText("Ras");
@@ -151,11 +162,11 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
                                 .addComponent(jBnummer, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING))))
-                .addGap(0, 38, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(142, 142, 142)
-                .addComponent(jBUppdatera)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 33, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBstang)
+                .addGap(153, 153, 153))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,25 +204,69 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
                     .addComponent(jBAAgent)
                     .addComponent(jLAgent))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addComponent(jBUppdatera)
+                .addComponent(jBstang)
                 .addGap(17, 17, 17))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBUppdateraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBUppdateraActionPerformed
+    private void jBstangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBstangActionPerformed
             
         
         //Stänger ner programmet när man tryckt close    
         dispose();
 
         
-    }//GEN-LAST:event_jBUppdateraActionPerformed
+    }//GEN-LAST:event_jBstangActionPerformed
 
     private void jBnamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnamnActionPerformed
-        // TODO add your handling code here:
+        // Ändrar namnet emot ett nytt valt unikt namn
+        String prevNamn = alienNamn;
+        String newNamn = JOptionPane.showInputDialog("Vad vill du ange som namn istället?\nMåste vara unikt" );
+        
+        if(!Validering.finnsUsernameiDB(newNamn)){
+            try{
+                //Uppdaterar namnet för vald alien
+                idb.update("UPDATE Alien SET Namn='"+newNamn+"' where Namn like '"+prevNamn+"'");
+                
+                if(Validering.finnsUsernameiDB(newNamn)){
+                    alienNamn = newNamn;
+                }
+           
+            } catch(InfException e){
+                JOptionPane.showMessageDialog(null, "FEL MED DATABASEN");
+                System.out.println("Fel när namn skulle uppdateras i databasen" + e);
+                
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Namnet finns redan\nVänligen välj ett annat");
+        }
+        
+        //Uppdaterar sidan med ny info om Alien
+        fyllInfoOmAlien();
+        
     }//GEN-LAST:event_jBnamnActionPerformed
+
+    
+    private void jBnummerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnummerActionPerformed
+        // Ändrar Telefonnumer för en alien
+        String newNumber = JOptionPane.showInputDialog("Vad vill du byta telefonnummret till istället?");
+        
+            try{
+                //Uppdaterar nummret för vald alien
+                idb.update("UPDATE Alien SET Telefon='"+newNumber+"' where Namn like '"+alienNamn+"'");
+           
+            } catch(InfException e){
+                JOptionPane.showMessageDialog(null, "Numret kunde inte uppdateras\nNågot blev fel");
+                System.out.println("Fel när Telefon skulle uppdateras i databasen" + e);
+                
+            }
+        
+        //Uppdaterar sidan med ny info om Alien
+        fyllInfoOmAlien();
+    }//GEN-LAST:event_jBnummerActionPerformed
 
     //Fyller på med information om vald Alien
     private void fyllInfoOmAlien(){
@@ -219,10 +274,10 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
         jLnamn.setText(alienNamn);
         
         try{
-        jLnummer.setText(idb.fetchSingle("SELECT telefonnummer from Alien Where namn like '"+alienNamn+"'"));
+        jLnummer.setText(idb.fetchSingle("SELECT Telefon from Alien Where namn like '"+alienNamn+"'"));
         jLPlats.setText(idb.fetchSingle("SELECT Benamning from Plats JOIN Alien on Plats_ID = Alien.Plats Where namn like '"+alienNamn+"'"));
-        jLras.setText("FYFAN VA SVÅRT DETTA SKA VA DÅ");
-        jLAgent.setText(idb.fetchSingle("SELECT Namn FROM Agen JOIN Alien on AGENT_ID=Ansvarig_Agent WHERE Alien.namn like'"+alienNamn+"'"));
+        jLras.setText("JÄTTESVÅRT");
+        jLAgent.setText(idb.fetchSingle("SELECT Agent.Namn FROM Agent JOIN Alien on AGENT_ID=Ansvarig_Agent WHERE Alien.namn like '"+alienNamn+"'"));
         
         } catch(InfException e){
             JOptionPane.showMessageDialog(null, "FEL MED DATABASEN");
@@ -313,11 +368,11 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jBAAgent;
-    private javax.swing.JButton jBUppdatera;
     private javax.swing.JButton jBnamn;
     private javax.swing.JButton jBnummer;
     private javax.swing.JButton jBplats;
     private javax.swing.JButton jBras;
+    private javax.swing.JButton jBstang;
     private javax.swing.JLabel jLAgent;
     private javax.swing.JLabel jLPlats;
     private javax.swing.JLabel jLabel1;

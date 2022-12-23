@@ -53,7 +53,7 @@ public class Agentsida extends javax.swing.JFrame {
         jLAgent = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Hej");
+        setTitle("MIB Skandinavien");
 
         labelTitel.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         labelTitel.setText("Agentsida");
@@ -208,10 +208,12 @@ public class Agentsida extends javax.swing.JFrame {
         // När man trycker på "ändra Alien"
         
        String alienNamn = JOptionPane.showInputDialog(null, "Ange namn på den Alien du vill ändra", "Ändra en alien", HEIGHT);
+       String namn = alienNamn;
        
        if(Validering.finnsUsernameiDB(alienNamn)){ 
-        new UppdateraEnAlien(idb, alienNamn).setVisible(true);
-       
+           
+            new UppdateraEnAlien(idb,namn).setVisible(true);
+            
        }else {
            JOptionPane.showMessageDialog(null, "Användaren finns inte i databasen");
        
