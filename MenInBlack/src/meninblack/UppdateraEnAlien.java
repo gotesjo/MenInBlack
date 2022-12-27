@@ -16,6 +16,7 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
     
     private InfDB idb; 
     private String alienNamn;
+    private String ras;
     
     
     
@@ -96,6 +97,11 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
         jLPlats.setText("EnPlats");
 
         jBplats.setText("Ändra Plats");
+        jBplats.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBplatsActionPerformed(evt);
+            }
+        });
 
         jBAAgent.setText("Ändra Agent");
 
@@ -268,21 +274,71 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
         fyllInfoOmAlien();
     }//GEN-LAST:event_jBnummerActionPerformed
 
+    private void jBplatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBplatsActionPerformed
+        //Kod för att ändra platsen för en alien
+        
+        String[] rasArray = { "Squid", "Boglodite", "Worm" };
+        String valdRas = (String)JOptionPane.showInputDialog( null, "Välj en önskad ras ifrån listan:", "Välj Ras...",
+                                        JOptionPane.QUESTION_MESSAGE, 
+                                        null, 
+                                        rasArray,
+                                        rasArray[ 0 ] );
+        
+        
+        
+        ras = valdRas;                              
+        sattRas();
+        
+        //Uppdaterar sidan med ny info om Alien
+        fyllInfoOmAlien();
+    }//GEN-LAST:event_jBplatsActionPerformed
+
     //Fyller på med information om vald Alien
     private void fyllInfoOmAlien(){
        
         jLnamn.setText(alienNamn);
+        jLras.setText(getRas());
         
         try{
         jLnummer.setText(idb.fetchSingle("SELECT Telefon from Alien Where namn like '"+alienNamn+"'"));
         jLPlats.setText(idb.fetchSingle("SELECT Benamning from Plats JOIN Alien on Plats_ID = Alien.Plats Where namn like '"+alienNamn+"'"));
-        jLras.setText("JÄTTESVÅRT");
         jLAgent.setText(idb.fetchSingle("SELECT Agent.Namn FROM Agent JOIN Alien on AGENT_ID=Ansvarig_Agent WHERE Alien.namn like '"+alienNamn+"'"));
         
         } catch(InfException e){
             JOptionPane.showMessageDialog(null, "FEL MED DATABASEN");
             System.out.println("FEL när man skulle hämta hem data ifrån databasen " + e);
         }
+    }
+    
+    //Hämtar ut Aliens ras beroende på vart Aliens ID finns med i vilken rastabell
+    private String getRas(){
+        String enRas = "";
+        String fragaBoglodite = "SELECT Namn FROM Alien JOIN Boglodite ON Boglodite.Alien_ID=Alien.Alien_ID WHERE namn LIKE '"+alienNamn+"'";
+        String fragaSquid = "SELECT Namn FROM Alien JOIN Squid ON Squid.Alien_ID=Alien.Alien_ID WHERE namn LIKE '"+alienNamn+"'";
+        String fragaWorm = "SELECT Namn FROM Alien JOIN Worm ON Worm.Alien_ID=Alien.Alien_ID WHERE namn LIKE '"+alienNamn+"'";
+        
+        //Gör en kontroll i vardera rastabell
+        try{
+            if(alienNamn.equals(idb.fetchSingle(fragaBoglodite))){
+                enRas="Boglodite";
+            }
+            else if(alienNamn.equals(idb.fetchSingle(fragaSquid))){
+                enRas="Squid";
+            }
+            else if(alienNamn.equals(idb.fetchSingle(fragaWorm))){
+                enRas="Worm";
+            }
+            else{
+                enRas="Har ingen ras";
+            }
+            
+        } catch(InfException e){
+            JOptionPane.showMessageDialog(null, "Din varelse har ingen ras");
+            System.out.println("FEL när man skulle hämta hem ras ifrån databasen " + e);
+        }
+       
+        //Retunerar rasen i form av en String
+        return enRas;
     }
 
     
@@ -307,62 +363,62 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
 //        
 //    }
     
-//    // Sätter rasen för den Alien som registreras
-//    //Skickar upp rasen till Databasen
-//    private void sattRas(){
-//        String fraga = "";
-//       
-//        switch (ras) {
-//            case "Worm":
-//                
-//                fraga = "INSERT INTO "+ras+" VALUES("+aid+")";
-//                break;
-//                
-//            case "Boglodite":
-//                
-//                int antalBogloditeBoogies= getAntalBoogies();
-//                fraga = "INSERT INTO "+ras+" VALUES("+aid+", " +antalBogloditeBoogies+")";
-//                
-//                break;
-//                
-//            case "Squid":
-//                
-//                int squidArmar = getArmarSquid();
-//                fraga = "INSERT INTO "+ras+" VALUES("+aid+", " +squidArmar+")";
-//                
-//                break;
-//                
-//            default:
-//            // code block
-//        }
-//        
-//        //Lägger till rasen i databasen
-//        try{
-//            idb.insert(fraga);
-//        } catch(InfException e){
-//            JOptionPane.showMessageDialog(null, "Fel i databasen");
-//            System.out.println("Kunde inte lägga till ras" + e.getMessage());
-//            
-//        }
-//        
-//    }
-//    
-//    //lägger till antal armar till ras
-//    //Skickar en uppmaning till användaren att mata in antal armar
-//    private int getArmarSquid(){
-//        String armar = JOptionPane.showInputDialog("Hur många armar har din Alien? Räkna dom tack!");
-//        int antalArmar = Integer.parseInt(armar);
-//        
-//        return antalArmar;
-//    }
-//    
-//     //lägger till antal Boogies till ras
-//    //Skickar en uppmaning till användaren att mata in antal Boogies
-//    private int getAntalBoogies(){
-//        String boogies = JOptionPane.showInputDialog("Hur många boogies har din Alien? Räkna dom tack!");
-//        int antalBoogies = Integer.parseInt(boogies);
-//        return antalBoogies;
-//    }
+    // Sätter rasen för den Alien som registreras
+    //Skickar upp rasen till Databasen
+    private void sattRas(){
+        String fraga = "";
+       
+        switch (ras) {
+            case "Worm":
+                
+                fraga = "INSERT INTO "+ras+" VALUES("+aid+")";
+                break;
+                
+            case "Boglodite":
+                
+                int antalBogloditeBoogies= getAntalBoogies();
+                fraga = "INSERT INTO "+ras+" VALUES("+aid+", " +antalBogloditeBoogies+")";
+                
+                break;
+                
+            case "Squid":
+                
+                int squidArmar = getArmarSquid();
+                fraga = "INSERT INTO "+ras+" VALUES("+aid+", " +squidArmar+")";
+                
+                break;
+                
+            default:
+            // code block
+        }
+        
+        //Lägger till rasen i databasen
+        try{
+            idb.insert(fraga);
+        } catch(InfException e){
+            JOptionPane.showMessageDialog(null, "Fel i databasen");
+            System.out.println("Kunde inte lägga till ras" + e.getMessage());
+            
+        }
+        
+    }
+    
+    //lägger till antal armar till ras
+    //Skickar en uppmaning till användaren att mata in antal armar
+    private int getArmarSquid(){
+        String armar = JOptionPane.showInputDialog("Hur många armar har din Alien? Räkna dom tack!");
+        int antalArmar = Integer.parseInt(armar);
+        
+        return antalArmar;
+    }
+    
+     //lägger till antal Boogies till ras
+    //Skickar en uppmaning till användaren att mata in antal Boogies
+    private int getAntalBoogies(){
+        String boogies = JOptionPane.showInputDialog("Hur många boogies har din Alien? Räkna dom tack!");
+        int antalBoogies = Integer.parseInt(boogies);
+        return antalBoogies;
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
