@@ -84,6 +84,11 @@ public class Agentsida extends javax.swing.JFrame {
         });
 
         jButton4.setText("Sök Info");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Ändra Lösenord");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -219,6 +224,11 @@ public class Agentsida extends javax.swing.JFrame {
        
        }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        new SokInfo(idb).setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     
     // Fyller agentsidan med text som ska anpassas efter användaren
