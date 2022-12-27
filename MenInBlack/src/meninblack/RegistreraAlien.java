@@ -5,6 +5,7 @@
 package meninblack;
 
 import java.util.ArrayList;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
@@ -69,7 +70,8 @@ public class RegistreraAlien extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jBRegistrera = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel1.setText("Registrera ny Alien");
 
@@ -190,7 +192,14 @@ public class RegistreraAlien extends javax.swing.JFrame {
 
         // Registrerar en alien till Databasen 
         setAlienInfo();
-      
+        
+        //Kontrollerar så att användarnamnet är unikt
+        while(Validering.finnsUsernameiDB(namn)){
+        
+        namn = JOptionPane.showInputDialog("Mata in ett annat namn");
+    }
+        
+              
        String fraga2 = "INSERT INTO Alien (Alien_ID, Losenord, Namn, Telefon, Ansvarig_Agent, Plats) VALUES ("+aid+", '"+losenord+"', '"+namn+"', '"+telefon+"', "+ansvarigAgent+"," +plats+")";
                 
         //Gör registreringen via en sql fråga
@@ -203,7 +212,10 @@ public class RegistreraAlien extends javax.swing.JFrame {
             
         }
          sattRas();
-        
+         
+         //Stänger ner rutan
+         dispose();
+         
 
     }//GEN-LAST:event_jBRegistreraActionPerformed
 

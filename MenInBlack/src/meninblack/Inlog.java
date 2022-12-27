@@ -10,7 +10,6 @@ package meninblack;
  * @author emanuelgotesjo
  */
 
-import MenInBlack.AlienSida; 
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
@@ -24,6 +23,8 @@ public class Inlog extends javax.swing.JFrame {
     private String vald; 
     private String alienSvar;
     private String alienResultat;
+    
+    private User user;
     
 
     
@@ -47,142 +48,168 @@ public class Inlog extends javax.swing.JFrame {
     private void initComponents() {
 
         jRadioButton1 = new javax.swing.JRadioButton();
-        JLTitel = new javax.swing.JLabel();
-        TxtbUserName = new javax.swing.JTextField();
-        UserLabel = new javax.swing.JLabel();
-        PasswordLabel = new javax.swing.JLabel();
-        JBLoggaIN = new javax.swing.JButton();
-        JcCombo = new javax.swing.JComboBox<>();
-        TxtbLosenord = new javax.swing.JPasswordField();
+        jLTitel = new javax.swing.JLabel();
+        txtbUserName = new javax.swing.JTextField();
+        userLabel = new javax.swing.JLabel();
+        passwordLabel = new javax.swing.JLabel();
+        jBLoggaIN = new javax.swing.JButton();
+        jcCombo = new javax.swing.JComboBox<>();
+        txtbLosenord = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         jRadioButton1.setText("jRadioButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        JLTitel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        JLTitel.setText("Inloggning");
+        jLTitel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLTitel.setText("Inloggning");
 
-        TxtbUserName.addActionListener(new java.awt.event.ActionListener() {
+        txtbUserName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtbUserNameActionPerformed(evt);
+                txtbUserNameActionPerformed(evt);
             }
         });
 
-        UserLabel.setText("Användarnamn:");
+        userLabel.setText("Användarnamn:");
 
-        PasswordLabel.setText("Lösenord:");
+        passwordLabel.setText("Lösenord:");
 
-        JBLoggaIN.setText("Logga in");
-        JBLoggaIN.addActionListener(new java.awt.event.ActionListener() {
+        jBLoggaIN.setText("Logga in");
+        jBLoggaIN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JBLoggaINActionPerformed(evt);
+                jBLoggaINActionPerformed(evt);
             }
         });
 
-        JcCombo.setMaximumRowCount(3);
-        JcCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Agent", "Alien", "Admin" }));
-        JcCombo.addActionListener(new java.awt.event.ActionListener() {
+        jcCombo.setMaximumRowCount(3);
+        jcCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Agent", "Alien", "Admin" }));
+        jcCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JcComboActionPerformed(evt);
+                jcComboActionPerformed(evt);
             }
         });
 
-        TxtbLosenord.addActionListener(new java.awt.event.ActionListener() {
+        txtbLosenord.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtbLosenordActionPerformed(evt);
+                txtbLosenordActionPerformed(evt);
             }
         });
 
         jLabel1.setText("Användare:");
         jLabel1.setMaximumSize(new java.awt.Dimension(80, 16));
-        jLabel1.setMinimumSize(null);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/meninblack/1283126.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TxtbUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
-                            .addComponent(PasswordLabel)
-                            .addComponent(UserLabel)
-                            .addComponent(TxtbLosenord))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(JLTitel)
-                        .addGap(23, 23, 23))
+                            .addComponent(txtbUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                            .addComponent(passwordLabel)
+                            .addComponent(userLabel)
+                            .addComponent(txtbLosenord))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(JcCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)))
-                .addComponent(JBLoggaIN)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(117, 117, 117))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jcCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(44, 44, 44)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLTitel)
+                .addGap(23, 23, 23)
+                .addComponent(jBLoggaIN)
                 .addGap(40, 40, 40))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(JLTitel)
-                .addGap(36, 36, 36)
+                .addComponent(jLTitel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jcCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(userLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtbUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(passwordLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JcCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
-                .addComponent(UserLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TxtbUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PasswordLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JBLoggaIN)
-                    .addComponent(TxtbLosenord, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jBLoggaIN)
+                    .addComponent(txtbLosenord, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TxtbUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtbUserNameActionPerformed
+    private void txtbUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbUserNameActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_TxtbUserNameActionPerformed
+    }//GEN-LAST:event_txtbUserNameActionPerformed
 
-    private void JcComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JcComboActionPerformed
+    private void jcComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcComboActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_JcComboActionPerformed
+    }//GEN-LAST:event_jcComboActionPerformed
+  
+    private void txtbLosenordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbLosenordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtbLosenordActionPerformed
 
     
-
     
-    private void TxtbLosenordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtbLosenordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtbLosenordActionPerformed
-/**
+    
+    /**
+ * 
+
  * Denna metod för knappen 'Logga in' hämtar metoden KollaLosenord() först och checkar även om
  * booleanen 'inloggad' är true. Om true uppnås skapas en ny agentsida, vilket för användaren blir 
  * att om man skriver in rätt lösernord för rätt Agent tar systemet användaren till platsen Agentsida. 
  * Om det är false får användaren även ett meddelande att lösenordet är fel. 
  * @param evt 
  */
-    private void JBLoggaINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBLoggaINActionPerformed
+    private void jBLoggaINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLoggaINActionPerformed
         // TODO add your handling code here:
-        CheckaComboBox();
-        if (vald.equals("Agent") && KollaAgentLosenord()) {
-            new Agentsida(idb).setVisible(true);
-        } else if (vald.equals("Alien") && KollaAlienLosenord()) {
-            new AlienSida(idb).setVisible(true);
+        checkaComboBox();
+        if (vald.equals("Agent") && kollaAgentLosenord()) {
+            
+            user = new User(idb, txtbUserName.getText());
+            
+            new Agentsida(idb, user).setVisible(true);
+            
+            
+        } else if (vald.equals("Alien") && kollaAlienLosenord()) {
+         
+            user = new User(idb, txtbUserName.getText());   
+            
+            new AlienSida(idb,user).setVisible(true);
+            
+            
         } else {
             JOptionPane.showMessageDialog(null, "Fel lösenord. Pröva ett annat");
-    }//GEN-LAST:event_JBLoggaINActionPerformed
+    }//GEN-LAST:event_jBLoggaINActionPerformed
 }
+    
+    
     /**
      * Metoden ställer en SQL fråga till databasen där den tar namn lösenordet från agenten där namnet
      * är lika med användarnamnet som användaren skriver in i textrutan. Med två olika Exceptions
@@ -190,9 +217,9 @@ public class Inlog extends javax.swing.JFrame {
      * Metoden kollar till slut om resultaten från SQL frågan är lika med inputen i lösenords-rutan, 
      * vilket ändrar värdet på booleanen 'inloggad' till true om så är fallet. 
      */ 
-    private boolean KollaAgentLosenord() {
+    private boolean kollaAgentLosenord() {
         try {
-            String användarnamn = TxtbUserName.getText();
+            String användarnamn = txtbUserName.getText();
             String fråga = "Select losenord from agent where namn='" + användarnamn + "'";
             svar = idb.fetchSingle(fråga);
             resultat = svar;
@@ -206,15 +233,19 @@ public class Inlog extends javax.swing.JFrame {
             System.out.println("Internt Felmeddelande" + Undantag.getMessage());
 
         }
-        if (resultat.equals(TxtbLosenord.getText())) {
+        if (resultat.equals(txtbLosenord.getText())) {
             inloggad = true;
         }
         return inloggad;
 
     }
-    private boolean KollaAlienLosenord() {
+    
+    
+    
+    
+    private boolean kollaAlienLosenord() {
         try {
-            String alienNamn = TxtbUserName.getText();
+            String alienNamn = txtbUserName.getText();
             String alienFråga = "select losenord from alien where namn ='" + alienNamn + "'";
             alienSvar = idb.fetchSingle(alienFråga);
             alienResultat = alienSvar;
@@ -224,25 +255,29 @@ public class Inlog extends javax.swing.JFrame {
         } catch (Exception EUndantag) {
             JOptionPane.showMessageDialog(null, "Fel, pröva igen");
         }
-        if (alienResultat.equals(TxtbLosenord.getText())) {
+        if (alienResultat.equals(txtbLosenord.getText())) {
             inloggad = true;
         }
         return inloggad;
     }
 
-    private void CheckaComboBox() {
-        vald = JcCombo.getSelectedItem().toString();
+    
+    
+    
+    private void checkaComboBox() {
+        vald = jcCombo.getSelectedItem().toString();
 
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton JBLoggaIN;
-    private javax.swing.JLabel JLTitel;
-    private javax.swing.JComboBox<String> JcCombo;
-    private javax.swing.JLabel PasswordLabel;
-    private javax.swing.JPasswordField TxtbLosenord;
-    private javax.swing.JTextField TxtbUserName;
-    private javax.swing.JLabel UserLabel;
+    private javax.swing.JButton jBLoggaIN;
+    private javax.swing.JLabel jLTitel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JComboBox<String> jcCombo;
+    private javax.swing.JLabel passwordLabel;
+    private javax.swing.JPasswordField txtbLosenord;
+    private javax.swing.JTextField txtbUserName;
+    private javax.swing.JLabel userLabel;
     // End of variables declaration//GEN-END:variables
 }
