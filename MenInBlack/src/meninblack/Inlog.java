@@ -281,7 +281,7 @@ public class Inlog extends javax.swing.JFrame {
         } catch (Exception ettUndantag) {
                   JOptionPane.showMessageDialog(null, "Fel, pröva igen");           
         }
-        if (adminResultat.equals(txtbUserName.getText())) {
+        if (adminResultat.equals(txtbLosenord.getText())) {
             inloggad = true;
         }
         return inloggad;

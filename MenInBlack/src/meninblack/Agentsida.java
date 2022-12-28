@@ -2,6 +2,7 @@ package meninblack;
 
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
+import oru.inf.InfException;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -16,6 +17,8 @@ public class Agentsida extends javax.swing.JFrame {
     
     InfDB idb;
     User user;
+    private String svar;
+    private String resultat;
 
     /**
      * Creates new form Agentsida
@@ -51,6 +54,7 @@ public class Agentsida extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jLabelValkommen = new javax.swing.JLabel();
         jLAgent = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("MIB Skandinavien");
@@ -111,6 +115,13 @@ public class Agentsida extends javax.swing.JFrame {
 
         jLAgent.setText("Agent");
 
+        jButton2.setText("Administrator åtkomst ");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -119,13 +130,14 @@ public class Agentsida extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
                             .addComponent(jLAgent)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(38, 38, 38)
-                                .addComponent(jLabel1)))
+                                .addComponent(jLabel1))
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(labelTitel)
@@ -172,6 +184,8 @@ public class Agentsida extends javax.swing.JFrame {
                         .addComponent(jButton5)
                         .addGap(18, 18, 18)
                         .addComponent(jButton6)))
+                .addGap(37, 37, 37)
+                .addComponent(jButton2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(24, Short.MAX_VALUE)
@@ -230,17 +244,36 @@ public class Agentsida extends javax.swing.JFrame {
         new SokInfo(idb).setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        try {
+        //String namnet = jLAgent.getText();
+        String frågan = "Select namn from agent where administrator = 'J'";
+        svar = idb.fetchSingle(frågan);
+        resultat = svar;
+        } catch (InfException ettUndantag) {
+            JOptionPane.showMessageDialog(null, "Ingen adminstatus");
+        }
+        if(resultat.equals(jLAgent.getText())) {
+            new AdminSida(idb, user).setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Ingen adminstatus");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     
     // Fyller agentsidan med text som ska anpassas efter användaren
     private void fyllSida(){
         jLAgent.setText(user.getUsername());
         
     }
+    
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBListaAliens;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
