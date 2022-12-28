@@ -128,6 +128,11 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
         jLabel8.setText("Ras");
 
         jBras.setText("Ändra Ras");
+        jBras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBrasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -243,7 +248,6 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
             } catch(InfException e){
                 JOptionPane.showMessageDialog(null, "FEL MED DATABASEN");
                 System.out.println("Fel när namn skulle uppdateras i databasen" + e);
-                
             }
         }
         else{
@@ -275,7 +279,11 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
     }//GEN-LAST:event_jBnummerActionPerformed
 
     private void jBplatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBplatsActionPerformed
-        //Kod för att ändra platsen för en alien
+          //Kod för att ändra Plats
+    }//GEN-LAST:event_jBplatsActionPerformed
+
+    private void jBrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBrasActionPerformed
+        ////Kod för att ändra Rasen för en alien
         
         String[] rasArray = { "Squid", "Boglodite", "Worm" };
         String valdRas = (String)JOptionPane.showInputDialog( null, "Välj en önskad ras ifrån listan:", "Välj Ras...",
@@ -291,7 +299,7 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
         
         //Uppdaterar sidan med ny info om Alien
         fyllInfoOmAlien();
-    }//GEN-LAST:event_jBplatsActionPerformed
+    }//GEN-LAST:event_jBrasActionPerformed
 
     //Fyller på med information om vald Alien
     private void fyllInfoOmAlien(){

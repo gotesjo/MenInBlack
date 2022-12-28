@@ -254,6 +254,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="&#xc4;ndra Ras"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBrasActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
