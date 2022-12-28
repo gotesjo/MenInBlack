@@ -59,13 +59,16 @@ public class Agentsida extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("MIB Skandinavien");
 
-        labelTitel.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        labelTitel.setFont(new java.awt.Font("Agency FB", 1, 36)); // NOI18N
         labelTitel.setText("Agentsida");
 
+        jLabel1.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
         jLabel1.setText("Agent Uppgifter");
 
+        jLabel2.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
         jLabel2.setText("Aliens");
 
+        jButton1.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
         jButton1.setText("Registrera Ny Alien");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,6 +76,7 @@ public class Agentsida extends javax.swing.JFrame {
             }
         });
 
+        jBListaAliens.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
         jBListaAliens.setText("Lista alla Aliens");
         jBListaAliens.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,6 +84,7 @@ public class Agentsida extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
         jButton3.setText("Ändra Alien");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,6 +92,7 @@ public class Agentsida extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
         jButton4.setText("Sök Info");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,6 +100,7 @@ public class Agentsida extends javax.swing.JFrame {
             }
         });
 
+        jButton5.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
         jButton5.setText("Ändra Lösenord");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,8 +108,10 @@ public class Agentsida extends javax.swing.JFrame {
             }
         });
 
+        jButton6.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
         jButton6.setText("Registrera Utrustning");
 
+        jButton7.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
         jButton7.setText("Close");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,11 +119,13 @@ public class Agentsida extends javax.swing.JFrame {
             }
         });
 
-        jLabelValkommen.setFont(new java.awt.Font("Kokonor", 3, 14)); // NOI18N
+        jLabelValkommen.setFont(new java.awt.Font("Agency FB", 3, 18)); // NOI18N
         jLabelValkommen.setText("Välkommen");
 
+        jLAgent.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
         jLAgent.setText("Agent");
 
+        jButton2.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
         jButton2.setText("Administrator åtkomst ");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,7 +199,7 @@ public class Agentsida extends javax.swing.JFrame {
                 .addComponent(jButton2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
+                .addContainerGap(11, Short.MAX_VALUE)
                 .addComponent(labelTitel)
                 .addGap(252, 252, 252)
                 .addComponent(jButton7)

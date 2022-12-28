@@ -51,9 +51,10 @@ public class AlienSida extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabelHead.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        jLabelHead.setFont(new java.awt.Font("Agency FB", 1, 36)); // NOI18N
         jLabelHead.setText("AlienSida");
 
+        jButAndraLosen.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
         jButAndraLosen.setText("Ändra lösen");
         jButAndraLosen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,6 +62,7 @@ public class AlienSida extends javax.swing.JFrame {
             }
         });
 
+        jbutAlienNara.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
         jbutAlienNara.setText("Aliens i ditt område");
         jbutAlienNara.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,8 +70,10 @@ public class AlienSida extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
         jLabel1.setText("Din områdeschef");
 
+        jLabel2.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
         jLabel2.setText("jLabel2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -81,7 +85,7 @@ public class AlienSida extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 229, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jbutAlienNara, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButAndraLosen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -106,7 +110,7 @@ public class AlienSida extends javax.swing.JFrame {
                             .addComponent(jbutAlienNara)
                             .addComponent(jLabel1))
                         .addGap(72, 72, 72)))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();

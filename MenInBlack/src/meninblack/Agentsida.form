@@ -104,7 +104,7 @@
               <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="24" max="32767" attributes="0"/>
+              <EmptySpace pref="11" max="32767" attributes="0"/>
               <Component id="labelTitel" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="252" pref="252" max="-2" attributes="0"/>
               <Component id="jButton7" min="-2" max="-2" attributes="0"/>
@@ -117,23 +117,32 @@
     <Component class="javax.swing.JLabel" name="labelTitel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Helvetica Neue" size="24" style="1"/>
+          <Font name="Agency FB" size="36" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Agentsida"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Agency FB" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Agent Uppgifter"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Agency FB" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Aliens"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Agency FB" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Registrera Ny Alien"/>
       </Properties>
       <Events>
@@ -142,6 +151,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="jBListaAliens">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Agency FB" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Lista alla Aliens"/>
       </Properties>
       <Events>
@@ -150,6 +162,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton3">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Agency FB" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="&#xc4;ndra Alien"/>
       </Properties>
       <Events>
@@ -158,6 +173,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton4">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Agency FB" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="S&#xf6;k Info"/>
       </Properties>
       <Events>
@@ -166,6 +184,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton5">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Agency FB" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="&#xc4;ndra L&#xf6;senord"/>
       </Properties>
       <Events>
@@ -174,11 +195,17 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton6">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Agency FB" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Registrera Utrustning"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButton7">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Agency FB" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Close"/>
       </Properties>
       <Events>
@@ -188,18 +215,24 @@
     <Component class="javax.swing.JLabel" name="jLabelValkommen">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Kokonor" size="14" style="3"/>
+          <Font name="Agency FB" size="18" style="3"/>
         </Property>
         <Property name="text" type="java.lang.String" value="V&#xe4;lkommen"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLAgent">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Agency FB" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Agent"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Agency FB" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Administrator &#xe5;tkomst "/>
       </Properties>
       <Events>

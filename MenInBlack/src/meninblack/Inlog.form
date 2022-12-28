@@ -53,7 +53,7 @@
                               <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="26" max="32767" attributes="0"/>
+                      <EmptySpace pref="42" max="32767" attributes="0"/>
                       <Component id="jLabel2" min="-2" pref="148" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   </Group>
@@ -73,7 +73,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
               <Component id="jLTitel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="39" max="32767" attributes="0"/>
+              <EmptySpace pref="24" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -102,7 +102,7 @@
     <Component class="javax.swing.JLabel" name="jLTitel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="24" style="0"/>
+          <Font name="Agency FB" size="36" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Inloggning"/>
       </Properties>
@@ -114,16 +114,25 @@
     </Component>
     <Component class="javax.swing.JLabel" name="userLabel">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Agency FB" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Anv&#xe4;ndarnamn:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="passwordLabel">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Agency FB" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="L&#xf6;senord:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jBLoggaIN">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Agency FB" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Logga in"/>
       </Properties>
       <Events>
@@ -132,6 +141,9 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="jcCombo">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Agency FB" size="14" style="0"/>
+        </Property>
         <Property name="maximumRowCount" type="int" value="3"/>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="3">
@@ -155,6 +167,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Agency FB" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Anv&#xe4;ndare:"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[80, 16]"/>
