@@ -25,6 +25,8 @@ public class Inlog extends javax.swing.JFrame {
     private String alienResultat;
     
     private User user;
+    private Object adminResultat;
+    private String adminSvar;
     
 
     
@@ -203,6 +205,12 @@ public class Inlog extends javax.swing.JFrame {
             
             new AlienSida(idb,user).setVisible(true);
             
+        } else if (vald.equals("Admin" ) && KollaAdminLosenord()) {
+            
+            user = new User(idb, txtbUserName.getText());
+            
+            new AdminSida(idb, user).setVisible(true);
+            
             
         } else {
             JOptionPane.showMessageDialog(null, "Fel lösenord. Pröva ett annat");
@@ -260,9 +268,26 @@ public class Inlog extends javax.swing.JFrame {
         }
         return inloggad;
     }
+    
+    private boolean KollaAdminLosenord() {
+        try {
+            String adminNamn = txtbUserName.getText();
+            String adminFråga = "Select losenord from agent where namn ='" + adminNamn + "and administrator ='J'" ;
+            adminSvar = idb.fetchSingle(adminFråga);
+            adminResultat = adminSvar; 
+        } catch (InfException ettUndantag) {
+            JOptionPane.showMessageDialog(null, "Fel lösenord, eller ingen adminstatus");
+            System.out.println("Internt meddelande" + ettUndantag.getMessage());
+        } catch (Exception ettUndantag) {
+                  JOptionPane.showMessageDialog(null, "Fel, pröva igen");           
+        }
+        if (adminResultat.equals(txtbUserName.getText())) {
+            inloggad = true;
+        }
+        return inloggad;
+    }
 
-    
-    
+
     
     private void checkaComboBox() {
         vald = jcCombo.getSelectedItem().toString();
