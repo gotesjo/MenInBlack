@@ -89,7 +89,7 @@ public class Inlog extends javax.swing.JFrame {
 
         jcCombo.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
         jcCombo.setMaximumRowCount(3);
-        jcCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Agent", "Alien", "Admin" }));
+        jcCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Agent", "Alien", " " }));
         jcCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcComboActionPerformed(evt);
