@@ -113,6 +113,11 @@ public class Agentsida extends javax.swing.JFrame {
 
         jButton6.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
         jButton6.setText("Registrera Utrustning");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
         jButton7.setText("Close");
@@ -262,6 +267,27 @@ public class Agentsida extends javax.swing.JFrame {
                 new AdminSida(idb, user).setVisible(true);
     }//GEN-LAST:event_jMenu1MousePressed
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        
+        Object[] typArray = { "Fordon", "Utrustning"};
+        String valdTyp = (String)JOptionPane.showInputDialog( null, "Välj vad du vill registrera:", "Välj...",
+                                        JOptionPane.QUESTION_MESSAGE, 
+                                        null, 
+                                        typArray,
+                                        typArray[ 0 ] );
+        
+        if(valdTyp.equals("Fordon")){
+            
+            new RegistreraFordon(idb).setVisible(true);             
+        }
+        else if(valdTyp.equals("Utrustning")){
+            new RegistreraUtrusning(idb).setVisible(true);
+            
+        }
+        
+    }//GEN-LAST:event_jButton6ActionPerformed
+
     
     // Fyller agentsidan med text som ska anpassas efter användaren
     private void fyllSida(){
@@ -269,6 +295,7 @@ public class Agentsida extends javax.swing.JFrame {
         
     }
     
+
     private void checkAdmin(){
         
         String adminstatus = "N";
