@@ -62,7 +62,7 @@ public class Inlog extends javax.swing.JFrame {
 
         jRadioButton1.setText("jRadioButton1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLTitel.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
         jLTitel.setText("Inloggning");
@@ -202,6 +202,7 @@ public class Inlog extends javax.swing.JFrame {
             user = new User(idb, txtbUserName.getText());
             
             new Agentsida(idb, user).setVisible(true);
+            dispose();
             
             
         } else if (vald.equals("Alien") && kollaAlienLosenord()) {
@@ -209,12 +210,14 @@ public class Inlog extends javax.swing.JFrame {
             user = new User(idb, txtbUserName.getText());   
             
             new AlienSida(idb,user).setVisible(true);
+            dispose();
             
         } else if (vald.equals("Admin" ) && KollaAdminLosenord()) {
             
             user = new User(idb, txtbUserName.getText());
             
             new AdminSida(idb, user).setVisible(true);
+            dispose();
             
             
         } else {
