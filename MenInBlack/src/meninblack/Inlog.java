@@ -6,7 +6,6 @@ package meninblack;
  */
 
 /**
- *
  * @author emanuelgotesjo
  */
 
