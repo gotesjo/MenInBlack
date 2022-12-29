@@ -17,8 +17,6 @@ public class Agentsida extends javax.swing.JFrame {
     
     InfDB idb;
     User user;
-    private String svar;
-    private String resultat;
 
     /**
      * Creates new form Agentsida
