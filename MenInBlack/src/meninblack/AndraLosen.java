@@ -51,29 +51,35 @@ public class AndraLosen extends javax.swing.JFrame {
         jButtonOk = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jPFK = new javax.swing.JPasswordField();
+        jlblB = new javax.swing.JLabel();
+        jlblG = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
         jLabel1.setText("Ändra lösenord");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 55, -1, -1));
 
         gamLosen.setText("Gammalt lösenor");
+        getContentPane().add(gamLosen, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 109, -1, -1));
 
         nyttLosen.setText("Nytt lösenord");
+        getContentPane().add(nyttLosen, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 166, -1, -1));
 
-        jPFG.setText("jPasswordField1");
         jPFG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPFGActionPerformed(evt);
             }
         });
+        getContentPane().add(jPFG, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 106, 210, -1));
 
-        jPFN.setText("jPasswordField2");
         jPFN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPFNActionPerformed(evt);
             }
         });
+        getContentPane().add(jPFN, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 163, 210, -1));
 
         jButtonOk.setText("OK");
         jButtonOk.addActionListener(new java.awt.event.ActionListener() {
@@ -81,62 +87,23 @@ public class AndraLosen extends javax.swing.JFrame {
                 jButtonOkActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonOk, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 272, -1, -1));
 
-        jLabel2.setText("Kontrollera Lösenord");
+        jLabel2.setText("Bekräfta Lösenord");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 208, -1, -1));
 
-        jPFK.setText("jPasswordField1");
+        jPFK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPFKActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jPFK, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 205, 210, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(137, 137, 137)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonOk))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(gamLosen)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
-                                .addComponent(jPFG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(nyttLosen)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPFN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPFK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(78, 78, 78))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(jLabel1)
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jPFG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(gamLosen))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nyttLosen)
-                    .addComponent(jPFN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jPFK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addComponent(jButtonOk)
-                .addGap(27, 27, 27))
-        );
+        jlblB.setForeground(new java.awt.Color(255, 0, 0));
+        getContentPane().add(jlblB, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 240, 220, 20));
+
+        jlblG.setForeground(new java.awt.Color(255, 0, 0));
+        getContentPane().add(jlblG, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 135, 220, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -144,7 +111,10 @@ public class AndraLosen extends javax.swing.JFrame {
     private void jPFGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPFGActionPerformed
         
     }//GEN-LAST:event_jPFGActionPerformed
-      
+    
+    //Kollar om det gammla lösenordet stämmer och om det nya lösenordet stämmer med bekräfta 
+    //lösenord, om detta stämmer kommer det ett meddelande som bekräftar detta och lösenordet ändras.
+    //Annars visas ett felmeddelande på skärmen beronde på vad felet är. 
     private void jButtonOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOkActionPerformed
         
         
@@ -158,39 +128,60 @@ public class AndraLosen extends javax.swing.JFrame {
         oldPass = jPFG.getText();
         newPass = jPFN.getText();
         kontrollPass = jPFK.getText();
-            
-        String anv = "";
-        
                 
-        if(oldPass.equals(alienResultat) && newPass.equals(kontrollPass))
+        if(oldPass.equals(alienResultat))
         {
+            
+            if(newPass.equals(kontrollPass))
+            {
+            
+            String anv;
             
             if(Validering.isUsernameAlien(user.getUsername()))
             {
                 anv = "Alien";
             }
-            if(Validering.IsUsernameAgent(user.getUsername()))
+            else
             {
                 anv = "Agent";
             }
             
-            idb.update("Update '"+anv+"' set Losenord = '"+newPass+"' where namn = '"+user.getUsername()+"'");
+            idb.update("Update "+anv+" set Losenord = '"+newPass+"' where namn = '"+user.getUsername()+"'");
             
+            JOptionPane.showMessageDialog(null, "Lösenord ändrat");
+            
+            
+            }
+            else
+            {
+                jlblB.setText("Bekräfta lösenord matchar ej!");
+                jPFK.requestFocus();
+            }
+                    
+        }
+        else
+        {
+            jlblG.setText("Gammalt lösenord matchar ej");
+            jPFG.requestFocus();
         }
         }
+        
+        
         catch(InfException e)
         {
-            JOptionPane.showMessageDialog(null, "Fel lösenord!");
+            JOptionPane.showMessageDialog(null, "Fel lösenord!" + e);
             
-        }     
-   
+        } 
     }//GEN-LAST:event_jButtonOkActionPerformed
 
-    
     
     private void jPFNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPFNActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jPFNActionPerformed
+
+    private void jPFKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPFKActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPFKActionPerformed
 
     
     
@@ -203,6 +194,8 @@ public class AndraLosen extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPFG;
     private javax.swing.JPasswordField jPFK;
     private javax.swing.JPasswordField jPFN;
+    private javax.swing.JLabel jlblB;
+    private javax.swing.JLabel jlblG;
     private javax.swing.JLabel nyttLosen;
     // End of variables declaration//GEN-END:variables
 }

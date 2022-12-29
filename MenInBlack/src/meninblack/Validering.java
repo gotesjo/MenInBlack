@@ -67,6 +67,7 @@ public class Validering {
         return finns;
     }
     
+    //Returnerar true om det finns en Alien med in skrivet namn i databasen annars false
     public static boolean isUsernameAlien(String namn)
     {
         boolean finns = false;
@@ -92,6 +93,7 @@ public class Validering {
         return finns;
     }
     
+    //Returnerar true om det finns en Agent med in skrivet namn i databasen annars false
     public static boolean IsUsernameAgent(String namn)
     {
         boolean finns = false;

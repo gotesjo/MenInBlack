@@ -31,6 +31,7 @@ public class AliensNara extends javax.swing.JFrame {
         this.user = user;
         
         fyllrutan();
+        jTArea.setEditable(false);
     }
 
     private void jcbNYActionPerformed(java.awt.event.ActionEvent evt) {
