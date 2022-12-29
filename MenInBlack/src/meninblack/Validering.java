@@ -67,4 +67,55 @@ public class Validering {
         return finns;
     }
     
+    public static boolean isUsernameAlien(String namn)
+    {
+        boolean finns = false;
+        String evNamn;
+
+        String sqlfraga1 = "SELECT Namn FROM Alien WHERE Namn like '" + namn + "'";
+        
+        try
+        {
+            evNamn = idb.fetchSingle(sqlfraga1);
+            
+            if(evNamn != null)
+            {
+                finns = true;
+            }
+            
+        }
+        catch(InfException e)
+        {
+            System.out.println("Namnet finns inte" + e);
+        }
+        
+        return finns;
+    }
+    
+    public static boolean IsUsernameAgent(String namn)
+    {
+        boolean finns = false;
+        String evNamn;
+
+        String sqlfraga1 = "SELECT Namn FROM Agent WHERE Namn like '" + namn + "'";
+        
+        try
+        {
+            evNamn = idb.fetchSingle(sqlfraga1);
+            
+            if(evNamn != null)
+            {
+                finns = true;
+            }
+            
+        }
+        catch(InfException e)
+        {
+            System.out.println("Namnet finns inte" + e);
+        }
+        
+        return finns;
+        
+    }
+    
 }

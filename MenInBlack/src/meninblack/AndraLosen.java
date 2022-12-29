@@ -5,7 +5,9 @@
 package meninblack;
 
 
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
+import oru.inf.InfException;
 
 /**
  *
@@ -17,6 +19,10 @@ public class AndraLosen extends javax.swing.JFrame {
     //Klassens fält
     private InfDB idb;
     private User user;
+    private InfException e;
+    private String oldPass;
+    private String newPass;
+    private String kontrollPass;
     
     /**
      * Creates new form AndraLosen
@@ -25,6 +31,7 @@ public class AndraLosen extends javax.swing.JFrame {
         initComponents();
         this.idb = idb;
         this.user = user;
+        
     }
 
     /**
@@ -39,9 +46,11 @@ public class AndraLosen extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         gamLosen = new javax.swing.JLabel();
         nyttLosen = new javax.swing.JLabel();
-        jPasswordFieldgammal = new javax.swing.JPasswordField();
-        jPasswordFieldnytt = new javax.swing.JPasswordField();
+        jPFG = new javax.swing.JPasswordField();
+        jPFN = new javax.swing.JPasswordField();
         jButtonOk = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jPFK = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,11 +61,30 @@ public class AndraLosen extends javax.swing.JFrame {
 
         nyttLosen.setText("Nytt lösenord");
 
-        jPasswordFieldgammal.setText("jPasswordField1");
+        jPFG.setText("jPasswordField1");
+        jPFG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPFGActionPerformed(evt);
+            }
+        });
 
-        jPasswordFieldnytt.setText("jPasswordField2");
+        jPFN.setText("jPasswordField2");
+        jPFN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPFNActionPerformed(evt);
+            }
+        });
 
         jButtonOk.setText("OK");
+        jButtonOk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonOkActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Kontrollera Lösenord");
+
+        jPFK.setText("jPasswordField1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -75,13 +103,17 @@ public class AndraLosen extends javax.swing.JFrame {
                         .addGap(45, 45, 45)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(nyttLosen)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPasswordFieldnytt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(gamLosen)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
-                                .addComponent(jPasswordFieldgammal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jPFG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(nyttLosen)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPFN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPFK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(78, 78, 78))
         );
         layout.setVerticalGroup(
@@ -89,29 +121,88 @@ public class AndraLosen extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(55, 55, 55)
                 .addComponent(jLabel1)
-                .addGap(71, 71, 71)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(gamLosen)
-                    .addComponent(jPasswordFieldgammal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                    .addComponent(jPFG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(gamLosen))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nyttLosen)
-                    .addComponent(jPasswordFieldnytt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                    .addComponent(jPFN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jPFK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
                 .addComponent(jButtonOk)
                 .addGap(27, 27, 27))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void jPFGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPFGActionPerformed
+        
+    }//GEN-LAST:event_jPFGActionPerformed
+      
+    private void jButtonOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOkActionPerformed
+        
+        
+        try
+        {
+            
+        String sqlFraga1 = "select losenord from agent where agent.namn = '" + user.getUsername() + "'" + "union select losenord from alien where alien.namn = '" + user.getUsername() + "'";
+        String alienSvar = idb.fetchSingle(sqlFraga1);
+        String alienResultat = alienSvar;
+        
+        oldPass = jPFG.getText();
+        newPass = jPFN.getText();
+        kontrollPass = jPFK.getText();
+            
+        String anv = "";
+        
+                
+        if(oldPass.equals(alienResultat) && newPass.equals(kontrollPass))
+        {
+            
+            if(Validering.isUsernameAlien(user.getUsername()))
+            {
+                anv = "Alien";
+            }
+            if(Validering.IsUsernameAgent(user.getUsername()))
+            {
+                anv = "Agent";
+            }
+            
+            idb.update("Update '"+anv+"' set Losenord = '"+newPass+"' where namn = '"+user.getUsername()+"'");
+            
+        }
+        }
+        catch(InfException e)
+        {
+            JOptionPane.showMessageDialog(null, "Fel lösenord!");
+            
+        }     
+   
+    }//GEN-LAST:event_jButtonOkActionPerformed
 
+    
+    
+    private void jPFNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPFNActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPFNActionPerformed
+
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel gamLosen;
     private javax.swing.JButton jButtonOk;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPasswordField jPasswordFieldgammal;
-    private javax.swing.JPasswordField jPasswordFieldnytt;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPasswordField jPFG;
+    private javax.swing.JPasswordField jPFK;
+    private javax.swing.JPasswordField jPFN;
     private javax.swing.JLabel nyttLosen;
     // End of variables declaration//GEN-END:variables
 }

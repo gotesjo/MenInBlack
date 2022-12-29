@@ -17,8 +17,6 @@ public class Agentsida extends javax.swing.JFrame {
     
     InfDB idb;
     User user;
-    private String svar;
-    private String resultat;
 
     /**
      * Creates new form Agentsida
@@ -30,6 +28,10 @@ public class Agentsida extends javax.swing.JFrame {
         this.user = user;
         
         
+        jMenub.setVisible(false);
+        checkAdmin();
+       
+      
         fyllSida();
     }
 
@@ -54,7 +56,8 @@ public class Agentsida extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jLabelValkommen = new javax.swing.JLabel();
         jLAgent = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        jMenub = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("MIB Skandinavien");
@@ -125,38 +128,33 @@ public class Agentsida extends javax.swing.JFrame {
         jLAgent.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
         jLAgent.setText("Agent");
 
-        jButton2.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
-        jButton2.setText("Administrator åtkomst ");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+        jMenu1.setText("Gå till administratörssidan");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenu1MousePressed(evt);
             }
         });
+        jMenub.add(jMenu1);
+        jMenu1.getAccessibleContext().setAccessibleDescription("");
+
+        setJMenuBar(jMenub);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(53, 53, 53)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                            .addComponent(jLAgent)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(38, 38, 38)
-                                .addComponent(jLabel1))
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(labelTitel)
-                            .addComponent(jButton7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelValkommen)
-                        .addGap(229, 229, 229)))
+                    .addComponent(jLAgent)
+                    .addComponent(jLabelValkommen)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(38, 38, 38)
+                            .addComponent(jLabel1))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 187, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -169,41 +167,45 @@ public class Agentsida extends javax.swing.JFrame {
                                 .addComponent(jLabel2)
                                 .addGap(72, 72, 72)))))
                 .addGap(38, 38, 38))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(labelTitel)
+                .addGap(222, 222, 222))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton7)
+                .addGap(280, 280, 280))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(82, 82, 82)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelValkommen)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(jLAgent))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(42, 42, 42)
+                .addComponent(labelTitel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
                         .addComponent(jButton3)
                         .addGap(18, 18, 18)
                         .addComponent(jBListaAliens)
                         .addGap(18, 18, 18)
                         .addComponent(jButton4))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelValkommen)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLAgent)
+                        .addGap(49, 49, 49)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton5)
                         .addGap(18, 18, 18)
                         .addComponent(jButton6)))
-                .addGap(37, 37, 37)
-                .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(11, Short.MAX_VALUE)
-                .addComponent(labelTitel)
-                .addGap(252, 252, 252)
+                .addGap(30, 30, 30)
                 .addComponent(jButton7)
-                .addGap(18, 18, 18))
+                .addGap(15, 15, 15))
         );
 
         pack();
@@ -255,22 +257,10 @@ public class Agentsida extends javax.swing.JFrame {
         new SokInfo(idb).setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jMenu1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MousePressed
         // TODO add your handling code here:
-        try {
-        //String namnet = jLAgent.getText();
-        String frågan = "Select namn from agent where administrator = 'J'";
-        svar = idb.fetchSingle(frågan);
-        resultat = svar;
-        } catch (InfException ettUndantag) {
-            JOptionPane.showMessageDialog(null, "Ingen adminstatus");
-        }
-        if(resultat.equals(jLAgent.getText())) {
-            new AdminSida(idb, user).setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(null, "Ingen adminstatus");
-        }
-    }//GEN-LAST:event_jButton2ActionPerformed
+                new AdminSida(idb, user).setVisible(true);
+    }//GEN-LAST:event_jMenu1MousePressed
 
     
     // Fyller agentsidan med text som ska anpassas efter användaren
@@ -279,12 +269,28 @@ public class Agentsida extends javax.swing.JFrame {
         
     }
     
+    private void checkAdmin(){
+        
+        String adminstatus = "N";
+        
+        try {
+        String namnet = user.getUsername();
+        String frågan = "SELECT Administrator FROM Agent WHERE Namn like '"+namnet+"'";
+        adminstatus = idb.fetchSingle(frågan);
+        
+        } catch (InfException ettUndantag) {
+            System.out.println("Problem med kontroll av admin" + ettUndantag);
+        }
+        if(adminstatus.equals("J")) {
+            jMenub.setVisible(true);
+        } 
+    }
+    
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBListaAliens;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -294,6 +300,8 @@ public class Agentsida extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelValkommen;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenub;
     private javax.swing.JLabel labelTitel;
     // End of variables declaration//GEN-END:variables
 }
