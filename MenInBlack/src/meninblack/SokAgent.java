@@ -5,6 +5,7 @@
 package meninblack;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
@@ -15,15 +16,18 @@ import oru.inf.InfException;
  */
 public class SokAgent extends javax.swing.JFrame {
     private static InfDB idb;
+    private String agentNamn;
+    private int pid;
     
 
     /**
      * Creates new form SokAgent
      */
-    public SokAgent(InfDB idb) {
+    public SokAgent(InfDB idb, String agentNamn) {
         initComponents();
         this.idb = idb;
-        fyllComboBox();
+        this.agentNamn = agentNamn;
+        fyllInformation();
     }
 
     /**
@@ -35,42 +39,133 @@ public class SokAgent extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton5 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jCBAgentSok = new javax.swing.JComboBox<>();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
+        jLNamnAgent = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLNummerAgent = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLDatumAgent = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLAnsvarigAgent = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLStatusAgent = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jButton5.setText("jButton5");
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
-        jLabel1.setText("Vilken Agent vill du ta fram information om?");
+        jLabel1.setText("Info om agenten");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jLabel2.setText("Namn");
+
+        jLNamnAgent.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLNamnAgent.setText("jLnamn");
+
+        jLabel4.setText("Telefon");
+
+        jLNummerAgent.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLNummerAgent.setText("Nummer");
+
+        jLabel6.setText("Anställningsdatum");
+
+        jLDatumAgent.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLDatumAgent.setText("Datum");
+
+        jLabel8.setText("Område");
+
+        jLAnsvarigAgent.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLAnsvarigAgent.setText("Ansvarig i");
+
+        jLabel10.setText("AdminStatus");
+
+        jLStatusAgent.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLStatusAgent.setText("Status :");
+
+        jButton1.setText("Ändra Namn");
+
+        jButton2.setText("Ändra Nummer");
+
+        jButton3.setText("jButton3");
+
+        jButton4.setText("Ändra Område");
+
+        jButton6.setText("Ändra Status");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jCBAgentSok, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(133, 133, 133)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLNamnAgent)
+                            .addComponent(jLNummerAgent)
+                            .addComponent(jLabel6)
+                            .addComponent(jLDatumAgent)
+                            .addComponent(jLabel8)
+                            .addComponent(jLAnsvarigAgent)
+                            .addComponent(jLStatusAgent)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel10))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(31, 31, 31)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCBAgentSok, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLNamnAgent)
+                    .addComponent(jButton1))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLNummerAgent)
+                    .addComponent(jButton2))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLDatumAgent)
+                    .addComponent(jButton3))
+                .addGap(15, 15, 15)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLAnsvarigAgent)
+                    .addComponent(jButton4))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLStatusAgent)
+                    .addComponent(jButton6))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         pack();
@@ -79,21 +174,28 @@ public class SokAgent extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    private void fyllComboBox() {
-        String fråga = "Select namn from agent";
-        
-        ArrayList<String> allaAgenter;
+    private void fyllInformation() {
+      
+       
+        jLNamnAgent.setText(agentNamn);
         
         try {
-            allaAgenter = idb.fetchColumn(fråga);
-            for(String ettNamn : allaAgenter) {
-                jCBAgentSok.addItem(ettNamn);
-            }
-        } catch (InfException ettUndantag) {
-            JOptionPane.showMessageDialog(null, "Något gick snett");
+            jLNummerAgent.setText(idb.fetchSingle("Select telefon from agent where namn ='" + agentNamn + "'"));
+            jLDatumAgent.setText(idb.fetchSingle("Select anstallningsdatum from agent where namn ='" + agentNamn + "'"));
+            jLAnsvarigAgent.setText(idb.fetchSingle("select område from agent where namn ='" + agentNamn + "'"));
+            jLStatusAgent.setText(idb.fetchSingle("Select administrator from agent where namn ='" + agentNamn + "'"));
+            
+            //hämtar Alien_ID från databasen
+            String CharID = idb.fetchSingle("select Agent_ID from agent where namn ='" + agentNamn + "'");
+            pid = Integer.parseInt(CharID);
+        } catch(InfException ettUndantag) {
+            JOptionPane.showMessageDialog(null, "Något gick fel med databasen");
+            System.out.println("internt meddelande" + ettUndantag);
         }
     }
-    public static void main(String args[]) {
+    
+    
+    public void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -120,15 +222,28 @@ public class SokAgent extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SokAgent(idb).setVisible(true);
+                new SokAgent(idb, agentNamn).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jCBAgentSok;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JLabel jLAnsvarigAgent;
+    private javax.swing.JLabel jLDatumAgent;
+    private javax.swing.JLabel jLNamnAgent;
+    private javax.swing.JLabel jLNummerAgent;
+    private javax.swing.JLabel jLStatusAgent;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
     // End of variables declaration//GEN-END:variables
 }
