@@ -48,6 +48,8 @@ public class RegistreraFordon extends javax.swing.JFrame {
         jComBYear = new javax.swing.JComboBox<>();
         jLarsModell = new javax.swing.JLabel();
         jBLaggTill = new javax.swing.JButton();
+        dateChooser1 = new com.raven.datechooser.DateChooser();
+        jLabel1 = new javax.swing.JLabel();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -83,32 +85,42 @@ public class RegistreraFordon extends javax.swing.JFrame {
         jLarsModell.setText("Årsmodell");
 
         jBLaggTill.setText("Lägg till");
+        jBLaggTill.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLaggTillActionPerformed(evt);
+            }
+        });
+
+        dateChooser1.setDateFormat("yyyy-MM-dd");
+
+        jLabel1.setText("Registreringsdatum");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addComponent(jLTitel))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLarsModell)
-                            .addComponent(jTFordonID)
-                            .addComponent(jTBeskrivning, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                            .addComponent(jComBYear, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(96, 96, 96)
-                        .addComponent(jBLaggTill)))
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addGap(47, 47, 47)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jBLaggTill)
+                    .addComponent(dateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComBYear, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTBeskrivning)
+                    .addComponent(jTFordonID)
+                    .addComponent(jLTitel)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(jLarsModell)))
+                .addGap(51, 51, 51))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(20, 20, 20)
                 .addComponent(jLTitel)
                 .addGap(18, 18, 18)
                 .addComponent(jTFordonID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -118,9 +130,13 @@ public class RegistreraFordon extends javax.swing.JFrame {
                 .addComponent(jLarsModell)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComBYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(dateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jBLaggTill)
-                .addGap(18, 18, 18))
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -150,6 +166,20 @@ public class RegistreraFordon extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTBeskrivningActionPerformed
 
+    //Lägger till ett fordon i registret
+    private void jBLaggTillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLaggTillActionPerformed
+     
+     String fID = jTFordonID.getText();
+     String fbenmn = jTBeskrivning.getText();
+     int arsmodell = Integer.parseInt(jComBYear.getSelectedItem().toString());
+     String regDate = dateChooser1.getDateFormat();
+     
+     // Checka så att ID är ifyllt och
+     
+     String sqlFraga = "INSERT INTO mibdb.fordon (Fordons_ID, Fordonsbeskrivning, Registreringsdatum, Arsmodell) VALUES ('"+fID+"', '"+fbenmn+"', '"+regDate+"', "+arsmodell+")";
+        
+    }//GEN-LAST:event_jBLaggTillActionPerformed
+
     //Fyller komboboxen med årtal från 1950 fram till idag
     private void  fyllComboBoxen(){
         
@@ -167,10 +197,12 @@ public class RegistreraFordon extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.raven.datechooser.DateChooser dateChooser1;
     private javax.swing.JButton jBLaggTill;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox<String> jComBYear;
     private javax.swing.JLabel jLTitel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLarsModell;
     private javax.swing.JTextField jTBeskrivning;
     private javax.swing.JTextField jTFordonID;

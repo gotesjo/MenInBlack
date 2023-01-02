@@ -25,7 +25,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
     private String ras;
     private int plats;
     private int ansvarigAgent;
-    
+    private String regDatum;   
 
     /**
      * Creates new form RegistreraAlien
@@ -56,6 +56,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        dateChooser1 = new com.raven.datechooser.DateChooser();
         jLabel1 = new javax.swing.JLabel();
         jTFNamn = new javax.swing.JTextField();
         jTFLosenord = new javax.swing.JTextField();
@@ -69,6 +70,11 @@ public class RegistreraAlien extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jBRegistrera = new javax.swing.JButton();
+        jTextDate = new javax.swing.JTextField();
+        jLabeldate = new javax.swing.JLabel();
+
+        dateChooser1.setDateFormat("yyyy-MM-dd");
+        dateChooser1.setTextRefernce(jTextDate);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -118,6 +124,8 @@ public class RegistreraAlien extends javax.swing.JFrame {
             }
         });
 
+        jLabeldate.setText("Registreringsdatum");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -125,34 +133,39 @@ public class RegistreraAlien extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRBWorm)
-                            .addComponent(jRBBoglodite))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTFTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jRBSquid)
-                            .addComponent(jLabel4)
-                            .addComponent(jTFNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTFLosenord, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCBPlats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jCBAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(49, 49, 49))))
+                    .addComponent(jTFTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jRBSquid)
+                    .addComponent(jLabel4)
+                    .addComponent(jTFNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTFLosenord, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jRBWorm)
+                    .addComponent(jRBBoglodite))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabeldate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jCBAgent, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextDate)
+                    .addComponent(jCBPlats, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(51, 51, 51))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(149, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jBRegistrera)
-                    .addComponent(jLabel1))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(jBRegistrera)))
                 .addGap(150, 150, 150))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabeldate)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(99, 99, 99))
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -174,13 +187,13 @@ public class RegistreraAlien extends javax.swing.JFrame {
                         .addComponent(jTFLosenord, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTFTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jRBSquid)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(8, 8, 8)
                 .addComponent(jRBBoglodite)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jRBWorm)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(jBRegistrera)
                 .addGap(14, 14, 14))
         );
@@ -200,7 +213,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
     }
         
               
-       String fraga2 = "INSERT INTO Alien (Alien_ID, Losenord, Namn, Telefon, Ansvarig_Agent, Plats) VALUES ("+aid+", '"+losenord+"', '"+namn+"', '"+telefon+"', "+ansvarigAgent+"," +plats+")";
+       String fraga2 = "INSERT INTO Alien (Alien_ID, Registreringsdatum, Losenord, Namn, Telefon, Ansvarig_Agent, Plats) VALUES ("+aid+", '"+regDatum+"', '"+losenord+"', '"+namn+"', '"+telefon+"', "+ansvarigAgent+"," +plats+")";
                 
         //Gör registreringen via en sql fråga
         try{
@@ -292,6 +305,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
         namn = jTFNamn.getText();
         losenord = jTFLosenord.getText();
         telefon = jTFTelefon.getText();
+        regDatum = jTextDate.getText();
        
         radioButtonCheck();
         setAid();
@@ -432,6 +446,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
+    private com.raven.datechooser.DateChooser dateChooser1;
     private javax.swing.JButton jBRegistrera;
     private javax.swing.JComboBox<String> jCBAgent;
     private javax.swing.JComboBox<String> jCBPlats;
@@ -439,11 +454,13 @@ public class RegistreraAlien extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabeldate;
     private javax.swing.JRadioButton jRBBoglodite;
     private javax.swing.JRadioButton jRBSquid;
     private javax.swing.JRadioButton jRBWorm;
     private javax.swing.JTextField jTFLosenord;
     private javax.swing.JTextField jTFNamn;
     private javax.swing.JTextField jTFTelefon;
+    private javax.swing.JTextField jTextDate;
     // End of variables declaration//GEN-END:variables
 }
