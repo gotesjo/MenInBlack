@@ -7,6 +7,7 @@ package meninblack;
 import java.util.ArrayList;
 import java.util.Calendar;
 import oru.inf.InfDB;
+import oru.inf.InfException;
 
 /**
  *
@@ -42,18 +43,23 @@ public class RegistreraFordon extends javax.swing.JFrame {
     private void initComponents() {
 
         jCheckBox1 = new javax.swing.JCheckBox();
+        dateChooser1 = new com.raven.datechooser.DateChooser();
         jLTitel = new javax.swing.JLabel();
         jTFordonID = new javax.swing.JTextField();
         jTBeskrivning = new javax.swing.JTextField();
         jComBYear = new javax.swing.JComboBox<>();
         jLarsModell = new javax.swing.JLabel();
         jBLaggTill = new javax.swing.JButton();
-        dateChooser1 = new com.raven.datechooser.DateChooser();
         jLabel1 = new javax.swing.JLabel();
+        jTFDate = new javax.swing.JTextField();
+        jBDate = new javax.swing.JButton();
 
         jCheckBox1.setText("jCheckBox1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        dateChooser1.setDateFormat("yyyy-MM-dd");
+        dateChooser1.setTextRefernce(jTFDate);
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLTitel.setText("Registrera Fordon");
 
@@ -91,9 +97,14 @@ public class RegistreraFordon extends javax.swing.JFrame {
             }
         });
 
-        dateChooser1.setDateFormat("yyyy-MM-dd");
-
         jLabel1.setText("Registreringsdatum");
+
+        jBDate.setText("Idag...");
+        jBDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBDateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -102,19 +113,27 @@ public class RegistreraFordon extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jBLaggTill)
-                    .addComponent(dateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComBYear, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTBeskrivning)
+                    .addComponent(jTBeskrivning, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
                     .addComponent(jTFordonID)
-                    .addComponent(jLTitel)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jLTitel)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(jLarsModell)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jTFDate)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBDate))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(jLarsModell)))
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(51, 51, 51))
             .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(jLabel1)
+                .addGap(138, 138, 138)
+                .addComponent(jBLaggTill)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -130,13 +149,15 @@ public class RegistreraFordon extends javax.swing.JFrame {
                 .addComponent(jLarsModell)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComBYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(dateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBDate)
+                    .addComponent(jTFDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(jBLaggTill)
-                .addGap(21, 21, 21))
+                .addGap(37, 37, 37))
         );
 
         pack();
@@ -172,13 +193,37 @@ public class RegistreraFordon extends javax.swing.JFrame {
      String fID = jTFordonID.getText();
      String fbenmn = jTBeskrivning.getText();
      int arsmodell = Integer.parseInt(jComBYear.getSelectedItem().toString());
-     String regDate = dateChooser1.getDateFormat();
+     String regDate = jTFDate.getText();
      
-     // Checka så att ID är ifyllt och
      
+     // Checka så att ID är ifyllt och korrekt
+     
+     
+     
+     //Formulerar SQL fråga
      String sqlFraga = "INSERT INTO mibdb.fordon (Fordons_ID, Fordonsbeskrivning, Registreringsdatum, Arsmodell) VALUES ('"+fID+"', '"+fbenmn+"', '"+regDate+"', "+arsmodell+")";
         
+     //Försöker lägga till fordonet i databasen innehållande de lokala variabler som hämtat data ifrån användarfönstret.
+     try{
+        idb.insert(sqlFraga);
+                
+     } catch(InfException e) {
+        javax.swing.JOptionPane.showMessageDialog(null, "Problem med databasen. Kunde inte lägga till fordon");
+        System.out.println("Kunde inte lägga till fordon" + e.getMessage());
+        
+        
+        //Stänger ner fönstret när ett fordon har lagts till
+        dispose();
+     }
     }//GEN-LAST:event_jBLaggTillActionPerformed
+
+    
+    //Knappen för att sätta datumet till dagens datum
+    private void jBDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDateActionPerformed
+
+        dateChooser1.toDay();
+        
+    }//GEN-LAST:event_jBDateActionPerformed
 
     //Fyller komboboxen med årtal från 1950 fram till idag
     private void  fyllComboBoxen(){
@@ -198,6 +243,7 @@ public class RegistreraFordon extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.raven.datechooser.DateChooser dateChooser1;
+    private javax.swing.JButton jBDate;
     private javax.swing.JButton jBLaggTill;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox<String> jComBYear;
@@ -205,6 +251,7 @@ public class RegistreraFordon extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLarsModell;
     private javax.swing.JTextField jTBeskrivning;
+    private javax.swing.JTextField jTFDate;
     private javax.swing.JTextField jTFordonID;
     // End of variables declaration//GEN-END:variables
 }
