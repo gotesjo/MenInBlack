@@ -5,6 +5,14 @@
 package meninblack;
 
 import oru.inf.InfDB;
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import oru.inf.InfException;
+
+
 
 
 
@@ -19,6 +27,7 @@ public class AlienSida extends javax.swing.JFrame {
     //Fält för klassen AlienSida.
     private InfDB idb;
     private User user;
+    
 
     /**
      * Creates new form AlienSida
@@ -29,6 +38,7 @@ public class AlienSida extends javax.swing.JFrame {
         this.idb = idb;
         jLabel2.setText(user.getUsername());
         jLabel1.setText(user.getOmradeschef());
+        
         
 
         
@@ -50,6 +60,9 @@ public class AlienSida extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jBLU = new javax.swing.JButton();
+        jlblV = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jlblEmail = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,50 +98,76 @@ public class AlienSida extends javax.swing.JFrame {
             }
         });
 
+        jlblV.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
+        jlblV.setText("Välkommen");
+
+        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
+        jLabel3.setText("Din områdeschef är");
+
+        jlblEmail.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
+        jlblEmail.setText("Maila områdeschef");
+        jlblEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jlblEmailActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 229, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jbutAlienNara, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButAndraLosen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jButAndraLosen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jlblEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(42, 42, 42))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addComponent(jBLU)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlblV)
+                            .addComponent(jLabel3))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBLU)
+                .addGap(257, 257, 257))
             .addGroup(layout.createSequentialGroup()
-                .addGap(190, 190, 190)
+                .addGap(214, 214, 214)
                 .addComponent(jLabelHead)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(24, 24, 24)
+                .addComponent(jLabelHead)
+                .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButAndraLosen))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jlblV)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel3)
+                        .addGap(10, 10, 10))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelHead)
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jbutAlienNara)
-                            .addComponent(jLabel1))
-                        .addGap(67, 67, 67)
-                        .addComponent(jBLU)
-                        .addGap(18, 18, 18))))
+                        .addComponent(jButAndraLosen)
+                        .addGap(19, 19, 19)
+                        .addComponent(jbutAlienNara)
+                        .addGap(18, 18, 18)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jlblEmail))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBLU)
+                .addContainerGap())
         );
 
         pack();
@@ -146,7 +185,23 @@ public class AlienSida extends javax.swing.JFrame {
     private void jBLUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLUActionPerformed
         dispose();
     }//GEN-LAST:event_jBLUActionPerformed
-
+    //skickar användaren till sin email och matar in din områdeschefs emial.
+    private void jlblEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jlblEmailActionPerformed
+        String omradesChef = user.getOmradeschef().toLowerCase();
+        String[] varde = omradesChef.split(" ");
+        String emailStart = "";
+        for(String ettVarde : varde)
+        {
+            emailStart += ettVarde; 
+        }
+        
+        
+    try {
+    Desktop.getDesktop().mail(new URI("mailto:"+emailStart+"@gmail.com?subject="));
+  } catch (URISyntaxException | IOException ex) {
+        
+    }//GEN-LAST:event_jlblEmailActionPerformed
+    }
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -154,7 +209,10 @@ public class AlienSida extends javax.swing.JFrame {
     private javax.swing.JButton jButAndraLosen;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelHead;
     private javax.swing.JButton jbutAlienNara;
+    private javax.swing.JButton jlblEmail;
+    private javax.swing.JLabel jlblV;
     // End of variables declaration//GEN-END:variables
 }

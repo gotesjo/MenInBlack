@@ -161,7 +161,7 @@ public class AndraLosen extends javax.swing.JFrame {
         }
         else
         {
-            jlblG.setText("Gammalt lösenord matchar ej");
+            jlblG.setText("Gammalt lösenord matchar ej!");
             jPFG.requestFocus();
         }
         }
