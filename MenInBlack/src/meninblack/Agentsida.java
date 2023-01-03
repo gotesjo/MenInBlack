@@ -263,7 +263,7 @@ public class Agentsida extends javax.swing.JFrame {
             new UppdateraEnAlien(idb,alienNamn).setVisible(true);
             
        }else {
-           JOptionPane.showMessageDialog(null, "Användaren finns inte i databasen");
+           JOptionPane.showMessageDialog(null, "Alien finns inte i databasen");
        
        }
     }//GEN-LAST:event_jButton3ActionPerformed
