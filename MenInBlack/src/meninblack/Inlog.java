@@ -211,13 +211,6 @@ public class Inlog extends javax.swing.JFrame {
             new AlienSida(idb,user).setVisible(true);
             dispose();
             
-        } else if (vald.equals("Admin" ) && KollaAdminLosenord()) {
-            
-            user = new User(idb, txtbUserName.getText());
-            
-            new AdminSida(idb, user).setVisible(true);
-            dispose();
-            
             
         } else {
             JOptionPane.showMessageDialog(null, "Fel lösenord. Pröva ett annat");
