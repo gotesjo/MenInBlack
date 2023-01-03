@@ -24,8 +24,6 @@ public class Inlog extends javax.swing.JFrame {
     private String alienResultat;
     
     private User user;
-    private Object adminResultat;
-    private String adminSvar;
     
 
     
@@ -87,8 +85,8 @@ public class Inlog extends javax.swing.JFrame {
         });
 
         jcCombo.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
-        jcCombo.setMaximumRowCount(3);
-        jcCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Agent", "Alien", " " }));
+        jcCombo.setMaximumRowCount(2);
+        jcCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Agent", "Alien" }));
         jcCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcComboActionPerformed(evt);
@@ -185,37 +183,37 @@ public class Inlog extends javax.swing.JFrame {
     
     
     /**
- * 
-
- * Denna metod för knappen 'Logga in' hämtar metoden KollaLosenord() först och checkar även om
- * booleanen 'inloggad' är true. Om true uppnås skapas en ny agentsida, vilket för användaren blir 
- * att om man skriver in rätt lösernord för rätt Agent tar systemet användaren till platsen Agentsida. 
- * Om det är false får användaren även ett meddelande att lösenordet är fel. 
- * @param evt 
- */
+     *
+     *
+     * Denna metod för knappen 'Logga in' hämtar metoden KollaLosenord() först
+     * och checkar även om booleanen 'inloggad' är true. Om true uppnås skapas
+     * en ny agentsida, vilket för användaren blir att om man skriver in rätt
+     * lösernord för rätt Agent tar systemet användaren till platsen Agentsida.
+     * Om det är false får användaren även ett meddelande att lösenordet är fel.
+     *
+     * @param evt
+     */
     private void jBLoggaINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLoggaINActionPerformed
         // TODO add your handling code here:
         checkaComboBox();
         if (vald.equals("Agent") && kollaAgentLosenord()) {
-            
+
             user = new User(idb, txtbUserName.getText());
-            
+
             new Agentsida(idb, user).setVisible(true);
             dispose();
-            
-            
+
         } else if (vald.equals("Alien") && kollaAlienLosenord()) {
-         
-            user = new User(idb, txtbUserName.getText());   
-            
-            new AlienSida(idb,user).setVisible(true);
+
+            user = new User(idb, txtbUserName.getText());
+
+            new AlienSida(idb, user).setVisible(true);
             dispose();
-            
-            
+
         } else {
             JOptionPane.showMessageDialog(null, "Fel lösenord. Pröva ett annat");
     }//GEN-LAST:event_jBLoggaINActionPerformed
-}
+    }
     
     
     /**
@@ -231,7 +229,6 @@ public class Inlog extends javax.swing.JFrame {
             String fråga = "Select losenord from agent where namn='" + användarnamn + "'";
             svar = idb.fetchSingle(fråga);
             resultat = svar;
-            //TxtbPassword.setText(resultat);
 
         } catch (InfException E) {
             JOptionPane.showMessageDialog(null, "Fel förfan");
@@ -269,23 +266,23 @@ public class Inlog extends javax.swing.JFrame {
         return inloggad;
     }
     
-    private boolean KollaAdminLosenord() {
-        try {
-            String adminNamn = txtbUserName.getText();
-            String adminFråga = "Select losenord from agent where namn ='" + adminNamn + "and administrator ='J'" ;
-            adminSvar = idb.fetchSingle(adminFråga);
-            adminResultat = adminSvar; 
-        } catch (InfException ettUndantag) {
-            JOptionPane.showMessageDialog(null, "Fel lösenord, eller ingen adminstatus");
-            System.out.println("Internt meddelande" + ettUndantag.getMessage());
-        } catch (Exception ettUndantag) {
-                  JOptionPane.showMessageDialog(null, "Fel, pröva igen");           
-        }
-        if (adminResultat.equals(txtbLosenord.getText())) {
-            inloggad = true;
-        }
-        return inloggad;
-    }
+//    private boolean KollaAdminLosenord() {
+//        try {
+//            String adminNamn = txtbUserName.getText();
+//            String adminFråga = "Select losenord from agent where namn ='" + adminNamn + "and administrator ='J'" ;
+//            adminSvar = idb.fetchSingle(adminFråga);
+//            adminResultat = adminSvar; 
+//        } catch (InfException ettUndantag) {
+//            JOptionPane.showMessageDialog(null, "Fel lösenord, eller ingen adminstatus");
+//            System.out.println("Internt meddelande" + ettUndantag.getMessage());
+//        } catch (Exception ettUndantag) {
+//                  JOptionPane.showMessageDialog(null, "Fel, pröva igen");           
+//        }
+//        if (adminResultat.equals(txtbLosenord.getText())) {
+//            inloggad = true;
+//        }
+//        return inloggad;
+//    }
 
 
     
