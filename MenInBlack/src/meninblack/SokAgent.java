@@ -214,12 +214,52 @@ public class SokAgent extends javax.swing.JFrame {
     }
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        // Denna metod tar in en input på vad det nya anställningsdatumet skall vara.
+        // Sedan uppdaterar den databasen med den information användaren skrev in.
+        String nyttDatum = JOptionPane.showInputDialog("Vad ska det nya anställningsdatumet vara?");
+
+        try {
+            idb.update("UPDATE agent SET anstallningsdatum'" + nyttDatum + "' where namn like '" + agentNamn + "'");
+        } catch (InfException ettUndantag) {
+            JOptionPane.showMessageDialog(null, "Detta datum kunde ej uppdateras");
+            System.out.println("Ett fel uppstod med databasen" + ettUndantag);
+        }
+        fyllInformation();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        
+        String nyttOmråde = "SELECT benamning from omrade";
+        ArrayList<String> omradeArrayList = new ArrayList<>();
+        int nyPlats = 0;
+
+        try {
+            omradeArrayList = idb.fetchColumn(nyttOmråde);
+        } catch (InfException ettUndantag) {
+            JOptionPane.showMessageDialog(null, "Ett fel uppstod med databasen");
+            System.out.println("Internt felmedellande" + ettUndantag);
+        }
+        Object[] omradeArray = omradeArrayList.toArray();
+        String valtOmrade = (String) JOptionPane.showInputDialog(null, "På vilken ny plats ska agenten arbeta i?", "Välj plats..", JOptionPane.QUESTION_MESSAGE, null, omradeArray, omradeArray[0]);
+
+        try {
+            String platsNamn = valtOmrade;
+            String platsIDFraga = "SELECT Omrades_ID FROM omrade WHERE benamning ='" + platsNamn + "'";
+
+            String charPlats = idb.fetchSingle(platsIDFraga);
+
+            nyPlats = Integer.parseInt(charPlats);
+        } catch (InfException ettE) {
+            JOptionPane.showMessageDialog(null, "platsen finns ej med i databasen. Vänligen pröva ett annat");
+            System.out.println("Internt fel" + ettE);
+        }
+        try {
+            idb.update("Update agent SET omrade ='" + nyPlats + "' where namn ='" + agentNamn + "'");
+        } catch (InfException ettE) {
+            JOptionPane.showMessageDialog(null, "Kunde inte uppdatera området");
+            System.out.println("Internt fel" + ettE);
+        }
+        fyllInformation();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
