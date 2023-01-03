@@ -127,7 +127,7 @@ public class Validering {
      * @param agentNamn
      * @return boolean true om Agentens namn är administratör
      */
-    public boolean checkAdmin(String agentNamn) {
+    public static boolean checkAdmin(String agentNamn) {
 
         String adminstatus = "N";
         boolean arAdmin = false;
