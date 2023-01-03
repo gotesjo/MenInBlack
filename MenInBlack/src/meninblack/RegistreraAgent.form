@@ -119,16 +119,25 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Agentnamn"/>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTNamnMousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTLosen">
       <Properties>
         <Property name="text" type="java.lang.String" value="L&#xf6;senord"/>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTLosenMousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTTelefon">
       <Properties>
         <Property name="text" type="java.lang.String" value="Telefonnummer"/>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTTelefonMousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="jCOmrade">
       <Properties>

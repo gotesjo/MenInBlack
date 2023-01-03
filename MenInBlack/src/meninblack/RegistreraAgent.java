@@ -73,10 +73,25 @@ public class RegistreraAgent extends javax.swing.JFrame {
         jLtitel.setText("Registrera ny Agent");
 
         jTNamn.setText("Agentnamn");
+        jTNamn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTNamnMousePressed(evt);
+            }
+        });
 
         jTLosen.setText("Lösenord");
+        jTLosen.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTLosenMousePressed(evt);
+            }
+        });
 
         jTTelefon.setText("Telefonnummer");
+        jTTelefon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTTelefonMousePressed(evt);
+            }
+        });
 
         jLabel1.setText("Jobbar inom område:");
 
@@ -169,7 +184,54 @@ public class RegistreraAgent extends javax.swing.JFrame {
     private void jBRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRegActionPerformed
         // TODO add your handling code here:
         setAgentInfo();
+        
+        //Kontrollerar så att användarnamnet är unikt
+        while(Validering.finnsUsernameiDB(namn)){
+        
+        namn = javax.swing.JOptionPane.showInputDialog("Mata in ett annat namn");
+    }
+        
+       //När agentinfon är satt så formuleras en string för databasen      
+       String fraga2 = "INSERT INTO mibdb.agent (Agent_ID, Namn, Telefon, Anstallningsdatum, Administrator, Losenord, Omrade) VALUES ("+aid+", '"+namn+"', '"+telefon+"', '"+regDatum+"', '"+admin+"', '"+losenord+"', "+omrade+")";
+                
+        //Gör registreringen via en sql fråga
+        try{
+            idb.insert(fraga2);
+            
+        } catch(InfException e){
+            javax.swing.JOptionPane.showMessageDialog(null, "Fel i Databasfråga");
+            System.out.println("Kunde inte lägga till Agenten till databasen" + e.getMessage());
+            
+        }
+         
+         //Stänger ner rutan
+         dispose();
     }//GEN-LAST:event_jBRegActionPerformed
+
+    private void jTNamnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTNamnMousePressed
+// Tömmer namnrutan första gången man ska börja skriva
+
+        if (jTNamn.getText().equals("Namn")) {
+            jTNamn.setText("");
+        }
+    }//GEN-LAST:event_jTNamnMousePressed
+
+    private void jTLosenMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTLosenMousePressed
+        // Tömmer lösenordsrutan första gången man ska börja skriva
+
+        if (jTLosen.getText().equals("Lösenord")) {
+            jTLosen.setText("");
+        }
+    }//GEN-LAST:event_jTLosenMousePressed
+
+    private void jTTelefonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTTelefonMousePressed
+     // Tömmer Telefonrutan första gången man ska börja skriva
+        
+        if(jTTelefon.getText().equals("Telefonnummer"))
+            {
+                jTTelefon.setText("");
+            } 
+    }//GEN-LAST:event_jTTelefonMousePressed
 
     
     private void fyllOmradeCB() {
