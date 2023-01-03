@@ -325,7 +325,9 @@ public class RegistreraAlien extends javax.swing.JFrame {
     //Fyller klassens fält med information ifrån användarens inmatning
     private void setAlienInfo(){
         
-        namn = jTFNamn.getText();
+        //Sätter ett namn godkänt för Databasen
+        namn = Validering.returGodkäntNamn(jTFNamn.getText());
+       
         losenord = jTFLosenord.getText();
         telefon = jTFTelefon.getText();
         regDatum = jTextDate.getText();

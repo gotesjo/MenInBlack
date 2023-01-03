@@ -30,7 +30,8 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
         initComponents();
         
         this.idb = idb;
-        this.alienNamn = alienNamn;
+        this.alienNamn =  Validering.returGodkäntNamn(alienNamn);
+        
         
         
         fyllInfoOmAlien();
@@ -243,6 +244,9 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
         // Ändrar namnet emot ett nytt valt unikt namn
         String prevNamn = alienNamn;
         String newNamn = JOptionPane.showInputDialog("Vad vill du ange som namn istället?\nMåste vara unikt" );
+        
+        // Gör om namnet till ett namn som är godkänt för databasen
+        newNamn = Validering.returGodkäntNamn(newNamn);
         
         if(!Validering.finnsUsernameiDB(newNamn)){
             try{

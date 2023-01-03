@@ -4,6 +4,8 @@
  */
 package meninblack;
 
+import static java.awt.image.ImageObserver.HEIGHT;
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -147,4 +149,62 @@ public class Validering {
         return arAdmin;
     }
     
+    /**
+     * Retunerar en sträng som har rätt format för databasen Ger stora bokstäver
+     * på alla versaler
+     *
+     * @param namn värdet på det Namn som ska retuneras
+     * @return Strin
+     */
+    public static String returGodkäntNamn(String namn) {
+
+        // Gör om namn till en charArray med alla täcken i Stringen
+        char[] charArray = namn.trim().toCharArray();
+        boolean foundSpace = true;
+
+        for (int i = 0; i < charArray.length; i++) {
+
+            //Kontrollerar ifall tecknet är en bokstav
+            if (Character.isLetter(charArray[i])) {
+
+                //Kontrollerar ifall det är tomrum innan bokstaven
+                if (foundSpace) {
+
+                    // ändrar så att bokstaven blir stor
+                    charArray[i] = Character.toUpperCase(charArray[i]);
+                    foundSpace = false;
+                }
+            } else {
+                //ifall den nya tecknet inte är ett tecken
+                foundSpace = true;
+            }
+        }
+
+        // Konverterar char Array till en String
+        String nyttNamn = String.valueOf(charArray);
+
+        return nyttNamn;
+    }
+    
+    /**
+     * Metoden kontrollerar ifall ett namn är korrekt utifrån satt regural expression
+     * @param namn ett namn som ska användas som användarnamn eller Namn i någon av tabellerna i databasen
+     * @return true om namnet är godkänt utifrån satt regural expression för systemet
+     */
+    public static boolean isNamnGodkant(String namn){
+        String nyttNamn = namn;
+        
+        String valdRegex = "^[A-Z](?=.{1,20}$)[A-Za-z]*(?:\\h+[A-Z][A-Za-z]*)*$";
+        
+        return nyttNamn.matches(valdRegex);
+    }
+    
+    public static boolean isTelefonnummer(String telenr) {
+        // Regex för att kolla ifall det är ett nummer
+        String regex = "\\d+{1,20}";
+        
+        return telenr.matches(regex);
+    }
+    
 }
+

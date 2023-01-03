@@ -255,7 +255,9 @@ public class RegistreraAgent extends javax.swing.JFrame {
      //Fyller klassens fält med information ifrån användarens inmatning
     private void setAgentInfo(){
         
-        namn = jTNamn.getText();
+        //Gör om namnet så det är korrekt för databasen
+        namn = Validering.returGodkäntNamn(jTNamn.getText());
+        
         losenord = jTLosen.getText();
         telefon = jTTelefon.getText();
         regDatum = jTDate.getText();

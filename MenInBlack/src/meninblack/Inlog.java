@@ -234,28 +234,34 @@ public class Inlog extends javax.swing.JFrame {
     private boolean kollaAgentLosenord() {
         inloggad = false;
         
-        
-        try {
-            String anvandarnamn = txtbUserName.getText();
-            String fraga = "Select losenord from agent where namn='" + anvandarnamn + "'";
-            svar = idb.fetchSingle(fraga);
-            resultat = svar;
+        if (Validering.isNamnGodkant(txtbUserName.getText())) {
 
-        } catch (InfException E) {
-            JOptionPane.showMessageDialog(null, "Fel förfan");
-            System.out.println("Internt Felmeddelande" + E.getMessage());
-        } catch (Exception Undantag) {
-            JOptionPane.showMessageDialog(null, "Något är lurt");
-            System.out.println("Internt Felmeddelande" + Undantag.getMessage());
+            try {
+                String anvandarnamn = txtbUserName.getText();
+                String fraga = "Select losenord from agent where namn='" + anvandarnamn + "'";
+                svar = idb.fetchSingle(fraga);
+                resultat = svar;
+
+            } catch (InfException E) {
+                JOptionPane.showMessageDialog(null, "Fel förfan");
+                System.out.println("Internt Felmeddelande" + E.getMessage());
+            } catch (Exception Undantag) {
+                JOptionPane.showMessageDialog(null, "Något är lurt");
+                System.out.println("Internt Felmeddelande" + Undantag.getMessage());
+            }
+
+            if (resultat == null) {
+                inloggad = false;
+            } else if (resultat.equals(txtbLosenord.getText())) {
+                inloggad = true;
+            }
         }
-        
-        if(resultat == null) {
-            inloggad = false;
-        }
-        else if (resultat.equals(txtbLosenord.getText())) {
-            inloggad = true;
+        else {
+            
+            JOptionPane.showMessageDialog(null, "Användarnamnet är inte godkänt");
         }
         return inloggad;
+
 
     }
     
