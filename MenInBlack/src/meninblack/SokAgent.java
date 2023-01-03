@@ -206,7 +206,7 @@ public class SokAgent extends javax.swing.JFrame {
                 }
             } catch (InfException ettUndantag) {
                 JOptionPane.showMessageDialog(null, "DATABASFEL");
-                System.out.println("Internt meddelande" + ettUndantag);
+                System.out.println("Internt meddelande" + ettUndantag.getMessage());
             }
             // Uppdaterar sidan med den infon du valt. 
             fyllInformation();
@@ -222,7 +222,7 @@ public class SokAgent extends javax.swing.JFrame {
             idb.update("UPDATE agent SET anstallningsdatum'" + nyttDatum + "' where namn like '" + agentNamn + "'");
         } catch (InfException ettUndantag) {
             JOptionPane.showMessageDialog(null, "Detta datum kunde ej uppdateras");
-            System.out.println("Ett fel uppstod med databasen" + ettUndantag);
+            System.out.println("Ett fel uppstod med databasen" + ettUndantag.getMessage());
         }
         fyllInformation();
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -251,13 +251,13 @@ public class SokAgent extends javax.swing.JFrame {
             nyPlats = Integer.parseInt(charPlats);
         } catch (InfException ettE) {
             JOptionPane.showMessageDialog(null, "platsen finns ej med i databasen. Vänligen pröva ett annat");
-            System.out.println("Internt fel" + ettE);
+            System.out.println("Internt fel" + ettE.getMessage());
         }
         try {
             idb.update("Update agent SET omrade ='" + nyPlats + "' where namn ='" + agentNamn + "'");
         } catch (InfException ettE) {
             JOptionPane.showMessageDialog(null, "Kunde inte uppdatera området");
-            System.out.println("Internt fel" + ettE);
+            System.out.println("Internt fel" + ettE.getMessage());
         }
         fyllInformation();
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -270,7 +270,7 @@ public class SokAgent extends javax.swing.JFrame {
             idb.update("UPDATE agent SET Telefon='" + nyttNummer + "' where namn like '" + agentNamn + "'");
         } catch (InfException ettUndantag) {
             JOptionPane.showMessageDialog(null, "Detta nummer kunde inte uppdateras");
-            System.out.println("Fel när numret skulle uppdateras");
+            System.out.println("Fel när numret skulle uppdateras" + ettUndantag.getMessage());
         }
         // Uppdaterar sidan med det nya numret.
         fyllInformation();
@@ -299,7 +299,7 @@ public class SokAgent extends javax.swing.JFrame {
             pid = Integer.parseInt(CharID);
         } catch(InfException ettUndantag) {
             JOptionPane.showMessageDialog(null, "Något gick fel med databasen");
-            System.out.println("internt meddelande" + ettUndantag);
+            System.out.println("internt meddelande" + ettUndantag.getMessage());
         }
     }
     

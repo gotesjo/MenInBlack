@@ -174,6 +174,7 @@ public class AdminSida extends javax.swing.JFrame {
     }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        new RegistreraAgent(idb).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -220,10 +221,11 @@ public class AdminSida extends javax.swing.JFrame {
        String exAgent = JOptionPane.showInputDialog("Vilken agent har du använt din neuralyzer på?");
        String nyAnsvarig = JOptionPane.showInputDialog("Vilken agent ska ta över ansvaret för alla Aliens? Det kan inte vara samma Agent som ska neuraliserar");
        try {
+           idb.update("update ");
            idb.delete("DELETE * FROM agent WHERE namn ='" +exAgent+"'");
        } catch (InfException ettE) {
            JOptionPane.showMessageDialog(null, "Denna agent finns ej med i databasen. Har du redan använt din neuralyzer på agenten?");
-           System.out.println("Internt fel" + ettE); 
+           System.out.println("Internt fel" + ettE.getMessage()); 
        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
