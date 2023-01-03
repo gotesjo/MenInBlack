@@ -120,4 +120,31 @@ public class Validering {
         
     }
     
+    
+    /**
+     * Kontrollerar ifall en agent har Administratörsstatus i databasen
+     * 
+     * @param agentNamn
+     * @return boolean true om Agentens namn är administratör
+     */
+    private boolean checkAdmin(String agentNamn) {
+
+        String adminstatus = "N";
+        boolean arAdmin = false;
+
+        try {
+            String namnet = agentNamn;
+            String frågan = "SELECT Administrator FROM Agent WHERE Namn like '" + namnet + "'";
+            adminstatus = idb.fetchSingle(frågan);
+
+        } catch (InfException ettUndantag) {
+            System.out.println("Problem med kontroll av admin" + ettUndantag);
+        }
+        if (adminstatus.equals("J")) {
+            arAdmin = true;
+        }
+
+        return arAdmin;
+    }
+    
 }

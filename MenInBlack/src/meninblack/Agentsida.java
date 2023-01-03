@@ -350,7 +350,7 @@ public class Agentsida extends javax.swing.JFrame {
     private void hittaOmradesChef(String omrade) {
         
         String sqlChefFraga = "SELECT Namn From Agent JOIN Omradeschef ON Omradeschef.Agent_ID=Agent.Agent_ID JOIN Omrade ON Omrade.Omrades_ID=Omradeschef.Omrade Where Benamning like '"+omrade+"'";
-        String chefNamn = "Området har ingen Områdeschef... Kontakta administratör för att åtgärda felet";
+        String chefNamn = "";
        
         //Hämtar en Områdeschef från databasen för det område som skickades med som parameter
         try {
