@@ -1,5 +1,6 @@
 package meninblack;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
@@ -50,13 +51,13 @@ public class Agentsida extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jBListaAliens = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jLabelValkommen = new javax.swing.JLabel();
         jLAgent = new javax.swing.JLabel();
         jButton8 = new javax.swing.JButton();
+        jBChef = new javax.swing.JButton();
         jMenub = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
@@ -70,7 +71,7 @@ public class Agentsida extends javax.swing.JFrame {
         jLabel1.setText("Personligt");
 
         jLabel2.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
-        jLabel2.setText("Hantera Aliens");
+        jLabel2.setText("Aliens");
 
         jButton1.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
         jButton1.setText("Registrera Ny Alien");
@@ -89,18 +90,10 @@ public class Agentsida extends javax.swing.JFrame {
         });
 
         jButton3.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
-        jButton3.setText("Ändra en alien");
+        jButton3.setText("Hantera Aliens");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
-            }
-        });
-
-        jButton4.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
-        jButton4.setText("Sök Info");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
             }
         });
 
@@ -142,6 +135,14 @@ public class Agentsida extends javax.swing.JFrame {
             }
         });
 
+        jBChef.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
+        jBChef.setText("Se områdeschef");
+        jBChef.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBChefActionPerformed(evt);
+            }
+        });
+
         jMenu1.setText("Gå till administratörssidan");
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -164,24 +165,26 @@ public class Agentsida extends javax.swing.JFrame {
                     .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel1)
-                        .addComponent(jLabelValkommen)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 208, Short.MAX_VALUE)
+                    .addComponent(jLabelValkommen)
+                    .addComponent(jBChef, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBListaAliens, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton7)
-                .addGap(308, 308, 308))
+                .addGap(47, 47, 47))
             .addGroup(layout.createSequentialGroup()
-                .addGap(259, 259, 259)
-                .addComponent(labelTitel)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(259, 259, 259)
+                        .addComponent(labelTitel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(311, 311, 311)
+                        .addComponent(jButton7))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(119, 119, 119)
+                        .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -190,33 +193,33 @@ public class Agentsida extends javax.swing.JFrame {
                 .addGap(46, 46, 46)
                 .addComponent(labelTitel)
                 .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelValkommen)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLAgent)
+                .addGap(43, 43, 43)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton6)
+                            .addComponent(jButton1))
                         .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabelValkommen)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLAgent)
-                        .addGap(58, 58, 58)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton6)
-                    .addComponent(jBListaAliens, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(53, 53, 53)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton8)
-                    .addComponent(jButton4))
-                .addGap(55, 55, 55)
+                    .addComponent(jButton3))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBChef)
+                    .addComponent(jBListaAliens, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(jButton7)
-                .addGap(33, 33, 33))
+                .addGap(35, 35, 35))
         );
 
         pack();
@@ -249,23 +252,17 @@ public class Agentsida extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // När man trycker på "ändra Alien"
         
-       String alienNamn = JOptionPane.showInputDialog(null, "Ange namn på den Alien du vill ändra", "Ändra en alien", HEIGHT);
-       String namn = alienNamn;
+       String alienNamn = JOptionPane.showInputDialog(null, "Ange namn på den Alien du vill veta mer om", "Ändra en alien", HEIGHT);
        
-       if(Validering.finnsUsernameiDB(alienNamn)){ 
+       if(Validering.isUsernameAlien(alienNamn)){ 
            
-            new UppdateraEnAlien(idb,namn).setVisible(true);
+            new UppdateraEnAlien(idb,alienNamn).setVisible(true);
             
        }else {
            JOptionPane.showMessageDialog(null, "Användaren finns inte i databasen");
        
        }
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        new SokInfo(idb).setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jMenu1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MousePressed
         // TODO add your handling code here:
@@ -298,6 +295,31 @@ public class Agentsida extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton8ActionPerformed
 
+    //Knapp för att se områdeschef för valt område
+    private void jBChefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBChefActionPerformed
+        
+        String sqlOmradeFraga = "SELECT Benamning From Omrade";
+        String valdOmrade = "";
+        
+        try{
+            Object[] omradeArray = idb.fetchColumn(sqlOmradeFraga).toArray();
+            
+            valdOmrade = (String)JOptionPane.showInputDialog( null, "För vilket område vill du se områdeschefen?", "Välj...",
+                                        JOptionPane.QUESTION_MESSAGE, 
+                                        null, 
+                                        omradeArray,
+                                        omradeArray[ 0 ] );
+       
+        } catch(InfException e) {
+            JOptionPane.showMessageDialog(null, "FEL MED DATABASEN");
+            System.out.println("FEL när man skulle hämta hem Områden från databasen " + e);
+        }
+        
+        hittaOmradesChef(valdOmrade);
+        
+        
+    }//GEN-LAST:event_jBChefActionPerformed
+
     
     // Fyller agentsidan med text som ska anpassas efter användaren
     private void fyllSida(){
@@ -323,13 +345,31 @@ public class Agentsida extends javax.swing.JFrame {
         } 
     }
     
+    //Hittar områdeschefen för ett valt område.
+    //Tar en String som parameter
+    private void hittaOmradesChef(String omrade) {
+        
+        String sqlChefFraga = "SELECT Namn From Agent JOIN Omradeschef ON Omradeschef.Agent_ID=Agent.Agent_ID JOIN Omrade ON Omrade.Omrades_ID=Omradeschef.Omrade Where Benamning like '"+omrade+"'";
+        String chefNamn = "Området har ingen Områdeschef... Kontakta administratör för att åtgärda felet";
+       
+        //Hämtar en Områdeschef från databasen för det område som skickades med som parameter
+        try {
+            chefNamn = idb.fetchSingle(sqlChefFraga);
+        } catch(InfException e) {
+            
+            System.out.println("FEL när man skulle hämta Områdeschef från databasen " + e);
+        }
+        
+         JOptionPane.showMessageDialog(null, "Områdeschefen är: " + chefNamn);
+    }
+    
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBChef;
     private javax.swing.JButton jBListaAliens;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
