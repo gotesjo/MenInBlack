@@ -17,9 +17,6 @@ import javax.swing.JOptionPane;
 public class ListaAllaAliens extends javax.swing.JFrame {
 
     private static InfDB idb; 
-    private String valdPlats;
-    private ArrayList<HashMap<String, String>> resultat;
-    private ArrayList<HashMap<String, String>> svar;
 
 
     /**
@@ -28,7 +25,11 @@ public class ListaAllaAliens extends javax.swing.JFrame {
     public ListaAllaAliens(InfDB idb) {
         initComponents();
         this.idb = idb;
+        
+        
         fyllJComboPlats();
+        fyllComboRas();
+        
     }
 
     /**
@@ -42,68 +43,183 @@ public class ListaAllaAliens extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        dateChooserStart = new com.raven.datechooser.DateChooser();
+        dateChooserEnd = new com.raven.datechooser.DateChooser();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTArea = new javax.swing.JTextArea();
-        jcbNY = new javax.swing.JComboBox<>();
+        jCBplats = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        jBSokPlats = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jBSokRas = new javax.swing.JButton();
+        jCBRas = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jBSokDate = new javax.swing.JButton();
+        jTFStart = new javax.swing.JTextField();
+        jTFSlut = new javax.swing.JTextField();
+        jBClose = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
+        dateChooserStart.setDateFormat("yyyy-MM-dd");
+        dateChooserStart.setTextRefernce(jTFStart);
+
+        dateChooserEnd.setDateFormat("yyyy-MM-dd");
+        dateChooserEnd.setTextRefernce(jTFSlut);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jLabel1.setText("I vilket område vill du söka i? ");
+        jLabel1.setText("Sök info om Aliens ");
 
         jTArea.setColumns(20);
         jTArea.setRows(5);
         jScrollPane2.setViewportView(jTArea);
 
-        jcbNY.addActionListener(new java.awt.event.ActionListener() {
+        jCBplats.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbNYActionPerformed(evt);
+                jCBplatsActionPerformed(evt);
             }
         });
+
+        jLabel2.setText("Välj vad du vill söka information på");
+
+        jBSokPlats.setText("Sök");
+        jBSokPlats.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSokPlatsActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Plats");
+
+        jLabel4.setText("Startdatum");
+
+        jBSokRas.setText("Sök");
+        jBSokRas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSokRasActionPerformed(evt);
+            }
+        });
+
+        jCBRas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBRasActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Ras");
+
+        jLabel6.setText("Slutdatum");
+
+        jBSokDate.setText("Sök");
+        jBSokDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSokDateActionPerformed(evt);
+            }
+        });
+
+        jBClose.setText("Stäng");
+        jBClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCloseActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Helvetica Neue", 2, 10)); // NOI18N
+        jLabel7.setText("Det går enbart att söka på en preferens åt gången");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jcbNY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(63, 63, 63)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(24, Short.MAX_VALUE))
+                        .addComponent(jLabel2)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jCBRas, 0, 115, Short.MAX_VALUE)
+                                    .addComponent(jCBplats, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jTFStart)
+                                    .addComponent(jTFSlut))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jBSokRas)
+                                    .addComponent(jBSokPlats)
+                                    .addComponent(jBSokDate, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel7))
+                        .addGap(0, 21, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(220, 220, 220)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(273, 273, 273)
+                        .addComponent(jBClose)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jcbNY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(29, Short.MAX_VALUE))
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jCBplats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCBRas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTFStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel6))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jBSokPlats)
+                                .addGap(35, 35, 35)
+                                .addComponent(jBSokRas)
+                                .addGap(70, 70, 70)
+                                .addComponent(jBSokDate)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTFSlut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(jBClose)
+                .addGap(32, 32, 32))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void SkrivTillBox() {
-        //for( enAlien : svar) {
-            
-       // }
-    }
     
     private void fyllJComboPlats() {
         String fråga = "select benamning from plats";
@@ -115,7 +231,7 @@ public class ListaAllaAliens extends javax.swing.JFrame {
             allaPlatser = idb.fetchColumn(fråga);
             
             for(String enPlats : allaPlatser) {
-                jcbNY.addItem(enPlats);
+                jCBplats.addItem(enPlats);
             }
         } catch (InfException ettUndantag) {
             JOptionPane.showMessageDialog(null, "Det blev ett fel");
@@ -125,71 +241,155 @@ public class ListaAllaAliens extends javax.swing.JFrame {
             System.out.println("Intern meddelande" + ettUndantag.getMessage());
         }
     }
-    private void jcbNYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbNYActionPerformed
+    
+    //Fyller Comboboxen med det raser som finns
+    private void fyllComboRas(){
+        
+        //Det olika raser som ska finnas att välja på
+        String[] rasArray =  { "Squid", "Boglodite", "Worm" };
+        
+        for(String enRas : rasArray) {
+            jCBRas.addItem(enRas);
+        } 
+    }
+    
+    
+    
+    private void jCBplatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBplatsActionPerformed
+        // TODO add your handling code here
+    }//GEN-LAST:event_jCBplatsActionPerformed
+
+    //Sök Aliens på plats
+    private void jBSokPlatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSokPlatsActionPerformed
         // TODO add your handling code here:
+        
         jTArea.setText("");
 
         ArrayList<HashMap<String, String>> soktaAliens;
 
         try {
-            String valdPlats = jcbNY.getSelectedItem().toString();
-            String fråga = "SELECT * from alien join plats on plats_ID = plats where benamning='" + valdPlats + "'";
-            soktaAliens = idb.fetchRows(fråga);
+            String valdPlats = jCBplats.getSelectedItem().toString();
+            
+            //Formulerar SQL fråga för att hämta valda kolumner för platssökningen
+            String fraga = "SELECT Alien_ID, Alien.telefon, Alien.Namn from alien join plats on plats_ID = plats where benamning='"+valdPlats+"'";
+            soktaAliens = idb.fetchRows(fraga);
 
             for (HashMap<String, String> alien : soktaAliens) {
-                jTArea.append(alien.get("Alien_ID") + "\t");
-                jTArea.append(" " + alien.get("Namn") + "\t");
-                jTArea.append(" " + alien.get("Ansvarig_Agent") + "\t");
-                jTArea.append(" " + alien.get("Telefon") + "\t");
-                jTArea.append(" " + alien.get("Registreringsdatum") + "\n");
+                jTArea.append(" Namn: " + alien.get("Namn") + "    ");
+                jTArea.append(" Telefon: " + alien.get("Telefon") + "    ");
+                jTArea.append(" Alien_ID: "+ alien.get("Alien_ID") + "\n");
             }
         } catch (InfException ettUndantag) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
             System.out.println("Internt meddelande" + ettUndantag.getMessage());
+        } 
+    }//GEN-LAST:event_jBSokPlatsActionPerformed
 
-    }//GEN-LAST:event_jcbNYActionPerformed
-    }
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+    //Sök på vald Ras
+    private void jBSokRasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSokRasActionPerformed
+        
+        String enRas = jCBRas.getSelectedItem().toString();
+        
+        jTArea.setText("");
+
+        ArrayList<HashMap<String, String>> soktaAliens;
+        
+        
+        
+        String fragaBoglodite = "SELECT Namn, telefon, alien.Alien_ID from Alien JOIN Boglodite ON Boglodite.Alien_ID=Alien.Alien_ID;";
+        String fragaSquid = "SELECT Namn, telefon, alien.Alien_ID from Alien JOIN Squid ON Squid.Alien_ID=Alien.Alien_ID";
+        String fragaWorm = "SELECT Namn, telefon, alien.Alien_ID from Alien JOIN Worm ON Worm.Alien_ID=Alien.Alien_ID";
+        
+        //Hämtar hem det kolumner som från den tabell som är vald
+        //Lägger till i arraylisten soktaAliens
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+            switch (enRas) {
+                case "Boglodite" ->
+                    soktaAliens = idb.fetchRows(fragaBoglodite);
+                case "Squid" ->
+                    soktaAliens = idb.fetchRows(fragaSquid);
+                case "Worm" ->
+                    soktaAliens = idb.fetchRows(fragaWorm);
+                default -> soktaAliens = new ArrayList<>();
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListaAllaAliens.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListaAllaAliens.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListaAllaAliens.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListaAllaAliens.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ListaAllaAliens(idb).setVisible(true);
+            //Skriver ut Arraylisten till fönstret jTArea
+            for (HashMap<String, String> alien : soktaAliens) {
+                jTArea.append(" Namn: " + alien.get("Namn") + "    ");
+                jTArea.append(" Telefon: " + alien.get("Telefon") + "    ");
+                jTArea.append(" Alien_ID: " + alien.get("Alien_ID") + "\n");
+
             }
-        });
-    }
+            //Fångar upp eventuella felmeddelanden   
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Fel i databasen när det skulle hämtas hem raser");
+            System.out.println("FEL när man skulle hämta hem ras ifrån databasen " + e);
+        }
+  
+    }//GEN-LAST:event_jBSokRasActionPerformed
+
+    private void jCBRasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBRasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCBRasActionPerformed
+
+    //Sök mellan två registreringsdatum
+    private void jBSokDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSokDateActionPerformed
+        
+        jTArea.setText("");
+
+        ArrayList<HashMap<String, String>> soktaAliens;
+        
+        String storreAn = jTFStart.getText();
+        String mindreAn = jTFSlut.getText();
+        
+        //Formulering av sql Fråga
+        String sqlFragaDate = "SELECT Namn, telefon, alien.Alien_ID from Alien WHERE Registreringsdatum > '"+storreAn+"' AND Registreringsdatum < '"+mindreAn+"'";
+        
+        try {
+            //Hämtar hem Aliens från databasen efter  formulerad fråga
+            soktaAliens = idb.fetchRows(sqlFragaDate);
+
+            for (HashMap<String, String> alien : soktaAliens) {
+                jTArea.append(" Namn: " + alien.get("Namn") + "    ");
+                jTArea.append(" Telefon: " + alien.get("Telefon") + "    ");
+                jTArea.append(" Alien_ID: "+ alien.get("Alien_ID") + "\n");
+            }
+        } catch (InfException ettUndantag) {
+            JOptionPane.showMessageDialog(null, "Något gick fel");
+            System.out.println("Internt meddelande" + ettUndantag.getMessage());
+        } 
+        
+        
+    }//GEN-LAST:event_jBSokDateActionPerformed
+
+    //Stänger ner fönstret
+    private void jBCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCloseActionPerformed
+       dispose();
+    }//GEN-LAST:event_jBCloseActionPerformed
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.raven.datechooser.DateChooser dateChooserEnd;
+    private com.raven.datechooser.DateChooser dateChooserStart;
+    private javax.swing.JButton jBClose;
+    private javax.swing.JButton jBSokDate;
+    private javax.swing.JButton jBSokPlats;
+    private javax.swing.JButton jBSokRas;
+    private javax.swing.JComboBox<String> jCBRas;
+    private javax.swing.JComboBox<String> jCBplats;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTArea;
+    private javax.swing.JTextField jTFSlut;
+    private javax.swing.JTextField jTFStart;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JComboBox<String> jcbNY;
     // End of variables declaration//GEN-END:variables
 }
