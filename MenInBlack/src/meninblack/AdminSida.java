@@ -76,7 +76,7 @@ public class AdminSida extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Eliminera Agent");
+        jButton4.setText("Neuralisera Agent");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -112,7 +112,7 @@ public class AdminSida extends javax.swing.JFrame {
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 191, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel3)
@@ -197,7 +197,7 @@ public class AdminSida extends javax.swing.JFrame {
                 } } }
             
                 if (valdAdmin.equals("Ta bort status")) {
-                    String bortAdmin = JOptionPane.showInputDialog( "Vilken agent vill du ta bprt adminstatus ifrån");
+                    String bortAdmin = JOptionPane.showInputDialog( "Vilken agent vill du ta bort adminstatus ifrån");
                     if (!Validering.checkAdmin(bortAdmin)) {
                         JOptionPane.showMessageDialog(null, "Denna agent har ingen adminstatus");
                     } else {
@@ -217,6 +217,14 @@ public class AdminSida extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+       String exAgent = JOptionPane.showInputDialog("Vilken agent har du använt din neuralyzer på?");
+       String nyAnsvarig = JOptionPane.showInputDialog("Vilken agent ska ta över ansvaret för alla Aliens? Det kan inte vara samma Agent som ska neuraliserar");
+       try {
+           idb.delete("DELETE * FROM agent WHERE namn ='" +exAgent+"'");
+       } catch (InfException ettE) {
+           JOptionPane.showMessageDialog(null, "Denna agent finns ej med i databasen. Har du redan använt din neuralyzer på agenten?");
+           System.out.println("Internt fel" + ettE); 
+       }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
