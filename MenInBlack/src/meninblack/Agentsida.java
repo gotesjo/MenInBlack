@@ -29,9 +29,13 @@ public class Agentsida extends javax.swing.JFrame {
         this.user = user;
         
         
+        //Kontrollerar ifall agenten som loggat in även är berättigad till Administratörssidan
+        //Anväder valideringsklassen för att göra kontrollen
         jMenub.setVisible(false);
-        checkAdmin();
-       
+        if(Validering.checkAdmin(user.getUsername())) {
+            jMenub.setVisible(true);
+        }
+        
       
         fyllSida();
     }
@@ -323,26 +327,8 @@ public class Agentsida extends javax.swing.JFrame {
     
     // Fyller agentsidan med text som ska anpassas efter användaren
     private void fyllSida(){
-        jLAgent.setText(user.getUsername());
+        jLAgent.setText(user.getUsername());   
         
-    }
-    
-
-    private void checkAdmin(){
-        
-        String adminstatus = "N";
-        
-        try {
-        String namnet = user.getUsername();
-        String frågan = "SELECT Administrator FROM Agent WHERE Namn like '"+namnet+"'";
-        adminstatus = idb.fetchSingle(frågan);
-        
-        } catch (InfException ettUndantag) {
-            System.out.println("Problem med kontroll av admin" + ettUndantag);
-        }
-        if(adminstatus.equals("J")) {
-            jMenub.setVisible(true);
-        } 
     }
     
     //Hittar områdeschefen för ett valt område.
@@ -360,7 +346,15 @@ public class Agentsida extends javax.swing.JFrame {
             System.out.println("FEL när man skulle hämta Områdeschef från databasen " + e);
         }
         
-         JOptionPane.showMessageDialog(null, "Områdeschefen är: " + chefNamn);
+        
+        //Kontrollerar ifall namnet på chefen är null. I sådana fall skriver den ut en annan text
+        if (chefNamn.equals("null")) {
+            JOptionPane.showMessageDialog(null, "Finns ingen områdeschef för området.\nKontakta Administratör för att rätta till felet");
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Områdeschefen är: " + chefNamn);
+        }
+        
     }
     
    
