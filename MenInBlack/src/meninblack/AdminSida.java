@@ -194,10 +194,10 @@ public class AdminSida extends javax.swing.JFrame {
                 } catch (InfException ettE) {
                     JOptionPane.showMessageDialog(null, "Ett fel uppstod när du försökte ge ny status");
                     System.out.println("Internt fel" + ettE);
-                } }
+                } } }
             
                 if (valdAdmin.equals("Ta bort status")) {
-                    String bortAdmin = JOptionPane.showInputDialog(null, "Vilken agent vill du ta bprt adminstatus ifrån");
+                    String bortAdmin = JOptionPane.showInputDialog( "Vilken agent vill du ta bprt adminstatus ifrån");
                     if (!Validering.checkAdmin(bortAdmin)) {
                         JOptionPane.showMessageDialog(null, "Denna agent har ingen adminstatus");
                     } else {
@@ -211,7 +211,7 @@ public class AdminSida extends javax.swing.JFrame {
 
                 }
 
-        }
+        
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
