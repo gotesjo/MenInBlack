@@ -18,7 +18,7 @@ public class Inlog extends javax.swing.JFrame {
     private InfDB idb;
     private String svar;
     private String resultat;
-    private boolean inloggad = false;
+    private boolean inloggad;
     private String vald; 
     private String alienSvar;
     private String alienResultat;
@@ -35,6 +35,14 @@ public class Inlog extends javax.swing.JFrame {
     public Inlog(InfDB idb) {
         initComponents();
         this.idb = idb;
+        
+        inloggad = false;
+        svar = " ";
+        resultat = " ";
+        vald = " ";
+        alienSvar = " ";
+        alienResultat = " ";
+        
     }
 
     /**
@@ -224,10 +232,13 @@ public class Inlog extends javax.swing.JFrame {
      * vilket ändrar värdet på booleanen 'inloggad' till true om så är fallet. 
      */ 
     private boolean kollaAgentLosenord() {
+        inloggad = false;
+        
+        
         try {
-            String användarnamn = txtbUserName.getText();
-            String fråga = "Select losenord from agent where namn='" + användarnamn + "'";
-            svar = idb.fetchSingle(fråga);
+            String anvandarnamn = txtbUserName.getText();
+            String fraga = "Select losenord from agent where namn='" + anvandarnamn + "'";
+            svar = idb.fetchSingle(fraga);
             resultat = svar;
 
         } catch (InfException E) {
@@ -236,9 +247,12 @@ public class Inlog extends javax.swing.JFrame {
         } catch (Exception Undantag) {
             JOptionPane.showMessageDialog(null, "Något är lurt");
             System.out.println("Internt Felmeddelande" + Undantag.getMessage());
-
         }
-        if (resultat.equals(txtbLosenord.getText())) {
+        
+        if(resultat == null) {
+            inloggad = false;
+        }
+        else if (resultat.equals(txtbLosenord.getText())) {
             inloggad = true;
         }
         return inloggad;
@@ -249,10 +263,12 @@ public class Inlog extends javax.swing.JFrame {
     
     
     private boolean kollaAlienLosenord() {
+        inloggad = false;
+        
         try {
             String alienNamn = txtbUserName.getText();
-            String alienFråga = "select losenord from alien where namn ='" + alienNamn + "'";
-            alienSvar = idb.fetchSingle(alienFråga);
+            String alienFraga = "select losenord from alien where namn ='" + alienNamn + "'";
+            alienSvar = idb.fetchSingle(alienFraga);
             alienResultat = alienSvar;
         } catch (InfException Ex) {
             JOptionPane.showMessageDialog(null, "Fel");
@@ -260,9 +276,14 @@ public class Inlog extends javax.swing.JFrame {
         } catch (Exception EUndantag) {
             JOptionPane.showMessageDialog(null, "Fel, pröva igen");
         }
-        if (alienResultat.equals(txtbLosenord.getText())) {
+        
+        if(alienResultat == null) {
+            inloggad = false;
+        }
+        else if (alienResultat.equals(txtbLosenord.getText())) {
             inloggad = true;
         }
+        
         return inloggad;
     }
     
