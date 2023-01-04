@@ -361,6 +361,45 @@ public class Agentsida extends javax.swing.JFrame {
         
     }
     
+    
+    
+    private void taBortAgent() {
+
+        String agentDelete = JOptionPane.showInputDialog(null, "Ange namn på den Alien du vill veta mer om", "Ändra en alien", HEIGHT);
+
+        //Ber användaren mata in ett namn 
+        //Kontrollerar även så det är ett godkänt namn
+        while (!Validering.isTom(agentDelete) && !Validering.IsUsernameAgent(agentDelete)) {
+            agentDelete = JOptionPane.showInputDialog(null, "Ange namn på den Agent du vill ta bort", "Ta bort en agent...", HEIGHT);
+        }
+        
+        String deleteAID = "";
+        String sqlfragaValdAgent = "SELECT Agent_ID FROM Agent where Namn = '"+agentDelete+"'";
+        
+        //Hämtar hem Agent_ID för agenten som ska tas bort
+        try {
+            deleteAID = idb.fetchSingle(sqlfragaValdAgent);
+            
+        } catch (InfException e) {
+            System.out.println("Fel när man ska hämta AgentID för agenten som ska tas bort" + e);
+        }
+        
+        String sqlfragaHarAliens = "Select Namn from Alien WHERE Agent_ID = '"+deleteAID+"'";
+        ArrayList<String> agentensAliens = new ArrayList<>();
+        
+        try{
+            
+            agentensAliens = idb.fetchColumn(sqlfragaHarAliens);
+        }
+        catch (InfException e){
+            System.out.println("Fel när man ska hämta  för agenten som ska tas bort" + e);
+            
+        }
+        
+        
+        
+
+    }
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
