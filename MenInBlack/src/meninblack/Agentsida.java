@@ -350,6 +350,61 @@ public class Agentsida extends javax.swing.JFrame {
         }
         
     }
+    
+    private void taBortAlien (){
+        //Ber användaren mata in ett namn 
+        String alienDelete;
+        alienDelete = JOptionPane.showInputDialog(null, "Ange namn på den Alien du vill ta bort", "Ta bort en Alien...", HEIGHT);
+
+        //Kontrollerar även så det är ett godkänt namn
+        while (!Validering.isTom(alienDelete) && !Validering.IsUsernameAgent(alienDelete)) {
+            alienDelete = JOptionPane.showInputDialog(null, "Ange namn på den Alien du vill ta bort", "Ta bort en Alien...", HEIGHT);
+        }
+
+        String deleteAID = "";
+        String sqlfragaValdA = "SELECT Alien_ID FROM Alien where Namn = '" + alienDelete + "'";
+
+        //Hämtar hem Alien_ID för Alien som ska tas bort
+        try {
+            deleteAID = idb.fetchSingle(sqlfragaValdA);
+
+        } catch (InfException e) {
+            System.out.println("Fel när man ska hämta Alien_ID för Alien som ska tas bort" + e);
+        }
+
+        //Lägger till det tabeller som Alien_ID ska tas bort ifrån
+        ArrayList<String> tabeller = new ArrayList<>();
+        tabeller.add("Worm");
+        tabeller.add("Boglodite");
+        tabeller.add("Squid");
+        
+        //tar bort agenten från alla tabeller där Agent_ID är foreign key
+        for (String enTabell : tabeller) {
+            try {
+                String taBortFranTabell = "DELETE FROM " + enTabell + " WHERE Alien_ID = " + deleteAID;
+                idb.delete(taBortFranTabell);
+
+            } catch (InfException e) {
+            }
+        }
+
+        //Tar bort agenten Användaren valde från början
+        try {
+            String sqlDelete = "DELETE FROM mibdb.alien WHERE Alien_ID = " + deleteAID;
+            idb.delete(sqlDelete);
+
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Kunde inte ta bort Alien");
+            System.out.println("alien gick inte att ta bort" + e.getMessage());
+        }
+
+        //Kollar ifall agenten har taigits bort eller ej
+        if (!Validering.isUsernameAlien(alienDelete)) {
+            JOptionPane.showMessageDialog(null, "Nu har " + alienDelete + " tagits bort ur databasen");
+        } else {
+            JOptionPane.showMessageDialog(null, "Alien har inte tagits bort");
+        }
+    }
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
