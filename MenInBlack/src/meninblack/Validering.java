@@ -188,23 +188,50 @@ public class Validering {
     
     /**
      * Metoden kontrollerar ifall ett namn är korrekt utifrån satt regural expression
+     * Namn måste börja med stor bokstav och varje nytt ord måste vara stort.
+     * Max 19 tecken.
      * @param namn ett namn som ska användas som användarnamn eller Namn i någon av tabellerna i databasen
      * @return true om namnet är godkänt utifrån satt regural expression för systemet
      */
     public static boolean isNamnGodkant(String namn){
         String nyttNamn = namn;
         
-        String valdRegex = "^[A-Z](?=.{1,20}$)[A-Za-z]*(?:\\h+[A-Z][A-Za-z]*)*$";
-        
-        return nyttNamn.matches(valdRegex);
+        String valdRegex = "[A-Z][a-zA-Z]{1,19}( [A-Z][a-zA-Z]{1,19})?";
+//        boolean godkäntNamn = nyttNamn.matches(valdRegex);
+
+         boolean godkäntNamn = true;
+
+        if(godkäntNamn && nyttNamn.length() < 20){
+            godkäntNamn = true;
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Användarnamnet är fel.\nDet får max innehålla 20 tecken och bara vara bokstäver");
+            
+        }
+        System.out.println(godkäntNamn);
+        return godkäntNamn;
     }
     
     public static boolean isTelefonnummer(String telenr) {
         // Regex för att kolla ifall det är ett nummer
-        String regex = "\\d+{1,20}";
+         String regex = "^[0-9]{1,30}$";
         
         return telenr.matches(regex);
     }
+    
+//        public static boolean validLosen(String telenr) {
+//        // Regex för att kolla ifall det är ett nummer
+//         String regex = "^[0-9]{1,30}$";
+//         
+//         boolean godkänt = telenr.matches(regex);
+//        
+//         //Skriver ut en uppmaning till användaren för att
+//         if(!godkänt){
+//             JOptionPane.showMessageDialog(null, "Lösenordet är för långt. Får max innehålla 6 tecken");
+//         }
+//         
+//        return 
+//    }
     
 }
 
