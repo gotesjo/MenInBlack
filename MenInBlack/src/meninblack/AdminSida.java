@@ -267,7 +267,10 @@ public class AdminSida extends javax.swing.JFrame {
                                         omradeArray[ 0 ] );
        
         if(valdAdmin.equals("Götaland")) {
-            String chefGota = "Select agent.namn from agent join omradeschef on Agent.Agent_ID = omradeschef.Agent_ID join omrade on omradeschef.omrade = omrade.omrades_ID where benamning = 'Götaland'";
+            String gotaFraga = "Select agent.namn from agent join omradeschef on Agent.Agent_ID = omradeschef.Agent_ID join omrade on omradeschef.omrade = omrade.omrades_ID where benamning = 'Götaland'";
+            
+            try {
+            String chefGota = idb.fetchSingle(gotaFraga);
 
             JOptionPane.showMessageDialog(null, "Chef över detta område är'"+chefGota+"'");
 
@@ -278,10 +281,12 @@ public class AdminSida extends javax.swing.JFrame {
            //} catch (InfException ettE) {
                //JOptionPane.showMessageDialog(null, "Det har uppstått ett fel med databasen");
                //System.out.println("internt fel" + ettE);
+           } catch(InfException ettE) {
+               JOptionPane.showMessageDialog(null, "Det finns ingen chef för detta område");
            }
     
     
-           
+        }
     }//GEN-LAST:event_jButton5ActionPerformed
     
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
