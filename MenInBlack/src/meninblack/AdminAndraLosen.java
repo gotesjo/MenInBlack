@@ -19,18 +19,25 @@ public class AdminAndraLosen extends javax.swing.JFrame {
     //Klassens fält
     private InfDB idb;
     private User user;
-    private InfException e;
-    private String oldPass;
     private String newPass;
     private String kontrollPass;
+    String alienNamn;
+    
+    
     
     /**
      * Creates new form AndraLosen
      */
-    public AdminAndraLosen(InfDB idb, User user) {
+    public AdminAndraLosen(InfDB idb, User user, String alienNamn) {
         initComponents();
         this.idb = idb;
         this.user = user;
+        
+       
+        
+        
+        
+        
         
     }
 
@@ -44,15 +51,12 @@ public class AdminAndraLosen extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        gamLosen = new javax.swing.JLabel();
         nyttLosen = new javax.swing.JLabel();
-        jPFG = new javax.swing.JPasswordField();
         jPFN = new javax.swing.JPasswordField();
         jButtonOk = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jPFK = new javax.swing.JPasswordField();
         jlblB = new javax.swing.JLabel();
-        jlblG = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -61,18 +65,8 @@ public class AdminAndraLosen extends javax.swing.JFrame {
         jLabel1.setText("Ändra lösenord");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 55, -1, -1));
 
-        gamLosen.setText("Gammalt lösenor");
-        getContentPane().add(gamLosen, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 109, -1, -1));
-
         nyttLosen.setText("Nytt lösenord");
         getContentPane().add(nyttLosen, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 166, -1, -1));
-
-        jPFG.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPFGActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jPFG, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 106, 210, -1));
 
         jPFN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,55 +96,31 @@ public class AdminAndraLosen extends javax.swing.JFrame {
         jlblB.setForeground(new java.awt.Color(255, 0, 0));
         getContentPane().add(jlblB, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 240, 220, 20));
 
-        jlblG.setForeground(new java.awt.Color(255, 0, 0));
-        getContentPane().add(jlblG, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 135, 220, 20));
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    private void jPFGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPFGActionPerformed
         
-    }//GEN-LAST:event_jPFGActionPerformed
-    
-    //Kollar om det gammla lösenordet stämmer och om det nya lösenordet stämmer med bekräfta 
+    //Om det nya lösenordet stämmer med bekräfta 
     //lösenord, om detta stämmer kommer det ett meddelande som bekräftar detta och lösenordet ändras.
     //Annars visas ett felmeddelande på skärmen beronde på vad felet är. 
     private void jButtonOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOkActionPerformed
         
+        String aNamn = alienNamn;
         
         try
         {
-            
-        String sqlFraga1 = "select losenord from agent where agent.namn = '" + user.getUsername() + "'" + "union select losenord from alien where alien.namn = '" + user.getUsername() + "'";
-        String alienSvar = idb.fetchSingle(sqlFraga1);
-        String alienResultat = alienSvar;
-        
-        oldPass = jPFG.getText();
+          
         newPass = jPFN.getText();
         kontrollPass = jPFK.getText();
-                
-        if(oldPass.equals(alienResultat))
+             
+        if(Validering.isUsernameAlien(aNamn) && Validering.isNamnGodkant(aNamn))
         {
             
             if(newPass.equals(kontrollPass) && Validering.validLosen(newPass))
             {
-            
-            String anv;
-            
-            if(Validering.isUsernameAlien(user.getUsername()))
-            {
-                anv = "Alien";
-            }
-            else
-            {
-                anv = "Agent";
-            }
-            
-            idb.update("Update "+anv+" set Losenord = '"+newPass+"' where namn = '"+user.getUsername()+"'");
+
+            idb.update("Update Alien set Losenord = '"+newPass+"' where namn = '"+aNamn+"'");
             
             JOptionPane.showMessageDialog(null, "Lösenord ändrat");
-            
-            
             }
             else
             {
@@ -159,19 +129,13 @@ public class AdminAndraLosen extends javax.swing.JFrame {
             }
                     
         }
-        else
-        {
-            jlblG.setText("Gammalt lösenord matchar ej!");
-            jPFG.requestFocus();
-        }
-        }
         
-        
+        }
         catch(InfException e)
         {
             JOptionPane.showMessageDialog(null, "Fel lösenord!" + e);
             
-        } 
+        }
     }//GEN-LAST:event_jButtonOkActionPerformed
 
     
@@ -183,19 +147,16 @@ public class AdminAndraLosen extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jPFKActionPerformed
 
-    
+ 
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel gamLosen;
     private javax.swing.JButton jButtonOk;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPasswordField jPFG;
     private javax.swing.JPasswordField jPFK;
     private javax.swing.JPasswordField jPFN;
     private javax.swing.JLabel jlblB;
-    private javax.swing.JLabel jlblG;
     private javax.swing.JLabel nyttLosen;
     // End of variables declaration//GEN-END:variables
 }

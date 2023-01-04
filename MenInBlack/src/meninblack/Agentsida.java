@@ -283,7 +283,7 @@ public class Agentsida extends javax.swing.JFrame {
 
         if (Validering.isUsernameAlien(alienNamn) && Validering.isNamnGodkant(alienNamn)) {
 
-            new UppdateraEnAlien(idb, alienNamn).setVisible(true);
+            new UppdateraEnAlien(idb, alienNamn,user).setVisible(true);
 
         } else {
             JOptionPane.showMessageDialog(null, "Alien finns inte i databasen");

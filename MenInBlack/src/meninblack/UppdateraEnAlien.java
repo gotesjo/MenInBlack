@@ -19,24 +19,27 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
     private String alienNamn;
     private int aid;
     private String ras;
-    
+    User user;
     
     
 
     /**
      * Creates new form RegistreraAlien
      */
-    public UppdateraEnAlien(InfDB idb, String alienNamn) {
+    public UppdateraEnAlien(InfDB idb, String alienNamn, User user) {
         initComponents();
         
         this.idb = idb;
         this.alienNamn =  Validering.returGodkäntNamn(alienNamn);
+        this.user = user;
         
-        
-        
+        jlblLosenord.setVisible(false);
+        if(Validering.checkAdmin(user.getUsername())) {
+            jlblLosenord.setVisible(true);
+        }
         fyllInfoOmAlien();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -64,6 +67,7 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
         jLras = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jBras = new javax.swing.JButton();
+        jlblLosenord = new javax.swing.JButton();
 
         jPasswordField1.setText("jPasswordField1");
 
@@ -141,6 +145,13 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
             }
         });
 
+        jlblLosenord.setText("Ändra Lösen");
+        jlblLosenord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jlblLosenordActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -152,18 +163,23 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(45, 45, 45)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(jlblLosenord)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jBstang)
+                                .addGap(26, 26, 26))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLAgent)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jBAAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
                                     .addComponent(jLnamn))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jBnamn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7)
                                     .addComponent(jLPlats)
@@ -173,18 +189,14 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jBplats, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jBras, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
                                     .addComponent(jLnummer))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
                                 .addComponent(jBnummer, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING))))
+                            .addComponent(jLabel9))))
                 .addGap(0, 33, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jBstang)
-                .addGap(153, 153, 153))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,7 +234,9 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
                     .addComponent(jBAAgent)
                     .addComponent(jLAgent))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addComponent(jBstang)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBstang)
+                    .addComponent(jlblLosenord))
                 .addGap(17, 17, 17))
         );
 
@@ -421,6 +435,13 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jBAAgentActionPerformed
 
+    private void jlblLosenordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jlblLosenordActionPerformed
+        // Tar dig till adminAndraLosen om du har adminstatus
+        new AdminAndraLosen(idb, user, alienNamn).setVisible(true);
+        
+         
+    }//GEN-LAST:event_jlblLosenordActionPerformed
+    
     //Fyller på med information om vald Alien
     private void fyllInfoOmAlien(){
         
@@ -595,5 +616,6 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
     private javax.swing.JLabel jLnummer;
     private javax.swing.JLabel jLras;
     private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JButton jlblLosenord;
     // End of variables declaration//GEN-END:variables
 }
