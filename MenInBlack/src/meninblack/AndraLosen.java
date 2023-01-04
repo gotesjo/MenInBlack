@@ -132,7 +132,7 @@ public class AndraLosen extends javax.swing.JFrame {
         if(oldPass.equals(alienResultat))
         {
             
-            if(newPass.equals(kontrollPass))
+            if(newPass.equals(kontrollPass) && Validering.validLosen(newPass))
             {
             
             String anv;
