@@ -150,6 +150,7 @@ public class AndraLosen extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(null, "Lösenord ändrat");
             
+            dispose();
             
             }
             else
@@ -165,6 +166,7 @@ public class AndraLosen extends javax.swing.JFrame {
             jPFG.requestFocus();
         }
         }
+        
         
         
         catch(InfException e)

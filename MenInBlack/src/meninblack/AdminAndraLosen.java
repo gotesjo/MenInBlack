@@ -33,7 +33,7 @@ public class AdminAndraLosen extends javax.swing.JFrame {
         this.idb = idb;
         this.user = user;
         
-       
+        this.alienNamn = alienNamn;
         
         
         
@@ -99,12 +99,13 @@ public class AdminAndraLosen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
         
-    //Om det nya lösenordet stämmer med bekräfta 
-    //lösenord, om detta stämmer kommer det ett meddelande som bekräftar detta och lösenordet ändras.
-    //Annars visas ett felmeddelande på skärmen beronde på vad felet är. 
+    //Om det nya lösenordet stämmer med bekräftat lösenord 
+    //så kommer det ett meddelande som bekräftar detta och lösenordet ändras.
+    //Annars visas ett felmeddelande på skärmen beronde på vad felet är.
+    //samt en validering som kollar om lösenordet är godkänt.
     private void jButtonOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOkActionPerformed
         
-        String aNamn = alienNamn;
+        
         
         try
         {
@@ -112,15 +113,17 @@ public class AdminAndraLosen extends javax.swing.JFrame {
         newPass = jPFN.getText();
         kontrollPass = jPFK.getText();
              
-        if(Validering.isUsernameAlien(aNamn) && Validering.isNamnGodkant(aNamn))
-        {
+        
             
             if(newPass.equals(kontrollPass) && Validering.validLosen(newPass))
             {
 
-            idb.update("Update Alien set Losenord = '"+newPass+"' where namn = '"+aNamn+"'");
+            idb.update("Update Alien set Losenord = '"+newPass+"' where namn = '"+alienNamn+"'");
             
             JOptionPane.showMessageDialog(null, "Lösenord ändrat");
+            
+            dispose();
+            
             }
             else
             {
@@ -129,13 +132,15 @@ public class AdminAndraLosen extends javax.swing.JFrame {
             }
                     
         }
-        
-        }
+   
         catch(InfException e)
         {
             JOptionPane.showMessageDialog(null, "Fel lösenord!" + e);
             
         }
+        
+        
+        
     }//GEN-LAST:event_jButtonOkActionPerformed
 
     
