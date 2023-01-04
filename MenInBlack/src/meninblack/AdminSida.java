@@ -337,7 +337,7 @@ public class AdminSida extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Denna agent finns inte med i databasen. Vänligen testa en annan agent");
                 }
                 try {
-                    idb.update("update omradeschef set omradeschef.`Agent_ID` = (select agent.agent_ID from agent where namn ='" +nyChefNorr+ "')where omradeschef.`Agent_ID` =(select agent.agent_ID from agent where namn ='" +norrFraga+"'");
+                    idb.update("UPDATE Omradeschef set Omradeschef.`Agent_ID` = (select agent.agent_ID from agent where namn ='"+chefNy+"') WHERE Omradeschef.`Agent_ID` = (select agent.agent_ID from agent where namn ='"+chefNorr+"')");
                 } catch (InfException ettE) {
                     JOptionPane.showMessageDialog(null, "ett fel har uppstått med databasen");
                     System.out.println("Internt fel" + ettE);
