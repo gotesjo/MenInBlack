@@ -183,6 +183,7 @@ public class AlienSida extends javax.swing.JFrame {
 
     private void jBLUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLUActionPerformed
         dispose();
+        System.exit(0);
     }//GEN-LAST:event_jBLUActionPerformed
     //skickar användaren till sin email och matar in din områdeschefs emial.
     private void jlblEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jlblEmailActionPerformed
