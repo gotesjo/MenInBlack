@@ -4,8 +4,10 @@
  */
 package meninblack;
 
+import static java.awt.image.ImageObserver.HEIGHT;
 import java.util.ArrayList;
 import java.util.Calendar;
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -114,7 +116,7 @@ public class RegistreraFordon extends javax.swing.JFrame {
                 .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jComBYear, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTBeskrivning, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
+                    .addComponent(jTBeskrivning)
                     .addComponent(jTFordonID)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
@@ -194,9 +196,16 @@ public class RegistreraFordon extends javax.swing.JFrame {
      String fbenmn = jTBeskrivning.getText();
      int arsmodell = Integer.parseInt(jComBYear.getSelectedItem().toString());
      String regDate = jTFDate.getText();
+     boolean running = true;
      
      
-     // Checka så att ID är ifyllt och korrekt
+        // Checka så att ID är ifyllt och korrekt
+        while (running) {
+            if (fID == null || fID.length() > 7) {
+                fID = JOptionPane.showInputDialog(null, "Du behöver ange ett fordons ID\nFår max vara 6 tecken och måste vara  unik!", "Välj ett godkänt ID", HEIGHT);
+                running = false;
+            }
+        }
      
      
      
@@ -210,11 +219,10 @@ public class RegistreraFordon extends javax.swing.JFrame {
      } catch(InfException e) {
         javax.swing.JOptionPane.showMessageDialog(null, "Problem med databasen. Kunde inte lägga till fordon");
         System.out.println("Kunde inte lägga till fordon" + e.getMessage());
-        
-        
-        //Stänger ner fönstret när ett fordon har lagts till
-        dispose();
      }
+     
+     //Stänger ner fönstret när ett fordon har lagts till
+        dispose();
     }//GEN-LAST:event_jBLaggTillActionPerformed
 
     
