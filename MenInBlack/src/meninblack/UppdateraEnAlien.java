@@ -395,9 +395,9 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
         try{
             
             String agentnamn = valdAgent;
-            String platsIDFraga = "SELECT Agent_ID FROM Agent WHERE Namn like '"+agentnamn+"'";
+            String agentIDFraga = "SELECT Agent_ID FROM Agent WHERE Namn like '"+agentnamn+"'";
             
-            String charAgent = idb.fetchSingle(platsIDFraga);
+            String charAgent = idb.fetchSingle(agentIDFraga);
             
             nyAgent = Integer.parseInt(charAgent);
             

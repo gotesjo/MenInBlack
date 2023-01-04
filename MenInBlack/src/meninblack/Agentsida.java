@@ -62,6 +62,7 @@ public class Agentsida extends javax.swing.JFrame {
         jLAgent = new javax.swing.JLabel();
         jButton8 = new javax.swing.JButton();
         jBChef = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jMenub = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
@@ -147,6 +148,13 @@ public class Agentsida extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         jMenu1.setText("Gå till administratörssidan");
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -171,13 +179,18 @@ public class Agentsida extends javax.swing.JFrame {
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelValkommen)
                     .addComponent(jBChef, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jBListaAliens, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jBListaAliens, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(47, 47, 47))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addGap(204, 204, 204))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -194,13 +207,19 @@ public class Agentsida extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(labelTitel)
-                .addGap(31, 31, 31)
-                .addComponent(jLabelValkommen)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLAgent)
-                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(labelTitel)
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabelValkommen)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLAgent)
+                        .addGap(43, 43, 43))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton2)
+                        .addGap(55, 55, 55)))
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -328,6 +347,11 @@ public class Agentsida extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jBChefActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        taBortAgent();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     
     // Fyller agentsidan med text som ska anpassas efter användaren
     private void fyllSida(){
@@ -365,39 +389,136 @@ public class Agentsida extends javax.swing.JFrame {
     
     private void taBortAgent() {
 
-        String agentDelete = JOptionPane.showInputDialog(null, "Ange namn på den Alien du vill veta mer om", "Ändra en alien", HEIGHT);
-
         //Ber användaren mata in ett namn 
+        String agentDelete;
+        agentDelete = JOptionPane.showInputDialog(null, "Ange namn på den Agent du vill ta bort", "Ta bort en agent...", HEIGHT);
+
         //Kontrollerar även så det är ett godkänt namn
         while (!Validering.isTom(agentDelete) && !Validering.IsUsernameAgent(agentDelete)) {
             agentDelete = JOptionPane.showInputDialog(null, "Ange namn på den Agent du vill ta bort", "Ta bort en agent...", HEIGHT);
         }
-        
+
         String deleteAID = "";
-        String sqlfragaValdAgent = "SELECT Agent_ID FROM Agent where Namn = '"+agentDelete+"'";
+        String sqlfragaValdAgent = "SELECT Agent_ID FROM Agent where Namn = '" + agentDelete + "'";
+
+        
         
         //Hämtar hem Agent_ID för agenten som ska tas bort
         try {
             deleteAID = idb.fetchSingle(sqlfragaValdAgent);
-            
+
         } catch (InfException e) {
             System.out.println("Fel när man ska hämta AgentID för agenten som ska tas bort" + e);
         }
-        
-        String sqlfragaHarAliens = "Select Namn from Alien WHERE Agent_ID = '"+deleteAID+"'";
+
+        String sqlfragaHarAliens = "Select Namn from Alien WHERE Ansvarig_agent = " + deleteAID;
         ArrayList<String> agentensAliens = new ArrayList<>();
-        
-        try{
-            
+
+        try {
+
             agentensAliens = idb.fetchColumn(sqlfragaHarAliens);
+        } catch (InfException e) {
+            System.out.println("Fel när man ska hämta Aliens som agenten ansvarar för" + e);
+
         }
-        catch (InfException e){
-            System.out.println("Fel när man ska hämta  för agenten som ska tas bort" + e);
-            
+
+        
+        
+        //Kod för att Välja en ny Ansvarig Agent. FLytta till metod
+        //Checkar ifall agenten har några andra ansvarsområden
+        if (!agentensAliens.isEmpty()) {
+
+            String agentfraga = "Select Namn FROM Agent";
+            ArrayList<String> agentArrayList = new ArrayList<>();
+            int nyAgent = 0;
+
+            //Hämtar hem det agenter som finns som Agent i databasen
+            try {
+                agentArrayList = idb.fetchColumn(agentfraga);
+
+            } catch (InfException e) {
+                JOptionPane.showMessageDialog(null, "FEL MED DATABASEN");
+                System.out.println("FEL när man skulle hämta hem agenter från databasen " + e);
+            }
+
+            Object[] agentArray = agentArrayList.toArray();
+            String valdAgent = (String) JOptionPane.showInputDialog(null, "Den agent du vill ta bort ansvarar för Aliens\nVänligen välj en annan agent som ska ta över ansvaret!", "Välj Agent...",
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    agentArray,
+                    agentArray[0]);
+
+            try {
+
+                String agentnamn = valdAgent;
+                String agentIDFraga = "SELECT Agent_ID FROM Agent WHERE Namn like '" + agentnamn + "'";
+
+                String charAgent = idb.fetchSingle(agentIDFraga);
+
+                nyAgent = Integer.parseInt(charAgent);
+
+            } catch (InfException e) {
+                JOptionPane.showMessageDialog(null, "Agenten fanns inte i databasen");
+                System.out.println("Kunde inte hämta vald agent" + e.getMessage());
+
+            }
+
+            //Uppdaterar ansvarig agent för det aliens som han hade.
+            for (String enAlien : agentensAliens) {
+                try {
+                    idb.update("Update Alien SET Ansvarig_Agent='" + nyAgent + "' Where Namn='" + enAlien + "'");
+
+                } catch (InfException e) {
+                    JOptionPane.showMessageDialog(null, "kunde inte uppdatera Ansvarig Agent");
+                    System.out.println("Kunde inte uppdatera vald Ansvarig_Agent" + e.getMessage());
+                }
+            }
+
         }
+
         
         
         
+        //Hämtar hem de tabeller Agent_ID är forgein Key in
+        String sqltabeller = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE REFERENCED_TABLE_NAME = 'Agent' AND REFERENCED_COLUMN_NAME = 'Agent_ID'";
+        ArrayList<String> tabeller = new ArrayList<>();
+        try {
+            tabeller = idb.fetchColumn(sqltabeller);
+
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Problem med att kolla vart Agenten finns på fler platser i databasen");
+            System.out.println("Kunde inte hämta tabeller" + e.getMessage());
+        }
+
+        //tar bort agenten från alla tabeller där Agent_ID är foreign key
+        for (String enTabell : tabeller) {
+            try {
+                String taBortFranTabell = "DELETE FROM " + enTabell + " WHERE Agent_ID = " + deleteAID;
+                idb.delete(taBortFranTabell);
+
+            } catch (InfException e) {          
+            }
+        }
+
+        
+        
+        
+        //Tar bort agenten Användaren valde från början
+        try {
+            String sqlDelete = "DELETE FROM mibdb.agent WHERE Agent_ID = " + deleteAID;
+            idb.delete(sqlDelete);
+
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Kunde inte ta bort Agenten");
+            System.out.println("Agenten gick inte att ta bort" + e.getMessage());
+        }
+
+        //Kollar ifall agenten har taigits bort eller ej
+        if (!Validering.IsUsernameAgent(agentDelete)) {
+            JOptionPane.showMessageDialog(null, "Nu har " + agentDelete + " tagits bort ur databasen");
+        } else {
+            JOptionPane.showMessageDialog(null, "Agenten har inte tagits bort");
+        }
 
     }
    
@@ -406,6 +527,7 @@ public class Agentsida extends javax.swing.JFrame {
     private javax.swing.JButton jBChef;
     private javax.swing.JButton jBListaAliens;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
