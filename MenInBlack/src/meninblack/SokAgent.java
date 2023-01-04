@@ -54,7 +54,6 @@ public class SokAgent extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         jButton5.setText("jButton5");
@@ -110,8 +109,6 @@ public class SokAgent extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setText("Ändra Status");
-
         jButton2.setText("Ändra Nummer");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,7 +143,6 @@ public class SokAgent extends javax.swing.JFrame {
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
-                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(35, 35, 35))
         );
@@ -182,10 +178,8 @@ public class SokAgent extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLStatusAgent)
-                    .addComponent(jButton6))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addComponent(jLStatusAgent)
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         pack();
@@ -342,7 +336,6 @@ public class SokAgent extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLAnsvarigAgent;
     private javax.swing.JLabel jLDatumAgent;
     private javax.swing.JLabel jLNamnAgent;
