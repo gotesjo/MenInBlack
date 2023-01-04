@@ -232,6 +232,25 @@ public class Validering {
 //         
 //        return 
 //    }
-    
+    private static boolean checkaAnsvarig(String agentNamn) {
+        
+        String ansvarigStatus = null;
+        boolean arAnsvarig = false;
+        
+        try { 
+            String ansvarigNamn = agentNamn; 
+            String fraga = "select alien.`Namn` from alien join agent on Ansvarig_Agent = agent.`Agent_ID` where agent.`Namn` ='" +ansvarigNamn+"'";
+            ansvarigStatus = idb.fetchSingle(fraga);
+        } catch (InfException ettE) {
+            System.out.println("Internt fel" + ettE);
+        } 
+        if (ansvarigStatus != null) {
+            arAnsvarig = true;
+        }
+        return arAnsvarig;
+    }
 }
+
+    
+
 
