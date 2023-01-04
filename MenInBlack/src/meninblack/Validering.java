@@ -196,20 +196,18 @@ public class Validering {
     public static boolean isNamnGodkant(String namn){
         String nyttNamn = namn;
         
-        String valdRegex = "[A-Z][a-zA-Z]{1,19}( [A-Z][a-zA-Z]{1,19})?";
-//        boolean godkäntNamn = nyttNamn.matches(valdRegex);
+        String valdRegex = "^[A-Z](?=.{1,29}$)[A-Za-z]*(?:\\h+[A-Z][A-Za-z]*)*$";
+        boolean godkantNamn = nyttNamn.matches(valdRegex);
 
-         boolean godkäntNamn = true;
-
-        if(godkäntNamn && nyttNamn.length() < 20){
-            godkäntNamn = true;
+        if(godkantNamn && nyttNamn.length() < 20){
+            godkantNamn = true;
         }
         else{
             JOptionPane.showMessageDialog(null, "Användarnamnet är fel.\nDet får max innehålla 20 tecken och bara vara bokstäver");
             
         }
-        System.out.println(godkäntNamn);
-        return godkäntNamn;
+        System.out.println(godkantNamn);
+        return godkantNamn;
     }
     
     public static boolean isTelefonnummer(String telenr) {
@@ -219,19 +217,25 @@ public class Validering {
         return telenr.matches(regex);
     }
     
-//        public static boolean validLosen(String telenr) {
-//        // Regex för att kolla ifall det är ett nummer
-//         String regex = "^[0-9]{1,30}$";
-//         
-//         boolean godkänt = telenr.matches(regex);
-//        
-//         //Skriver ut en uppmaning till användaren för att
-//         if(!godkänt){
-//             JOptionPane.showMessageDialog(null, "Lösenordet är för långt. Får max innehålla 6 tecken");
-//         }
-//         
-//        return 
-//    }
+    /**
+     * Checkar om valt lösenord är godkänt
+     * 
+     * @param losen Sträng med det lösenordet som ska checkas
+     * @return true om lösenordet är godkänt
+     */
+    public static boolean validLosen(String losen) {
+        boolean godkant = false;
+
+        //Skriver ut en uppmaning till användaren för att
+        if (losen.length() < 7 && (!" ".equals(losen))) {
+            godkant = true;
+        } else {
+            JOptionPane.showMessageDialog(null, "Lösenordet är för långt. Får max innehålla 6 tecken");
+        }
+
+        return godkant;
+    }
+        
     private static boolean checkaAnsvarig(String agentNamn) {
         
         String ansvarigStatus = null;

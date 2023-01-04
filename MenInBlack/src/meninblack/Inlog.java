@@ -42,7 +42,6 @@ public class Inlog extends javax.swing.JFrame {
         vald = " ";
         alienSvar = " ";
         alienResultat = " ";
-        
     }
 
     /**
@@ -235,7 +234,7 @@ public class Inlog extends javax.swing.JFrame {
         inloggad = false;
         String anvandarnamn = txtbUserName.getText();
         
-//        if (Validering.isNamnGodkant(anvandarnamn)) {
+        if (Validering.isNamnGodkant(anvandarnamn)) {
             try {
                 
                 String fraga = "Select losenord from agent where namn='" + anvandarnamn + "'";
@@ -255,12 +254,9 @@ public class Inlog extends javax.swing.JFrame {
             } else if (resultat.equals(txtbLosenord.getText())) {
                 inloggad = true;
             }
-//        }
-//        else {
-//            JOptionPane.showMessageDialog(null, "Användarnamnet är inte godkänt");
-//        }
-        return inloggad;
+        }
 
+        return inloggad;
 
     }
     
@@ -269,47 +265,32 @@ public class Inlog extends javax.swing.JFrame {
     
     private boolean kollaAlienLosenord() {
         inloggad = false;
+        String alienNamn = txtbUserName.getText();
 
-        try {
-            String alienNamn = txtbUserName.getText();
-            String alienFraga = "select losenord from alien where namn ='" + alienNamn + "'";
-            alienSvar = idb.fetchSingle(alienFraga);
-            alienResultat = alienSvar;
+        if (Validering.isNamnGodkant(alienNamn)) {
+            try {
+                
+                String alienFraga = "select losenord from alien where namn ='" + alienNamn + "'";
+                alienSvar = idb.fetchSingle(alienFraga);
+                alienResultat = alienSvar;
 
-        } catch (InfException Ex) {
-            JOptionPane.showMessageDialog(null, "Fel");
-            System.out.println("Internt Felmeddelande" + Ex.getMessage());
-        } catch (Exception EUndantag) {
-            JOptionPane.showMessageDialog(null, "Fel, pröva igen");
+            } catch (InfException Ex) {
+                JOptionPane.showMessageDialog(null, "Fel");
+                System.out.println("Internt Felmeddelande" + Ex.getMessage());
+            } catch (Exception EUndantag) {
+                JOptionPane.showMessageDialog(null, "Fel, pröva igen");
+            }
+
+            if (alienResultat == null) {
+                inloggad = false;
+            } else if (alienResultat.equals(txtbLosenord.getText())) {
+                inloggad = true;
+            }
         }
-
-        if (alienResultat == null) {
-            inloggad = false;
-        } else if (alienResultat.equals(txtbLosenord.getText())) {
-            inloggad = true;
-        }
-
+        
         return inloggad;
     }
     
-//    private boolean KollaAdminLosenord() {
-//        try {
-//            String adminNamn = txtbUserName.getText();
-//            String adminFråga = "Select losenord from agent where namn ='" + adminNamn + "and administrator ='J'" ;
-//            adminSvar = idb.fetchSingle(adminFråga);
-//            adminResultat = adminSvar; 
-//        } catch (InfException ettUndantag) {
-//            JOptionPane.showMessageDialog(null, "Fel lösenord, eller ingen adminstatus");
-//            System.out.println("Internt meddelande" + ettUndantag.getMessage());
-//        } catch (Exception ettUndantag) {
-//                  JOptionPane.showMessageDialog(null, "Fel, pröva igen");           
-//        }
-//        if (adminResultat.equals(txtbLosenord.getText())) {
-//            inloggad = true;
-//        }
-//        return inloggad;
-//    }
-
 
     
     private void checkaComboBox() {
