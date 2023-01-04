@@ -65,8 +65,10 @@ public class RegistreraAgent extends javax.swing.JFrame {
         jTDate = new javax.swing.JTextField();
         jBIdag = new javax.swing.JButton();
         jBReg = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         dateChooser1.setDateFormat("yyyy-MM-dd");
+        dateChooser1.setTextRefernce(jTDate);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -104,6 +106,11 @@ public class RegistreraAgent extends javax.swing.JFrame {
         jLabel2.setText("Administratörstatus");
 
         jBIdag.setText("Idag");
+        jBIdag.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBIdagActionPerformed(evt);
+            }
+        });
 
         jBReg.setText("Registrera");
         jBReg.addActionListener(new java.awt.event.ActionListener() {
@@ -111,6 +118,8 @@ public class RegistreraAgent extends javax.swing.JFrame {
                 jBRegActionPerformed(evt);
             }
         });
+
+        jLabel3.setText("Anställningsdatum");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -129,11 +138,12 @@ public class RegistreraAgent extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jRBJa)
                     .addComponent(jLabel2)
-                    .addComponent(jRBNej)
+                    .addComponent(jLabel3)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jTDate, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBIdag)))
+                        .addComponent(jBIdag))
+                    .addComponent(jRBNej))
                 .addContainerGap(38, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -157,18 +167,22 @@ public class RegistreraAgent extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jTLosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jTTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCOmrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
                         .addComponent(jRBJa)
-                        .addGap(9, 9, 9)
-                        .addComponent(jRBNej)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jRBNej)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCOmrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jBIdag))))
@@ -232,6 +246,13 @@ public class RegistreraAgent extends javax.swing.JFrame {
                 jTTelefon.setText("");
             } 
     }//GEN-LAST:event_jTTelefonMousePressed
+
+    private void jBIdagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBIdagActionPerformed
+       
+        //Sätter datumet till dagens datum
+        dateChooser1.toDay();
+
+    }//GEN-LAST:event_jBIdagActionPerformed
 
     
     private void fyllOmradeCB() {
@@ -325,6 +346,7 @@ public class RegistreraAgent extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jCOmrade;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLtitel;
     private javax.swing.JRadioButton jRBJa;
     private javax.swing.JRadioButton jRBNej;

@@ -42,7 +42,7 @@
               <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="2" attributes="0">
                   <Component id="jComBYear" alignment="2" max="32767" attributes="0"/>
-                  <Component id="jTBeskrivning" alignment="2" pref="262" max="32767" attributes="0"/>
+                  <Component id="jTBeskrivning" alignment="2" max="32767" attributes="0"/>
                   <Component id="jTFordonID" alignment="2" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="2" attributes="0">
