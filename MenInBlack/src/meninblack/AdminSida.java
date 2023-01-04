@@ -4,6 +4,7 @@
  */
 package meninblack;
 
+import java.util.ArrayList;
 import oru.inf.InfDB;
 import javax.swing.JOptionPane;
 import oru.inf.InfException;
@@ -218,15 +219,24 @@ public class AdminSida extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-       String exAgent = JOptionPane.showInputDialog("Vilken agent har du använt din neuralyzer på?");
-       If(validering)
-       try {
-           idb.update("update ");
-           idb.delete("DELETE * FROM agent WHERE namn ='" +exAgent+"'");
-       } catch (InfException ettE) {
-           JOptionPane.showMessageDialog(null, "Denna agent finns ej med i databasen. Har du redan använt din neuralyzer på agenten?");
-           System.out.println("Internt fel" + ettE.getMessage()); 
-       }
+        String agenten = JOptionPane.showInputDialog( "Namnet på agent?");
+        String idFraga = "Select Agent_ID from agent where namn ='" +agenten+ "'";
+        String exFraga = "Select Alien_ID from alien where Ansvarig_Agent ='" +idFraga+ "'";
+        ArrayList<String> exAgentArrayList = new ArrayList<>();
+        int nyAnsvarig = 0;
+        
+        try {
+            exAgentArrayList = idb.fetchColumn(exFraga);
+        } catch (InfException ettE) {
+            JOptionPane.showMessageDialog(null, "Det blev ett fel med databasen");
+            System.out.println("Internt fel" + ettE);
+        }
+        Object [] exAgentArray = exAgentArrayList.toArray();
+        
+        
+      
+        
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**

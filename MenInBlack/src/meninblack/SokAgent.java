@@ -96,7 +96,7 @@ public class SokAgent extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("jButton3");
+        jButton3.setText("Ändra Datum");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -112,7 +112,7 @@ public class SokAgent extends javax.swing.JFrame {
 
         jButton6.setText("Ändra Status");
 
-        jButton2.setText("jButton2");
+        jButton2.setText("Ändra Nummer");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -228,7 +228,7 @@ public class SokAgent extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        // Vad denna metod gör är att :
         String nyttOmråde = "SELECT benamning from omrade";
         ArrayList<String> omradeArrayList = new ArrayList<>();
         int nyPlats = 0;
