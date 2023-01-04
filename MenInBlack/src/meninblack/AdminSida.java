@@ -50,6 +50,7 @@ public class AdminSida extends javax.swing.JFrame {
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
+        jBClose = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -96,8 +97,18 @@ public class AdminSida extends javax.swing.JFrame {
         jLabel3.setText("Alienuppgifter");
 
         jButton6.setText("Nyregistrering");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setText("Ändra Info");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jButton8.setText("Eliminera Alien");
 
@@ -112,6 +123,13 @@ public class AdminSida extends javax.swing.JFrame {
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton10ActionPerformed(evt);
+            }
+        });
+
+        jBClose.setText("Stäng");
+        jBClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCloseActionPerformed(evt);
             }
         });
 
@@ -133,18 +151,24 @@ public class AdminSida extends javax.swing.JFrame {
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(97, 97, 97))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 114, Short.MAX_VALUE)
-                            .addComponent(jButton7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(58, 58, 58))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(97, 97, 97))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jButton9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 114, Short.MAX_VALUE)
+                                    .addComponent(jButton7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(58, 58, 58))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(jBClose)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,7 +198,9 @@ public class AdminSida extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton10)
+                    .addComponent(jBClose))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -240,23 +266,8 @@ public class AdminSida extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        String agenten = JOptionPane.showInputDialog( "Namnet på agent?");
-        String idFraga = "Select Agent_ID from agent where namn ='" +agenten+ "'";
-        String exFraga = "Select Alien_ID from alien where Ansvarig_Agent ='" +idFraga+ "'";
-        ArrayList<String> exAgentArrayList = new ArrayList<>();
-        int nyAnsvarig = 0;
-        
-        try {
-            exAgentArrayList = idb.fetchColumn(exFraga);
-        } catch (InfException ettE) {
-            JOptionPane.showMessageDialog(null, "Det blev ett fel med databasen");
-            System.out.println("Internt fel" + ettE);
-        }
-        Object [] exAgentArray = exAgentArrayList.toArray();
-        
-        
-      
+
+        taBortAgent();
         
         
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -264,6 +275,8 @@ public class AdminSida extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         String norrID = "";
+        String nyNorrID = "";
+        
         String[] omradeArray = {"Götaland", "Svealand", "Norrland"};
         String valdAdmin = (String) JOptionPane.showInputDialog(null, "Välj ett önskat område som du vill hantera:", "Välj Agent...",
                 JOptionPane.QUESTION_MESSAGE,
@@ -341,13 +354,25 @@ public class AdminSida extends javax.swing.JFrame {
             String valtSvarNorr = (String) JOptionPane.showInputDialog(null, "Vill du ändra chef?", "Välj Agent..", JOptionPane.QUESTION_MESSAGE, null, norrArray, norrArray[0]);
             if (valtSvarNorr.equals("Ja")) {
                 String nyChefNorr = JOptionPane.showInputDialog("Vilken agent ska bli ny chef för Norrland");
-                String fragaNyNorrID = "select agent.agent_ID from agent where namn ='" +nyChefNorr+ "'"; 
+                
+                nyChefNorr = Validering.returGodkäntNamn(nyChefNorr);
+
+                String fragaNyNorrID = "SELECT Agent_ID from Agent where namn ='"+nyChefNorr+"'"; 
                 if (!Validering.IsUsernameAgent(nyChefNorr)) {
                     JOptionPane.showMessageDialog(null, "Denna agent finns inte med i databasen. Vänligen testa en annan agent");
                 }
                 try {
-                    String nyNorrID = idb.fetchSingle(fragaNyNorrID);
-                    idb.update("UPDATE Omradeschef set Omradeschef.`Agent_ID` = (select agent.agent_ID from agent where namn ='"+nyNorrID+"') WHERE Omradeschef.`Agent_ID` = (select agent.agent_ID from agent where namn ='"+norrID+"'");
+                     nyNorrID = idb.fetchSingle(fragaNyNorrID);
+
+                } catch (InfException ettE) {
+                    JOptionPane.showMessageDialog(null, "fel med hämtning av agent");
+                    System.out.println("Internt fel" + ettE);
+                }
+                
+                String updatefraga = "UPDATE Omradeschef set Omradeschef.`Agent_ID` = " + nyNorrID + " WHERE Omradeschef.`Agent_ID` = " + norrID;
+
+                try {
+                    idb.update(updatefraga);
                 } catch (InfException ettE) {
                     JOptionPane.showMessageDialog(null, "ett fel har uppstått med databasen");
                     System.out.println("Internt fel" + ettE);
@@ -425,43 +450,167 @@ public class AdminSida extends javax.swing.JFrame {
             // TODO add your handling code here:
     }//GEN-LAST:event_jButton9ActionPerformed
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+
+        // FÖR ATT REGISTRERA EN NY ALIEN I DATABSEN 
+         new RegistreraAlien(idb).setVisible(true);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+         // När man trycker på "ändra Alien"
+        String alienNamn;
+
+        //Ber användaren mata in ett namn 
+        //Kontrollerar även så det är ett godkänt namn
+        alienNamn = JOptionPane.showInputDialog(null, "Ange namn på den Alien du vill veta mer om", "Ändra en alien", HEIGHT);
+        alienNamn = Validering.returGodkäntNamn(alienNamn);
+
+        if (Validering.isUsernameAlien(alienNamn) && Validering.isNamnGodkant(alienNamn)) {
+
+            new UppdateraEnAlien(idb, alienNamn,user).setVisible(true);
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Alien finns inte i databasen");
+
+        }
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jBCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCloseActionPerformed
+        // Stäng ner adminsida
+        dispose();
+    }//GEN-LAST:event_jBCloseActionPerformed
+
+
     /**
-     * @param args the command line arguments
+     * Tar bort en agent ur systemet
      */
-    public void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+      private void taBortAgent() {
+
+        //Ber användaren mata in ett namn 
+        String agentDelete;
+        agentDelete = JOptionPane.showInputDialog(null, "Ange namn på den Agent du vill ta bort", "Ta bort en agent...", HEIGHT);
+
+        //Kontrollerar även så det är ett godkänt namn
+        while (!Validering.isTom(agentDelete) && !Validering.IsUsernameAgent(agentDelete)) {
+            agentDelete = JOptionPane.showInputDialog(null, "Ange namn på den Agent du vill ta bort", "Ta bort en agent...", HEIGHT);
+        }
+
+        String deleteAID = "";
+        String sqlfragaValdAgent = "SELECT Agent_ID FROM Agent where Namn = '" + agentDelete + "'";
+
+        //Hämtar hem Agent_ID för agenten som ska tas bort
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
+            deleteAID = idb.fetchSingle(sqlfragaValdAgent);
+
+        } catch (InfException e) {
+            System.out.println("Fel när man ska hämta AgentID för agenten som ska tas bort" + e);
+        }
+
+        String sqlfragaHarAliens = "Select Namn from Alien WHERE Ansvarig_agent = " + deleteAID;
+        ArrayList<String> agentensAliens = new ArrayList<>();
+
+        try {
+
+            agentensAliens = idb.fetchColumn(sqlfragaHarAliens);
+        } catch (InfException e) {
+            System.out.println("Fel när man ska hämta Aliens som agenten ansvarar för" + e);
+
+        }
+
+        //Kod för att Välja en ny Ansvarig Agent. FLytta till metod
+        //Checkar ifall agenten har några andra ansvarsområden
+        if (!agentensAliens.isEmpty()) {
+
+            String agentfraga = "Select Namn FROM Agent";
+            ArrayList<String> agentArrayList = new ArrayList<>();
+            int nyAgent = 0;
+
+            //Hämtar hem det agenter som finns som Agent i databasen
+            try {
+                agentArrayList = idb.fetchColumn(agentfraga);
+
+            } catch (InfException e) {
+                JOptionPane.showMessageDialog(null, "FEL MED DATABASEN");
+                System.out.println("FEL när man skulle hämta hem agenter från databasen " + e);
+            }
+
+            Object[] agentArray = agentArrayList.toArray();
+            String valdAgent = (String) JOptionPane.showInputDialog(null, "Den agent du vill ta bort ansvarar för Aliens\nVänligen välj en annan agent som ska ta över ansvaret!", "Välj Agent...",
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    agentArray,
+                    agentArray[0]);
+
+            try {
+
+                String agentnamn = valdAgent;
+                String agentIDFraga = "SELECT Agent_ID FROM Agent WHERE Namn like '" + agentnamn + "'";
+
+                String charAgent = idb.fetchSingle(agentIDFraga);
+
+                nyAgent = Integer.parseInt(charAgent);
+
+            } catch (InfException e) {
+                JOptionPane.showMessageDialog(null, "Agenten fanns inte i databasen");
+                System.out.println("Kunde inte hämta vald agent" + e.getMessage());
+
+            }
+
+            //Uppdaterar ansvarig agent för det aliens som han hade.
+            for (String enAlien : agentensAliens) {
+                try {
+                    idb.update("Update Alien SET Ansvarig_Agent='" + nyAgent + "' Where Namn='" + enAlien + "'");
+
+                } catch (InfException e) {
+                    JOptionPane.showMessageDialog(null, "kunde inte uppdatera Ansvarig Agent");
+                    System.out.println("Kunde inte uppdatera vald Ansvarig_Agent" + e.getMessage());
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdminSida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdminSida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdminSida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdminSida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AdminSida(idb, user).setVisible(true);
+        //Hämtar hem de tabeller Agent_ID är forgein Key in
+        String sqltabeller = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE REFERENCED_TABLE_NAME = 'Agent' AND REFERENCED_COLUMN_NAME = 'Agent_ID'";
+        ArrayList<String> tabeller = new ArrayList<>();
+        try {
+            tabeller = idb.fetchColumn(sqltabeller);
+
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Problem med att kolla vart Agenten finns på fler platser i databasen");
+            System.out.println("Kunde inte hämta tabeller" + e.getMessage());
+        }
+
+        //tar bort agenten från alla tabeller där Agent_ID är foreign key
+        for (String enTabell : tabeller) {
+            try {
+                String taBortFranTabell = "DELETE FROM " + enTabell + " WHERE Agent_ID = " + deleteAID;
+                idb.delete(taBortFranTabell);
+
+            } catch (InfException e) {
             }
-        });
-}
+        }
 
+        //Tar bort agenten Användaren valde från början
+        try {
+            String sqlDelete = "DELETE FROM mibdb.agent WHERE Agent_ID = " + deleteAID;
+            idb.delete(sqlDelete);
+
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Kunde inte ta bort Agenten");
+            System.out.println("Agenten gick inte att ta bort" + e.getMessage());
+        }
+
+        //Kollar ifall agenten har taigits bort eller ej
+        if (!Validering.IsUsernameAgent(agentDelete)) {
+            JOptionPane.showMessageDialog(null, "Nu har " + agentDelete + " tagits bort ur databasen");
+        } else {
+            JOptionPane.showMessageDialog(null, "Agenten har inte tagits bort");
+        }
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBClose;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
