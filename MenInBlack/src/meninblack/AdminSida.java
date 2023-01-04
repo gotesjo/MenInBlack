@@ -219,7 +219,7 @@ public class AdminSida extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
        String exAgent = JOptionPane.showInputDialog("Vilken agent har du använt din neuralyzer på?");
-       String nyAnsvarig = JOptionPane.showInputDialog("Vilken agent ska ta över ansvaret för alla Aliens? Det kan inte vara samma Agent som ska neuraliserar");
+       If(validering)
        try {
            idb.update("update ");
            idb.delete("DELETE * FROM agent WHERE namn ='" +exAgent+"'");
