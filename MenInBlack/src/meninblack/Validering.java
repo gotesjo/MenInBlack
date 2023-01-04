@@ -210,12 +210,23 @@ public class Validering {
         return godkantNamn;
     }
     
+    
+    
+    
+    /**
+     * Checkar om ett tellefonnummer är korrekt
+     * @param telenr en string som är ett telefonnummer
+     * @return true om telefonnummret är godkänt. annars false
+     */
     public static boolean isTelefonnummer(String telenr) {
         // Regex för att kolla ifall det är ett nummer
          String regex = "^[0-9]{1,30}$";
         
         return telenr.matches(regex);
     }
+    
+    
+    
     
     /**
      * Checkar om valt lösenord är godkänt
@@ -235,7 +246,29 @@ public class Validering {
 
         return godkant;
     }
+    
+    
+    /**
+     * 
+     * @param text tar en String som man kollar ifall den är tom
+     * @return true om strängen innehåller tecken, false om den är tom
+     */
+    public static boolean isTom(String text){
+        boolean godkant = true;
         
+        if(text.equals(" ") || text.isEmpty()) {
+            godkant = false;
+            
+        }
+        
+        return godkant;
+    }
+        
+    
+    
+    
+    
+    
     private static boolean checkaAnsvarig(String agentNamn) {
         
         String ansvarigStatus = null;
