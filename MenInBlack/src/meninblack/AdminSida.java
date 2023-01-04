@@ -102,6 +102,11 @@ public class AdminSida extends javax.swing.JFrame {
         jButton8.setText("Eliminera Alien");
 
         jButton9.setText("Ta bort utr.");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         jButton10.setText("Hantera Kontor");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
@@ -122,13 +127,12 @@ public class AdminSida extends javax.swing.JFrame {
                 .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -137,7 +141,7 @@ public class AdminSida extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jButton9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                            .addComponent(jButton8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 114, Short.MAX_VALUE)
                             .addComponent(jButton7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(58, 58, 58))))
@@ -293,6 +297,64 @@ public class AdminSida extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    String Utfraga = "Select Benamning FROM Utrustning";
+          ArrayList<String> UtArrayList = new ArrayList<>();
+          int valdUtrustning = 0;
+
+          
+          //Hämtar hem det Utrsutningar som finns i Utrustning i databasen
+          try{
+              UtArrayList = idb.fetchColumn(Utfraga);
+              
+          } catch(InfException e) {
+            JOptionPane.showMessageDialog(null, "FEL MED DATABASEN");
+            System.out.println("FEL när man skulle hämta hem Utrustningen från databasen " + e);
+          }
+        
+        Object[] UtArray = UtArrayList.toArray();
+        String valdUt = (String)JOptionPane.showInputDialog( null, "Välj en önskad Utrustning att ta bort ifrån listan:", "Välj Utrustning...",
+                                        JOptionPane.QUESTION_MESSAGE, 
+                                        null, 
+                                       UtArray,
+                                        UtArray[ 0 ] );
+        
+            String Utnamn = valdUt;
+            
+        try{
+            
+            String UtIDFraga = "SELECT Utrustnings_ID FROM Utrustning WHERE Benamning = '"+Utnamn+"'";
+            
+            String charPlats = idb.fetchSingle(UtIDFraga);
+            
+            valdUtrustning = Integer.parseInt(charPlats);
+            
+        } catch(InfException e){
+            JOptionPane.showMessageDialog(null, "Utrustningen fanns inte i databasen");
+            System.out.println("Kunde inte hämta vald Utrustning" + e.getMessage());
+            
+        }
+        
+        
+        
+        try{
+            idb.delete("Delete from Innehar_Utrustning where Utrustnings_ID ='"+valdUtrustning+"'");
+            idb.delete("Delete from Vapen where Utrustnings_ID ='"+valdUtrustning+"'");
+            idb.delete("Delete from Teknik where Utrustnings_ID ='"+valdUtrustning+"'");
+            idb.delete("Delete from Kommunikation where Utrustnings_ID ='"+valdUtrustning+"'");
+            idb.delete("Delete from Utrustning where Utrustnings_ID ='"+valdUtrustning+"'");
+            
+            JOptionPane.showMessageDialog(null, "Utrustningen har raderas!");
+            
+            
+        } catch(InfException e){
+            JOptionPane.showMessageDialog(null, "kunde inte ta bort vald utrustning");
+            System.out.println("Kunde inte uppdatera vald plats" + e.getMessage());
+        }
+        
+            // TODO add your handling code here:
+    }//GEN-LAST:event_jButton9ActionPerformed
 
     /**
      * @param args the command line arguments

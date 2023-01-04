@@ -9,7 +9,9 @@ import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import oru.inf.InfException;
 
 
 
@@ -63,7 +65,6 @@ public class AlienSida extends javax.swing.JFrame {
         jlblV = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jlblEmail = new javax.swing.JButton();
-        jlblU = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -113,13 +114,6 @@ public class AlienSida extends javax.swing.JFrame {
             }
         });
 
-        jlblU.setText("Ta bort utrustning");
-        jlblU.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jlblUActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -137,8 +131,7 @@ public class AlienSida extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(163, 163, 163)
                                 .addComponent(jLabelHead)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jlblU, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -158,9 +151,7 @@ public class AlienSida extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelHead)
-                    .addComponent(jlblU, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabelHead)
                 .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -218,33 +209,6 @@ public class AlienSida extends javax.swing.JFrame {
     }//GEN-LAST:event_jlblEmailActionPerformed
     
     }
-//Tar bort utrustning
-    private void jlblUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jlblUActionPerformed
-        String utArray[] = {"Vapen", "Kommunikation", "Teknik"};
-        String valdUtrustning = (String)JOptionPane.showInputDialog( null, "Välj en en utrustning att ta bort:", "Välj Utrustning...",
-                                        JOptionPane.QUESTION_MESSAGE, 
-                                        null, 
-                                        utArray,
-                                        utArray[ 0 ] );
-        
-        
-        String utrustning = "";
-        
-        if(utArray.equals("Vapen"))
-        {
-            utrustning = "vapen";
-        }
-        if(utArray.equals("Kommunikation"))
-        {
-            utrustning = "Kommunikation";
-        }
-        if(utArray.equals("Teknik"))
-        {
-            utrustning = "Teknik";
-        }
-        
-        JOptionPane.showInputDialog(null, "Skriv namnet på utrustningen du vill ta bort");
-    }//GEN-LAST:event_jlblUActionPerformed
     
 
    
@@ -258,7 +222,6 @@ public class AlienSida extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelHead;
     private javax.swing.JButton jbutAlienNara;
     private javax.swing.JButton jlblEmail;
-    private javax.swing.JToggleButton jlblU;
     private javax.swing.JLabel jlblV;
     // End of variables declaration//GEN-END:variables
 }
