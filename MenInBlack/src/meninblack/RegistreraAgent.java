@@ -75,7 +75,7 @@ public class RegistreraAgent extends javax.swing.JFrame {
         dateChooser1.setDateFormat("yyyy-MM-dd");
         dateChooser1.setTextRefernce(jTDate);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLtitel.setText("Registrera ny Agent");
 

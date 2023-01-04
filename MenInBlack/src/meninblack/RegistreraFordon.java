@@ -201,8 +201,10 @@ public class RegistreraFordon extends javax.swing.JFrame {
      
         // Checka så att ID är ifyllt och korrekt
         while (running) {
-            if (fID == null || fID.length() > 7) {
+            if (fID == null || fID.length() > 6) {
                 fID = JOptionPane.showInputDialog(null, "Du behöver ange ett fordons ID\nFår max vara 6 tecken och måste vara  unik!", "Välj ett godkänt ID", HEIGHT);
+                
+            } else{
                 running = false;
             }
         }
