@@ -263,13 +263,13 @@ public class AdminSida extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        String[] omradeArray = { "Götaland", "Svealand", "Norrland" };
-        String valdAdmin = (String)JOptionPane.showInputDialog( null, "Välj ett önskat område som du vill hantera:", "Välj Agent...",
-                                        JOptionPane.QUESTION_MESSAGE, 
-                                        null, 
-                                        omradeArray,
-                                        omradeArray[ 0 ] );
-       
+        String[] omradeArray = {"Götaland", "Svealand", "Norrland"};
+        String valdAdmin = (String) JOptionPane.showInputDialog(null, "Välj ett önskat område som du vill hantera:", "Välj Agent...",
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                omradeArray,
+                omradeArray[0]);
+
         if (valdAdmin.equals("Götaland")) {
             String gotaFraga = "Select agent.namn from agent join omradeschef on Agent.Agent_ID = omradeschef.Agent_ID join omrade on omradeschef.omrade = omrade.omrades_ID where benamning = 'Götaland'";
 
@@ -283,15 +283,65 @@ public class AdminSida extends javax.swing.JFrame {
 
             String[] gotaArray = {"Ja", "Nej"};
             String valtSvar = (String) JOptionPane.showInputDialog(null, "Vill du ändra chef?", "Välj Agent..", JOptionPane.QUESTION_MESSAGE, null, gotaArray, gotaArray[0]);
-            if(valtSvar.equals("Ja")) {
+            if (valtSvar.equals("Ja")) {
                 String nyChefGota = JOptionPane.showInputDialog("Vilken agent ska bli ny chef för Götaland");
-                if(!Validering.IsUsernameAgent(nyChefGota)) {
+                if (!Validering.IsUsernameAgent(nyChefGota)) {
                     JOptionPane.showMessageDialog(null, "Denna agent finns inte med i databasen. Vänligen testa en annan agent");
                 }
+                try {
+                    idb.update("update ");
+                } catch (InfException ettE) {
+                    JOptionPane.showMessageDialog(null, "Ett fel har uppstått med databasen");
+                }
+            }
+        }
+        if (valdAdmin.equals("Svealand")) {
+            String sveaFraga = "Select agent.namn from agent join omradeschef on Agent.Agent_ID = omradeschef.Agent_ID join omrade on omradeschef.omrade = omrade.omrades_ID where benamning = 'Svealand'";
 
+            try {
+                String chefSvea = idb.fetchSingle(sveaFraga);
+                JOptionPane.showMessageDialog(null, "Chef över detta område är '" + chefSvea + "'");
+            } catch (InfException ettE) {
+                JOptionPane.showMessageDialog(null, "Det finns ingen chef för detta område");
+                System.out.println("Internt fel" + ettE);
+            }
+            String[] sveaArray = {"Ja", "Nej"};
+            String valtSvarSvea = (String) JOptionPane.showInputDialog(null, "Vill du ändra chef?", "Välj Agent..", JOptionPane.QUESTION_MESSAGE, null, sveaArray, sveaArray[0]);
+            if (valtSvarSvea.equals("Ja")) {
+                String nyChefSvea = JOptionPane.showInputDialog("Vilken agent ska bli ny chef för Svealand");
+                if (!Validering.IsUsernameAgent(nyChefSvea)) {
+                    JOptionPane.showMessageDialog(null, "Denna agent finns inte med i databasen. Vänligen testa en annan agent");
+                }
+                try {
+                    idb.update("update ");
+                } catch (InfException ettE) {
+                    JOptionPane.showMessageDialog(null, "Ett fel har uppstått med databasen");
+                }
+            }
+        }
+        if (valdAdmin.equals("Norrland")) {
+            String norrFraga = "Select agent.namn from agent join omradeschef on Agent.Agent_ID = omradeschef.Agent_ID join omrade on omradeschef.omrade = omrade.omrades_ID where benamning = 'Norrland'";
+
+            try {
+                String chefNorr = idb.fetchSingle(norrFraga);
+                JOptionPane.showMessageDialog(null, "Chef över detta område är '" + chefNorr + "'");
+            } catch (InfException ettE) {
+                JOptionPane.showMessageDialog(null, "Det finns ingen chef för detta område");
+                System.out.println("Internt fel" + ettE);
+            }
+            String[] norrArray = {"Ja", "Nej"};
+            String valtSvarNorr = (String) JOptionPane.showInputDialog(null, "Vill du ändra chef?", "Välj Agent..", JOptionPane.QUESTION_MESSAGE, null, norrArray, norrArray[0]);
+            if (valtSvarNorr.equals("Ja")) {
+                String nyChefNorr = JOptionPane.showInputDialog("Vilken agent ska bli ny chef för Norrland");
+                if (!Validering.IsUsernameAgent(nyChefNorr)) {
+                    JOptionPane.showMessageDialog(null, "Denna agent finns inte med i databasen. Vänligen testa en annan agent");
+
+                }
+
+            }
         }
     }//GEN-LAST:event_jButton5ActionPerformed
-    }
+    
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
         //String kontorNamn = JOptionPane.showInputDialog("Vilket kontor vill du hantera?");
