@@ -376,7 +376,11 @@ public class Agentsida extends javax.swing.JFrame {
         
         
         //Kontrollerar ifall namnet på chefen är null. I sådana fall skriver den ut en annan text
-        if (Validering.isTom(chefNamn) || chefNamn.isBlank()) {
+        if(chefNamn == null){
+            chefNamn ="null";
+        }
+        
+        if (chefNamn.equals("null") || !Validering.isTom(chefNamn)) {
             JOptionPane.showMessageDialog(null, "Finns ingen områdeschef för området.\nKontakta Administratör för att rätta till felet");
 
         } else {
