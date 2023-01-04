@@ -289,7 +289,7 @@ public class AdminSida extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Denna agent finns inte med i databasen. Vänligen testa en annan agent");
                 }
                 try {
-                    idb.update("update ");
+                    idb.update("update omradeschef set omradeschef.Agent_ID = (select agent.agent_ID from agent where agent.namn ='" +gotaFraga+ "')where omradeschef.Agent_ID =(select agent.agent_ID from agent where namn ='"+gotaFraga+"'");
                 } catch (InfException ettE) {
                     JOptionPane.showMessageDialog(null, "Ett fel har uppstått med databasen");
                 }
@@ -313,7 +313,7 @@ public class AdminSida extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Denna agent finns inte med i databasen. Vänligen testa en annan agent");
                 }
                 try {
-                    idb.update("update ");
+                    idb.update("update omradeschef set omradeschef.Agent_ID = (select agent.agent_ID from agent where agent.namn ='" +nyChefSvea+ "')where omradeschef.Agent_ID =(select agent.agent_ID from agent where namn = '"+sveaFraga+"'");
                 } catch (InfException ettE) {
                     JOptionPane.showMessageDialog(null, "Ett fel har uppstått med databasen");
                 }
@@ -335,7 +335,12 @@ public class AdminSida extends javax.swing.JFrame {
                 String nyChefNorr = JOptionPane.showInputDialog("Vilken agent ska bli ny chef för Norrland");
                 if (!Validering.IsUsernameAgent(nyChefNorr)) {
                     JOptionPane.showMessageDialog(null, "Denna agent finns inte med i databasen. Vänligen testa en annan agent");
-
+                }
+                try {
+                    idb.update("update omradeschef set omradeschef.`Agent_ID` = (select agent.agent_ID from agent where namn ='" +nyChefNorr+ "')where omradeschef.`Agent_ID` =(select agent.agent_ID from agent where namn ='" +norrFraga+"'");
+                } catch (InfException ettE) {
+                    JOptionPane.showMessageDialog(null, "ett fel har uppstått med databasen");
+                    System.out.println("Internt fel" + ettE);
                 }
 
             }
