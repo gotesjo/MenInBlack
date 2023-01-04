@@ -23,6 +23,7 @@ public class RegistreraAgent extends javax.swing.JFrame {
     private String regDatum;
     private int omrade;
     private String admin;
+    private boolean possibleReg;
     
     /**
      * Creates new form RegistreraAgent
@@ -36,6 +37,9 @@ public class RegistreraAgent extends javax.swing.JFrame {
         telefon = "";
         regDatum = "";
         admin = "";
+        possibleReg = true;
+        
+        jLVarning.setVisible(false);
         
         fyllOmradeCB();
         
@@ -66,6 +70,7 @@ public class RegistreraAgent extends javax.swing.JFrame {
         jBIdag = new javax.swing.JButton();
         jBReg = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jLVarning = new javax.swing.JLabel();
 
         dateChooser1.setDateFormat("yyyy-MM-dd");
         dateChooser1.setTextRefernce(jTDate);
@@ -121,6 +126,9 @@ public class RegistreraAgent extends javax.swing.JFrame {
 
         jLabel3.setText("Anställningsdatum");
 
+        jLVarning.setForeground(new java.awt.Color(255, 51, 51));
+        jLVarning.setText("Kan inte registrera! Fyll i allt för att registrera");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -153,7 +161,10 @@ public class RegistreraAgent extends javax.swing.JFrame {
                         .addGap(205, 205, 205))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jBReg)
-                        .addGap(214, 214, 214))))
+                        .addGap(214, 214, 214))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLVarning)
+                        .addGap(126, 126, 126))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,7 +197,9 @@ public class RegistreraAgent extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jBIdag))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jLVarning)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jBReg)
                 .addGap(29, 29, 29))
         );
@@ -199,33 +212,35 @@ public class RegistreraAgent extends javax.swing.JFrame {
         // TODO add your handling code here:
         setAgentInfo();
         
-        //Kontrollerar så att användarnamnet är unikt
-        while(Validering.finnsUsernameiDB(namn)){
         
-        namn = javax.swing.JOptionPane.showInputDialog("Mata in ett annat namn");
-    }
-        
-       //När agentinfon är satt så formuleras en string för databasen      
-       String fraga2 = "INSERT INTO mibdb.agent (Agent_ID, Namn, Telefon, Anstallningsdatum, Administrator, Losenord, Omrade) VALUES ("+aid+", '"+namn+"', '"+telefon+"', '"+regDatum+"', '"+admin+"', '"+losenord+"', "+omrade+")";
-                
-        //Gör registreringen via en sql fråga
-        try{
-            idb.insert(fraga2);
-            
-        } catch(InfException e){
-            javax.swing.JOptionPane.showMessageDialog(null, "Fel i Databasfråga");
-            System.out.println("Kunde inte lägga till Agenten till databasen" + e.getMessage());
-            
-        }
-         
-         //Stänger ner rutan
+        //Kontrollerar så all nödvändig information är inskrivet och korrekt.
+        if (possibleReg) {
+            //När agentinfon är satt så formuleras en string för databasen      
+            String fraga2 = "INSERT INTO mibdb.agent (Agent_ID, Namn, Telefon, Anstallningsdatum, Administrator, Losenord, Omrade) VALUES (" + aid + ", '" + namn + "', '" + telefon + "', '" + regDatum + "', '" + admin + "', '" + losenord + "', " + omrade + ")";
+
+            //Gör registreringen via en sql fråga
+            try {
+                idb.insert(fraga2);
+
+            } catch (InfException e) {
+                javax.swing.JOptionPane.showMessageDialog(null, "Fel i Databasfråga");
+                System.out.println("Kunde inte lägga till Agenten till databasen" + e.getMessage());
+
+            }
+         //Stänger ner rutan om man fyllt i korrekt
          dispose();
+        }
+        else{
+            //Visar felmeddelande text
+            jLVarning.setVisible(true);
+        }
+
     }//GEN-LAST:event_jBRegActionPerformed
 
     private void jTNamnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTNamnMousePressed
 // Tömmer namnrutan första gången man ska börja skriva
 
-        if (jTNamn.getText().equals("Namn")) {
+        if (jTNamn.getText().equals("Agentnamn")) {
             jTNamn.setText("");
         }
     }//GEN-LAST:event_jTNamnMousePressed
@@ -273,16 +288,38 @@ public class RegistreraAgent extends javax.swing.JFrame {
         }    
     }
     
-     //Fyller klassens fält med information ifrån användarens inmatning
+    //Fyller klassens fält med information ifrån användarens inmatning
     private void setAgentInfo(){
         
+        //Nollar så att varje gång man trycker på knappen testar den om det blir några fel
+        possibleReg = true;
+        
         //Gör om namnet så det är korrekt för databasen
-        namn = Validering.returGodkäntNamn(jTNamn.getText());
+        if (Validering.isNamnGodkant(jTNamn.getText()) && !Validering.finnsUsernameiDB(jTNamn.getText())) {
+            namn = Validering.returGodkäntNamn(jTNamn.getText());
+        }
+        else{
+            possibleReg = false;
+        }
         
-        losenord = jTLosen.getText();
-        telefon = jTTelefon.getText();
-        regDatum = jTDate.getText();
-        
+        //Kollar så att lösenordet är godkänt och rutan inte är tom
+        if (Validering.validLosen(jTLosen.getText()) && Validering.isTom(jTLosen.getText()) ) {
+            losenord = jTLosen.getText();
+        } else {
+            possibleReg = false;
+        }
+
+        //Kollar telefonnummer är korrekt
+        if (Validering.isTelefonnummer(jTTelefon.getText())) {
+            telefon = jTTelefon.getText();
+        } else {
+            possibleReg = false;
+        }
+
+        //Kollar så datum är ifyllt
+        if (Validering.isTom(jTDate.getText())) {
+            regDatum = jTDate.getText();
+        }
        
         radioButtonCheck();
         setAid();
@@ -296,9 +333,13 @@ public class RegistreraAgent extends javax.swing.JFrame {
     private void radioButtonCheck(){
         if(jRBJa.isSelected()){
            admin = "J"; 
+           
         }
         else if(jRBNej.isSelected()){
              admin = "N";
+        }
+        else{
+            possibleReg = false;
         }
             
     }
@@ -344,6 +385,7 @@ public class RegistreraAgent extends javax.swing.JFrame {
     private javax.swing.JButton jBIdag;
     private javax.swing.JButton jBReg;
     private javax.swing.JComboBox<String> jCOmrade;
+    private javax.swing.JLabel jLVarning;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

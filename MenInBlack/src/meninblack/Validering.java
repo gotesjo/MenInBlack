@@ -4,7 +4,6 @@
  */
 package meninblack;
 
-import static java.awt.image.ImageObserver.HEIGHT;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
@@ -224,7 +223,7 @@ public class Validering {
             godkantNamn = true;
         }
         else{
-            JOptionPane.showMessageDialog(null, "Användarnamnet är fel.\nDet får max innehålla 20 tecken och bara vara bokstäver");
+            JOptionPane.showMessageDialog(null, "Användarnamnet är fel.\nDet får max innehålla 20 tecken och bara vara bokstäver\nVarje nytt ord måste börja med stor bokstav");
             
         }
         System.out.println(godkantNamn);
@@ -242,6 +241,10 @@ public class Validering {
     public static boolean isTelefonnummer(String telenr) {
         // Regex för att kolla ifall det är ett nummer
          String regex = "^[0-9]{1,30}$";
+         
+         if(!telenr.matches(regex)){
+             JOptionPane.showMessageDialog(null, "Telefonummret är felaktigt.\n Får bara innehålla 30 tecken och det måste vara siffror");
+         }
         
         return telenr.matches(regex);
     }
@@ -259,10 +262,10 @@ public class Validering {
         boolean godkant = false;
 
         //Skriver ut en uppmaning till användaren för att
-        if (losen.length() < 7 && (!" ".equals(losen))) {
+        if (losen.length() < 7 && (!" ".equals(losen)) && !losen.isEmpty()) {
             godkant = true;
         } else {
-            JOptionPane.showMessageDialog(null, "Lösenordet är för långt. Får max innehålla 6 tecken");
+            JOptionPane.showMessageDialog(null, "Lösenordet är felaktigt. Du måste skriva in något\nSamt att det inte får vara längre än 6 tecken");
         }
 
         return godkant;
