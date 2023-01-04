@@ -331,6 +331,10 @@ public class SokAgent extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Något gick fel med databasen");
             System.out.println("internt meddelande" + ettUndantag.getMessage());
         }
+        if(jLStatusAgent.equals("J")) {
+            jLStatusAgent.setText("Är administratör");
+        }
+        
     }
     
 
