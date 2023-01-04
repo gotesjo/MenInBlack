@@ -62,6 +62,7 @@ public class ListaAllaAliens extends javax.swing.JFrame {
         jTFSlut = new javax.swing.JTextField();
         jBClose = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        jLAreaForklaring = new javax.swing.JLabel();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -135,6 +136,8 @@ public class ListaAllaAliens extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Helvetica Neue", 2, 10)); // NOI18N
         jLabel7.setText("Det går enbart att söka på en preferens åt gången");
 
+        jLAreaForklaring.setText("Din sökning:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -175,6 +178,10 @@ public class ListaAllaAliens extends javax.swing.JFrame {
                         .addGap(273, 273, 273)
                         .addComponent(jBClose)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(254, 254, 254)
+                .addComponent(jLAreaForklaring)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,7 +192,9 @@ public class ListaAllaAliens extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLAreaForklaring)
+                .addGap(2, 2, 2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
@@ -212,7 +221,7 @@ public class ListaAllaAliens extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTFSlut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(jBClose)
                 .addGap(32, 32, 32))
         );
@@ -283,6 +292,9 @@ public class ListaAllaAliens extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Något gick fel");
             System.out.println("Internt meddelande" + ettUndantag.getMessage());
         } 
+        
+        //Förklarar sökningen för användaren
+        jLAreaForklaring.setText("Din Sökning: Listar alla aliens i "+jCBplats.getSelectedItem().toString());
     }//GEN-LAST:event_jBSokPlatsActionPerformed
 
     //Sök på vald Ras
@@ -325,6 +337,8 @@ public class ListaAllaAliens extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Fel i databasen när det skulle hämtas hem raser");
             System.out.println("FEL när man skulle hämta hem ras ifrån databasen " + e);
         }
+        
+        jLAreaForklaring.setText("Din Sökning: Listar alla aliens som är "+enRas);
   
     }//GEN-LAST:event_jBSokRasActionPerformed
 
@@ -359,7 +373,7 @@ public class ListaAllaAliens extends javax.swing.JFrame {
             System.out.println("Internt meddelande" + ettUndantag.getMessage());
         } 
         
-        
+        jLAreaForklaring.setText("Registrerade aliens mellan "+ storreAn + " <-> "+mindreAn);
     }//GEN-LAST:event_jBSokDateActionPerformed
 
     //Stänger ner fönstret
@@ -378,6 +392,7 @@ public class ListaAllaAliens extends javax.swing.JFrame {
     private javax.swing.JButton jBSokRas;
     private javax.swing.JComboBox<String> jCBRas;
     private javax.swing.JComboBox<String> jCBplats;
+    private javax.swing.JLabel jLAreaForklaring;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
