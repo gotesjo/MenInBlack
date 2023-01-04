@@ -4,6 +4,7 @@
  */
 package meninblack;
 
+
 import java.util.ArrayList;
 import oru.inf.InfDB;
 import javax.swing.JOptionPane;
@@ -264,10 +265,31 @@ public class AdminSida extends javax.swing.JFrame {
                                         null, 
                                         omradeArray,
                                         omradeArray[ 0 ] );
-    }//GEN-LAST:event_jButton5ActionPerformed
+        if(valdAdmin.equals("Götaland")) {
+           String nyChef = JOptionPane.showInputDialog("Vilken Agent vill du designera en chefsroll till Götaland?");
+           String chefID = "select omradeschef.agent_ID from omradeschef join agent on omradeschef.Agent_ID = agent.`Agent_ID` where namn ='" +nyChef+"'";
 
+           
+           try {
+               idb.update("Update omradeschef set omradeschef.Agent_ID ='"+chefID+"' where omrade ='Götaland'");
+               
+           } catch (InfException ettE) {
+               JOptionPane.showMessageDialog(null, "Det har uppstått ett fel med databasen");
+               System.out.println("internt fel" + ettE);
+           }
+           
+           
+           
+    }//GEN-LAST:event_jButton5ActionPerformed
+    }
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
+        String kontorNamn = JOptionPane.showInputDialog("Vilket kontor vill du hantera?");
+        String kontor = kontorNamn;
+        
+        if(Validering.finnsKontor(kontorNamn));
+        
+        
     }//GEN-LAST:event_jButton10ActionPerformed
 
     /**

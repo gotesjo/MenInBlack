@@ -69,6 +69,27 @@ public class Validering {
         return finns;
     }
     
+    public static boolean finnsKontor(String namn) {
+        boolean kontorFinns = false;
+        String evKontor;
+        
+        String fraga1 = "SELECT kontorsbeteckning from kontorschef where kontorsbeteckning ='" + namn + "'";
+
+        try {
+            evKontor = idb.fetchSingle(fraga1);
+
+            if (evKontor != null) {
+                kontorFinns = true;
+            }
+        } catch (InfException ettE) {
+            JOptionPane.showMessageDialog(null, "Detta kontor finns ej");
+            System.out.println("Internt fel" + ettE);
+        }
+        return kontorFinns;
+    }
+
+    
+    
     //Returnerar true om det finns en Alien med in skrivet namn i databasen annars false
     public static boolean isUsernameAlien(String namn)
     {
