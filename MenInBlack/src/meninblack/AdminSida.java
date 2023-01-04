@@ -263,6 +263,7 @@ public class AdminSida extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        String norrID = "";
         String[] omradeArray = {"Götaland", "Svealand", "Norrland"};
         String valdAdmin = (String) JOptionPane.showInputDialog(null, "Välj ett önskat område som du vill hantera:", "Välj Agent...",
                 JOptionPane.QUESTION_MESSAGE,
@@ -272,6 +273,7 @@ public class AdminSida extends javax.swing.JFrame {
 
         if (valdAdmin.equals("Götaland")) {
             String gotaFraga = "Select agent.namn from agent join omradeschef on Agent.Agent_ID = omradeschef.Agent_ID join omrade on omradeschef.omrade = omrade.omrades_ID where benamning = 'Götaland'";
+            String gotaID = "select agent.agent_ID from agent where namn ='" +gotaFraga+"'";
 
             try {
                 String chefGota = idb.fetchSingle(gotaFraga);
@@ -285,11 +287,12 @@ public class AdminSida extends javax.swing.JFrame {
             String valtSvar = (String) JOptionPane.showInputDialog(null, "Vill du ändra chef?", "Välj Agent..", JOptionPane.QUESTION_MESSAGE, null, gotaArray, gotaArray[0]);
             if (valtSvar.equals("Ja")) {
                 String nyChefGota = JOptionPane.showInputDialog("Vilken agent ska bli ny chef för Götaland");
+                String nyGotaID = "select agent.agent_ID from agent where namn ='" +nyChefGota+"'";
                 if (!Validering.IsUsernameAgent(nyChefGota)) {
                     JOptionPane.showMessageDialog(null, "Denna agent finns inte med i databasen. Vänligen testa en annan agent");
                 }
                 try {
-                    idb.update("update omradeschef set omradeschef.Agent_ID = (select agent.agent_ID from agent where agent.namn ='" +gotaFraga+ "')where omradeschef.Agent_ID =(select agent.agent_ID from agent where namn ='"+gotaFraga+"'");
+                    idb.update("update omradeschef set omradeschef.Agent_ID = (select agent.agent_ID from agent where agent.namn ='" +nyGotaID+ "')where omradeschef.Agent_ID =(select agent.agent_ID from agent where namn ='"+gotaID+"'");
                 } catch (InfException ettE) {
                     JOptionPane.showMessageDialog(null, "Ett fel har uppstått med databasen");
                 }
@@ -297,6 +300,7 @@ public class AdminSida extends javax.swing.JFrame {
         }
         if (valdAdmin.equals("Svealand")) {
             String sveaFraga = "Select agent.namn from agent join omradeschef on Agent.Agent_ID = omradeschef.Agent_ID join omrade on omradeschef.omrade = omrade.omrades_ID where benamning = 'Svealand'";
+            String sveaID = "select agent.agent_ID from agent where namn ='" +sveaFraga+"'";
 
             try {
                 String chefSvea = idb.fetchSingle(sveaFraga);
@@ -309,11 +313,13 @@ public class AdminSida extends javax.swing.JFrame {
             String valtSvarSvea = (String) JOptionPane.showInputDialog(null, "Vill du ändra chef?", "Välj Agent..", JOptionPane.QUESTION_MESSAGE, null, sveaArray, sveaArray[0]);
             if (valtSvarSvea.equals("Ja")) {
                 String nyChefSvea = JOptionPane.showInputDialog("Vilken agent ska bli ny chef för Svealand");
+                String nySveaID = "select agent.agent_ID from agent where namn ='" +nyChefSvea+"'";
+                
                 if (!Validering.IsUsernameAgent(nyChefSvea)) {
                     JOptionPane.showMessageDialog(null, "Denna agent finns inte med i databasen. Vänligen testa en annan agent");
                 }
                 try {
-                    idb.update("update omradeschef set omradeschef.Agent_ID = (select agent.agent_ID from agent where agent.namn ='" +nyChefSvea+ "')where omradeschef.Agent_ID =(select agent.agent_ID from agent where namn = '"+sveaFraga+"'");
+                    idb.update("update omradeschef set omradeschef.Agent_ID = (select agent.agent_ID from agent where agent.namn ='" +nySveaID+ "')where omradeschef.Agent_ID =(select agent.agent_ID from agent where namn = '"+sveaID+"'");
                 } catch (InfException ettE) {
                     JOptionPane.showMessageDialog(null, "Ett fel har uppstått med databasen");
                 }
@@ -321,9 +327,11 @@ public class AdminSida extends javax.swing.JFrame {
         }
         if (valdAdmin.equals("Norrland")) {
             String norrFraga = "Select agent.namn from agent join omradeschef on Agent.Agent_ID = omradeschef.Agent_ID join omrade on omradeschef.omrade = omrade.omrades_ID where benamning = 'Norrland'";
+            //String norrID = "select agent.agent_ID from agent where namn ='" +chefNorr+ "'";
 
             try {
                 String chefNorr = idb.fetchSingle(norrFraga);
+                 norrID =  idb.fetchSingle("select agent.agent_ID from agent where namn ='" +chefNorr+ "'");
                 JOptionPane.showMessageDialog(null, "Chef över detta område är '" + chefNorr + "'");
             } catch (InfException ettE) {
                 JOptionPane.showMessageDialog(null, "Det finns ingen chef för detta område");
@@ -333,11 +341,13 @@ public class AdminSida extends javax.swing.JFrame {
             String valtSvarNorr = (String) JOptionPane.showInputDialog(null, "Vill du ändra chef?", "Välj Agent..", JOptionPane.QUESTION_MESSAGE, null, norrArray, norrArray[0]);
             if (valtSvarNorr.equals("Ja")) {
                 String nyChefNorr = JOptionPane.showInputDialog("Vilken agent ska bli ny chef för Norrland");
+                String fragaNyNorrID = "select agent.agent_ID from agent where namn ='" +nyChefNorr+ "'"; 
                 if (!Validering.IsUsernameAgent(nyChefNorr)) {
                     JOptionPane.showMessageDialog(null, "Denna agent finns inte med i databasen. Vänligen testa en annan agent");
                 }
                 try {
-                    idb.update("UPDATE Omradeschef set Omradeschef.`Agent_ID` = (select agent.agent_ID from agent where namn ='"+chefNy+"') WHERE Omradeschef.`Agent_ID` = (select agent.agent_ID from agent where namn ='"+chefNorr+"')");
+                    String nyNorrID = idb.fetchSingle(fragaNyNorrID);
+                    idb.update("UPDATE Omradeschef set Omradeschef.`Agent_ID` = (select agent.agent_ID from agent where namn ='"+nyNorrID+"') WHERE Omradeschef.`Agent_ID` = (select agent.agent_ID from agent where namn ='"+norrID+"'");
                 } catch (InfException ettE) {
                     JOptionPane.showMessageDialog(null, "ett fel har uppstått med databasen");
                     System.out.println("Internt fel" + ettE);
