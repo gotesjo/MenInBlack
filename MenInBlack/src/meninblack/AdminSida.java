@@ -4,7 +4,6 @@
  */
 package meninblack;
 
-
 import java.util.ArrayList;
 import oru.inf.InfDB;
 import javax.swing.JOptionPane;
@@ -15,7 +14,7 @@ import oru.inf.InfException;
  * @author Marti
  */
 public class AdminSida extends javax.swing.JFrame {
-    
+
     private InfDB idb;
     private User user;
 
@@ -25,7 +24,7 @@ public class AdminSida extends javax.swing.JFrame {
     public AdminSida(InfDB idb, User user) {
         initComponents();
         this.idb = idb;
-        this.user = user; 
+        this.user = user;
     }
 
     /**
@@ -203,16 +202,16 @@ public class AdminSida extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-       String agentNamn = JOptionPane.showInputDialog(null, "Ange namn på den Agent du vill ändra", "Ändra en agent", HEIGHT);
-       String namn = agentNamn;
-       
-       if(Validering.finnsUsernameiDB(agentNamn)){ 
-           
-            new SokAgent(idb,namn).setVisible(true);
-            
-       }else {
-           JOptionPane.showMessageDialog(null, "Användaren finns inte i databasen");
-        
+        String agentNamn = JOptionPane.showInputDialog(null, "Ange namn på den Agent du vill ändra", "Ändra en agent", HEIGHT);
+        String namn = agentNamn;
+
+        if (Validering.finnsUsernameiDB(agentNamn)) {
+
+            new SokAgent(idb, namn).setVisible(true);
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Användaren finns inte i databasen");
+
     }//GEN-LAST:event_jButton1ActionPerformed
     }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -224,48 +223,52 @@ public class AdminSida extends javax.swing.JFrame {
         // Denna metod ger användaren ett val om den anitingen vill ta bort eller ge adminstatus till en agent. 
         // Beroende på valet användaren gör ger programmet en uppmaning att skriva in en agent som finns med i databasen, 
         // och tar antingen bort eller ger adminstatus, beroende på valet som gjordes tidigare. 
-        String[] adminArray = { "Ge status", "Ta bort status" };
-        String valdAdmin = (String)JOptionPane.showInputDialog( null, "Välj en önskad agent ifrån listan:", "Välj Agent...",
-                                        JOptionPane.QUESTION_MESSAGE, 
-                                        null, 
-                                        adminArray,
-                                        adminArray[ 0 ] );
-        if (valdAdmin.equals("Ge status")) {
-            String nyAdmin = JOptionPane.showInputDialog("Vilken agent vill du ge adminstatus till?");
-            if (Validering.checkAdmin(nyAdmin)) {
-                JOptionPane.showMessageDialog(null, "Denna agent har redan admin-status");
-            } else {
-                try {
-                    idb.update("UPDATE agent set administrator = 'J' where namn ='" + nyAdmin + "'");
-                } catch (InfException ettE) {
-                    JOptionPane.showMessageDialog(null, "Ett fel uppstod när du försökte ge ny status");
-                    System.out.println("Internt fel" + ettE);
-                } } }
-            
-                if (valdAdmin.equals("Ta bort status")) {
-                    String bortAdmin = JOptionPane.showInputDialog( "Vilken agent vill du ta bort adminstatus ifrån");
-                    if (!Validering.checkAdmin(bortAdmin)) {
-                        JOptionPane.showMessageDialog(null, "Denna agent har ingen adminstatus");
-                    } else {
-                        try {
-                            idb.update("Update agent set administrator = 'N' where namn ='" + bortAdmin + "'");
-                        } catch (InfException ettE) {
-                            JOptionPane.showMessageDialog(null, "Ett fel uppstod när du försökte ta bort status");
-                            System.out.println("Internt fel" + ettE);
-                        }
-                    }
+        String[] adminArray = {"Ge status", "Ta bort status"};
+        String valdAdmin = (String) JOptionPane.showInputDialog(null, "Välj en önskad agent ifrån listan:", "Välj Agent...",
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                adminArray,
+                adminArray[0]);
 
+        if (valdAdmin != null) {
+            if (valdAdmin.equals("Ge status")) {
+                String nyAdmin = JOptionPane.showInputDialog("Vilken agent vill du ge adminstatus till?");
+                if (Validering.checkAdmin(nyAdmin)) {
+                    JOptionPane.showMessageDialog(null, "Denna agent har redan admin-status");
+                } else {
+                    try {
+                        idb.update("UPDATE agent set administrator = 'J' where namn ='" + nyAdmin + "'");
+                    } catch (InfException ettE) {
+                        JOptionPane.showMessageDialog(null, "Ett fel uppstod när du försökte ge ny status");
+                        System.out.println("Internt fel" + ettE);
+                    }
+                }
+            }
+
+            if (valdAdmin.equals("Ta bort status")) {
+                String bortAdmin = JOptionPane.showInputDialog("Vilken agent vill du ta bort adminstatus ifrån");
+                if (!Validering.checkAdmin(bortAdmin)) {
+                    JOptionPane.showMessageDialog(null, "Denna agent har ingen adminstatus");
+                } else {
+                    try {
+                        idb.update("Update agent set administrator = 'N' where namn ='" + bortAdmin + "'");
+                    } catch (InfException ettE) {
+                        JOptionPane.showMessageDialog(null, "Ett fel uppstod när du försökte ta bort status");
+                        System.out.println("Internt fel" + ettE);
+                    }
                 }
 
-        
+            }
+        }
+
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
         taBortAgent();
-        
-        
+
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -279,7 +282,7 @@ public class AdminSida extends javax.swing.JFrame {
         String nySveaID = "";
         String gotaID = "";
         String nyGotaID = "";
-       
+
         String[] omradeArray = {"Götaland", "Svealand", "Norrland"};
         String valdAdmin = (String) JOptionPane.showInputDialog(null, "Välj ett önskat område som du vill hantera:", "Välj Agent...",
                 JOptionPane.QUESTION_MESSAGE,
@@ -352,132 +355,128 @@ public class AdminSida extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Denna agent finns inte med i databasen. Vänligen testa en annan agent");
                     }
                     try {
-                    nySveaID = idb.fetchSingle(fragaNySveaID);
-
-                } catch (InfException ettE) {
-                    JOptionPane.showMessageDialog(null, "fel med hämtning av agent");
-                    System.out.println("Internt fel" + ettE);
-                }
-                String updatefragaSvea = "UPDATE Omradeschef set Omradeschef.`Agent_ID` = " + nySveaID + " WHERE Omradeschef.`Agent_ID` = " + sveaID;
-
-                try {
-                    idb.update(updatefragaSvea);
-                } catch (InfException ettE) {
-                    JOptionPane.showMessageDialog(null, "ett fel har uppstått med databasen");
-                    System.out.println("Internt fel" + ettE);
-                }
-            }
-            if (valdAdmin.equals("Norrland")) {
-                String norrFraga = "Select agent.namn from agent join omradeschef on Agent.Agent_ID = omradeschef.Agent_ID join omrade on omradeschef.omrade = omrade.omrades_ID where benamning = 'Norrland'";
-                //String norrID = "select agent.agent_ID from agent where namn ='" +chefNorr+ "'";
-
-            try {
-                String chefNorr = idb.fetchSingle(norrFraga);
-                norrID = idb.fetchSingle("select agent.agent_ID from agent where namn ='" + chefNorr + "'");
-                JOptionPane.showMessageDialog(null, "Chef över detta område är '" + chefNorr + "'");
-            } catch (InfException ettE) {
-                JOptionPane.showMessageDialog(null, "Det finns ingen chef för detta område");
-                System.out.println("Internt fel" + ettE);
-            }
-            String[] norrArray = {"Ja", "Nej"};
-            String valtSvarNorr = (String) JOptionPane.showInputDialog(null, "Vill du ändra chef?", "Välj Agent..", JOptionPane.QUESTION_MESSAGE, null, norrArray, norrArray[0]);
-            if (valtSvarNorr.equals("Ja")) {
-                String nyChefNorr = JOptionPane.showInputDialog("Vilken agent ska bli ny chef för Norrland");
-
-                nyChefNorr = Validering.returGodkäntNamn(nyChefNorr);
-
-                    String fragaNyNorrID = "SELECT Agent_ID from Agent where namn ='" + nyChefNorr + "'";
-                    if (!Validering.IsUsernameAgent(nyChefNorr)) {
-                        JOptionPane.showMessageDialog(null, "Denna agent finns inte med i databasen. Vänligen testa en annan agent");
-                    }
-                    try {
-                        nyNorrID = idb.fetchSingle(fragaNyNorrID);
+                        nySveaID = idb.fetchSingle(fragaNySveaID);
 
                     } catch (InfException ettE) {
                         JOptionPane.showMessageDialog(null, "fel med hämtning av agent");
                         System.out.println("Internt fel" + ettE);
                     }
-
-                    String updatefraga = "UPDATE Omradeschef set Omradeschef.`Agent_ID` = " + nyNorrID + " WHERE Omradeschef.`Agent_ID` = " + norrID;
+                    String updatefragaSvea = "UPDATE Omradeschef set Omradeschef.`Agent_ID` = " + nySveaID + " WHERE Omradeschef.`Agent_ID` = " + sveaID;
 
                     try {
-                        idb.update(updatefraga);
+                        idb.update(updatefragaSvea);
                     } catch (InfException ettE) {
                         JOptionPane.showMessageDialog(null, "ett fel har uppstått med databasen");
                         System.out.println("Internt fel" + ettE);
                     }
-
                 }
-            }
+                if (valdAdmin.equals("Norrland")) {
+                    String norrFraga = "Select agent.namn from agent join omradeschef on Agent.Agent_ID = omradeschef.Agent_ID join omrade on omradeschef.omrade = omrade.omrades_ID where benamning = 'Norrland'";
+                    //String norrID = "select agent.agent_ID from agent where namn ='" +chefNorr+ "'";
+
+                    try {
+                        String chefNorr = idb.fetchSingle(norrFraga);
+                        norrID = idb.fetchSingle("select agent.agent_ID from agent where namn ='" + chefNorr + "'");
+                        JOptionPane.showMessageDialog(null, "Chef över detta område är '" + chefNorr + "'");
+                    } catch (InfException ettE) {
+                        JOptionPane.showMessageDialog(null, "Det finns ingen chef för detta område");
+                        System.out.println("Internt fel" + ettE);
+                    }
+                    String[] norrArray = {"Ja", "Nej"};
+                    String valtSvarNorr = (String) JOptionPane.showInputDialog(null, "Vill du ändra chef?", "Välj Agent..", JOptionPane.QUESTION_MESSAGE, null, norrArray, norrArray[0]);
+                    if (valtSvarNorr.equals("Ja")) {
+                        String nyChefNorr = JOptionPane.showInputDialog("Vilken agent ska bli ny chef för Norrland");
+
+                        nyChefNorr = Validering.returGodkäntNamn(nyChefNorr);
+
+                        String fragaNyNorrID = "SELECT Agent_ID from Agent where namn ='" + nyChefNorr + "'";
+                        if (!Validering.IsUsernameAgent(nyChefNorr)) {
+                            JOptionPane.showMessageDialog(null, "Denna agent finns inte med i databasen. Vänligen testa en annan agent");
+                        }
+                        try {
+                            nyNorrID = idb.fetchSingle(fragaNyNorrID);
+
+                        } catch (InfException ettE) {
+                            JOptionPane.showMessageDialog(null, "fel med hämtning av agent");
+                            System.out.println("Internt fel" + ettE);
+                        }
+
+                        String updatefraga = "UPDATE Omradeschef set Omradeschef.`Agent_ID` = " + nyNorrID + " WHERE Omradeschef.`Agent_ID` = " + norrID;
+
+                        try {
+                            idb.update(updatefraga);
+                        } catch (InfException ettE) {
+                            JOptionPane.showMessageDialog(null, "ett fel har uppstått med databasen");
+                            System.out.println("Internt fel" + ettE);
+                        }
+
+                    }
+                }
     }//GEN-LAST:event_jButton5ActionPerformed
         }
     }
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-    String Utfraga = "Select Benamning FROM Utrustning";
-          ArrayList<String> UtArrayList = new ArrayList<>();
-          int valdUtrustning = 0;
+        String Utfraga = "Select Benamning FROM Utrustning";
+        ArrayList<String> UtArrayList = new ArrayList<>();
+        int valdUtrustning = 0;
 
-          
-          //Hämtar hem det Utrsutningar som finns i Utrustning i databasen
-          try{
-              UtArrayList = idb.fetchColumn(Utfraga);
-              
-          } catch(InfException e) {
+        //Hämtar hem det Utrsutningar som finns i Utrustning i databasen
+        try {
+            UtArrayList = idb.fetchColumn(Utfraga);
+
+        } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "FEL MED DATABASEN");
             System.out.println("FEL när man skulle hämta hem Utrustningen från databasen " + e);
-          }
-        
+        }
+
         Object[] UtArray = UtArrayList.toArray();
-        String valdUt = (String)JOptionPane.showInputDialog( null, "Välj en önskad Utrustning att ta bort ifrån listan:", "Välj Utrustning...",
-                                        JOptionPane.QUESTION_MESSAGE, 
-                                        null, 
-                                       UtArray,
-                                        UtArray[ 0 ] );
-        
-            String Utnamn = valdUt;
-            
-        try{
-            
-            String UtIDFraga = "SELECT Utrustnings_ID FROM Utrustning WHERE Benamning = '"+Utnamn+"'";
-            
+        String valdUt = (String) JOptionPane.showInputDialog(null, "Välj en önskad Utrustning att ta bort ifrån listan:", "Välj Utrustning...",
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                UtArray,
+                UtArray[0]);
+
+        String Utnamn = valdUt;
+
+        try {
+
+            String UtIDFraga = "SELECT Utrustnings_ID FROM Utrustning WHERE Benamning = '" + Utnamn + "'";
+
             String charPlats = idb.fetchSingle(UtIDFraga);
-            
+
             valdUtrustning = Integer.parseInt(charPlats);
-            
-        } catch(InfException e){
+
+        } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Utrustningen fanns inte i databasen");
             System.out.println("Kunde inte hämta vald Utrustning" + e.getMessage());
-            
+
         }
-        
-        
-        
-        try{
-            idb.delete("Delete from Innehar_Utrustning where Utrustnings_ID ='"+valdUtrustning+"'");
-            idb.delete("Delete from Vapen where Utrustnings_ID ='"+valdUtrustning+"'");
-            idb.delete("Delete from Teknik where Utrustnings_ID ='"+valdUtrustning+"'");
-            idb.delete("Delete from Kommunikation where Utrustnings_ID ='"+valdUtrustning+"'");
-            idb.delete("Delete from Utrustning where Utrustnings_ID ='"+valdUtrustning+"'");
-            
+
+        try {
+            idb.delete("Delete from Innehar_Utrustning where Utrustnings_ID ='" + valdUtrustning + "'");
+            idb.delete("Delete from Vapen where Utrustnings_ID ='" + valdUtrustning + "'");
+            idb.delete("Delete from Teknik where Utrustnings_ID ='" + valdUtrustning + "'");
+            idb.delete("Delete from Kommunikation where Utrustnings_ID ='" + valdUtrustning + "'");
+            idb.delete("Delete from Utrustning where Utrustnings_ID ='" + valdUtrustning + "'");
+
             JOptionPane.showMessageDialog(null, "Utrustningen har raderas!");
-            
-            
-        } catch(InfException e){
+
+        } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "kunde inte ta bort vald utrustning");
             System.out.println("Kunde inte uppdatera vald plats" + e.getMessage());
         }
-        
-            // TODO add your handling code here:
+
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
 
         // FÖR ATT REGISTRERA EN NY ALIEN I DATABSEN 
-         new RegistreraAlien(idb).setVisible(true);
+        new RegistreraAlien(idb).setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-         // När man trycker på "ändra Alien"
+        // När man trycker på "ändra Alien"
         String alienNamn;
 
         //Ber användaren mata in ett namn 
@@ -487,7 +486,7 @@ public class AdminSida extends javax.swing.JFrame {
 
         if (Validering.isUsernameAlien(alienNamn) && Validering.isNamnGodkant(alienNamn)) {
 
-            new UppdateraEnAlien(idb, alienNamn,user).setVisible(true);
+            new UppdateraEnAlien(idb, alienNamn, user).setVisible(true);
 
         } else {
             JOptionPane.showMessageDialog(null, "Alien finns inte i databasen");
@@ -510,18 +509,16 @@ public class AdminSida extends javax.swing.JFrame {
         if (Validering.isUsernameAlien(alienDelete)) {
             //Internt metodanrop som tar bort en alien
             taBortAlien(alienDelete);
+        } else {
+            JOptionPane.showMessageDialog(null, "Alien finns inte i databasen");
         }
-        else{ 
-             JOptionPane.showMessageDialog(null, "Alien finns inte i databasen");
-        }
- 
-    }//GEN-LAST:event_jButton8ActionPerformed
 
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
      * Tar bort en agent ur systemet
      */
-      private void taBortAgent() {
+    private void taBortAgent() {
 
         //Ber användaren mata in ett namn 
         String agentDelete;
@@ -645,11 +642,11 @@ public class AdminSida extends javax.swing.JFrame {
         }
 
     }
-      
-      /**
-       * Tar bort en alien ifrån systemet
-       */
-      private void taBortAlien (String alienDelete){
+
+    /**
+     * Tar bort en alien ifrån systemet
+     */
+    private void taBortAlien(String alienDelete) {
 
         String deleteAID = "";
         String sqlfragaValdA = "SELECT Alien_ID FROM Alien where Namn = '" + alienDelete + "'";
@@ -667,7 +664,7 @@ public class AdminSida extends javax.swing.JFrame {
         tabeller.add("Worm");
         tabeller.add("Boglodite");
         tabeller.add("Squid");
-        
+
         //tar bort agenten från alla tabeller där Agent_ID är foreign key
         for (String enTabell : tabeller) {
             try {
