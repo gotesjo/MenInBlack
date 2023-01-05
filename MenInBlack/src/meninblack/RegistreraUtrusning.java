@@ -135,6 +135,7 @@ public class RegistreraUtrusning extends javax.swing.JFrame {
     //När man trycker på Lägg till knappen
     private void jBLaggTillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLaggTillActionPerformed
 
+        if(jTFNamn.getText() != null && buttonGroup1.isSelected(buttonGroup1.getSelection())){
         //Kollar vilken radiobutton som är vald
         radioButtonCheck();
         setUID();
@@ -144,6 +145,10 @@ public class RegistreraUtrusning extends javax.swing.JFrame {
         
         //Stänger ner fönstret när man gjort en registrering
         dispose();
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Fyll i både namn och typ");
+        }
  
     }//GEN-LAST:event_jBLaggTillActionPerformed
 
@@ -263,9 +268,14 @@ public class RegistreraUtrusning extends javax.swing.JFrame {
     
     //Hämtar kaliber på det vapnet användaren lägger till 
     private int getKaliber(){
-        int kaliber = Integer.parseInt(JOptionPane.showInputDialog("vad har ditt vapen för kaliber. Mata en heltal"));
+        String kaliber =JOptionPane.showInputDialog("vad har ditt vapen för kaliber. Mata en heltal");
         
-        return kaliber; 
+        if(kaliber == null){
+            kaliber = "0";
+        }
+        
+        int kaliberInt = Integer.parseInt(kaliber);
+        return kaliberInt; 
     }
     
     
