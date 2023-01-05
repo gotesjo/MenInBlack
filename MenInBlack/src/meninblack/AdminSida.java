@@ -221,7 +221,9 @@ public class AdminSida extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        // Denna metod ger användaren ett val om den anitingen vill ta bort eller ge adminstatus till en agent. 
+        // Beroende på valet användaren gör ger programmet en uppmaning att skriva in en agent som finns med i databasen, 
+        // och tar antingen bort eller ger adminstatus, beroende på valet som gjordes tidigare. 
         String[] adminArray = { "Ge status", "Ta bort status" };
         String valdAdmin = (String)JOptionPane.showInputDialog( null, "Välj en önskad agent ifrån listan:", "Välj Agent...",
                                         JOptionPane.QUESTION_MESSAGE, 
@@ -267,7 +269,10 @@ public class AdminSida extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        // Denna kod hanterar områden och dess chefer. Den ger användaren en drop-down meny på de områden som MIB arbetar
+        // från. Med valet får man information om vilken agent som nuvarande är områdeschef för respektive område. Man får även ett
+        // val om man vill ändra agent, vilket ger en input där användaren kan skriva in en agent som finns med i databasen.
+        // Databasen uppdateras med villkoren från vilken agent som var områdeschef innan, och vilken önskad agent som ska bytas. 
         String norrID = "";
         String nyNorrID = "";
         String sveaID = "";

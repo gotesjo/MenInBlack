@@ -214,7 +214,9 @@ public class SokAgent extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        // Denna metod ändrar ett namn i agenttabellen till det användaren väljer. Det finns en validering för att se om agenten
+        // i fråga finns med i databasen, och då gör en uppdatering på tabellen. Samt efter varje metod görs en åtkomst för att 
+        // fylla informationen igen. Detta är för att sidan ska uppdateras direkt med den nya informationen som finns i databasen. 
         String nuvarandeNamn = agentNamn;
         String nyttNamn = JOptionPane.showInputDialog("Vad ska agenten få för nytt namn?\nNamnet måste vara unikt");
 
@@ -252,7 +254,8 @@ public class SokAgent extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // Vad denna metod gör är att :
+        // Vad denna metod gör är att först tar en SQL fråga som tar benämningen från område tabellen, och gör den till
+        // en arraylista. 
         String nyttOmråde = "SELECT benamning from omrade";
         ArrayList<String> omradeArrayList = new ArrayList<>();
         int nyPlats = 0;
@@ -283,11 +286,14 @@ public class SokAgent extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Kunde inte uppdatera området");
             System.out.println("Internt fel" + ettE.getMessage());
         }
+        // Uppdaterar sidan med det nya området.
         fyllInformation();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        // Denna metod ändrar numret för en agent med hjälp av en parameter som använderen själv får skriva in. 
+        // Med variabeln som lagrar informationen som användaren skriver in kan koden göra en update där villkoret 
+        // blir vad agenten heter, så rätt nummer kopplas till rätt agent. 
         String nyttNummer = JOptionPane.showInputDialog("Vad ska det nya numret vara?");
        
         try {
