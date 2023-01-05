@@ -110,6 +110,11 @@ public class AdminSida extends javax.swing.JFrame {
         });
 
         jButton8.setText("Eliminera Alien");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         jButton9.setText("Ta bort utr.");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
@@ -152,7 +157,7 @@ public class AdminSida extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jButton9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                                    .addComponent(jButton8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 114, Short.MAX_VALUE)
                                     .addComponent(jButton7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jButton6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(58, 58, 58))))
@@ -490,6 +495,23 @@ public class AdminSida extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jBCloseActionPerformed
 
+    //Knapp för att eliminera alien
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+
+        //Hämtar namnet på den alien som ska bort ifrån användaren
+        String alienDelete = JOptionPane.showInputDialog(null, "Ange namn på den Alien du vill ta bort", "Ta bort en Alien...", HEIGHT);
+
+        //Kollar ifall valt namn är godkänt
+        if (Validering.isUsernameAlien(alienDelete)) {
+            //Internt metodanrop som tar bort en alien
+            taBortAlien(alienDelete);
+        }
+        else{ 
+             JOptionPane.showMessageDialog(null, "Alien finns inte i databasen");
+        }
+ 
+    }//GEN-LAST:event_jButton8ActionPerformed
+
 
     /**
      * Tar bort en agent ur systemet
@@ -617,6 +639,56 @@ public class AdminSida extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Agenten har inte tagits bort");
         }
 
+    }
+      
+      /**
+       * Tar bort en alien ifrån systemet
+       */
+      private void taBortAlien (String alienDelete){
+
+        String deleteAID = "";
+        String sqlfragaValdA = "SELECT Alien_ID FROM Alien where Namn = '" + alienDelete + "'";
+
+        //Hämtar hem Alien_ID för Alien som ska tas bort
+        try {
+            deleteAID = idb.fetchSingle(sqlfragaValdA);
+
+        } catch (InfException e) {
+            System.out.println("Fel när man ska hämta Alien_ID för Alien som ska tas bort" + e);
+        }
+
+        //Lägger till det tabeller som Alien_ID ska tas bort ifrån
+        ArrayList<String> tabeller = new ArrayList<>();
+        tabeller.add("Worm");
+        tabeller.add("Boglodite");
+        tabeller.add("Squid");
+        
+        //tar bort agenten från alla tabeller där Agent_ID är foreign key
+        for (String enTabell : tabeller) {
+            try {
+                String taBortFranTabell = "DELETE FROM " + enTabell + " WHERE Alien_ID = " + deleteAID;
+                idb.delete(taBortFranTabell);
+
+            } catch (InfException e) {
+            }
+        }
+
+        //Tar bort agenten Användaren valde från början
+        try {
+            String sqlDelete = "DELETE FROM mibdb.alien WHERE Alien_ID = " + deleteAID;
+            idb.delete(sqlDelete);
+
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Kunde inte ta bort Alien");
+            System.out.println("alien gick inte att ta bort" + e.getMessage());
+        }
+
+        //Kollar ifall agenten har taigits bort eller ej
+        if (!Validering.isUsernameAlien(alienDelete)) {
+            JOptionPane.showMessageDialog(null, "Nu har " + alienDelete + " tagits bort ur databasen");
+        } else {
+            JOptionPane.showMessageDialog(null, "Alien har inte tagits bort");
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
