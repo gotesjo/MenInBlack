@@ -341,7 +341,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
         possibleReg = true;
         
         //Sätter ett namn godkänt för Databasen
-        if(Validering.isNamnGodkant(jTFNamn.getText())){
+        if(Validering.isNamnGodkant(jTFNamn.getText()) && !Validering.finnsUsernameiDB(jTFNamn.getText())){
         namn = Validering.returGodkäntNamn(jTFNamn.getText());
         } else {
             possibleReg = false;
