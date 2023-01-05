@@ -16,6 +16,7 @@ import oru.inf.InfException;
  */
 public class AliensNara extends javax.swing.JFrame {
 
+    //fält för aliensNara
     private InfDB idb;
     private String valdPlats;
     private ArrayList<HashMap<String, String>> resultat;
@@ -39,6 +40,7 @@ public class AliensNara extends javax.swing.JFrame {
         
     }
     
+    //Tar fram information om aliens som befinner sig i sitt område.
     private void fyllrutan(){
         jTArea.setText("");
 
