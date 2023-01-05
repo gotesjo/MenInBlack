@@ -277,14 +277,15 @@ public class Agentsida extends javax.swing.JFrame {
                                         null, 
                                         typArray,
                                         typArray[ 0 ] );
-        
-        if(valdTyp.equals("Fordon")){
-            
-            new RegistreraFordon(idb).setVisible(true);             
-        }
-        else if(valdTyp.equals("Utrustning")){
-            new RegistreraUtrusning(idb).setVisible(true);
-            
+       
+        if (valdTyp != null) {
+            if (valdTyp.equals("Fordon")) {
+
+                new RegistreraFordon(idb).setVisible(true);
+            } else if (valdTyp.equals("Utrustning")) {
+                new RegistreraUtrusning(idb).setVisible(true);
+
+            }
         }
         
     }//GEN-LAST:event_jButton6ActionPerformed
