@@ -45,23 +45,23 @@ public class ListaAllaAliens extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         dateChooserStart = new com.raven.datechooser.DateChooser();
         dateChooserEnd = new com.raven.datechooser.DateChooser();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        jLTitel = new javax.swing.JLabel();
+        jSPSokning = new javax.swing.JScrollPane();
         jTArea = new javax.swing.JTextArea();
         jCBplats = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
+        jLBeskrivning = new javax.swing.JLabel();
         jBSokPlats = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jLPlats = new javax.swing.JLabel();
+        jLStartDate = new javax.swing.JLabel();
         jBSokRas = new javax.swing.JButton();
         jCBRas = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        jLRas = new javax.swing.JLabel();
+        jLEndDate = new javax.swing.JLabel();
         jBSokDate = new javax.swing.JButton();
         jTFStart = new javax.swing.JTextField();
         jTFSlut = new javax.swing.JTextField();
         jBClose = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        jLForklaringstext = new javax.swing.JLabel();
         jLAreaForklaring = new javax.swing.JLabel();
 
         jTextArea1.setColumns(20);
@@ -76,12 +76,12 @@ public class ListaAllaAliens extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jLabel1.setText("Sök info om Aliens ");
+        jLTitel.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jLTitel.setText("Sök info om Aliens ");
 
         jTArea.setColumns(20);
         jTArea.setRows(5);
-        jScrollPane2.setViewportView(jTArea);
+        jSPSokning.setViewportView(jTArea);
 
         jCBplats.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,7 +89,7 @@ public class ListaAllaAliens extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Välj vad du vill söka information på");
+        jLBeskrivning.setText("Välj vad du vill söka information på");
 
         jBSokPlats.setText("Sök");
         jBSokPlats.addActionListener(new java.awt.event.ActionListener() {
@@ -98,9 +98,9 @@ public class ListaAllaAliens extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Plats");
+        jLPlats.setText("Plats");
 
-        jLabel4.setText("Startdatum");
+        jLStartDate.setText("Startdatum");
 
         jBSokRas.setText("Sök");
         jBSokRas.addActionListener(new java.awt.event.ActionListener() {
@@ -115,9 +115,9 @@ public class ListaAllaAliens extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setText("Ras");
+        jLRas.setText("Ras");
 
-        jLabel6.setText("Slutdatum");
+        jLEndDate.setText("Slutdatum");
 
         jBSokDate.setText("Sök");
         jBSokDate.addActionListener(new java.awt.event.ActionListener() {
@@ -133,8 +133,8 @@ public class ListaAllaAliens extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Helvetica Neue", 2, 10)); // NOI18N
-        jLabel7.setText("Det går enbart att söka på en preferens åt gången");
+        jLForklaringstext.setFont(new java.awt.Font("Helvetica Neue", 2, 10)); // NOI18N
+        jLForklaringstext.setText("Det går enbart att söka på en preferens åt gången");
 
         jLAreaForklaring.setText("Din sökning:");
 
@@ -146,16 +146,16 @@ public class ListaAllaAliens extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(jLBeskrivning)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel3)
+                                    .addComponent(jLRas)
+                                    .addComponent(jLStartDate)
+                                    .addComponent(jLEndDate)
+                                    .addComponent(jLPlats)
                                     .addComponent(jCBRas, 0, 115, Short.MAX_VALUE)
                                     .addComponent(jCBplats, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jTFStart)
@@ -166,14 +166,14 @@ public class ListaAllaAliens extends javax.swing.JFrame {
                                     .addComponent(jBSokPlats)
                                     .addComponent(jBSokDate, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel7))
+                                .addComponent(jSPSokning, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLForklaringstext))
                         .addGap(0, 21, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(220, 220, 220)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLTitel, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(273, 273, 273)
                         .addComponent(jBClose)))
@@ -187,31 +187,31 @@ public class ListaAllaAliens extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLTitel, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addComponent(jLBeskrivning)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
+                .addComponent(jLForklaringstext)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLAreaForklaring)
                 .addGap(2, 2, 2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addComponent(jLPlats)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jCBplats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel5)
+                                .addComponent(jLRas)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jCBRas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel4)
+                                .addComponent(jLStartDate)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTFStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel6))
+                                .addComponent(jLEndDate))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jBSokPlats)
                                 .addGap(35, 35, 35)
@@ -220,7 +220,7 @@ public class ListaAllaAliens extends javax.swing.JFrame {
                                 .addComponent(jBSokDate)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTFSlut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSPSokning, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(jBClose)
                 .addGap(32, 32, 32))
@@ -393,15 +393,15 @@ public class ListaAllaAliens extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jCBRas;
     private javax.swing.JComboBox<String> jCBplats;
     private javax.swing.JLabel jLAreaForklaring;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLBeskrivning;
+    private javax.swing.JLabel jLEndDate;
+    private javax.swing.JLabel jLForklaringstext;
+    private javax.swing.JLabel jLPlats;
+    private javax.swing.JLabel jLRas;
+    private javax.swing.JLabel jLStartDate;
+    private javax.swing.JLabel jLTitel;
+    private javax.swing.JScrollPane jSPSokning;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTArea;
     private javax.swing.JTextField jTFSlut;
     private javax.swing.JTextField jTFStart;

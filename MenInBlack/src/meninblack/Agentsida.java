@@ -50,14 +50,14 @@ public class Agentsida extends javax.swing.JFrame {
     private void initComponents() {
 
         labelTitel = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jLpersonligt = new javax.swing.JLabel();
+        jLAliens = new javax.swing.JLabel();
+        jBRegAlien = new javax.swing.JButton();
         jBListaAliens = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        jBHantAlien = new javax.swing.JButton();
+        jBChangePassword = new javax.swing.JButton();
+        jBRegUtrustning = new javax.swing.JButton();
+        jBLoggaUt = new javax.swing.JButton();
         jLabelValkommen = new javax.swing.JLabel();
         jLAgent = new javax.swing.JLabel();
         jBChef = new javax.swing.JButton();
@@ -70,17 +70,17 @@ public class Agentsida extends javax.swing.JFrame {
         labelTitel.setFont(new java.awt.Font("Agency FB", 1, 36)); // NOI18N
         labelTitel.setText("Agentsida");
 
-        jLabel1.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
-        jLabel1.setText("Personligt");
+        jLpersonligt.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
+        jLpersonligt.setText("Personligt");
 
-        jLabel2.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
-        jLabel2.setText("Aliens");
+        jLAliens.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
+        jLAliens.setText("Aliens");
 
-        jButton1.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
-        jButton1.setText("Registrera Ny Alien");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBRegAlien.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
+        jBRegAlien.setText("Registrera Ny Alien");
+        jBRegAlien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBRegAlienActionPerformed(evt);
             }
         });
 
@@ -92,35 +92,35 @@ public class Agentsida extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
-        jButton3.setText("Hantera Aliens");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jBHantAlien.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
+        jBHantAlien.setText("Hantera Aliens");
+        jBHantAlien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jBHantAlienActionPerformed(evt);
             }
         });
 
-        jButton5.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
-        jButton5.setText("Ändra Lösenord");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jBChangePassword.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
+        jBChangePassword.setText("Ändra Lösenord");
+        jBChangePassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jBChangePasswordActionPerformed(evt);
             }
         });
 
-        jButton6.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
-        jButton6.setText("Registrera Utrustning");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        jBRegUtrustning.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
+        jBRegUtrustning.setText("Registrera Utrustning");
+        jBRegUtrustning.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                jBRegUtrustningActionPerformed(evt);
             }
         });
 
-        jButton7.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
-        jButton7.setText("Logga ut");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        jBLoggaUt.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
+        jBLoggaUt.setText("Logga ut");
+        jBLoggaUt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                jBLoggaUtActionPerformed(evt);
             }
         });
 
@@ -161,17 +161,17 @@ public class Agentsida extends javax.swing.JFrame {
                     .addComponent(jBChef, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jBRegUtrustning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jBChangePassword, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(57, 57, 57)
-                            .addComponent(jLabel1))))
+                            .addComponent(jLpersonligt))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jBListaAliens, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jBRegAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLAliens)
+                    .addComponent(jBHantAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,7 +180,7 @@ public class Agentsida extends javax.swing.JFrame {
                         .addComponent(labelTitel))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(311, 311, 311)
-                        .addComponent(jButton7)))
+                        .addComponent(jBLoggaUt)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -196,55 +196,55 @@ public class Agentsida extends javax.swing.JFrame {
                         .addComponent(jLAgent)
                         .addGap(78, 78, 78)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jBRegAlien, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLAliens, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(59, 59, 59)))
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3))
+                        .addComponent(jBHantAlien))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(jLpersonligt)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton5)
+                        .addComponent(jBChangePassword)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton6)))
+                        .addComponent(jBRegUtrustning)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBChef)
                     .addComponent(jBListaAliens, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton7)
+                .addComponent(jBLoggaUt)
                 .addGap(35, 35, 35))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jBRegAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRegAlienActionPerformed
         // FÖR ATT REGISTRERA EN NY ALIEN I DATABSEN 
          new RegistreraAlien(idb).setVisible(true); 
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jBRegAlienActionPerformed
 
     private void jBListaAliensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBListaAliensActionPerformed
         // Öppnar upp ett fönster för att lista alla aliens
         new ListaAllaAliens(idb).setVisible(true); 
     }//GEN-LAST:event_jBListaAliensActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void jBChangePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBChangePasswordActionPerformed
         // TODO add your handling code here:
         new AndraLosen(idb, user).setVisible(true);
         
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_jBChangePasswordActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void jBLoggaUtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLoggaUtActionPerformed
         // Stänger ner programmet när man loggar ut
         
         dispose();
         System.exit(0);
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_jBLoggaUtActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jBHantAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBHantAlienActionPerformed
         // När man trycker på "ändra Alien"
         String alienNamn;
 
@@ -261,14 +261,14 @@ public class Agentsida extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Alien finns inte i databasen");
 
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jBHantAlienActionPerformed
 
     private void jMenu1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MousePressed
         // TODO add your handling code here:
                 new AdminSida(idb, user).setVisible(true);
     }//GEN-LAST:event_jMenu1MousePressed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void jBRegUtrustningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRegUtrustningActionPerformed
         // TODO add your handling code here:
         
         Object[] typArray = { "Fordon", "Utrustning"};
@@ -288,7 +288,7 @@ public class Agentsida extends javax.swing.JFrame {
             }
         }
         
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_jBRegUtrustningActionPerformed
 
     //Knapp för att se områdeschef för valt område
     private void jBChefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBChefActionPerformed
@@ -355,17 +355,17 @@ public class Agentsida extends javax.swing.JFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBChangePassword;
     private javax.swing.JButton jBChef;
+    private javax.swing.JButton jBHantAlien;
     private javax.swing.JButton jBListaAliens;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jBLoggaUt;
+    private javax.swing.JButton jBRegAlien;
+    private javax.swing.JButton jBRegUtrustning;
     private javax.swing.JLabel jLAgent;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLAliens;
     private javax.swing.JLabel jLabelValkommen;
+    private javax.swing.JLabel jLpersonligt;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenub;
     private javax.swing.JLabel labelTitel;

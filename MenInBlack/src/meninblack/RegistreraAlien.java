@@ -60,8 +60,8 @@ public class RegistreraAlien extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        dateChooser1 = new com.raven.datechooser.DateChooser();
+        rasGruppButt = new javax.swing.ButtonGroup();
+        dateChooserRegDate = new com.raven.datechooser.DateChooser();
         jLabel1 = new javax.swing.JLabel();
         jTFNamn = new javax.swing.JTextField();
         jTFLosenord = new javax.swing.JTextField();
@@ -71,17 +71,17 @@ public class RegistreraAlien extends javax.swing.JFrame {
         jRBWorm = new javax.swing.JRadioButton();
         jRBBoglodite = new javax.swing.JRadioButton();
         jRBSquid = new javax.swing.JRadioButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jLPlats = new javax.swing.JLabel();
+        jLAnsvarigAgent = new javax.swing.JLabel();
+        jLUppgifter = new javax.swing.JLabel();
         jBRegistrera = new javax.swing.JButton();
         jTextDate = new javax.swing.JTextField();
         jLabeldate = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jBToDay = new javax.swing.JButton();
         jLVarning = new javax.swing.JLabel();
 
-        dateChooser1.setDateFormat("yyyy-MM-dd");
-        dateChooser1.setTextRefernce(jTextDate);
+        dateChooserRegDate.setDateFormat("yyyy-MM-dd");
+        dateChooserRegDate.setTextRefernce(jTextDate);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -109,20 +109,20 @@ public class RegistreraAlien extends javax.swing.JFrame {
             }
         });
 
-        buttonGroup1.add(jRBWorm);
+        rasGruppButt.add(jRBWorm);
         jRBWorm.setText("Worm");
 
-        buttonGroup1.add(jRBBoglodite);
+        rasGruppButt.add(jRBBoglodite);
         jRBBoglodite.setText("Boglodite");
 
-        buttonGroup1.add(jRBSquid);
+        rasGruppButt.add(jRBSquid);
         jRBSquid.setText("Squid");
 
-        jLabel2.setText("Plats");
+        jLPlats.setText("Plats");
 
-        jLabel3.setText("Ansvarig agent");
+        jLAnsvarigAgent.setText("Ansvarig agent");
 
-        jLabel4.setText("Uppgifter");
+        jLUppgifter.setText("Uppgifter");
 
         jBRegistrera.setText("Registrera");
         jBRegistrera.addActionListener(new java.awt.event.ActionListener() {
@@ -133,10 +133,10 @@ public class RegistreraAlien extends javax.swing.JFrame {
 
         jLabeldate.setText("Registreringsdatum");
 
-        jButton1.setText("idag...");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBToDay.setText("idag...");
+        jBToDay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBToDayActionPerformed(evt);
             }
         });
 
@@ -156,20 +156,20 @@ public class RegistreraAlien extends javax.swing.JFrame {
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(jRBSquid)
-                                        .addComponent(jLabel4)
+                                        .addComponent(jLUppgifter)
                                         .addComponent(jRBBoglodite)
                                         .addComponent(jTFNamn)
                                         .addComponent(jTFLosenord)
                                         .addComponent(jTFTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel2)
-                                        .addComponent(jLabel3)
+                                        .addComponent(jLPlats)
+                                        .addComponent(jLAnsvarigAgent)
                                         .addComponent(jLabeldate, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(layout.createSequentialGroup()
                                             .addComponent(jTextDate, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jButton1))
+                                            .addComponent(jBToDay))
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(jCBPlats, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(jCBAgent, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -195,8 +195,8 @@ public class RegistreraAlien extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel2))
+                    .addComponent(jLUppgifter)
+                    .addComponent(jLPlats))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTFNamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -204,7 +204,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTFLosenord, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(jLAnsvarigAgent))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTFTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -221,7 +221,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1))))
+                            .addComponent(jBToDay))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jRBWorm)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -291,9 +291,9 @@ public class RegistreraAlien extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_jTFTelefonMousePressed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        dateChooser1.toDay();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jBToDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBToDayActionPerformed
+        dateChooserRegDate.toDay();
+    }//GEN-LAST:event_jBToDayActionPerformed
 
     
     //Metod för att fylla COMBOBOX innehållande platser i databasen 
@@ -525,17 +525,16 @@ public class RegistreraAlien extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup1;
-    private com.raven.datechooser.DateChooser dateChooser1;
+    private com.raven.datechooser.DateChooser dateChooserRegDate;
     private javax.swing.JButton jBRegistrera;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jBToDay;
     private javax.swing.JComboBox<String> jCBAgent;
     private javax.swing.JComboBox<String> jCBPlats;
+    private javax.swing.JLabel jLAnsvarigAgent;
+    private javax.swing.JLabel jLPlats;
+    private javax.swing.JLabel jLUppgifter;
     private javax.swing.JLabel jLVarning;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabeldate;
     private javax.swing.JRadioButton jRBBoglodite;
     private javax.swing.JRadioButton jRBSquid;
@@ -544,5 +543,6 @@ public class RegistreraAlien extends javax.swing.JFrame {
     private javax.swing.JTextField jTFNamn;
     private javax.swing.JTextField jTFTelefon;
     private javax.swing.JTextField jTextDate;
+    private javax.swing.ButtonGroup rasGruppButt;
     // End of variables declaration//GEN-END:variables
 }

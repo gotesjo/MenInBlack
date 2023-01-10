@@ -59,10 +59,10 @@ public class Inlog extends javax.swing.JFrame {
         userLabel = new javax.swing.JLabel();
         passwordLabel = new javax.swing.JLabel();
         jBLoggaIN = new javax.swing.JButton();
-        jcCombo = new javax.swing.JComboBox<>();
+        jCtyp = new javax.swing.JComboBox<>();
         txtbLosenord = new javax.swing.JPasswordField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jLUser = new javax.swing.JLabel();
+        jLpic = new javax.swing.JLabel();
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -91,12 +91,12 @@ public class Inlog extends javax.swing.JFrame {
             }
         });
 
-        jcCombo.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
-        jcCombo.setMaximumRowCount(2);
-        jcCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Agent", "Alien" }));
-        jcCombo.addActionListener(new java.awt.event.ActionListener() {
+        jCtyp.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
+        jCtyp.setMaximumRowCount(2);
+        jCtyp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Agent", "Alien" }));
+        jCtyp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcComboActionPerformed(evt);
+                jCtypActionPerformed(evt);
             }
         });
 
@@ -106,12 +106,12 @@ public class Inlog extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
-        jLabel1.setText("Användare:");
-        jLabel1.setMaximumSize(new java.awt.Dimension(80, 16));
+        jLUser.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
+        jLUser.setText("Användare:");
+        jLUser.setMaximumSize(new java.awt.Dimension(80, 16));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/meninblack/1283126.png"))); // NOI18N
-        jLabel2.setText("jLabel2");
+        jLpic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/meninblack/1283126.png"))); // NOI18N
+        jLpic.setText("jLabel2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -130,13 +130,13 @@ public class Inlog extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(117, 117, 117))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jcCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jCtyp, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(44, 44, 44)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLpic, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLTitel)
@@ -152,10 +152,10 @@ public class Inlog extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jcCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel2))
+                        .addComponent(jCtyp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLpic))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(userLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -177,9 +177,9 @@ public class Inlog extends javax.swing.JFrame {
         
     }//GEN-LAST:event_txtbUserNameActionPerformed
 
-    private void jcComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcComboActionPerformed
+    private void jCtypActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCtypActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jcComboActionPerformed
+    }//GEN-LAST:event_jCtypActionPerformed
   
     private void txtbLosenordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbLosenordActionPerformed
         // TODO add your handling code here:
@@ -200,7 +200,7 @@ public class Inlog extends javax.swing.JFrame {
      * @param evt
      */
     private void jBLoggaINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLoggaINActionPerformed
-        // TODO add your handling code here:
+
         checkaComboBox();
         if (vald.equals("Agent") && kollaAgentLosenord()) {
 
@@ -241,10 +241,10 @@ public class Inlog extends javax.swing.JFrame {
                 resultat = svar;
 
             } catch (InfException E) {
-                JOptionPane.showMessageDialog(null, "Fel förfan");
+                JOptionPane.showMessageDialog(null, "Fel");
                 System.out.println("Internt Felmeddelande" + E.getMessage());
             } catch (Exception Undantag) {
-                JOptionPane.showMessageDialog(null, "Något är lurt");
+                JOptionPane.showMessageDialog(null, "Kunde inte hämta lösenord för denna Agent");
                 System.out.println("Internt Felmeddelande" + Undantag.getMessage());
             }
 
@@ -293,16 +293,16 @@ public class Inlog extends javax.swing.JFrame {
 
     
     private void checkaComboBox() {
-        vald = jcCombo.getSelectedItem().toString();
+        vald = jCtyp.getSelectedItem().toString();
 
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBLoggaIN;
+    private javax.swing.JComboBox<String> jCtyp;
     private javax.swing.JLabel jLTitel;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLUser;
+    private javax.swing.JLabel jLpic;
     private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JComboBox<String> jcCombo;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JPasswordField txtbLosenord;
     private javax.swing.JTextField txtbUserName;

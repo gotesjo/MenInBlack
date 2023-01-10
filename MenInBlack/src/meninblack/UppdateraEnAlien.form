@@ -38,7 +38,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLTitel" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
@@ -46,28 +46,28 @@
                           <Group type="102" attributes="0">
                               <Component id="jlblLosenord" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jBstang" min="-2" max="-2" attributes="0"/>
+                              <Component id="jBClose" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="jLAgent" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLAlienAgent" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="jBAAgent" min="-2" pref="120" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLnamn" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLNamn" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLAlienNamn" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="jBnamn" min="-2" pref="120" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLPlats" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLras" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLAlienPlats" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLAlienRas" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLRas" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -77,13 +77,13 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLTelefonnummer" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLnummer" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="130" max="32767" attributes="0"/>
                               <Component id="jBnummer" min="-2" pref="120" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLAnsvarigAgent" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -95,45 +95,45 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <Component id="jLTitel" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+              <Component id="jLNamn" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jLnamn" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLAlienNamn" min="-2" max="-2" attributes="0"/>
                   <Component id="jBnamn" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+              <Component id="jLTelefonnummer" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="jLnummer" min="-2" max="-2" attributes="0"/>
                   <Component id="jBnummer" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+              <Component id="jLPlats" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jLPlats" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLAlienPlats" min="-2" max="-2" attributes="0"/>
                   <Component id="jBplats" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+              <Component id="jLRas" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jLras" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLAlienRas" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="jBras" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+              <Component id="jLAnsvarigAgent" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jBAAgent" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLAgent" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLAlienAgent" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="29" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jBstang" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jBClose" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jlblLosenord" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
@@ -142,7 +142,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="jLTitel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial Black" size="14" style="0"/>
@@ -150,17 +150,17 @@
         <Property name="text" type="java.lang.String" value="&#xc4;ndra info om Alien"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="jLNamn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Namn"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jBstang">
+    <Component class="javax.swing.JButton" name="jBClose">
       <Properties>
         <Property name="text" type="java.lang.String" value="Klar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBstangActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBCloseActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBnamn">
@@ -171,7 +171,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBnamnActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLnamn">
+    <Component class="javax.swing.JLabel" name="jLAlienNamn">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Helvetica Neue" size="13" style="1"/>
@@ -179,12 +179,12 @@
         <Property name="text" type="java.lang.String" value="jLnamn"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel7">
+    <Component class="javax.swing.JLabel" name="jLPlats">
       <Properties>
         <Property name="text" type="java.lang.String" value="Plats"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLPlats">
+    <Component class="javax.swing.JLabel" name="jLAlienPlats">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Helvetica Neue" size="13" style="1"/>
@@ -208,12 +208,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBAAgentActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel9">
+    <Component class="javax.swing.JLabel" name="jLAnsvarigAgent">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ansvarig Agent"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLAgent">
+    <Component class="javax.swing.JLabel" name="jLAlienAgent">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Helvetica Neue" size="13" style="1"/>
@@ -221,7 +221,7 @@
         <Property name="text" type="java.lang.String" value="Agent"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="jLTelefonnummer">
       <Properties>
         <Property name="text" type="java.lang.String" value="Telefon"/>
       </Properties>
@@ -242,7 +242,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBnummerActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLras">
+    <Component class="javax.swing.JLabel" name="jLAlienRas">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Helvetica Neue" size="13" style="1"/>
@@ -250,7 +250,7 @@
         <Property name="text" type="java.lang.String" value="enRas"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel8">
+    <Component class="javax.swing.JLabel" name="jLRas">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ras"/>
       </Properties>

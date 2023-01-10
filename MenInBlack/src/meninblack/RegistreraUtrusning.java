@@ -135,24 +135,22 @@ public class RegistreraUtrusning extends javax.swing.JFrame {
     //När man trycker på Lägg till knappen
     private void jBLaggTillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLaggTillActionPerformed
 
-        if(jTFNamn.getText() != null && buttonGroup1.isSelected(buttonGroup1.getSelection())){
-        //Kollar vilken radiobutton som är vald
-        radioButtonCheck();
-        setUID();
-        
-        laggTilliUtrustning(jTFNamn.getText());
-        laggTillTyp();
-        
-        //Stänger ner fönstret när man gjort en registrering
-        dispose();
-        }
-        else{
+        if (jTFNamn.getText() != null && buttonGroup1.isSelected(buttonGroup1.getSelection())) {
+            //Kollar vilken radiobutton som är vald
+            radioButtonCheck();
+            setUID();
+
+            laggTilliUtrustning(jTFNamn.getText());
+            laggTillTyp();
+
+            //Stänger ner fönstret när man gjort en registrering
+            dispose();
+        } else {
             JOptionPane.showMessageDialog(null, "Fyll i både namn och typ");
         }
- 
+
     }//GEN-LAST:event_jBLaggTillActionPerformed
 
-    //Kod för oss
     
     // Typ av utrusting Kontroll
     //Gör en kontroll på vilken radiobutton som är vald
@@ -166,7 +164,7 @@ public class RegistreraUtrusning extends javax.swing.JFrame {
         }
 
     }
-    
+
     //Sätter ett unikt UtrustningsID för utrustningen
     private void setUID(){
         

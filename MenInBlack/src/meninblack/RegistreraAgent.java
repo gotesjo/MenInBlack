@@ -55,8 +55,8 @@ public class RegistreraAgent extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        dateChooser1 = new com.raven.datechooser.DateChooser();
+        adminGruppButt = new javax.swing.ButtonGroup();
+        dateChooserAnst = new com.raven.datechooser.DateChooser();
         jLtitel = new javax.swing.JLabel();
         jTNamn = new javax.swing.JTextField();
         jTLosen = new javax.swing.JTextField();
@@ -65,15 +65,15 @@ public class RegistreraAgent extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jRBJa = new javax.swing.JRadioButton();
         jRBNej = new javax.swing.JRadioButton();
-        jLabel2 = new javax.swing.JLabel();
+        jLAdminStatus = new javax.swing.JLabel();
         jTDate = new javax.swing.JTextField();
         jBIdag = new javax.swing.JButton();
         jBReg = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLVarning = new javax.swing.JLabel();
 
-        dateChooser1.setDateFormat("yyyy-MM-dd");
-        dateChooser1.setTextRefernce(jTDate);
+        dateChooserAnst.setDateFormat("yyyy-MM-dd");
+        dateChooserAnst.setTextRefernce(jTDate);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -102,13 +102,13 @@ public class RegistreraAgent extends javax.swing.JFrame {
 
         jLabel1.setText("Jobbar inom område:");
 
-        buttonGroup1.add(jRBJa);
+        adminGruppButt.add(jRBJa);
         jRBJa.setText("Ja");
 
-        buttonGroup1.add(jRBNej);
+        adminGruppButt.add(jRBNej);
         jRBNej.setText("Nej");
 
-        jLabel2.setText("Administratörstatus");
+        jLAdminStatus.setText("Administratörstatus");
 
         jBIdag.setText("Idag");
         jBIdag.addActionListener(new java.awt.event.ActionListener() {
@@ -145,7 +145,7 @@ public class RegistreraAgent extends javax.swing.JFrame {
                 .addGap(130, 130, 130)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jRBJa)
-                    .addComponent(jLabel2)
+                    .addComponent(jLAdminStatus)
                     .addComponent(jLabel3)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jTDate, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -180,7 +180,7 @@ public class RegistreraAgent extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jTTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(jLAdminStatus)
                         .addGap(18, 18, 18)
                         .addComponent(jRBJa)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -265,7 +265,7 @@ public class RegistreraAgent extends javax.swing.JFrame {
     private void jBIdagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBIdagActionPerformed
        
         //Sätter datumet till dagens datum
-        dateChooser1.toDay();
+        dateChooserAnst.toDay();
 
     }//GEN-LAST:event_jBIdagActionPerformed
 
@@ -380,14 +380,14 @@ public class RegistreraAgent extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup1;
-    private com.raven.datechooser.DateChooser dateChooser1;
+    private javax.swing.ButtonGroup adminGruppButt;
+    private com.raven.datechooser.DateChooser dateChooserAnst;
     private javax.swing.JButton jBIdag;
     private javax.swing.JButton jBReg;
     private javax.swing.JComboBox<String> jCOmrade;
+    private javax.swing.JLabel jLAdminStatus;
     private javax.swing.JLabel jLVarning;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLtitel;
     private javax.swing.JRadioButton jRBJa;

@@ -32,7 +32,7 @@ public class AliensNara extends javax.swing.JFrame {
         this.user = user;
         
         fyllrutan();
-        jTArea.setEditable(false);
+        jTtextomrade.setEditable(false);
     }
 
     private void jcbNYActionPerformed(java.awt.event.ActionEvent evt) {
@@ -42,7 +42,7 @@ public class AliensNara extends javax.swing.JFrame {
     
     //Tar fram information om aliens som befinner sig i sitt område.
     private void fyllrutan(){
-        jTArea.setText("");
+        jTtextomrade.setText("");
 
         ArrayList<HashMap<String, String>> soktaAliens;
 
@@ -57,8 +57,8 @@ public class AliensNara extends javax.swing.JFrame {
             
 
             for (HashMap<String, String> alien : soktaAliens) {
-                jTArea.append(" " + alien.get("Namn") + "\t");
-                jTArea.append(" " + alien.get("Telefon") + "\n");
+                jTtextomrade.append(" " + alien.get("Namn") + "\t");
+                jTtextomrade.append(" " + alien.get("Telefon") + "\n");
                 
             }
         } catch (InfException ettUndantag) {
@@ -77,29 +77,29 @@ public class AliensNara extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTArea = new javax.swing.JTextArea();
-        jButClose1 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        jLTitel = new javax.swing.JLabel();
+        jSPtext = new javax.swing.JScrollPane();
+        jTtextomrade = new javax.swing.JTextArea();
+        jBClose = new javax.swing.JButton();
+        jLBeskrivning = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
-        jLabel1.setText("Aliens i ditt område");
+        jLTitel.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
+        jLTitel.setText("Aliens i ditt område");
 
-        jTArea.setColumns(20);
-        jTArea.setRows(5);
-        jScrollPane1.setViewportView(jTArea);
+        jTtextomrade.setColumns(20);
+        jTtextomrade.setRows(5);
+        jSPtext.setViewportView(jTtextomrade);
 
-        jButClose1.setText("Close");
-        jButClose1.addActionListener(new java.awt.event.ActionListener() {
+        jBClose.setText("Stäng");
+        jBClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButClose1ActionPerformed(evt);
+                jBCloseActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("Namn och Telefonnummer");
+        jLBeskrivning.setText("Namn och Telefonnummer");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -109,45 +109,45 @@ public class AliensNara extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(123, 123, 123)
-                        .addComponent(jLabel1))
+                        .addComponent(jLTitel))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(155, 155, 155)
-                        .addComponent(jButClose1))
+                        .addComponent(jBClose))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(78, 78, 78)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLBeskrivning)
+                            .addComponent(jSPtext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(88, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(52, 52, 52)
-                .addComponent(jLabel1)
+                .addComponent(jLTitel)
                 .addGap(35, 35, 35)
-                .addComponent(jLabel2)
+                .addComponent(jLBeskrivning)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jSPtext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButClose1)
+                .addComponent(jBClose)
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButClose1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButClose1ActionPerformed
+    private void jBCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCloseActionPerformed
         // TODO add your handling code here:
         dispose();
-    }//GEN-LAST:event_jButClose1ActionPerformed
+    }//GEN-LAST:event_jBCloseActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButClose1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTArea;
+    private javax.swing.JButton jBClose;
+    private javax.swing.JLabel jLBeskrivning;
+    private javax.swing.JLabel jLTitel;
+    private javax.swing.JScrollPane jSPtext;
+    private javax.swing.JTextArea jTtextomrade;
     // End of variables declaration//GEN-END:variables
 }

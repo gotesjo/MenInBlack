@@ -50,22 +50,22 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
     private void initComponents() {
 
         jPasswordField1 = new javax.swing.JPasswordField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jBstang = new javax.swing.JButton();
+        jLTitel = new javax.swing.JLabel();
+        jLNamn = new javax.swing.JLabel();
+        jBClose = new javax.swing.JButton();
         jBnamn = new javax.swing.JButton();
-        jLnamn = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jLAlienNamn = new javax.swing.JLabel();
         jLPlats = new javax.swing.JLabel();
+        jLAlienPlats = new javax.swing.JLabel();
         jBplats = new javax.swing.JButton();
         jBAAgent = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
-        jLAgent = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jLAnsvarigAgent = new javax.swing.JLabel();
+        jLAlienAgent = new javax.swing.JLabel();
+        jLTelefonnummer = new javax.swing.JLabel();
         jLnummer = new javax.swing.JLabel();
         jBnummer = new javax.swing.JButton();
-        jLras = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        jLAlienRas = new javax.swing.JLabel();
+        jLRas = new javax.swing.JLabel();
         jBras = new javax.swing.JButton();
         jlblLosenord = new javax.swing.JButton();
 
@@ -75,15 +75,15 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
         setTitle("MIB Skandinavien");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jLabel1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jLabel1.setText("Ändra info om Alien");
+        jLTitel.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLTitel.setText("Ändra info om Alien");
 
-        jLabel2.setText("Namn");
+        jLNamn.setText("Namn");
 
-        jBstang.setText("Klar");
-        jBstang.addActionListener(new java.awt.event.ActionListener() {
+        jBClose.setText("Klar");
+        jBClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBstangActionPerformed(evt);
+                jBCloseActionPerformed(evt);
             }
         });
 
@@ -94,13 +94,13 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
             }
         });
 
-        jLnamn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jLnamn.setText("jLnamn");
+        jLAlienNamn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLAlienNamn.setText("jLnamn");
 
-        jLabel7.setText("Plats");
+        jLPlats.setText("Plats");
 
-        jLPlats.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jLPlats.setText("EnPlats");
+        jLAlienPlats.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLAlienPlats.setText("EnPlats");
 
         jBplats.setText("Ändra Plats");
         jBplats.addActionListener(new java.awt.event.ActionListener() {
@@ -116,12 +116,12 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setText("Ansvarig Agent");
+        jLAnsvarigAgent.setText("Ansvarig Agent");
 
-        jLAgent.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jLAgent.setText("Agent");
+        jLAlienAgent.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLAlienAgent.setText("Agent");
 
-        jLabel3.setText("Telefon");
+        jLTelefonnummer.setText("Telefon");
 
         jLnummer.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLnummer.setText("Nummer");
@@ -133,10 +133,10 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
             }
         });
 
-        jLras.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jLras.setText("enRas");
+        jLAlienRas.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLAlienRas.setText("enRas");
 
-        jLabel8.setText("Ras");
+        jLRas.setText("Ras");
 
         jBras.setText("Ändra Ras");
         jBras.addActionListener(new java.awt.event.ActionListener() {
@@ -160,82 +160,82 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(114, 114, 114)
-                        .addComponent(jLabel1))
+                        .addComponent(jLTitel))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jlblLosenord)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jBstang)
+                                .addComponent(jBClose)
                                 .addGap(26, 26, 26))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLAgent)
+                                .addComponent(jLAlienAgent)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jBAAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLnamn))
+                                    .addComponent(jLNamn)
+                                    .addComponent(jLAlienNamn))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jBnamn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
                                     .addComponent(jLPlats)
-                                    .addComponent(jLras)
-                                    .addComponent(jLabel8))
+                                    .addComponent(jLAlienPlats)
+                                    .addComponent(jLAlienRas)
+                                    .addComponent(jLRas))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jBplats, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jBras, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
+                                    .addComponent(jLTelefonnummer)
                                     .addComponent(jLnummer))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
                                 .addComponent(jBnummer, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel9))))
+                            .addComponent(jLAnsvarigAgent))))
                 .addGap(0, 33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel1)
+                .addComponent(jLTitel)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
+                .addComponent(jLNamn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLnamn)
+                    .addComponent(jLAlienNamn)
                     .addComponent(jBnamn))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3)
+                .addComponent(jLTelefonnummer)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLnummer)
                     .addComponent(jBnummer))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel7)
+                .addComponent(jLPlats)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLPlats)
+                    .addComponent(jLAlienPlats)
                     .addComponent(jBplats))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel8)
+                .addComponent(jLRas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLras)
+                    .addComponent(jLAlienRas)
                     .addComponent(jBras))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel9)
+                .addComponent(jLAnsvarigAgent)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBAAgent)
-                    .addComponent(jLAgent))
+                    .addComponent(jLAlienAgent))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBstang)
+                    .addComponent(jBClose)
                     .addComponent(jlblLosenord))
                 .addGap(17, 17, 17))
         );
@@ -243,14 +243,14 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBstangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBstangActionPerformed
+    private void jBCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCloseActionPerformed
             
         
         //Stänger ner programmet när man tryckt close    
         dispose();
 
         
-    }//GEN-LAST:event_jBstangActionPerformed
+    }//GEN-LAST:event_jBCloseActionPerformed
 
     
     //Kod för att ändra AlienNamn
@@ -447,13 +447,13 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
         
         ras = getRas();
        
-        jLnamn.setText(alienNamn);
-        jLras.setText(ras);
+        jLAlienNamn.setText(alienNamn);
+        jLAlienRas.setText(ras);
         
         try{
         jLnummer.setText(idb.fetchSingle("SELECT Telefon from Alien Where namn like '"+alienNamn+"'"));
-        jLPlats.setText(idb.fetchSingle("SELECT Benamning from Plats JOIN Alien on Plats_ID = Alien.Plats Where namn like '"+alienNamn+"'"));
-        jLAgent.setText(idb.fetchSingle("SELECT Agent.Namn FROM Agent JOIN Alien on AGENT_ID=Ansvarig_Agent WHERE Alien.namn like '"+alienNamn+"'"));
+        jLAlienPlats.setText(idb.fetchSingle("SELECT Benamning from Plats JOIN Alien on Plats_ID = Alien.Plats Where namn like '"+alienNamn+"'"));
+        jLAlienAgent.setText(idb.fetchSingle("SELECT Agent.Namn FROM Agent JOIN Alien on AGENT_ID=Ansvarig_Agent WHERE Alien.namn like '"+alienNamn+"'"));
         
         //hämtar hem Alien_ID ifrån databasen
         String charAid = idb.fetchSingle("SELECT Alien_ID from Alien Where namn like '"+alienNamn+"'");
@@ -599,22 +599,22 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBAAgent;
+    private javax.swing.JButton jBClose;
     private javax.swing.JButton jBnamn;
     private javax.swing.JButton jBnummer;
     private javax.swing.JButton jBplats;
     private javax.swing.JButton jBras;
-    private javax.swing.JButton jBstang;
-    private javax.swing.JLabel jLAgent;
+    private javax.swing.JLabel jLAlienAgent;
+    private javax.swing.JLabel jLAlienNamn;
+    private javax.swing.JLabel jLAlienPlats;
+    private javax.swing.JLabel jLAlienRas;
+    private javax.swing.JLabel jLAnsvarigAgent;
+    private javax.swing.JLabel jLNamn;
     private javax.swing.JLabel jLPlats;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel jLnamn;
+    private javax.swing.JLabel jLRas;
+    private javax.swing.JLabel jLTelefonnummer;
+    private javax.swing.JLabel jLTitel;
     private javax.swing.JLabel jLnummer;
-    private javax.swing.JLabel jLras;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JButton jlblLosenord;
     // End of variables declaration//GEN-END:variables
