@@ -328,7 +328,7 @@ public class AdminSida extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "ett fel har uppstått med databasen");
                     System.out.println("Internt fel" + ettE);
                 }
-            }
+            } }
             if (valdAdmin.equals("Svealand")) {
                 String sveaFraga = "Select agent.namn from agent join omradeschef on Agent.Agent_ID = omradeschef.Agent_ID join omrade on omradeschef.omrade = omrade.omrades_ID where benamning = 'Svealand'";
                 //String sveaID = "select agent.agent_ID from agent where namn ='" +sveaFraga+"'";
@@ -369,7 +369,7 @@ public class AdminSida extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "ett fel har uppstått med databasen");
                         System.out.println("Internt fel" + ettE);
                     }
-                }
+                } }
                 if (valdAdmin.equals("Norrland")) {
                     String norrFraga = "Select agent.namn from agent join omradeschef on Agent.Agent_ID = omradeschef.Agent_ID join omrade on omradeschef.omrade = omrade.omrades_ID where benamning = 'Norrland'";
                     //String norrID = "select agent.agent_ID from agent where namn ='" +chefNorr+ "'";
@@ -411,9 +411,9 @@ public class AdminSida extends javax.swing.JFrame {
                         }
 
                     }
-                }
+
     }//GEN-LAST:event_jButton5ActionPerformed
-        }
+
     }
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         String Utfraga = "Select Benamning FROM Utrustning";
