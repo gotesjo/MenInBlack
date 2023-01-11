@@ -539,123 +539,135 @@ public class AdminSida extends javax.swing.JFrame {
 
         //Ber användaren mata in ett namn 
         String agentDelete;
+        boolean hasDelete = false;
         agentDelete = JOptionPane.showInputDialog(null, "Ange namn på den Agent du vill ta bort", "Ta bort en agent...", HEIGHT);
 
-        //Kontrollerar även så det är ett godkänt namn
-        while (!Validering.isTom(agentDelete) && !Validering.IsUsernameAgent(agentDelete)) {
-            agentDelete = JOptionPane.showInputDialog(null, "Ange namn på den Agent du vill ta bort", "Ta bort en agent...", HEIGHT);
-        }
+        //Kollar ifall jOptionPane blivt använd eller ej
+        if (agentDelete != null) {
 
-        String deleteAID = "";
-        String sqlfragaValdAgent = "SELECT Agent_ID FROM Agent where Namn = '" + agentDelete + "'";
-
-        //Hämtar hem Agent_ID för agenten som ska tas bort
-        try {
-            deleteAID = idb.fetchSingle(sqlfragaValdAgent);
-
-        } catch (InfException e) {
-            System.out.println("Fel när man ska hämta AgentID för agenten som ska tas bort" + e);
-        }
-
-        String sqlfragaHarAliens = "Select Namn from Alien WHERE Ansvarig_agent = " + deleteAID;
-        ArrayList<String> agentensAliens = new ArrayList<>();
-
-        try {
-
-            agentensAliens = idb.fetchColumn(sqlfragaHarAliens);
-        } catch (InfException e) {
-            System.out.println("Fel när man ska hämta Aliens som agenten ansvarar för" + e);
-
-        }
-
-        //Kod för att Välja en ny Ansvarig Agent. FLytta till metod
-        //Checkar ifall agenten har några andra ansvarsområden
-        if (!agentensAliens.isEmpty()) {
-
-            String agentfraga = "Select Namn FROM Agent";
-            ArrayList<String> agentArrayList = new ArrayList<>();
-            int nyAgent = 0;
-
-            //Hämtar hem det agenter som finns som Agent i databasen
-            try {
-                agentArrayList = idb.fetchColumn(agentfraga);
-
-            } catch (InfException e) {
-                JOptionPane.showMessageDialog(null, "FEL MED DATABASEN");
-                System.out.println("FEL när man skulle hämta hem agenter från databasen " + e);
+            //Kontrollerar även så det är ett godkänt namn
+            while (!Validering.IsUsernameAgent(agentDelete) && (agentDelete != null)) {
+                agentDelete = JOptionPane.showInputDialog(null, "Namnet du skrev in finns inte\nAnge ett nytt namn på den Agent du vill ta bort", "Agenten finns inte...", HEIGHT);
             }
 
-            Object[] agentArray = agentArrayList.toArray();
-            String valdAgent = (String) JOptionPane.showInputDialog(null, "Den agent du vill ta bort ansvarar för Aliens\nVänligen välj en annan agent som ska ta över ansvaret!", "Välj Agent...",
-                    JOptionPane.QUESTION_MESSAGE,
-                    null,
-                    agentArray,
-                    agentArray[0]);
+            String deleteAID = "";
+            String sqlfragaValdAgent = "SELECT Agent_ID FROM Agent where Namn = '" + agentDelete + "'";
 
+            //Hämtar hem Agent_ID för agenten som ska tas bort
             try {
-
-                String agentnamn = valdAgent;
-                String agentIDFraga = "SELECT Agent_ID FROM Agent WHERE Namn like '" + agentnamn + "'";
-
-                String charAgent = idb.fetchSingle(agentIDFraga);
-
-                nyAgent = Integer.parseInt(charAgent);
+                deleteAID = idb.fetchSingle(sqlfragaValdAgent);
 
             } catch (InfException e) {
-                JOptionPane.showMessageDialog(null, "Agenten fanns inte i databasen");
-                System.out.println("Kunde inte hämta vald agent" + e.getMessage());
-
+                System.out.println("Fel när man ska hämta AgentID för agenten som ska tas bort" + e);
             }
 
-            //Uppdaterar ansvarig agent för det aliens som han hade.
-            for (String enAlien : agentensAliens) {
+            if (deleteAID != null) {
+
+                String sqlfragaHarAliens = "Select Namn from Alien WHERE Ansvarig_agent = " + deleteAID;
+                ArrayList<String> agentensAliens = new ArrayList<>();
+
                 try {
-                    idb.update("Update Alien SET Ansvarig_Agent='" + nyAgent + "' Where Namn='" + enAlien + "'");
+
+                    agentensAliens = idb.fetchColumn(sqlfragaHarAliens);
+                } catch (InfException e) {
+                    System.out.println("Fel när man ska hämta Aliens som agenten ansvarar för" + e);
+
+                }
+
+                //Kod för att Välja en ny Ansvarig Agent. FLytta till metod
+                //Checkar ifall agenten har några andra ansvarsområden
+                if (!agentensAliens.isEmpty()) {
+
+                    String agentfraga = "Select Namn FROM Agent";
+                    ArrayList<String> agentArrayList = new ArrayList<>();
+                    int nyAgent = 0;
+
+                    //Hämtar hem det agenter som finns som Agent i databasen
+                    try {
+                        agentArrayList = idb.fetchColumn(agentfraga);
+
+                    } catch (InfException e) {
+                        JOptionPane.showMessageDialog(null, "FEL MED DATABASEN");
+                        System.out.println("FEL när man skulle hämta hem agenter från databasen " + e);
+                    }
+
+                    Object[] agentArray = agentArrayList.toArray();
+                    String valdAgent = (String) JOptionPane.showInputDialog(null, "Den agent du vill ta bort ansvarar för Aliens\nVänligen välj en annan agent som ska ta över ansvaret!", "Välj Agent...",
+                            JOptionPane.QUESTION_MESSAGE,
+                            null,
+                            agentArray,
+                            agentArray[0]);
+
+                    try {
+
+                        String agentnamn = valdAgent;
+                        String agentIDFraga = "SELECT Agent_ID FROM Agent WHERE Namn like '" + agentnamn + "'";
+
+                        String charAgent = idb.fetchSingle(agentIDFraga);
+
+                        nyAgent = Integer.parseInt(charAgent);
+
+                    } catch (InfException e) {
+                        JOptionPane.showMessageDialog(null, "Agenten fanns inte i databasen");
+                        System.out.println("Kunde inte hämta vald agent" + e.getMessage());
+
+                    }
+
+                    //Uppdaterar ansvarig agent för det aliens som han hade.
+                    for (String enAlien : agentensAliens) {
+                        try {
+                            idb.update("Update Alien SET Ansvarig_Agent='" + nyAgent + "' Where Namn='" + enAlien + "'");
+
+                        } catch (InfException e) {
+                            JOptionPane.showMessageDialog(null, "kunde inte uppdatera Ansvarig Agent");
+                            System.out.println("Kunde inte uppdatera vald Ansvarig_Agent" + e.getMessage());
+                        }
+                    }
+
+                }
+
+                //Hämtar hem de tabeller Agent_ID är forgein Key in
+                String sqltabeller = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE REFERENCED_TABLE_NAME = 'Agent' AND REFERENCED_COLUMN_NAME = 'Agent_ID'";
+                ArrayList<String> tabeller = new ArrayList<>();
+                try {
+                    tabeller = idb.fetchColumn(sqltabeller);
 
                 } catch (InfException e) {
-                    JOptionPane.showMessageDialog(null, "kunde inte uppdatera Ansvarig Agent");
-                    System.out.println("Kunde inte uppdatera vald Ansvarig_Agent" + e.getMessage());
+                    JOptionPane.showMessageDialog(null, "Problem med att kolla vart Agenten finns på fler platser i databasen");
+                    System.out.println("Kunde inte hämta tabeller" + e.getMessage());
                 }
+
+                //tar bort agenten från alla tabeller där Agent_ID är foreign key
+                for (String enTabell : tabeller) {
+                    try {
+                        String taBortFranTabell = "DELETE FROM " + enTabell + " WHERE Agent_ID = " + deleteAID;
+                        idb.delete(taBortFranTabell);
+
+                    } catch (InfException e) {
+                    }
+                }
+
+                //Tar bort agenten Användaren valde från början
+                try {
+                    String sqlDelete = "DELETE FROM mibdb.agent WHERE Agent_ID = " + deleteAID;
+                    idb.delete(sqlDelete);
+
+                    //Har kört koden för att tagit bort en agent
+                    hasDelete = true;
+
+                } catch (InfException e) {
+                    JOptionPane.showMessageDialog(null, "Kunde inte ta bort Agenten");
+                    System.out.println("Agenten gick inte att ta bort" + e.getMessage());
+                }
+
             }
-
-        }
-
-        //Hämtar hem de tabeller Agent_ID är forgein Key in
-        String sqltabeller = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE REFERENCED_TABLE_NAME = 'Agent' AND REFERENCED_COLUMN_NAME = 'Agent_ID'";
-        ArrayList<String> tabeller = new ArrayList<>();
-        try {
-            tabeller = idb.fetchColumn(sqltabeller);
-
-        } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "Problem med att kolla vart Agenten finns på fler platser i databasen");
-            System.out.println("Kunde inte hämta tabeller" + e.getMessage());
-        }
-
-        //tar bort agenten från alla tabeller där Agent_ID är foreign key
-        for (String enTabell : tabeller) {
-            try {
-                String taBortFranTabell = "DELETE FROM " + enTabell + " WHERE Agent_ID = " + deleteAID;
-                idb.delete(taBortFranTabell);
-
-            } catch (InfException e) {
-            }
-        }
-
-        //Tar bort agenten Användaren valde från början
-        try {
-            String sqlDelete = "DELETE FROM mibdb.agent WHERE Agent_ID = " + deleteAID;
-            idb.delete(sqlDelete);
-
-        } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "Kunde inte ta bort Agenten");
-            System.out.println("Agenten gick inte att ta bort" + e.getMessage());
         }
 
         //Kollar ifall agenten har taigits bort eller ej
-        if (!Validering.IsUsernameAgent(agentDelete)) {
+        if (!Validering.IsUsernameAgent(agentDelete) && hasDelete) {
             JOptionPane.showMessageDialog(null, "Nu har " + agentDelete + " tagits bort ur databasen");
         } else {
-            JOptionPane.showMessageDialog(null, "Agenten har inte tagits bort");
+            JOptionPane.showMessageDialog(null, "Ingen Agent har tagits bort");
         }
 
     }
