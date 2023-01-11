@@ -41,7 +41,6 @@ public class KontorSida extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTAreaKontor = new javax.swing.JTextArea();
         jBSok = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,13 +63,6 @@ public class KontorSida extends javax.swing.JFrame {
 
         jBSok.setText("Sök");
 
-        jButton1.setText("Vill du ändra chef för kontorer?");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -85,14 +77,12 @@ public class KontorSida extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jCBKontoret, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jBSok, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31))))
         );
         layout.setVerticalGroup(
@@ -109,9 +99,7 @@ public class KontorSida extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jBSok))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(29, 29, 29))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
 
         pack();
@@ -122,9 +110,9 @@ public class KontorSida extends javax.swing.JFrame {
         // kontorchef. Frågan tar också villkoret benämning vilket hittas i comboBoxen. Med värdet från frågan 
         // fyller den textrutan med relevant information. 
         jTAreaKontor.setText("");
-
+        
         ArrayList<HashMap<String, String>> soktaKontor;
-
+        
         try {
             String valtKontor = jCBKontoret.getSelectedItem().toString();
 
@@ -139,39 +127,6 @@ public class KontorSida extends javax.swing.JFrame {
             System.out.println("Internt felmeddelande" + ettE);
         }
     }//GEN-LAST:event_jCBKontoretActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        String id = "";
-        String nyttID = "";
-        String nyChef = JOptionPane.showInputDialog("Vilken agent ska bli den nya chefen för detta kontor?");
-        String chefFraga = "SELECT namn from agent join kontorschef on agent.`Agent_ID` = kontorschef.`Agent_ID` where kontorsbeteckning = 'Örebrokontoret'";
-        try {
-            String chefKontor = idb.fetchSingle(chefFraga);
-            id = idb.fetchSingle("select agent.agent_ID from agent where namn ='" + chefKontor + "'");
-        } catch (InfException ettE) {
-            JOptionPane.showMessageDialog(null, "Ett fel uppstod när hämtningen av chef skedde, är du säker på att det finns en chef för detta kontor?");
-            System.out.println("Internt felmeddelande" + ettE);
-        }
-        try {
-            nyttID = idb.fetchSingle("select agent.agent_ID from agent where namn ='" + nyChef + "'");
-        } catch (InfException ettE) {
-            JOptionPane.showMessageDialog(null, "Ett fel uppstod med namnet. Är du säker att denna agent finns existerar?");
-            System.out.println("Internt felmeddelande" + ettE);
-        }
-        String uppdateraChef = "UPDATE Kontorschef set Kontorschef.`Agent_ID` = " + nyttID + " WHERE Kontorschef.`Agent_ID` = " + id;
-        try {
-            idb.update(uppdateraChef);
-        } catch (InfException ettE) {
-            JOptionPane.showMessageDialog(null, "Ett fel har uppstått med databasen");
-            System.out.println("Internt felmeddelande" + ettE);
-        }
-        
-        
-            
-        
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void fyllJComboKontor() {
         // Fyller på comboboxen med relevant information för användaren. Detta gör så att om det bestäms för att lägga 
@@ -233,7 +188,6 @@ public class KontorSida extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBSok;
-    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jCBKontoret;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
