@@ -117,71 +117,54 @@ public class AndraLosen extends javax.swing.JFrame {
     //lösenord, om detta stämmer kommer det ett meddelande som bekräftar detta och lösenordet ändras.
     //Annars visas ett felmeddelande på skärmen beronde på vad felet är. 
     private void jButtonOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOkActionPerformed
-        
-        
+
         //Hämtar sql fråga samt hämtar det som matas in i fälten.
-        try
-        {
-            
-        String sqlFraga1 = "select losenord from agent where agent.namn = '" + user.getUsername() + "'" + "union select losenord from alien where alien.namn = '" + user.getUsername() + "'";
-        String alienSvar = idb.fetchSingle(sqlFraga1);
-        String alienResultat = alienSvar;
-        
-        oldPass = jPFG.getText();
-        newPass = jPFN.getText();
-        kontrollPass = jPFK.getText();
-                
-        //Om det gammla lösenordet stämmer överens med lösenordet som finns i databasen för den inloggade så går den vidare.
-        if(oldPass.equals(alienResultat))
-        {
-            
-            //om nytt losenord stämmer med kontroll lösenordet och lösenordet är valid.
-            if(newPass.equals(kontrollPass) && Validering.validLosen(newPass))
-            {
-            
-            String anv;
-            //kollar vem det är som loggat in alien/agent genom att hämta användarnamnet och en valid metod som kollar om den är alien annars agent.
-            //uppdaterar då lösenordet
-            if(Validering.isUsernameAlien(user.getUsername()))
-            {
-                anv = "Alien";
+        try {
+
+            String sqlFraga1 = "select losenord from agent where agent.namn = '" + user.getUsername() + "'" + "union select losenord from alien where alien.namn = '" + user.getUsername() + "'";
+            String alienSvar = idb.fetchSingle(sqlFraga1);
+            String alienResultat = alienSvar;
+
+            oldPass = jPFG.getText();
+            newPass = jPFN.getText();
+            kontrollPass = jPFK.getText();
+
+            //Om det gammla lösenordet stämmer överens med lösenordet som finns i databasen för den inloggade så går den vidare.
+            if (oldPass.equals(alienResultat)) {
+
+                //om nytt losenord stämmer med kontroll lösenordet och lösenordet är valid.
+                if (newPass.equals(kontrollPass) && Validering.validLosen(newPass)) {
+
+                    String anv;
+                    //kollar vem det är som loggat in alien/agent genom att hämta användarnamnet och en valid metod som kollar om den är alien annars agent.
+                    //uppdaterar då lösenordet
+                    if (Validering.isUsernameAlien(user.getUsername())) {
+                        anv = "Alien";
+                    } else {
+                        anv = "Agent";
+                    }
+
+                    idb.update("Update " + anv + " set Losenord = '" + newPass + "' where namn = '" + user.getUsername() + "'");
+
+                    JOptionPane.showMessageDialog(null, "Lösenord ändrat");
+
+                    dispose();
+
+                } //om nyttPass och kontrollPass inte matchar
+                else {
+                    jlblB.setText("Bekräfta lösenord matchar ej!");
+                    jPFK.requestFocus();
+                }
+
+            } //Om gammla lösenordet och databasens lösen inte matchar.
+            else {
+                jlblG.setText("Gammalt lösenord matchar ej!");
+                jPFG.requestFocus();
             }
-            else
-            {
-                anv = "Agent";
-            }
-            
-            idb.update("Update "+anv+" set Losenord = '"+newPass+"' where namn = '"+user.getUsername()+"'");
-            
-            JOptionPane.showMessageDialog(null, "Lösenord ändrat");
-            
-            dispose();
-            
-            }
-            //om nyttPass och kontrollPass inte matchar
-            else
-            {
-                jlblB.setText("Bekräfta lösenord matchar ej!");
-                jPFK.requestFocus();
-            }
-                    
-        }
-        
-        //Om gammla lösenordet och databasens lösen inte matchar.
-        else
-        {
-            jlblG.setText("Gammalt lösenord matchar ej!");
-            jPFG.requestFocus();
-        }
-        }
-        
-        
-        
-        catch(InfException e)
-        {
+        } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Fel lösenord!" + e);
-            
-        } 
+
+        }
     }//GEN-LAST:event_jButtonOkActionPerformed
 
     

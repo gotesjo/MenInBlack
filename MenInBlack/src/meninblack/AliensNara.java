@@ -49,17 +49,16 @@ public class AliensNara extends javax.swing.JFrame {
         try {
 
             String ufraga = "SELECT plats.Benamning from plats join alien on plats.Plats_ID = alien.Plats where alien.Namn = '" + user.getUsername() + "'";
-             
+
             String uplats = idb.fetchSingle(ufraga);
-            
+
             String fraga = "SELECT * from alien join plats on plats_ID = plats where benamning='" + uplats + "'";
             soktaAliens = idb.fetchRows(fraga);
-            
 
             for (HashMap<String, String> alien : soktaAliens) {
                 jTtextomrade.append(" " + alien.get("Namn") + "\t");
                 jTtextomrade.append(" " + alien.get("Telefon") + "\n");
-                
+
             }
         } catch (InfException ettUndantag) {
             JOptionPane.showMessageDialog(null, "Något gick fel");

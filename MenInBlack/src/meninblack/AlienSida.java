@@ -193,19 +193,17 @@ public class AlienSida extends javax.swing.JFrame {
         String omradesChef = user.getOmradeschef().toLowerCase();
         String[] varde = omradesChef.split(" ");
         String emailStart = "";
-        for(String ettVarde : varde)
-        {
-            emailStart += ettVarde; 
+        for (String ettVarde : varde) {
+            emailStart += ettVarde;
         }
-        
-        
-    try {
-    Desktop.getDesktop().mail(new URI("mailto:"+emailStart+"@gmail.com?subject="));
-  } catch (URISyntaxException | IOException ex) {
-        
-      
+
+        try {
+            Desktop.getDesktop().mail(new URI("mailto:" + emailStart + "@gmail.com?subject="));
+        } catch (URISyntaxException | IOException ex) {
+
+
     }//GEN-LAST:event_jlblEmailActionPerformed
-    
+
     }
     
 
