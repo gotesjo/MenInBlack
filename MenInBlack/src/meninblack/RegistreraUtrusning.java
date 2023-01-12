@@ -53,12 +53,6 @@ public class RegistreraUtrusning extends javax.swing.JFrame {
         jTitel.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jTitel.setText("Registrera Utrustning");
 
-        jTFNamn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFNamnActionPerformed(evt);
-            }
-        });
-
         jBLaggTill.setText("Lägg till");
         jBLaggTill.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,10 +121,6 @@ public class RegistreraUtrusning extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTFNamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFNamnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTFNamnActionPerformed
 
     //När man trycker på Lägg till knappen
     private void jBLaggTillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLaggTillActionPerformed

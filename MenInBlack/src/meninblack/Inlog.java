@@ -22,6 +22,8 @@ public class Inlog extends javax.swing.JFrame {
     private String vald; 
     private String alienSvar;
     private String alienResultat;
+    private boolean godkantNamn;
+   
     
     private User user;
     
@@ -42,6 +44,8 @@ public class Inlog extends javax.swing.JFrame {
         vald = " ";
         alienSvar = " ";
         alienResultat = " ";
+        godkantNamn = false;
+        
     }
 
     /**
@@ -53,7 +57,6 @@ public class Inlog extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jRadioButton1 = new javax.swing.JRadioButton();
         jLTitel = new javax.swing.JLabel();
         txtbUserName = new javax.swing.JTextField();
         userLabel = new javax.swing.JLabel();
@@ -63,8 +66,6 @@ public class Inlog extends javax.swing.JFrame {
         txtbLosenord = new javax.swing.JPasswordField();
         jLUser = new javax.swing.JLabel();
         jLpic = new javax.swing.JLabel();
-
-        jRadioButton1.setText("jRadioButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -203,7 +204,7 @@ public class Inlog extends javax.swing.JFrame {
 
         //Kollar vad användaren vill logga in som
         checkaComboBox();
-        
+
         if (vald.equals("Agent") && kollaAgentLosenord()) {
 
             user = new User(idb, txtbUserName.getText());
@@ -218,7 +219,7 @@ public class Inlog extends javax.swing.JFrame {
             new AlienSida(idb, user).setVisible(true);
             dispose();
 
-        } else {
+        } else if (godkantNamn) {
             JOptionPane.showMessageDialog(null, "Fel lösenord. Pröva ett annat");
     }//GEN-LAST:event_jBLoggaINActionPerformed
     }
@@ -234,8 +235,9 @@ public class Inlog extends javax.swing.JFrame {
     private boolean kollaAgentLosenord() {
         inloggad = false;
         String anvandarnamn = txtbUserName.getText();
+        godkantNamn = Validering.isNamnGodkant(anvandarnamn);
         
-        if (Validering.isNamnGodkant(anvandarnamn)) {
+        if (godkantNamn) {
             try {
                 
                 String fraga = "Select losenord from agent where namn='" + anvandarnamn + "'";
@@ -267,8 +269,9 @@ public class Inlog extends javax.swing.JFrame {
     private boolean kollaAlienLosenord() {
         inloggad = false;
         String alienNamn = txtbUserName.getText();
+        godkantNamn = Validering.isNamnGodkant(alienNamn);
 
-        if (Validering.isNamnGodkant(alienNamn)) {
+        if (godkantNamn) {
             try {
                 
                 String alienFraga = "select losenord from alien where namn ='" + alienNamn + "'";
@@ -305,7 +308,6 @@ public class Inlog extends javax.swing.JFrame {
     private javax.swing.JLabel jLTitel;
     private javax.swing.JLabel jLUser;
     private javax.swing.JLabel jLpic;
-    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JPasswordField txtbLosenord;
     private javax.swing.JTextField txtbUserName;
