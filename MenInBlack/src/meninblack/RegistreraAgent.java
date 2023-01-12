@@ -209,7 +209,8 @@ public class RegistreraAgent extends javax.swing.JFrame {
 
     //Registerar alien när man trycker på registrera knappen
     private void jBRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRegActionPerformed
-        // TODO add your handling code here:
+       
+        //Hämtar infon som användaren skrivit in 
         setAgentInfo();
         
         

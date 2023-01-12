@@ -201,7 +201,9 @@ public class Inlog extends javax.swing.JFrame {
      */
     private void jBLoggaINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLoggaINActionPerformed
 
+        //Kollar vad användaren vill logga in som
         checkaComboBox();
+        
         if (vald.equals("Agent") && kollaAgentLosenord()) {
 
             user = new User(idb, txtbUserName.getText());
@@ -261,7 +263,7 @@ public class Inlog extends javax.swing.JFrame {
     
     
     
-    
+    //Metod för att kolla ifall en användare som är alien har matat in rätt lösenord
     private boolean kollaAlienLosenord() {
         inloggad = false;
         String alienNamn = txtbUserName.getText();
@@ -292,6 +294,7 @@ public class Inlog extends javax.swing.JFrame {
     
 
     
+   //Metod för att kolla vad användaren vill logga in som
     private void checkaComboBox() {
         vald = jCtyp.getSelectedItem().toString();
 
