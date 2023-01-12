@@ -114,7 +114,8 @@ public class AdminAndraLosen extends javax.swing.JFrame {
         kontrollPass = jPFK.getText();
              
         
-            
+            //kolla om nya losnenord stämmer med kontrollera lösenordet samt en lösenords valdering
+            //som sedan om detta uppfylls ändrar lösenordet med sql frågan.
             if(newPass.equals(kontrollPass) && Validering.validLosen(newPass))
             {
 
@@ -125,6 +126,7 @@ public class AdminAndraLosen extends javax.swing.JFrame {
             dispose();
             
             }
+            //om nya lösen inte stämmer ändras inte lösenordet och ett felmeddelande poppar up
             else
             {
                 jlblB.setText("Bekräfta lösenord matchar ej!");
@@ -132,7 +134,7 @@ public class AdminAndraLosen extends javax.swing.JFrame {
             }
                     
         }
-   
+        //Om lösenordet inte stämmer.
         catch(InfException e)
         {
             JOptionPane.showMessageDialog(null, "Fel lösenord!" + e);
