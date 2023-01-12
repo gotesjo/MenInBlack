@@ -259,29 +259,30 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
         String prevNamn = alienNamn;
         String newNamn = JOptionPane.showInputDialog("Vad vill du ange som namn istället?\nMåste vara unikt" );
         
-        // Gör om namnet till ett namn som är godkänt för databasen
-        newNamn = Validering.returGodkäntNamn(newNamn);
-        
-        if(!Validering.finnsUsernameiDB(newNamn)){
-            try{
-                //Uppdaterar namnet för vald alien
-                idb.update("UPDATE Alien SET Namn='"+newNamn+"' where Namn like '"+prevNamn+"'");
-                
-                if(Validering.finnsUsernameiDB(newNamn)){
-                    alienNamn = newNamn;
+        if (newNamn != null) {
+            // Gör om namnet till ett namn som är godkänt för databasen
+            newNamn = Validering.returGodkäntNamn(newNamn);
+
+            if (!Validering.finnsUsernameiDB(newNamn)) {
+                try {
+                    //Uppdaterar namnet för vald alien
+                    idb.update("UPDATE Alien SET Namn='" + newNamn + "' where Namn like '" + prevNamn + "'");
+
+                    if (Validering.finnsUsernameiDB(newNamn)) {
+                        alienNamn = newNamn;
+                    }
+
+                } catch (InfException e) {
+                    JOptionPane.showMessageDialog(null, "FEL MED DATABASEN");
+                    System.out.println("Fel när namn skulle uppdateras i databasen" + e);
                 }
-           
-            } catch(InfException e){
-                JOptionPane.showMessageDialog(null, "FEL MED DATABASEN");
-                System.out.println("Fel när namn skulle uppdateras i databasen" + e);
+            } else {
+                JOptionPane.showMessageDialog(null, "Namnet finns redan\nVänligen välj ett annat");
             }
+
+            //Uppdaterar sidan med ny info om Alien
+            fyllInfoOmAlien();
         }
-        else{
-            JOptionPane.showMessageDialog(null, "Namnet finns redan\nVänligen välj ett annat");
-        }
-        
-        //Uppdaterar sidan med ny info om Alien
-        fyllInfoOmAlien();
         
     }//GEN-LAST:event_jBnamnActionPerformed
 
@@ -290,74 +291,75 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
         // Ändrar Telefonnumer för en alien
         String newNumber = JOptionPane.showInputDialog("Vad vill du byta telefonnummret till istället?");
         
-            try{
+        if (newNumber != null) {
+            try {
                 //Uppdaterar nummret för vald alien
-                idb.update("UPDATE Alien SET Telefon='"+newNumber+"' where Namn like '"+alienNamn+"'");
-           
-            } catch(InfException e){
+                idb.update("UPDATE Alien SET Telefon='" + newNumber + "' where Namn like '" + alienNamn + "'");
+
+            } catch (InfException e) {
                 JOptionPane.showMessageDialog(null, "Numret kunde inte uppdateras\nNågot blev fel");
                 System.out.println("Fel när Telefon skulle uppdateras i databasen" + e);
-                
+
             }
-        
-        //Uppdaterar sidan med ny info om Alien
-        fyllInfoOmAlien();
+
+            //Uppdaterar sidan med ny info om Alien
+            fyllInfoOmAlien();
+        }
     }//GEN-LAST:event_jBnummerActionPerformed
 
     
     //Kod för att ändra plats
     private void jBplatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBplatsActionPerformed
           //Kod för att ändra Plats
-          
-          
-          String platsfraga = "Select Benamning FROM Plats";
-          ArrayList<String> platsArrayList = new ArrayList<>();
-          int nyPlats = 0;
 
-          
-          //Hämtar hem det platser som finns i platstabellen i databasen
-          try{
-              platsArrayList = idb.fetchColumn(platsfraga);
-              
-          } catch(InfException e) {
+        String platsfraga = "Select Benamning FROM Plats";
+        ArrayList<String> platsArrayList = new ArrayList<>();
+        int nyPlats = 0;
+
+        //Hämtar hem det platser som finns i platstabellen i databasen
+        try {
+            platsArrayList = idb.fetchColumn(platsfraga);
+
+        } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "FEL MED DATABASEN");
             System.out.println("FEL när man skulle hämta hem platser från databasen " + e);
-          }
-        
+        }
+
         Object[] platsArray = platsArrayList.toArray();
-        String valdPlats = (String)JOptionPane.showInputDialog( null, "Välj en önskad plats ifrån listan:", "Välj Plats...",
-                                        JOptionPane.QUESTION_MESSAGE, 
-                                        null, 
-                                        platsArray,
-                                        platsArray[ 0 ] );
-        
-        try{
-            
-            String platsnamn = valdPlats;
-            String platsIDFraga = "SELECT Plats_ID FROM Plats WHERE Benamning like '"+platsnamn+"'";
-            
-            String charPlats = idb.fetchSingle(platsIDFraga);
-            
-            nyPlats = Integer.parseInt(charPlats);
-            
-        } catch(InfException e){
-            JOptionPane.showMessageDialog(null, "Platsen fanns inte i databasen");
-            System.out.println("Kunde inte hämta vald plats" + e.getMessage());
-            
+        String valdPlats = (String) JOptionPane.showInputDialog(null, "Välj en önskad plats ifrån listan:", "Välj Plats...",
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                platsArray,
+                platsArray[0]);
+
+        if (valdPlats != null) {
+            try {
+
+                String platsnamn = valdPlats;
+                String platsIDFraga = "SELECT Plats_ID FROM Plats WHERE Benamning like '" + platsnamn + "'";
+
+                String charPlats = idb.fetchSingle(platsIDFraga);
+
+                nyPlats = Integer.parseInt(charPlats);
+
+            } catch (InfException e) {
+                JOptionPane.showMessageDialog(null, "Platsen fanns inte i databasen");
+                System.out.println("Kunde inte hämta vald plats" + e.getMessage());
+
+            }
+
+            try {
+                idb.update("Update Alien SET Plats='" + nyPlats + "' Where Namn='" + alienNamn + "'");
+
+            } catch (InfException e) {
+                JOptionPane.showMessageDialog(null, "kunde inte uppdatera platsen");
+                System.out.println("Kunde inte uppdatera vald plats" + e.getMessage());
+            }
+
+            //Uppdaterar sidan med ny info om Alien
+            fyllInfoOmAlien();
         }
-        
-        try{
-            idb.update("Update Alien SET Plats='"+nyPlats+"' Where Namn='"+alienNamn+"'");
-            
-        } catch(InfException e){
-            JOptionPane.showMessageDialog(null, "kunde inte uppdatera platsen");
-            System.out.println("Kunde inte uppdatera vald plats" + e.getMessage());
-        }
-        
-        
-        //Uppdaterar sidan med ny info om Alien
-        fyllInfoOmAlien();
-          
+
     }//GEN-LAST:event_jBplatsActionPerformed
 
     
@@ -372,14 +374,15 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
                                         rasArray,
                                         rasArray[ 0 ] );
         
-        
-        taBortRas();
-        
-        ras = valdRas;
-        sattRas();
-        
-        //Uppdaterar sidan med ny info om Alien
-        fyllInfoOmAlien();
+        if (valdRas != null) {
+            taBortRas();
+
+            ras = valdRas;
+            sattRas();
+
+            //Uppdaterar sidan med ny info om Alien
+            fyllInfoOmAlien();
+        }
     }//GEN-LAST:event_jBrasActionPerformed
 
     //Kod för att ändra Ansvarig Agent
@@ -406,32 +409,34 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
                                         agentArray,
                                         agentArray[ 0 ] );
         
-        try{
-            
-            String agentnamn = valdAgent;
-            String agentIDFraga = "SELECT Agent_ID FROM Agent WHERE Namn like '"+agentnamn+"'";
-            
-            String charAgent = idb.fetchSingle(agentIDFraga);
-            
-            nyAgent = Integer.parseInt(charAgent);
-            
-        } catch(InfException e){
-            JOptionPane.showMessageDialog(null, "Agenten fanns inte i databasen");
-            System.out.println("Kunde inte hämta vald agent" + e.getMessage());
-            
+        if (valdAgent != null) {
+
+            try {
+
+                String agentnamn = valdAgent;
+                String agentIDFraga = "SELECT Agent_ID FROM Agent WHERE Namn like '" + agentnamn + "'";
+
+                String charAgent = idb.fetchSingle(agentIDFraga);
+
+                nyAgent = Integer.parseInt(charAgent);
+
+            } catch (InfException e) {
+                JOptionPane.showMessageDialog(null, "Agenten fanns inte i databasen");
+                System.out.println("Kunde inte hämta vald agent" + e.getMessage());
+
+            }
+
+            try {
+                idb.update("Update Alien SET Ansvarig_Agent='" + nyAgent + "' Where Namn='" + alienNamn + "'");
+
+            } catch (InfException e) {
+                JOptionPane.showMessageDialog(null, "kunde inte uppdatera Ansvarig Agent");
+                System.out.println("Kunde inte uppdatera vald Ansvarig_Agent" + e.getMessage());
+            }
+
+            //Uppdaterar sidan med ny info om Alien
+            fyllInfoOmAlien();
         }
-        
-        try{
-            idb.update("Update Alien SET Ansvarig_Agent='"+nyAgent+"' Where Namn='"+alienNamn+"'");
-            
-        } catch(InfException e){
-            JOptionPane.showMessageDialog(null, "kunde inte uppdatera Ansvarig Agent");
-            System.out.println("Kunde inte uppdatera vald Ansvarig_Agent" + e.getMessage());
-        }
-        
-        
-        //Uppdaterar sidan med ny info om Alien
-        fyllInfoOmAlien();
         
     }//GEN-LAST:event_jBAAgentActionPerformed
 
@@ -565,16 +570,18 @@ public class UppdateraEnAlien extends javax.swing.JFrame {
                 break;
                 
             default:
-            // code block
+            
         }
         
-        //Lägger till rasen i databasen
-        try{
-            idb.delete(fraga);
-        } catch(InfException e){
-            JOptionPane.showMessageDialog(null, "Fel i databasen när ras skulle ändras");
-            System.out.println("Kunde inte ta bort rasen vid ändring" + e.getMessage());
-            
+        if (ras == null) {
+            //tar bort Alien_ID från rasen i databasen
+            try {
+                idb.delete(fraga);
+            } catch (InfException e) {
+                JOptionPane.showMessageDialog(null, "Fel i databasen när ras skulle ändras");
+                System.out.println("Kunde inte ta bort rasen vid ändring" + e.getMessage());
+            }
+
         }
         
     }

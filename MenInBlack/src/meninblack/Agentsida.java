@@ -251,15 +251,19 @@ public class Agentsida extends javax.swing.JFrame {
         //Ber användaren mata in ett namn 
         //Kontrollerar även så det är ett godkänt namn
         alienNamn = JOptionPane.showInputDialog(null, "Ange namn på den Alien du vill veta mer om", "Ändra en alien", HEIGHT);
-        alienNamn = Validering.returGodkäntNamn(alienNamn);
+        
+        //Kollar ifall man tryck på cancel på popup rutan
+        if (alienNamn != null) {
+            alienNamn = Validering.returGodkäntNamn(alienNamn);
 
-        if (Validering.isUsernameAlien(alienNamn) && Validering.isNamnGodkant(alienNamn)) {
+            if (Validering.isUsernameAlien(alienNamn) && Validering.isNamnGodkant(alienNamn)) {
 
-            new UppdateraEnAlien(idb, alienNamn,user).setVisible(true);
+                new UppdateraEnAlien(idb, alienNamn, user).setVisible(true);
 
-        } else {
-            JOptionPane.showMessageDialog(null, "Alien finns inte i databasen");
+            } else {
+                JOptionPane.showMessageDialog(null, "Alien finns inte i databasen");
 
+            }
         }
     }//GEN-LAST:event_jBHantAlienActionPerformed
 
