@@ -245,7 +245,7 @@ public class AdminSida extends javax.swing.JFrame {
         if (valdAdmin != null) {
             if (valdAdmin.equals("Ge status")) {
                 String nyAdmin = JOptionPane.showInputDialog("Vilken agent vill du ge adminstatus till?");
-                if (Validering.checkAdmin(nyAdmin)) {
+                if (nyAdmin != null && Validering.checkAdmin(nyAdmin)) {
                     JOptionPane.showMessageDialog(null, "Denna agent har redan admin-status");
                 } else {
                     try {
@@ -259,7 +259,7 @@ public class AdminSida extends javax.swing.JFrame {
 
             if (valdAdmin.equals("Ta bort status")) {
                 String bortAdmin = JOptionPane.showInputDialog("Vilken agent vill du ta bort adminstatus ifrån");
-                if (!Validering.checkAdmin(bortAdmin)) {
+                if (bortAdmin != null && !Validering.checkAdmin(bortAdmin)) {
                     JOptionPane.showMessageDialog(null, "Denna agent har ingen adminstatus");
                 } else {
                     try {
@@ -302,7 +302,7 @@ public class AdminSida extends javax.swing.JFrame {
                 omradeArray,
                 omradeArray[0]);
 
-        if (valdAdmin.equals("Götaland")) {
+        if (valdAdmin != null && valdAdmin.equals("Götaland")) {
             String gotaFraga = "Select agent.namn from agent join omradeschef on Agent.Agent_ID = omradeschef.Agent_ID join omrade on omradeschef.omrade = omrade.omrades_ID where benamning = 'Götaland'";
             //gotaID = "select agent.agent_ID from agent where namn ='" +gotaFraga+"'";
 
@@ -318,7 +318,7 @@ public class AdminSida extends javax.swing.JFrame {
 
             String[] gotaArray = {"Ja", "Nej"};
             String valtSvar = (String) JOptionPane.showInputDialog(null, "Vill du ändra chef?", "Välj Agent..", JOptionPane.QUESTION_MESSAGE, null, gotaArray, gotaArray[0]);
-            if (valtSvar.equals("Ja")) {
+            if (valtSvar != null && valtSvar.equals("Ja")) {
                 String nyChefGota = JOptionPane.showInputDialog("Vilken agent ska bli ny chef för Götaland");
 
                 nyChefGota = Validering.returGodkäntNamn(nyChefGota);
@@ -341,7 +341,7 @@ public class AdminSida extends javax.swing.JFrame {
                     System.out.println("Internt fel" + ettE);
                 }
             } }
-            if (valdAdmin.equals("Svealand")) {
+            if (valdAdmin != null && valdAdmin.equals("Svealand")) {
                 String sveaFraga = "Select agent.namn from agent join omradeschef on Agent.Agent_ID = omradeschef.Agent_ID join omrade on omradeschef.omrade = omrade.omrades_ID where benamning = 'Svealand'";
                 //String sveaID = "select agent.agent_ID from agent where namn ='" +sveaFraga+"'";
 
@@ -355,7 +355,7 @@ public class AdminSida extends javax.swing.JFrame {
                 }
                 String[] sveaArray = {"Ja", "Nej"};
                 String valtSvarSvea = (String) JOptionPane.showInputDialog(null, "Vill du ändra chef?", "Välj Agent..", JOptionPane.QUESTION_MESSAGE, null, sveaArray, sveaArray[0]);
-                if (valtSvarSvea.equals("Ja")) {
+                if (valtSvarSvea != null && valtSvarSvea.equals("Ja")) {
                     String nyChefSvea = JOptionPane.showInputDialog("Vilken agent ska bli ny chef för Svealand");
 
                     nyChefSvea = Validering.returGodkäntNamn(nyChefSvea);
@@ -382,7 +382,7 @@ public class AdminSida extends javax.swing.JFrame {
                         System.out.println("Internt fel" + ettE);
                     }
                 } }
-                if (valdAdmin.equals("Norrland")) {
+                if (valdAdmin != null && valdAdmin.equals("Norrland")) {
                     String norrFraga = "Select agent.namn from agent join omradeschef on Agent.Agent_ID = omradeschef.Agent_ID join omrade on omradeschef.omrade = omrade.omrades_ID where benamning = 'Norrland'";
                     //String norrID = "select agent.agent_ID from agent where namn ='" +chefNorr+ "'";
 
@@ -396,7 +396,7 @@ public class AdminSida extends javax.swing.JFrame {
                     }
                     String[] norrArray = {"Ja", "Nej"};
                     String valtSvarNorr = (String) JOptionPane.showInputDialog(null, "Vill du ändra chef?", "Välj Agent..", JOptionPane.QUESTION_MESSAGE, null, norrArray, norrArray[0]);
-                    if (valtSvarNorr.equals("Ja")) {
+                    if (valtSvarNorr != null && valtSvarNorr.equals("Ja")) {
                         String nyChefNorr = JOptionPane.showInputDialog("Vilken agent ska bli ny chef för Norrland");
 
                         nyChefNorr = Validering.returGodkäntNamn(nyChefNorr);
