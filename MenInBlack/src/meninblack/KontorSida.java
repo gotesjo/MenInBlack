@@ -35,21 +35,21 @@ public class KontorSida extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabelKontor = new javax.swing.JLabel();
+        jLabelKontorVal = new javax.swing.JLabel();
         jCBKontoret = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTAreaKontor = new javax.swing.JTextArea();
         jBSok = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jBAndraChef = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
-        jLabel1.setText("Kontorshantering");
+        jLabelKontor.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
+        jLabelKontor.setText("Kontorshantering");
 
-        jLabel2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jLabel2.setText("Vänligen välj ett kontor:");
+        jLabelKontorVal.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jLabelKontorVal.setText("Vänligen välj ett kontor:");
 
         jCBKontoret.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
         jCBKontoret.addActionListener(new java.awt.event.ActionListener() {
@@ -62,12 +62,14 @@ public class KontorSida extends javax.swing.JFrame {
         jTAreaKontor.setRows(5);
         jScrollPane1.setViewportView(jTAreaKontor);
 
+        jBSok.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
         jBSok.setText("Sök");
 
-        jButton1.setText("Vill du ändra chef för kontorer?");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBAndraChef.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
+        jBAndraChef.setText("Vill du ändra chef för kontorer?");
+        jBAndraChef.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBAndraChefActionPerformed(evt);
             }
         });
 
@@ -77,13 +79,13 @@ public class KontorSida extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(jLabelKontor)
                 .addGap(134, 134, 134))
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(jLabelKontorVal)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,7 +93,7 @@ public class KontorSida extends javax.swing.JFrame {
                             .addComponent(jBSok, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                            .addComponent(jBAndraChef, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addGap(31, 31, 31))))
         );
@@ -99,9 +101,9 @@ public class KontorSida extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(jLabel1)
+                .addComponent(jLabelKontor)
                 .addGap(14, 14, 14)
-                .addComponent(jLabel2)
+                .addComponent(jLabelKontorVal)
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
@@ -109,8 +111,8 @@ public class KontorSida extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jBSok))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addComponent(jBAndraChef)
                 .addGap(29, 29, 29))
         );
 
@@ -140,8 +142,9 @@ public class KontorSida extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jCBKontoretActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+    private void jBAndraChefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAndraChefActionPerformed
+        // Denna metod hämtar Id:t från namnet som är chef och namnet som ska bli nya chefen. Den uppdaterar 
+        // därefter databasen utifrån dessa villkor, så id:t för dåvarande chefen byts ut till den nya. 
         String id = "";
         String nyttID = "";
         String nyChef = JOptionPane.showInputDialog("Vilken agent ska bli den nya chefen för detta kontor?");
@@ -171,7 +174,7 @@ public class KontorSida extends javax.swing.JFrame {
             
         
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jBAndraChefActionPerformed
 
     private void fyllJComboKontor() {
         // Fyller på comboboxen med relevant information för användaren. Detta gör så att om det bestäms för att lägga 
@@ -232,11 +235,11 @@ public class KontorSida extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBAndraChef;
     private javax.swing.JButton jBSok;
-    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jCBKontoret;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabelKontor;
+    private javax.swing.JLabel jLabelKontorVal;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTAreaKontor;
     // End of variables declaration//GEN-END:variables
