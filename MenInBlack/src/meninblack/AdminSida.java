@@ -249,6 +249,7 @@ public class AdminSida extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Denna agent har redan admin-status");
                 } else {
                     try {
+                        // Uppdaterar databasen med villkoret som användaren väljer.
                         idb.update("UPDATE agent set administrator = 'J' where namn ='" + nyAdmin + "'");
                     } catch (InfException ettE) {
                         JOptionPane.showMessageDialog(null, "Ett fel uppstod när du försökte ge ny status");
